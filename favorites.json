@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "我的开发收藏夹",
+    "description": "每日更新的效率小技巧 & 热门开源仓库收藏",
+    "lastUpdated": "2026-06-11",
+    "version": "1.0"
+  },
+  "tips": [
+    {
+      "id": "tip-001",
+      "name": "fd",
+      "category": "命令行工具",
+      "description": "find 的 Rust 替代品，秒级模糊查找文件",
+      "highlights": [
+        "默认忽略 .git 和 node_modules",
+        "支持正则和模糊匹配",
+        "速度飞快"
+      ],
+      "example": "fd \"config.*ts\"",
+      "install": "cargo install fd-find",
+      "tags": ["rust", "cli", "productivity"],
+      "addedAt": "2026-06-11"
+    },
+    {
+      "id": "tip-002",
+      "name": "ripgrep",
+      "category": "命令行工具",
+      "description": "grep 的极速替代品，代码搜索利器",
+      "highlights": [
+        "Rust 编写",
+        "自动忽略 .gitignore 文件",
+        "多线程并行搜索"
+      ],
+      "example": "rg \"TODO\" --type js",
+      "install": "cargo install ripgrep",
+      "tags": ["rust", "cli", "search"],
+      "addedAt": "2026-06-11"
+    }
+  ],
+  "repos": [
+    {
+      "id": "repo-001",
+      "name": "OpenDevin-Next",
+      "description": "AI 自动重构代码，识别潜在隐患",
+      "whyInteresting": "从 AI 玩具进化成实用开发工具，能帮你在重构时少踩坑",
+      "url": "https://github.com/OpenDevin/OpenDevin",
+      "tags": ["ai", "code-review", "refactoring"],
+      "status": "trending",
+      "addedAt": "2026-06-11"
+    },
+    {
+      "id": "repo-002",
+      "name": "LocalLLM-Runtime",
+      "description": "本地运行 70B 大模型，榨干硬件性能",
+      "whyInteresting": "不用云端 API，完全本地推理，隐私+省钱双收",
+      "url": "",
+      "tags": ["ai", "llm", "local", "performance"],
+      "status": "trending",
+      "addedAt": "2026-06-11"
+    },
+    {
+      "id": "repo-003",
+      "name": "Hono-X",
+      "description": "基于 Web 标准的高性能前端框架",
+      "whyInteresting": "秒级启动，响应极快，适合边缘部署",
+      "url": "https://github.com/honojs/hono",
+      "tags": ["frontend", "web", "edge", "performance"],
+      "status": "trending",
+      "addedAt": "2026-06-11"
+    }
+  ]
+}
