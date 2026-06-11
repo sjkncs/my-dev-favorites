@@ -32,9 +32,9 @@ MyDevFavorites/
 
 ### 📊 交互式仪表盘（推荐先看这个）
 
-[👉 打开仪表盘 Dashboard](./07-analysis-reports/dashboard.html)
+[👉 打开仪表盘 Dashboard](https://sjkncs.github.io/my-dev-favorites/) | [本地查看](./07-analysis-reports/dashboard.html)
 
-一个深色主题的可视化面板，包含：消费品牌 AI 能力雷达图、大模型能力对比、三大股指月度走势、半导体关键指标、论文影响力矩阵、可展开的四问分析详情，以及 2026 年科技新闻时间线。直接浏览器打开 `07-analysis-reports/dashboard.html` 即可。
+一个深色主题的可视化面板，包含：消费品牌 AI 能力雷达图、大模型能力对比、三大股指月度走势、半导体关键指标、论文影响力矩阵、可展开的四问分析详情，以及 2026 年科技新闻时间线。已通过 GitHub Pages 部署，[点击这里在线访问](https://sjkncs.github.io/my-dev-favorites/)。
 
 ### 1. 效率小技巧
 - 命令行工具（Rust 系优先，毕竟快）
