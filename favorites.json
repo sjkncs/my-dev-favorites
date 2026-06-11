@@ -3,7 +3,7 @@
     "title": "我的开发收藏夹",
     "description": "每日更新的效率小技巧 & 热门开源仓库收藏",
     "lastUpdated": "2026-06-11",
-    "version": "1.0"
+    "version": "1.1"
   },
   "tips": [
     {
@@ -37,6 +37,23 @@
       "addedAt": "2026-06-11"
     }
   ],
+  "trivia": [
+    {
+      "id": "trivia-001",
+      "title": "世界上第一个 bug 真的是只虫子",
+      "content": "1947年9月，Grace Hopper在Harvard Mark II计算机的继电器触点里发现了一只烤焦的飞蛾，导致机器故障。她把飞蛾尸体贴在工作日志上，写着：First actual case of bug being found. 那只飞蛾的遗体现在还在美国国家历史博物馆里。",
+      "tags": ["history", "bug", "grace-hopper"],
+      "addedAt": "2026-06-11"
+    }
+  ],
+  "memes": [
+    {
+      "id": "meme-001",
+      "content": "My code doesn't work, I don't know why. My code works, I don't know why.",
+      "tags": ["programmer", "debugging"],
+      "addedAt": "2026-06-11"
+    }
+  ],
   "repos": [
     {
       "id": "repo-001",
@@ -67,6 +84,18 @@
       "tags": ["frontend", "web", "edge", "performance"],
       "status": "trending",
       "addedAt": "2026-06-11"
+    },
+    {
+      "id": "repo-004",
+      "name": "Odysseus",
+      "description": "自托管 AI 工作台，统一管理所有 AI 订阅和本地大模型",
+      "whyInteresting": "YouTube 顶流 PewDiePie 随手搓出来的工具，4 天狂揽 5 万多 GitHub Star",
+      "url": "",
+      "tags": ["ai", "self-hosted", "llm", "pewdiepie"],
+      "status": "viral",
+      "addedAt": "2026-06-11"
     }
-  ]
+  ],
+  "consumerBrandAI": [],
+  "news": []
 }

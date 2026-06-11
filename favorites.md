@@ -39,6 +39,24 @@
 - **为什么有趣**：秒级启动，响应极快，适合边缘部署
 - **Stars**： trending 🔥
 
+### 4. Odysseus（PewDiePie 手搓 AI 工作台）
+- **做什么**：自托管 AI 工作台，把 ChatGPT、Claude 等所有 AI 订阅塞进一个本地界面统一管理，还能跑本地大模型
+- **为什么有趣**：YouTube 顶流 PewDiePie 随手搓出来的工具，4 天狂揽 5 万多 GitHub Star，比很多创业公司产品还火
+- **Stars**： 50k+ 🔥
+
+---
+
+## 技术冷知识
+
+### 世界上第一个 bug 真的是只虫子
+1947 年 9 月，Grace Hopper 在 Harvard Mark II 计算机的继电器触点里发现了一只烤焦的飞蛾，导致机器故障。她把飞蛾尸体贴在工作日志上，写着："First actual case of bug being found." 那只飞蛾的遗体现在还在美国国家历史博物馆里躺着呢，堪称史上最知名的"背锅侠"。
+
+---
+
+## 程序员梗/名言
+
+> "My code doesn't work, I don't know why. My code works, I don't know why."
+
 ---
 
 ## 更新日志
@@ -46,3 +64,7 @@
 | 日期 | 新增内容 |
 |------|---------|
 | 2026-06-11 | 初始创建：fd、ripgrep 技巧 + OpenDevin-Next、LocalLLM-Runtime、Hono-X 仓库 |
+| 2026-06-11 | 追加：Odysseus（PewDiePie）+ 第一个 bug 冷知识 + 程序员梗 |
+| 2026-06-11 | 新增：消费品牌 AI 工具调研（瑞幸/喜茶/奈雪/星巴克/肯德基/麦当劳/海底捞等） |
+| 2026-06-11 | 新增：2026 年 AI/半导体/芯片/股市新闻汇总（1-6月） |
+| 2026-06-11 | 新增：2026 年顶会论文汇总（CVPR/ICLR/ICML/ACL/MLSys） |
