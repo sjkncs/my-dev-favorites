@@ -10,8 +10,8 @@
 ```
 MyDevFavorites/
 ├── favorites.md          ← 总览速查手册（Markdown 版）
-├── favorites.json        ← 机器可读的数据源
-├── favorites.xlsx        ← 表格视图（给 Excel 党）
+├── favorites.json        ← 机器可读的数据源（61KB，82条数据）
+├── favorites.xlsx        ← 表格视图（含雷达图/折线图/柱状图）
 ├── README.md             ← 你现在正在看的废话
 │
 ├── 01-tips/              ← 效率小技巧，看完生产力 +10%
@@ -19,6 +19,9 @@ MyDevFavorites/
 ├── 03-consumer-ai/       ← 消费品牌 AI 工具调研（奶茶也能 AI）
 ├── 04-tech-news/         ← AI / 半导体 / 芯片 / 股市新闻汇总
 ├── 05-papers/            ← 顶会论文精选，假装自己很学术
+├── 06-stock-market/      ← A股 / 美股 / 港股每日行情
+├── 07-analysis-reports/  ← 四问深度分析 + 交互式仪表盘
+│   └── dashboard.html    ← 👈 打开这个！有图表有真相
 │
 └── archive/              ← 过期内容养老院，定期归档
 ```
@@ -26,6 +29,12 @@ MyDevFavorites/
 ---
 
 ## 🎯 这个仓库收录什么
+
+### 📊 交互式仪表盘（推荐先看这个）
+
+[👉 打开仪表盘 Dashboard](./07-analysis-reports/dashboard.html)
+
+一个深色主题的可视化面板，包含：消费品牌 AI 能力雷达图、大模型能力对比、三大股指月度走势、半导体关键指标、论文影响力矩阵、可展开的四问分析详情，以及 2026 年科技新闻时间线。直接浏览器打开 `07-analysis-reports/dashboard.html` 即可。
 
 ### 1. 效率小技巧
 - 命令行工具（Rust 系优先，毕竟快）
@@ -85,6 +94,12 @@ cat favorites.md
 ```bash
 open favorites.xlsx  # macOS
 start favorites.xlsx # Windows
+```
+
+### 打开交互式仪表盘
+```bash
+open 07-analysis-reports/dashboard.html    # macOS
+start 07-analysis-reports\dashboard.html   # Windows
 ```
 
 ---
