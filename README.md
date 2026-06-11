@@ -115,7 +115,7 @@ start favorites.xlsx # Windows
 
 ## 🙏 致谢
 
-- 感谢 [QoderWork](https://docs.qoder.com) 提供每日自动更新服务
+- 感谢 [Qoder] 提供每日自动更新服务
 - 感谢 PewDiePie 证明"主播也能写代码"
 - 感谢 Grace Hopper 的飞蛾，让"debug"这个词有了画面感
 - 感谢所有开源项目的作者，让这个世界稍微好了一点点
@@ -136,4 +136,4 @@ start favorites.xlsx # Windows
 ---
 
 **最后更新**：2026-06-11  
-**维护者**：sjkncs + QoderWork AI 助手
+**维护者**：sjkncs + Qoder
