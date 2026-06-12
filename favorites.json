@@ -2,19 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-11",
+    "lastUpdated": "2026-06-12",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 4,
+      "repos": 7,
       "trivia": 1,
       "memes": 1,
       "consumerAI": 15,
       "aiModels": 9,
-      "techNews": 30,
-      "stockMarket": 12,
-      "papers": 8
+      "techNews": 38,
+      "stockMarket": 18,
+      "papers": 13
     }
   },
   "tips": [
@@ -116,6 +116,30 @@
       ],
       "status": "viral",
       "addedAt": "2026-06-11"
+    },
+    {
+      "id": "repo-005",
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "面向AI编程智能体的技能框架与软件开发方法论",
+      "stars": "225,000+",
+      "why": "代表Agentic Coding趋势的顶峰，将人类工程师最佳实践转化为AI agent可执行的技能模块"
+    },
+    {
+      "id": "repo-006",
+      "name": "NVIDIA/SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "description": "AI智能体技能安全扫描器，自动检测agent skills中的漏洞和风险",
+      "stars": "2,862+",
+      "why": "首个来自大厂的系统性agent安全审计工具"
+    },
+    {
+      "id": "repo-007",
+      "name": "apple/container",
+      "url": "https://github.com/apple/container",
+      "description": "苹果开源的轻量级容器工具，利用macOS轻量虚拟机运行Linux容器",
+      "stars": "33,281+",
+      "why": "Apple官方开源，Swift编写，原生集成Mac开发环境"
     }
   ],
   "trivia": [
@@ -1557,6 +1581,78 @@
       "keyData": "半导体1.3万亿美元，AI 3010亿美元",
       "impact": "全球AI和半导体产业进入超级增长周期",
       "source": "Gartner, IDC, 国际电子商情"
+    },
+    {
+      "id": "news-031",
+      "date": "2026-06-12",
+      "title": "美国商务部新规封堵AI芯片流向中企海外分支",
+      "category": "芯片出口管制",
+      "importance": "high",
+      "summary": "商务部发布最新出口管制细则，进一步封堵中国企业在海外设立的分支机构获取先进AI芯片的渠道",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-032",
+      "date": "2026-06-12",
+      "title": "英伟达CEO黄仁勋拒绝出席参议院AI芯片出口听证会",
+      "category": "AI芯片",
+      "importance": "high",
+      "summary": "黄仁勋以日程冲突为由拒绝出席，此前6月8日在首尔称半导体股票暴跌是买入机会",
+      "source": "CNBC"
+    },
+    {
+      "id": "news-033",
+      "date": "2026-06-12",
+      "title": "苹果WWDC 2026发布Google Gemini驱动的全新Siri AI",
+      "category": "AI产品",
+      "importance": "high",
+      "summary": "苹果Siri全面接入Google Gemini大模型，实现跨App智能操作、上下文理解和多轮对话",
+      "source": "TechCrunch"
+    },
+    {
+      "id": "news-034",
+      "date": "2026-06-12",
+      "title": "Anthropic秘密提交S-1，估值9650亿美元逼近万亿",
+      "category": "AI融资/IPO",
+      "importance": "high",
+      "summary": "Anthropic秘密向SEC提交S-1，最新估值9650亿美元超越OpenAI，计划10月上市",
+      "source": "TechCrunch"
+    },
+    {
+      "id": "news-035",
+      "date": "2026-06-12",
+      "title": "费城半导体指数连续大涨，芯片股创一年最佳表现",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "经历6月初暴跌后全球芯片股强劲反弹，费城半导体指数连续三日大涨",
+      "source": "TradingView"
+    },
+    {
+      "id": "news-036",
+      "date": "2026-06-12",
+      "title": "SpaceX史上最大IPO登陆纳斯达克，估值1.75万亿美元",
+      "category": "IPO",
+      "importance": "high",
+      "summary": "SpaceX发行价135美元，募资约750亿美元，为美国有史以来最大规模IPO",
+      "source": "CNBC"
+    },
+    {
+      "id": "news-037",
+      "date": "2026-06-12",
+      "title": "台积电CoPoS先进封装技术进入量产准备阶段",
+      "category": "半导体制造",
+      "importance": "medium",
+      "summary": "新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-038",
+      "date": "2026-06-12",
+      "title": "华为AI芯片获字节跳动和阿里巴巴批量订单",
+      "category": "国产芯片",
+      "importance": "high",
+      "summary": "华为昇腾系列AI芯片获得头部互联网公司批量订单，标志国产AI芯片规模化落地",
+      "source": "供应链消息"
     }
   ],
   "stockMarket": [
@@ -1679,6 +1775,66 @@
       "change": "+2.7%",
       "event": "百模大战升级+小米大模型发布",
       "sectorImpact": "AI应用和硬件板块双涨"
+    },
+    {
+      "id": "stock-013",
+      "date": "2026-05-31",
+      "market": "A股",
+      "index": "上证综指",
+      "value": 3987,
+      "change": "-0.5%",
+      "event": "芯片股暴跌波及A股",
+      "sectorImpact": "半导体板块回调，但科创板韧性较强"
+    },
+    {
+      "id": "stock-014",
+      "date": "2026-05-31",
+      "market": "美股",
+      "index": "纳斯达克综合指数",
+      "value": 23500,
+      "change": "-3.2%",
+      "event": "芯片股系统性抛售",
+      "sectorImpact": "英伟达市值一度失守5万亿美元"
+    },
+    {
+      "id": "stock-015",
+      "date": "2026-05-31",
+      "market": "港股",
+      "index": "恒生科技指数",
+      "value": 5100,
+      "change": "-2.1%",
+      "event": "全球芯片股暴跌传导",
+      "sectorImpact": "科技股承压"
+    },
+    {
+      "id": "stock-016",
+      "date": "2026-06-12",
+      "market": "A股",
+      "index": "上证综指",
+      "value": 4040,
+      "change": "+1.34%",
+      "event": "美伊和平协议+芯片股反弹",
+      "sectorImpact": "贵金属领涨+7.46%，半导体材料强势"
+    },
+    {
+      "id": "stock-017",
+      "date": "2026-06-12",
+      "market": "美股",
+      "index": "纳斯达克综合指数",
+      "value": 25810,
+      "change": "+2.54%",
+      "event": "美伊和平协议+科技股超跌反弹",
+      "sectorImpact": "芯片股强劲反弹，英伟达重回5万亿"
+    },
+    {
+      "id": "stock-018",
+      "date": "2026-06-12",
+      "market": "港股",
+      "index": "恒生科技指数",
+      "value": 5430,
+      "change": "+1.72%",
+      "event": "隔夜美股大涨提振",
+      "sectorImpact": "阿里京东涨近3%，有色金属强势"
     }
   ],
   "papers": [
@@ -1785,6 +1941,51 @@
       "commercialPotential": 3,
       "arxivUrl": "https://arxiv.org/abs/2605.15864",
       "pdfUrl": "https://arxiv.org/pdf/2605.15864"
+    },
+    {
+      "id": "paper-009",
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "authors": "百度 PaddlePaddle 团队",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "arxiv": "2606.13108",
+      "url": "https://arxiv.org/abs/2606.13108",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-010",
+      "title": "SENTINEL: Failure-Driven RL for Tool-Using LLM Agents",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "arxiv": "2606.12908",
+      "url": "https://arxiv.org/abs/2606.12908",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-011",
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "arxiv": "2606.12478",
+      "url": "https://arxiv.org/abs/2606.12478",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-012",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "authors": "Zhang, Qiu, Cui 等",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "arxiv": "2606.13289",
+      "url": "https://arxiv.org/abs/2606.13289",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-013",
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "arxiv": "2606.12883",
+      "url": "https://arxiv.org/abs/2606.12883",
+      "conference": "arXiv 2026"
     }
   ]
 }
