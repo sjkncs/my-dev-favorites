@@ -2,19 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-12",
+    "lastUpdated": "2026-06-13",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 7,
+      "repos": 11,
       "trivia": 1,
       "memes": 1,
       "consumerAI": 15,
       "aiModels": 9,
-      "techNews": 38,
-      "stockMarket": 18,
-      "papers": 13
+      "techNews": 47,
+      "stockMarket": 21,
+      "papers": 20
     }
   },
   "tips": [
@@ -140,6 +140,38 @@
       "description": "苹果开源的轻量级容器工具，利用macOS轻量虚拟机运行Linux容器",
       "stars": "33,281+",
       "why": "Apple官方开源，Swift编写，原生集成Mac开发环境"
+    },
+    {
+      "id": "repo-008",
+      "name": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "description": "Persistent memory for AI coding agents —— AI编程智能体的持久化记忆系统",
+      "stars": "22.5k+",
+      "why": "解决AI coding agent跨会话记忆的核心痛点，MCP协议支持"
+    },
+    {
+      "id": "repo-009",
+      "name": "HKUDS/AI-Trader",
+      "url": "https://github.com/HKUDS/AI-Trader",
+      "description": "100% Fully-Automated Agent-Native Trading —— 全自动Agent原生交易系统",
+      "stars": "19.6k+",
+      "why": "将AI Agent与金融交易深度结合，探索Agent经济新边界"
+    },
+    {
+      "id": "repo-010",
+      "name": "Alishahryar1/free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "description": "免费的Claude代码助手，在终端、VSCode或Discord中实现高效编程辅助",
+      "stars": "13.5k+",
+      "why": "Claude Code收费后开源社区迅速推出的免费替代方案"
+    },
+    {
+      "id": "repo-011",
+      "name": "caramaschiHG/awesome-ai-agents-2026",
+      "url": "https://github.com/caramaschiHG/awesome-ai-agents-2026",
+      "description": "2026年最全面的AI Agent资源汇总库",
+      "stars": "未公开",
+      "why": "AI Agent生态的Awesome List，了解Agent技术全景的入口"
     }
   ],
   "trivia": [
@@ -1653,6 +1685,87 @@
       "importance": "high",
       "summary": "华为昇腾系列AI芯片获得头部互联网公司批量订单，标志国产AI芯片规模化落地",
       "source": "供应链消息"
+    },
+    {
+      "id": "news-039",
+      "date": "2026-06-12",
+      "title": "SpaceX史上最大IPO登陆纳斯达克，估值1.77万亿美元",
+      "category": "IPO",
+      "importance": "high",
+      "summary": "SpaceX发行价135美元，首日收盘161.11美元，募资750亿美元，为美国有史以来最大规模IPO",
+      "source": "新华网"
+    },
+    {
+      "id": "news-040",
+      "date": "2026-06-12",
+      "title": "苹果WWDC 2026发布Siri AI，全面接入Google Gemini",
+      "category": "AI产品",
+      "importance": "high",
+      "summary": "新一代Siri基于Gemini模型重构，支持自然对话和跨设备任务，但市场反应冷淡，股价跌1.89%",
+      "source": "国际金融报"
+    },
+    {
+      "id": "news-041",
+      "date": "2026-06-12",
+      "title": "Anthropic秘密提交S-1，估值9650亿美元",
+      "category": "AI融资/IPO",
+      "importance": "high",
+      "summary": "Anthropic已向SEC秘密递交S-1，计划10月上市，Q2营收翻倍，估值首次超越OpenAI",
+      "source": "TechCrunch"
+    },
+    {
+      "id": "news-042",
+      "date": "2026-06-08",
+      "title": "英伟达与SK海力士宣布多年期技术合作",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "双方将联手研发下一代AI内存，SK海力士为Vera Rubin开发专用内存，采用CUDA-X加速芯片仿真",
+      "source": "财联社"
+    },
+    {
+      "id": "news-043",
+      "date": "2026-06-12",
+      "title": "美国商务部新规封堵AI芯片流向中企海外分支",
+      "category": "芯片出口管制",
+      "importance": "high",
+      "summary": "最新出口管制细则进一步封堵中国企业在海外分支机构获取先进AI芯片的渠道",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-044",
+      "date": "2026-06-12",
+      "title": "黄仁勋拒绝出席参议院AI芯片出口听证会",
+      "category": "AI芯片",
+      "importance": "high",
+      "summary": "英伟达CEO以日程冲突为由拒绝出席，此前称半导体股票暴跌是买入机会",
+      "source": "CNBC"
+    },
+    {
+      "id": "news-045",
+      "date": "2026-06-12",
+      "title": "台积电CoPoS先进封装技术进入量产准备阶段",
+      "category": "半导体制造",
+      "importance": "medium",
+      "summary": "新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-046",
+      "date": "2026-06-12",
+      "title": "华为昇腾芯片获字节跳动和阿里巴巴批量订单",
+      "category": "国产芯片",
+      "importance": "high",
+      "summary": "昇腾950PR测试顺利，字节跳动预计2026年采购超400亿元，标志国产AI芯片规模化落地",
+      "source": "OFweek"
+    },
+    {
+      "id": "news-047",
+      "date": "2026-06-12",
+      "title": "费城半导体指数连续大涨，芯片股创一年最佳表现",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "经历6月初暴跌后全球芯片股强劲反弹，SK海力士市值突破1万亿美元",
+      "source": "TradingView"
     }
   ],
   "stockMarket": [
@@ -1835,6 +1948,36 @@
       "change": "+1.72%",
       "event": "隔夜美股大涨提振",
       "sectorImpact": "阿里京东涨近3%，有色金属强势"
+    },
+    {
+      "id": "stock-019",
+      "date": "2026-06-12",
+      "market": "A股",
+      "index": "上证综指",
+      "value": 4031.51,
+      "change": "+1.12%",
+      "event": "沪指放量突破4000点",
+      "sectorImpact": "能源金属+7%，半导体材料强势"
+    },
+    {
+      "id": "stock-020",
+      "date": "2026-06-12",
+      "market": "美股",
+      "index": "纳斯达克综合指数",
+      "value": 25888.84,
+      "change": "+0.31%",
+      "event": "SpaceX IPO+芯片股反弹",
+      "sectorImpact": "存储概念领涨，英伟达重回5万亿"
+    },
+    {
+      "id": "stock-021",
+      "date": "2026-06-12",
+      "market": "港股",
+      "index": "恒生科技指数",
+      "value": 4705.2,
+      "change": "+1.06%",
+      "event": "隔夜美股大涨提振",
+      "sectorImpact": "阿里京东涨近3%，有色金属强势"
     }
   ],
   "papers": [
@@ -1986,6 +2129,69 @@
       "arxiv": "2606.12883",
       "url": "https://arxiv.org/abs/2606.12883",
       "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-014",
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "conference": "arXiv 2026",
+      "authors": "百度 PaddlePaddle 团队",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "arxiv": "2606.13108",
+      "url": "https://arxiv.org/abs/2606.13108"
+    },
+    {
+      "id": "paper-015",
+      "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "arxiv": "2606.12908",
+      "url": "https://arxiv.org/abs/2606.12908"
+    },
+    {
+      "id": "paper-016",
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "conference": "arXiv 2026",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "arxiv": "2606.12478",
+      "url": "https://arxiv.org/abs/2606.12478"
+    },
+    {
+      "id": "paper-017",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "conference": "arXiv 2026",
+      "authors": "Zhang, Qiu, Cui 等",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "arxiv": "2606.13289",
+      "url": "https://arxiv.org/abs/2606.13289"
+    },
+    {
+      "id": "paper-018",
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "conference": "arXiv 2026",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "arxiv": "2606.12883",
+      "url": "https://arxiv.org/abs/2606.12883"
+    },
+    {
+      "id": "paper-019",
+      "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "summary": "通过潜在表示实现Agent经验积累和复用",
+      "arxiv": "2606.01041",
+      "url": "https://arxiv.org/abs/2606.01041"
+    },
+    {
+      "id": "paper-020",
+      "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "summary": "针对Agent静默失败提出干预支持的错误归因框架",
+      "arxiv": "2606.09071",
+      "url": "https://arxiv.org/abs/2606.09071"
     }
   ]
 }
