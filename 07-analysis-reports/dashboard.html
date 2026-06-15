@@ -3,244 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我的开发收藏夹 - 交互式仪表盘</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<title>我的开发收藏夹 - 数据仪表盘</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-:root { --bg:#1a1a2e; --card:#16213e; --accent:#0f3460; --text:#e0e0e0; --muted:#a0a0a0; --high:#e94560; --med:#f9a825; --low:#4caf50; }
-* { box-sizing:border-box; }
-body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; }
-.container { max-width:1400px; margin:0 auto; padding:20px; }
-h1 { text-align:center; font-size:2rem; margin-bottom:5px; }
-.sub { text-align:center; color:var(--muted); margin-bottom:30px; font-size:0.95rem; }
-.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(420px, 1fr)); gap:20px; }
-.card { background:var(--card); border-radius:12px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
-.card h2 { margin-top:0; font-size:1.15rem; border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:15px; }
+:root { --bg: #1a1a2e; --card: #16213e; --accent: #0f3460; --text: #e0e0e0; --accent-light: #1a5276; --highlight: #e94560; --gold: #f0c040; --green: #2ecc71; --blue: #3498db; --purple: #9b59b6; --orange: #e67e22; --cyan: #1abc9c; --red: #e74c3c; --radius: 12px; --shadow: 0 4px 20px rgba(0,0,0,0.3); }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+.container { max-width:1400px; margin:0 auto; padding:24px; }
+header { text-align:center; margin-bottom:32px; }
+header h1 { font-size:28px; color:#fff; margin-bottom:8px; }
+header p { color:#8892b0; font-size:14px; }
+.stats-bar { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-bottom:32px; }
+.stat-item { text-align:center; }
+.stat-value { font-size:32px; font-weight:bold; color:var(--highlight); }
+.stat-label { font-size:12px; color:#8892b0; text-transform:uppercase; letter-spacing:1px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px; }
+.grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; margin-bottom:24px; }
+.card { background:var(--card); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow); }
+.card h2 { font-size:18px; margin-bottom:16px; color:#fff; border-left:4px solid var(--highlight); padding-left:12px; }
 .chart-container { position:relative; height:320px; }
-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
-th,td { padding:8px 10px; text-align:left; border-bottom:1px solid #2a3a5e; }
-th { background:var(--accent); color:#fff; position:sticky; top:0; }
+.chart-container-large { position:relative; height:400px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th, td { padding:10px 12px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.06); }
+th { background:rgba(255,255,255,0.04); font-weight:600; color:#fff; position:sticky; top:0; }
 tr:hover { background:rgba(255,255,255,0.03); }
-.award { color:var(--high); font-weight:bold; }
-.timeline { position:relative; padding-left:20px; }
-.timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:2px; background:var(--accent); }
-.t-item { position:relative; margin-bottom:16px; padding-left:16px; }
-.t-item::before { content:''; position:absolute; left:-18px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--muted); }
-.t-item.high::before { background:var(--high); }
-.t-item.medium::before { background:var(--med); }
-.t-item.low::before { background:var(--low); }
-.t-date { font-size:0.8rem; color:var(--muted); }
-.t-title { font-weight:bold; margin:4px 0; }
-.t-cat { font-size:0.8rem; color:var(--muted); display:inline-block; background:rgba(255,255,255,0.05); padding:2px 8px; border-radius:4px; }
-.analysis-card { background:rgba(255,255,255,0.03); border-radius:8px; padding:15px; margin-bottom:12px; cursor:pointer; transition:background 0.2s; }
-.analysis-card:hover { background:rgba(255,255,255,0.06); }
-.analysis-card .q { font-weight:bold; color:#7ec8e3; margin-bottom:6px; }
-.analysis-card .a { color:var(--muted); font-size:0.9rem; line-height:1.5; }
-.collapsed .a { display:none; }
-.toggle { float:right; color:var(--muted); font-size:0.8rem; }
-@media(max-width:600px){ .grid{ grid-template-columns:1fr; } .container{ padding:10px; } }
+a { color:var(--blue); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.timeline { position:relative; padding-left:24px; }
+.timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:2px; background:rgba(255,255,255,0.1); }
+.timeline-item { position:relative; margin-bottom:16px; padding-left:20px; }
+.timeline-item::before { content:''; position:absolute; left:-20px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--blue); }
+.timeline-item.high::before { background:var(--red); }
+.timeline-item.medium::before { background:var(--gold); }
+.timeline-item.low::before { background:#666; }
+.timeline-date { font-size:12px; color:#8892b0; margin-bottom:4px; }
+.timeline-title { font-size:14px; color:#fff; font-weight:600; }
+.timeline-meta { font-size:12px; color:#8892b0; margin-top:4px; }
+.timeline-meta span { display:inline-block; padding:2px 8px; border-radius:4px; background:rgba(255,255,255,0.06); margin-right:6px; }
+.analysis-card { margin-bottom:12px; border:1px solid rgba(255,255,255,0.06); border-radius:8px; overflow:hidden; }
+.analysis-header { padding:14px 18px; background:rgba(255,255,255,0.03); cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.analysis-header h3 { font-size:15px; color:#fff; }
+.analysis-header .toggle { font-size:18px; color:var(--highlight); transition:transform 0.3s; }
+.analysis-card.open .toggle { transform:rotate(45deg); }
+.analysis-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.analysis-card.open .analysis-body { max-height:2000px; }
+.analysis-body-inner { padding:18px; }
+.q-block { margin-bottom:14px; }
+.q-block .q-label { font-size:12px; color:var(--highlight); font-weight:bold; margin-bottom:4px; text-transform:uppercase; }
+.q-block .q-text { font-size:13px; color:#ccd6f6; line-height:1.7; }
+.q-table { width:100%; margin-top:8px; font-size:13px; }
+.q-table td { padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.06); }
+.q-table td:first-child { width:80px; color:var(--gold); font-weight:bold; }
+@media(max-width:768px) { .grid-2, .grid-3 { grid-template-columns:1fr } .stats-bar { gap:20px } .chart-container, .chart-container-large { height:260px } }
+@media(max-width:520px) { .container { padding:10px } .card { padding:16px } }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>我的开发收藏夹</h1>
-<p class="sub">最后更新：2026-06-13 | 7大分类 | 实时数据可视化</p>
+<header>
+  <h1>我的开发收藏夹</h1>
+  <p>每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏</p>
+  <p>最后更新：2026-06-15 | 版本：2.0</p>
+</header>
 
-<div class="grid">
-<div class="card"><h2>消费品牌AI雷达</h2><div class="chart-container"><canvas id="brandRadar"></canvas></div></div>
-<div class="card"><h2>AI大模型雷达 + API定价</h2><div class="chart-container"><canvas id="modelRadar"></canvas></div></div>
-<div class="card"><h2>股市趋势</h2><div class="chart-container"><canvas id="stockLine"></canvas></div></div>
-<div class="card"><h2>API定价对比</h2><div class="chart-container"><canvas id="priceBar"></canvas></div></div>
-<div class="card" style="grid-column:1/-1;"><h2>顶会论文</h2>
-<div style="max-height:400px;overflow:auto;">
-<table>
-<thead><tr><th>标题</th><th>会议</th><th>机构</th><th>核心指标</th><th>arXiv</th></tr></thead>
-<tbody>
-<tr><td class="award">OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration</td><td>ICML 2026</td><td>未公开</td><td>1/7数据超越全量训练</td><td><a href="https://arxiv.org/abs/2602.05400" target="_blank" style="color:#7ec8e3;">https://arxiv.org/abs/2602.05400</a></td></tr>
-<tr><td class="award">Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs</td><td>ICML 2026</td><td>未公开</td><td>0.02%参数更新匹配AdamW</td><td><a href="https://arxiv.org/abs/2602.07729" target="_blank" style="color:#7ec8e3;">https://arxiv.org/abs/2602.07729</a></td></tr>
-<tr><td class="award">Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs</td><td>ICML 2026</td><td>未公开</td><td>thinking模型视觉幻觉3倍于普通VLM</td><td><a href="https://arxiv.org/abs/2605.15864" target="_blank" style="color:#7ec8e3;">https://arxiv.org/abs/2605.15864</a></td></tr>
-<tr><td class="">PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs</td><td>arXiv 2026</td><td>百度 PaddlePaddle 团队</td><td>轻量级OCR系统，34.5M参数超越十亿级VLM</td><td><a href="https://arxiv.org/abs/2606.13108" target="_blank" style="color:#7ec8e3;">2606.13108</a></td></tr>
-<tr><td class="">SENTINEL: Failure-Driven RL for Tool-Using LLM Agents</td><td>arXiv 2026</td><td>Ziyi Wang, Yuxuan Lu 等</td><td>失败驱动强化学习框架，高效训练工具使用agent</td><td><a href="https://arxiv.org/abs/2606.12908" target="_blank" style="color:#7ec8e3;">2606.12908</a></td></tr>
-<tr><td class="">Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention</td><td>arXiv 2026</td><td>Gilhan Kim, Daniel K. Park</td><td>统计物理Ising模型引入注意力机制</td><td><a href="https://arxiv.org/abs/2606.12478" target="_blank" style="color:#7ec8e3;">2606.12478</a></td></tr>
-<tr><td class="">HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers</td><td>arXiv 2026</td><td>Zhang, Qiu, Cui 等</td><td>统一多模态模型架构，整体式视觉tokenizer</td><td><a href="https://arxiv.org/abs/2606.13289" target="_blank" style="color:#7ec8e3;">2606.13289</a></td></tr>
-<tr><td class="">The Hidden Power of Scaling Factor in LoRA Optimization</td><td>arXiv 2026</td><td>Zicheng Zhang, Haoran Li 等</td><td>揭示LoRA缩放因子alpha的独立影响</td><td><a href="https://arxiv.org/abs/2606.12883" target="_blank" style="color:#7ec8e3;">2606.12883</a></td></tr>
-<tr><td class="">PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs</td><td>arXiv 2026</td><td>百度 PaddlePaddle 团队</td><td>轻量级OCR系统，34.5M参数超越十亿级VLM</td><td><a href="https://arxiv.org/abs/2606.13108" target="_blank" style="color:#7ec8e3;">2606.13108</a></td></tr>
-<tr><td class="">SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents</td><td>arXiv 2026</td><td>Ziyi Wang, Yuxuan Lu 等</td><td>失败驱动强化学习框架，高效训练工具使用agent</td><td><a href="https://arxiv.org/abs/2606.12908" target="_blank" style="color:#7ec8e3;">2606.12908</a></td></tr>
-<tr><td class="">Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention</td><td>arXiv 2026</td><td>Gilhan Kim, Daniel K. Park</td><td>统计物理Ising模型引入注意力机制</td><td><a href="https://arxiv.org/abs/2606.12478" target="_blank" style="color:#7ec8e3;">2606.12478</a></td></tr>
-<tr><td class="">HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers</td><td>arXiv 2026</td><td>Zhang, Qiu, Cui 等</td><td>统一多模态模型架构，整体式视觉tokenizer</td><td><a href="https://arxiv.org/abs/2606.13289" target="_blank" style="color:#7ec8e3;">2606.13289</a></td></tr>
-<tr><td class="">The Hidden Power of Scaling Factor in LoRA Optimization</td><td>arXiv 2026</td><td>Zicheng Zhang, Haoran Li 等</td><td>揭示LoRA缩放因子alpha的独立影响</td><td><a href="https://arxiv.org/abs/2606.12883" target="_blank" style="color:#7ec8e3;">2606.12883</a></td></tr>
-<tr><td class="">ExpWeaver: LLM Agents Learn from Experience via Latent RAG</td><td>arXiv 2026</td><td>未公开</td><td>通过潜在表示实现Agent经验积累和复用</td><td><a href="https://arxiv.org/abs/2606.01041" target="_blank" style="color:#7ec8e3;">2606.01041</a></td></tr>
-<tr><td class="">REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents</td><td>arXiv 2026</td><td>未公开</td><td>针对Agent静默失败提出干预支持的错误归因框架</td><td><a href="https://arxiv.org/abs/2606.09071" target="_blank" style="color:#7ec8e3;">2606.09071</a></td></tr>
-</tbody></table></div></div>
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-value">2</div><div class="stat-label">Tips</div></div>
+  <div class="stat-item"><div class="stat-value">16</div><div class="stat-label">Repos</div></div>
+  <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">品牌AI</div></div>
+  <div class="stat-item"><div class="stat-value">9</div><div class="stat-label">AI模型</div></div>
+  <div class="stat-item"><div class="stat-value">53</div><div class="stat-label">科技新闻</div></div>
+  <div class="stat-item"><div class="stat-value">24</div><div class="stat-label">股市记录</div></div>
+  <div class="stat-item"><div class="stat-value">27</div><div class="stat-label">论文</div></div>
+</div>
 
-<div class="card" style="grid-column:1/-1;"><h2>科技新闻时间线</h2>
-<div class="timeline">
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">苹果WWDC 2026发布Google Gemini驱动的全新Siri AI</div><span class="t-cat">AI产品</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">苹果Siri全面接入Google Gemini大模型，实现跨App智能操作、上下文理解和多轮对话...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">Anthropic秘密提交S-1，估值9650亿美元逼近万亿</div><span class="t-cat">AI融资/IPO</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">Anthropic秘密向SEC提交S-1，最新估值9650亿美元超越OpenAI，计划10月上市...</div></div>
-<div class="t-item medium"><div class="t-date">2026-06-12</div><div class="t-title">费城半导体指数连续大涨，芯片股创一年最佳表现</div><span class="t-cat">半导体</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">经历6月初暴跌后全球芯片股强劲反弹，费城半导体指数连续三日大涨...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">SpaceX史上最大IPO登陆纳斯达克，估值1.75万亿美元</div><span class="t-cat">IPO</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">SpaceX发行价135美元，募资约750亿美元，为美国有史以来最大规模IPO...</div></div>
-<div class="t-item medium"><div class="t-date">2026-06-12</div><div class="t-title">台积电CoPoS先进封装技术进入量产准备阶段</div><span class="t-cat">半导体制造</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">华为AI芯片获字节跳动和阿里巴巴批量订单</div><span class="t-cat">国产芯片</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">华为昇腾系列AI芯片获得头部互联网公司批量订单，标志国产AI芯片规模化落地...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">SpaceX史上最大IPO登陆纳斯达克，估值1.77万亿美元</div><span class="t-cat">IPO</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">SpaceX发行价135美元，首日收盘161.11美元，募资750亿美元，为美国有史以来最大规模IPO...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">苹果WWDC 2026发布Siri AI，全面接入Google Gemini</div><span class="t-cat">AI产品</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">新一代Siri基于Gemini模型重构，支持自然对话和跨设备任务，但市场反应冷淡，股价跌1.89%...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">Anthropic秘密提交S-1，估值9650亿美元</div><span class="t-cat">AI融资/IPO</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">Anthropic已向SEC秘密递交S-1，计划10月上市，Q2营收翻倍，估值首次超越OpenAI...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-08</div><div class="t-title">英伟达与SK海力士宣布多年期技术合作</div><span class="t-cat">半导体</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">双方将联手研发下一代AI内存，SK海力士为Vera Rubin开发专用内存，采用CUDA-X加速芯片仿真...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">美国商务部新规封堵AI芯片流向中企海外分支</div><span class="t-cat">芯片出口管制</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">最新出口管制细则进一步封堵中国企业在海外分支机构获取先进AI芯片的渠道...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">黄仁勋拒绝出席参议院AI芯片出口听证会</div><span class="t-cat">AI芯片</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">英伟达CEO以日程冲突为由拒绝出席，此前称半导体股票暴跌是买入机会...</div></div>
-<div class="t-item medium"><div class="t-date">2026-06-12</div><div class="t-title">台积电CoPoS先进封装技术进入量产准备阶段</div><span class="t-cat">半导体制造</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务...</div></div>
-<div class="t-item high"><div class="t-date">2026-06-12</div><div class="t-title">华为昇腾芯片获字节跳动和阿里巴巴批量订单</div><span class="t-cat">国产芯片</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">昇腾950PR测试顺利，字节跳动预计2026年采购超400亿元，标志国产AI芯片规模化落地...</div></div>
-<div class="t-item medium"><div class="t-date">2026-06-12</div><div class="t-title">费城半导体指数连续大涨，芯片股创一年最佳表现</div><span class="t-cat">半导体</span><div style="color:var(--muted);font-size:0.85rem;margin-top:4px;">经历6月初暴跌后全球芯片股强劲反弹，SK海力士市值突破1万亿美元...</div></div>
-</div></div>
+<div class="grid-2">
+  <div class="card">
+    <h2>消费品牌AI能力雷达</h2>
+    <div class="chart-container"><canvas id="consumerRadar"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>AI模型能力对比</h2>
+    <div class="chart-container"><canvas id="modelRadar"></canvas></div>
+  </div>
+</div>
 
-<div class="card" style="grid-column:1/-1;"><h2>四问深度分析</h2>
-<div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">1：SpaceX史上最大IPO（估值1.77万亿美元）</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">剥离马斯克"火星殖民"的宏大叙事，SpaceX IPO的本质问题是：**如何将一家烧掉数百亿美元的私人航天公司转化为可持续的公众资本平台**。Starlink虽然在2023年实现单季度盈利，但其商业模式仍是"用卫星互联网补贴火箭研发"。如果没有这次IPO，SpaceX的烧钱速度将在未来3-5年内触及私人资本市场的天花板。IPO不是目的，而是续命手段——让早期投资者（包括员工持股）有退出渠道，同时为星舰（Starship）的巨额研发投入提供资金。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"降低太空准入门槛"、"实现火星殖民"、" Starlink 连接全球"。实际验证：
-- Starlink已有400万+用户，确实是商业航天领域最成功的收入模式
-- 但单位用户获取成本（卫星制造+发射）仍然极高，盈亏平衡点存疑
-- 火箭可回收技术确实将发射成本降低了约10倍，但这与IPO估值之间没有线性关系</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：估值与基本面的巨大鸿沟**。1.77万亿美元是什么概念？约等于5个特斯拉、2个沙特阿美。SpaceX 2025年营收约150亿美元，市销率超过100倍，这在航天史上前所未有
-- **P1：Starlink的天花板**。地球低轨容量有限，随着亚马逊Kuiper、中国星网等竞争对手进入，频谱和轨道资源竞争将白热化
-- **P2：星舰的不确定性**。星舰已多次试飞失败，即使成功，火星殖民在20年内没有经济回报
-- **P3：马斯克个人风险**。特斯拉、X、xAI、Neuralink等多线作战，精力分散</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：精读SpaceX在火箭可回收技术上的工程论文和专利（栅格翼、着陆腿、推力矢量控制）
-- **工程师**：学习SpaceX"快速迭代+容忍失败"的研发文化（IT大法：快速试错、数据驱动）
-- **投资人**：关注航天产业链上下游（卫星制造、地面设备、发射服务）的实际受益者，而非直接赌SpaceX股票。同时警惕"马斯克溢价"的可持续性
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">2：苹果Siri全面接入Google Gemini</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">苹果的Siri已经落后亚马逊Alexa和Google Assistant整整一个时代，更别说ChatGPT和Claude了。核心问题：**苹果在生成式AI大模型上的自研能力严重不足**。Apple Intelligence在WWDC 2024上画的大饼（端侧小模型+私有云计算）被市场证明只是"勉强够用"，远不足以与GPT-4/Claude 4竞争。接入Gemini是务实的认输——与其让用户转向ChatGPT App，不如把最好的AI能力内置到iOS中，至少留住用户时长。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"Siri终于变聪明了"、"跨App智能操作"、"上下文理解"。实际评估：
-- 技术上是RAG+Function Calling的标准组合，没有创新
-- 真正的价值在于**系统级集成**——Siri可以操作iOS任意App，这是第三方AI助手无法做到的
-- 但隐私边界会变得模糊：Google会获得多少用户数据？苹果如何解释"隐私优先"品牌的自我矛盾？</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：品牌核心叙事的崩塌**。苹果过去10年最核心的品牌资产是"隐私"。现在把用户最敏感的个人数据交给Google（一家靠广告盈利的公司），这是对品牌根基的冲击。股价下跌1.89%已经反映了市场的担忧
-- **P1：技术自主性的丧失**。当Siri的核心大脑是Google的，苹果在AI时代的议价权在哪里？这类似于当年苹果地图用Google数据的困境
-- **P2：中国市场的尴尬**。Gemini在中国大陆无法使用，苹果在中国会用什么替代方案？自研？还是接入文心一言/通义千问？这会让全球Siri体验碎片化</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：研究端侧大模型与云端大模型的协同架构（MoE路由、任务分流策略）
-- **工程师**：学习苹果如何将第三方AI能力封装进系统API，同时保持用户体验一致性
-- **投资人**：苹果此举说明"自研大模型"不是终端厂商的必选项。关注那些愿意为AI能力付费的硬件厂商（手机、车、家电），它们是模型公司的新客户
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">3：Anthropic秘密提交S-1（估值9650亿美元）</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">Anthropic面临的核心问题与OpenAI相同：**如何将一个每年烧掉数十亿美元的 research lab 转化为可持续盈利的 software company？** 9650亿美元估值不是对当前业务的定价，而是对"AI替代人类知识工作"这一宏大叙事的期权定价。提交S-1意味着Anthropic需要向公开市场证明：Claude不是一个昂贵的玩具，而是能产生稳定现金流的商业产品。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">- 声称Claude 4 Opus是"全球最佳编程模型"（SWE-bench领先）
-- 声称Constitutional AI是"企业级安全差异化"
-- 声称Q2营收翻倍
-验证疑问：
-- SWE-bench领先是否等于企业愿意付费？开发者用Claude写代码 vs 企业采购Claude API是两回事
-- "安全叙事"在OpenAI和Google都在追赶的情况下，差异化能维持多久？
-- 营收翻倍的基数是多少？从1亿到2亿是翻倍，从10亿到20亿也是翻倍，含义完全不同</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：估值荒谬**。9650亿美元 = 约3.5个Intel = 约1.5个特斯拉。Anthropic 2025年营收估计约20-30亿美元，市销率超过300倍。这是人类商业史上最高的市销率之一
-- **P1：对AWS的深度依赖**。Anthropic的主要算力来自AWS Trainium，这意味着利润率的很大一部分会被云厂商拿走
-- **P2：OpenAI的先发优势**。GPT-5.5已经在市场上建立了强大的品牌认知和企业关系，Claude 4的技术优势是否足以撬动客户转换成本？
-- **P3：AI泡沫破裂风险**。如果生成式AI的采纳速度不及预期，9650亿估值将是一场灾难</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：精读Claude 4的技术报告，特别是Agentic能力的设计（computer use、long-horizon planning）
-- **工程师**：学习Anthropic的API设计和开发者体验（Claude的文档和社区口碑确实优于OpenAI）
-- **投资人**：如果相信AI泡沫不会破裂， Anthropic IPO可能是最后一个以"合理价格"买入顶级AI公司的机会（虽然合理是相对的）。但更需要关注的是：IPO后锁定期结束时的抛售压力
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">4：英伟达与SK海力士多年期技术合作</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">AI算力增长正在遭遇"内存墙"——HBM（高带宽内存）的供应和性能提升速度跟不上GPU算力的增长。英伟达的核心焦虑是：**如果内存成为瓶颈，GPU的算力优势就无法充分发挥**。SK海力士是全球HBM领导者（市场份额约50%），与其绑定是英伟达确保下一代AI芯片（Vera Rubin及以后）供应链安全的战略举措。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"联合开发下一代AI内存"、"用CUDA-X加速芯片仿真"、"用Omniverse构建数字孪生"。实际影响：
-- 对英伟达：确保HBM供应优先权，同时通过CUDA-X和Omniverse将SK海力士更深地绑定到自己的生态中
-- 对SK海力士：获得英伟达下一代芯片的路线图信息，可以提前规划产能
-- 对竞争对手（三星、美光）：英伟达+SK海力士的联盟可能让它们在HBM市场的追赶更加困难</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：垄断风险**。英伟达已经控制了GPU市场90%的份额，现在又深度绑定HBM领导者。监管机构（尤其是欧盟和中国）可能将此视为反竞争行为
-- **P1：技术路线锁定**。如果HBM的技术路线在未来5年被某种新技术（如CXL内存、光子互连）颠覆，这个多年合作的ROI将大打折扣
-- **P2：三星的反扑**。三星在HBM上的技术储备不容小觑，且其垂直整合能力（自有晶圆厂+封装）可能比SK海力士更强</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：研究HBM3E/HBM4的架构演进，以及CXL、UCle等内存互连新标准
-- **工程师**：学习英伟达如何用Omniverse做芯片设计和制造流程的数字孪生——这是工业元宇宙的真正落地场景
-- **投资人**：关注HBM供应链上的二级标的（设备、材料、测试），而非仅仅关注英伟达和SK海力士。HBM产能扩张将带动整个产业链
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">5：华为昇腾获字节跳动、阿里巴巴批量订单</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">中国互联网大厂的终极焦虑：**在美国出口管制下，如何确保AI算力供给不中断？** 英伟达H20等"阉割版"芯片性能受限，而华为昇腾950PR在测试中表现优异。字节、阿里下单昇腾不是"支持国产"的情怀，而是**赤裸裸的生存需求**——没有算力，大模型业务就停摆。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"国产AI芯片规模化落地"、"销售预计过500亿"。验证疑问：
-- 昇腾950PR的实际训练效率（TFLOPS利用率）与英伟达H100/H200相比如何？测试环境和生产环境往往有巨大差距
-- 华为是否有足够的产能满足字节（预计400亿+）和阿里的大单？台积电不能代工，中芯国际的产能和良率是硬约束
-- 软件生态（CANN vs CUDA）的迁移成本有多高？字节和阿里可能需要重写大量训练框架代码</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：产能瓶颈**。即使订单签了，华为能否交付？美国出口管制不仅限制设计工具，还限制制造设备。中芯国际的先进制程产能极其有限
-- **P1：软件生态鸿沟**。CUDA花了15年建立的生态壁垒不是3-5年能跨越的。PyTorch/TensorFlow对昇腾的支持仍处于"能跑"而非"好用"的阶段
-- **P2：地缘政治反噬**。如果美国政府将华为昇腾纳入更严格的管制（如长臂管辖限制使用美国技术的设备为华为代工），现有订单都可能无法交付
-- **P3：性能代差**。即使昇腾950PR达到H100水平，英伟达下一代Rubin架构已经在路上，国产芯片永远追不上最前沿</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：研究华为在AI芯片架构上的创新（达芬奇架构、CANN编译器优化）
-- **工程师**：学习如何将CUDA代码迁移到CANN——这是未来3-5年中国AI工程师的核心技能之一
-- **投资人**：国产AI芯片是"不得不投"的赛道，但需要区分"能卖"和"好用"两个阶段。当前阶段关注订单和产能，下一阶段关注实际部署效率和软件生态成熟度
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">6：瑞幸AI开放平台（MCP/CLI/Skill）</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">瑞幸的真正问题不是"让用户更方便点咖啡"，而是：**在AI Agent时代，如何确保自己不被平台层（如阿里千问App）架空，失去与用户之间的直接连接？** 如果用户习惯了"对Siri/千问说点一杯拿铁"，瑞幸就会沦为单纯的供应链后台。通过推出自己的MCP Server和Skill，瑞幸试图在AI Agent生态中占据一席之地。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"自然语言点单"、"智能优惠券匹配"、"一句话下单"。实际评估：
-- 技术上是标准的MCP Server实现，壁垒极低
-- 真正的价值在于**订单系统的API开放程度和优惠券数据的实时性**
-- 但当前不支持外卖配送（仅到店自提），覆盖约60-70%的订单场景</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：不支持外卖**。中国咖啡/茶饮市场外卖占比极高，不支持外卖等于自断一臂
-- **P1：MCP协议无壁垒**。任何品牌都可以在一周内搭建类似的MCP Server，瑞幸没有技术护城河
-- **P2：语义理解容错性**。复杂定制需求（半糖、去冰、加料）的NLU准确率在实际场景中往往崩溃
-- **P3：用户习惯**。对大多数用户来说，打开App点单已经够方便了，语音/Agent点单只是"酷"而非"必需"</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：研究MCP协议的设计哲学和安全性模型（Agent可以操作支付，权限边界如何设计？）
-- **工程师**：学习瑞幸如何将 legacy POS系统改造为Agent-ready的API架构
-- **投资人**：AI开放平台本身是成本中心而非利润中心。真正值得投资的是那些**把AI点单变成增量用户来源**的品牌，而非单纯的技术展示
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">7：PP-OCRv6（34.5M参数超越十亿级VLM）</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">多模态大模型（VLM）在OCR任务上存在严重的"过度杀伤"问题：用100B参数的模型做OCR，就像用航空母舰送快递。PP-OCRv6的核心洞察是：**OCR是一个边界清晰、数据充足的任务，不需要通用智能**。通过专门设计的小模型，可以在精度、速度和成本上全面超越大模型。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"34.5M参数超越十亿级VLM"。验证疑问：
-- "超越"的定义是什么？精度？速度？能耗？不同指标下结论可能不同
-- 测试数据集是否包含足够复杂的中文场景（手写体、低分辨率、倾斜文本）？
-- 大模型在OCR上的"弱"是否只是因为训练数据中OCR样本不足，而非架构问题？</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：比较不公平**。VLM不是为OCR设计的，用VLM做OCR通常只是简单prompt（"提取图片中的文字"），没有针对OCR任务微调。如果给VLM做专门的OCR微调，结果可能逆转
-- **P1：泛化能力**。PP-OCRv6在训练数据分布外的场景（罕见字体、艺术字、多语言混合）上可能表现不佳
-- **P2：商业价值有限**。OCR已经是成熟市场（百度、腾讯、阿里都有成熟的OCR云服务），PP-OCRv6的增量价值在于边缘部署，但边缘OCR的市场规模本身有限</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：精读PP-OCRv6的模型架构和训练策略，理解"小模型如何在特定任务上击败大模型"
-- **工程师**：学习百度PaddlePaddle在模型轻量化上的工程实践（量化、剪枝、蒸馏）
-- **投资人**：这是一个重要的信号——不是所有AI任务都需要大模型。关注"小模型+垂直场景"的投资机会，特别是在端侧部署和低成本场景中
----</div></div><div class="analysis-card collapsed" onclick="this.classList.toggle('collapsed')"><span class="toggle">点击展开</span><div style="font-weight:bold;color:#fff;margin-bottom:10px;">8：SENTINEL（失败驱动RL训练工具使用Agent）</div><div class="q">Q1：它真正想解决的问题是什么？</div><div class="a">当前LLM Agent在工具使用上的训练主要依赖"成功案例"（专家示范或正向奖励），但现实中agent的失败模式极其丰富且难以穷尽。SENTINEL的核心洞察是：**从失败中学习比从成功中学习更高效**——因为失败提供了明确的"边界信息"（什么不能做），而成功案例往往包含大量冗余信息。</div><div class="q">Q2：它声称的贡献是什么？</div><div class="a">声称"失败驱动强化学习框架"、"显著提升工具调用成功率"。验证疑问：
-- 失败案例的收集成本如何？在真实生产环境中，失败的代价可能很高（误操作、数据丢失）
-- "失败"的定义是否足够精细？同样的错误可能有不同的根因，简单标注"失败"可能不够
-- 与现有的RLHF/DPO方法相比，提升幅度有多大？是否有统计学显著性？</div><div class="q">Q3：最可能被reviewer攻击的地方在哪里？</div><div class="a">- **P0：失败案例的覆盖度**。如果训练中的失败案例不能覆盖测试时的失败模式，方法就失效了。而真实世界的失败模式是组合爆炸的
-- **P1：负样本的质量**。失败的轨迹往往很长，其中只有一小部分是关键错误，其余是正常操作。如何从长轨迹中定位关键错误？
-- **P2：安全性**。让agent从失败中学习意味着要允许agent在训练时犯错误——在涉及支付、数据修改等高风险工具时，这是不可接受的</div><div class="q">Q4：如果我是同方向从业者，应该精读/学习/模仿/跳过什么？</div><div class="a">- **博士生**：精读SENTINEL的奖励设计和失败归因机制，理解如何从稀疏的负反馈中提取有效信号
-- **工程师**：学习如何构建安全的Agent训练环境（沙箱、影子模式、回滚机制），让agent可以在不造成实际损害的情况下从失败中学习
-- **投资人**：工具使用Agent是2026年最热门的赛道之一。关注那些不仅关注"成功率"，还关注"失败恢复能力"的团队——后者才是企业级部署的关键</div></div></div>
+<div class="grid-2">
+  <div class="card">
+    <h2>API定价对比 ($/1M tokens)</h2>
+    <div class="chart-container"><canvas id="priceBar"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>半导体关键指标</h2>
+    <div class="chart-container"><canvas id="semiBar"></canvas></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>三大股指月度趋势</h2>
+  <div class="chart-container-large"><canvas id="stockLine"></canvas></div>
+</div>
+
+<div class="card">
+  <h2>顶会论文</h2>
+  <div style="max-height:500px; overflow:auto;">
+  <table id="papersTable">
+    <thead>
+      <tr><th>论文标题</th><th>会议</th><th>奖项</th><th>机构</th><th>关键指标</th><th>链接</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2>四问深度分析</h2>
+  <div id="analysisContainer"></div>
+</div>
+
+<div class="card">
+  <h2>科技新闻时间线</h2>
+  <div class="timeline" id="newsTimeline"></div>
+</div>
+
 </div>
 
 <script>
-const brandData = [{"brand": "瑞幸咖啡", "tool": "MCP/CLI/Skill", "scores": [8, 7, 9, 6, 7]}, {"brand": "喜茶", "tool": "全套智能茶饮设备", "scores": [6, 8, 8, 9, 8]}, {"brand": "奈雪的茶", "tool": "AI溯源预警系统 + 智能茶饮机", "scores": [7, 7, 7, 7, 6]}, {"brand": "蜜雪冰城", "tool": "雪王爱智慧科技", "scores": [5, 5, 10, 5, 6]}, {"brand": "星巴克", "tool": "Green Dot Assist（绿点助手）", "scores": [4, 7, 7, 3, 5]}, {"brand": "星巴克", "tool": "Deep Brew AI 平台", "scores": [8, 9, 10, 7, 9]}, {"brand": "星巴克", "tool": "AI库存管理工具（已停用）", "scores": [5, 2, 1, 5, 0]}, {"brand": "库迪咖啡", "tool": "智慧运营体系", "scores": [7, 6, 9, 6, 7]}, {"brand": "肯德基", "tool": "AI点餐助手'小K'", "scores": [7, 7, 8, 6, 7]}, {"brand": "麦当劳", "tool": "RGM BOSS + 汉堡大学AI智能陪练", "scores": [5, 7, 8, 4, 6]}, {"brand": "海底捞", "tool": "AI智慧巡检系统 + 智能体机器人", "scores": [7, 7, 9, 7, 8]}, {"brand": "茶百道", "tool": "智能管理体系", "scores": [6, 7, 9, 5, 7]}, {"brand": "霸王茶姬", "tool": "智能调饮系统 + '茶茶圈'AI知识管理", "scores": [6, 9, 9, 6, 9]}, {"brand": "阿里通义千问", "tool": "千问App'一句话点奶茶'", "scores": [8, 8, 10, 7, 7]}, {"brand": "蜜雪冰城", "tool": "雪王爱智慧 - AI公共数据平台", "scores": [6, 3, 8, 6, 4]}];
-const modelData = [{"name": "GPT-5.5", "scores": [9, 8, 9, 3, 7, 10], "input": 15, "output": 60}, {"name": "DeepSeek V4", "scores": [8, 8, 6, 10, 7, 7], "input": 2, "output": 8}, {"name": "Claude 4 Opus", "scores": [9, 10, 8, 4, 8, 8], "input": 15, "output": 75}, {"name": "Claude 4 Sonnet", "scores": [8, 9, 8, 6, 8, 8], "input": 3, "output": 15}, {"name": "Gemini 3.5 Flash", "scores": [8, 7, 9, 7, 9, 9], "input": 1, "output": 4}, {"name": "Gemini 3 Deep Think", "scores": [10, 7, 8, 5, 8, 8], "input": 10, "output": 40}, {"name": "豆包 2.0", "scores": [7, 7, 8, 8, 7, 10], "input": 2, "output": 6}, {"name": "通义千问 (Qwen)", "scores": [7, 7, 7, 9, 8, 8], "input": 1, "output": 3}, {"name": "MiniMax", "scores": [7, 6, 8, 9, 8, 6], "input": 1.5, "output": 5}];
-const stockDates = ["2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-12"];
-const stockSH = [3350, 3420, 3380, 3450, 3987, 4031.51];
-const stockNQ = [19800, 20100, 20500, 21200, 23500, 25888.84];
-const stockHK = [5200, 5380, 5500, 5650, 5100, 4705.2];
+Chart.defaults.color = '#e0e0e0';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
 
-Chart.defaults.color = '#a0a0a0';
-Chart.defaults.borderColor = '#2a3a5e';
+var DATA = {
+  consumerAI: [{brand:'瑞幸咖啡', tool:'MCP/CLI/Skill', scores:{aiDepth:8, ux:7, scale:9, techBarrier:6, commercialization:7}},{brand:'喜茶', tool:'全套智能茶饮设备', scores:{aiDepth:6, ux:8, scale:8, techBarrier:9, commercialization:8}},{brand:'奈雪的茶', tool:'AI溯源预警系统 + 智能茶饮机', scores:{aiDepth:7, ux:7, scale:7, techBarrier:7, commercialization:6}},{brand:'蜜雪冰城', tool:'雪王爱智慧科技', scores:{aiDepth:5, ux:5, scale:10, techBarrier:5, commercialization:6}},{brand:'星巴克', tool:'Green Dot Assist（绿点助手）', scores:{aiDepth:4, ux:7, scale:7, techBarrier:3, commercialization:5}},{brand:'星巴克', tool:'Deep Brew AI 平台', scores:{aiDepth:8, ux:9, scale:10, techBarrier:7, commercialization:9}},{brand:'星巴克', tool:'AI库存管理工具（已停用）', scores:{aiDepth:5, ux:2, scale:1, techBarrier:5, commercialization:0}},{brand:'库迪咖啡', tool:'智慧运营体系', scores:{aiDepth:7, ux:6, scale:9, techBarrier:6, commercialization:7}},{brand:'肯德基', tool:'AI点餐助手\'小K\'', scores:{aiDepth:7, ux:7, scale:8, techBarrier:6, commercialization:7}},{brand:'麦当劳', tool:'RGM BOSS + 汉堡大学AI智能陪练', scores:{aiDepth:5, ux:7, scale:8, techBarrier:4, commercialization:6}},{brand:'海底捞', tool:'AI智慧巡检系统 + 智能体机器人', scores:{aiDepth:7, ux:7, scale:9, techBarrier:7, commercialization:8}},{brand:'茶百道', tool:'智能管理体系', scores:{aiDepth:6, ux:7, scale:9, techBarrier:5, commercialization:7}},{brand:'霸王茶姬', tool:'智能调饮系统 + \'茶茶圈\'AI知识管理', scores:{aiDepth:6, ux:9, scale:9, techBarrier:6, commercialization:9}},{brand:'阿里通义千问', tool:'千问App\'一句话点奶茶\'', scores:{aiDepth:8, ux:8, scale:10, techBarrier:7, commercialization:7}},{brand:'蜜雪冰城', tool:'雪王爱智慧 - AI公共数据平台', scores:{aiDepth:6, ux:3, scale:8, techBarrier:6, commercialization:4}}],
+  aiModels: [{name:'GPT-5.5', vendor:'OpenAI', scores:{reasoning:9, coding:8, multimodal:9, price:3, context:7, ecosystem:10}, pricing:{input:15, output:60}},{name:'DeepSeek V4', vendor:'DeepSeek（幻方量化）', scores:{reasoning:8, coding:8, multimodal:6, price:10, context:7, ecosystem:7}, pricing:{input:2, output:8}},{name:'Claude 4 Opus', vendor:'Anthropic', scores:{reasoning:9, coding:10, multimodal:8, price:4, context:8, ecosystem:8}, pricing:{input:15, output:75}},{name:'Claude 4 Sonnet', vendor:'Anthropic', scores:{reasoning:8, coding:9, multimodal:8, price:6, context:8, ecosystem:8}, pricing:{input:3, output:15}},{name:'Gemini 3.5 Flash', vendor:'Google', scores:{reasoning:8, coding:7, multimodal:9, price:7, context:9, ecosystem:9}, pricing:{input:1, output:4}},{name:'Gemini 3 Deep Think', vendor:'Google', scores:{reasoning:10, coding:7, multimodal:8, price:5, context:8, ecosystem:8}, pricing:{input:10, output:40}},{name:'豆包 2.0', vendor:'字节跳动', scores:{reasoning:7, coding:7, multimodal:8, price:8, context:7, ecosystem:10}, pricing:{input:2, output:6}},{name:'通义千问 (Qwen)', vendor:'阿里巴巴', scores:{reasoning:7, coding:7, multimodal:7, price:9, context:8, ecosystem:8}, pricing:{input:1, output:3}},{name:'MiniMax', vendor:'MiniMax', scores:{reasoning:7, coding:6, multimodal:8, price:9, context:8, ecosystem:6}, pricing:{input:1.5, output:5}}],
+  stockMarket: [{date:'2026-01', a:3350, us:19800, hk:5200},{date:'2026-02', a:3420, us:20100, hk:5380},{date:'2026-03', a:3380, us:20500, hk:5500},{date:'2026-04', a:3450, us:21200, hk:5650},{date:'2026-05', a:3987, us:23500, hk:5100},{date:'2026-06', a:4052.18, us:25948.22, hk:4735.8}],
+  papers: [{title:'D4RT: Unified, Fast 4D Scene Reconstruction & Tracking', authors:'Chuhan Zhang, Guillaume Le Moing, Skanda Koppula et al.', conference:'CVPR 2026', summary:'统一前馈Transformer联合推断深度/时空/相机参数，速度快18-300倍', url:'https://arxiv.org/abs/2512.08924'},{title:'TRELLIS.2: Native and Compact Structured Latents for 3D Generation', authors:'Jianfeng Xiang, Xiaoxue Chen, Sicheng Xu et al.', conference:'CVPR 2026', summary:'提出O-Voxel结构化潜表示，实现原生3D大模型生成，17秒内生成超高精度PBR资产', url:'https://arxiv.org/abs/2512.14692'},{title:'NitroGen: An Open Foundation Model for Generalist Gaming Agents', authors:'Loic Magne et al.', conference:'CVPR 2026', summary:'基于40,000小时游戏视频训练的通用视觉-动作基础模型，可在1,000多款游戏中执行通用游戏智能体任务', url:'https://arxiv.org/abs/2601.02427'},{title:'Transformers are Inherently Succinct', authors:'Pascal Bergstraesser, Ryan Cotterell, Anthony W. Lin', conference:'ICLR 2026', summary:'理论证明固定精度的Transformer在表达能力上具有内在简洁性，指数级压缩成为可能', url:'https://arxiv.org/abs/2510.19315'},{title:'LLMs Get Lost In Multi-Turn Conversation', authors:'Philippe Laban, Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville', conference:'ICLR 2026', summary:'系统评估LLM在多轮对话中的退化现象，性能下降达39%，早期假设锚定效应导致纠正失败', url:'https://arxiv.org/abs/2505.06120'},{title:'OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration', authors:'Shaobo Wang, Xuan Ouyang, Tianyi Xu, Yuzheng Hu et al.', conference:'ICML 2026', summary:'提出在LLM预训练每次迭代中进行高效数据选择的方法，仅用1/7数据超越全量训练', url:'https://arxiv.org/abs/2602.05400'},{title:'Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs', authors:'Sagnik Mukherjee, Lifan Yuan, Pavan Jayasinha, Dilek Hakkani-Tuer, Hao Peng', conference:'ICML 2026', summary:'挑战Adam优化器在LLM RL中的主导地位，SGD仅更新0.02%参数即匹配AdamW效果', url:'https://arxiv.org/abs/2602.07729'},{title:'Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs', authors:'Chufan Shi, Cheng Yang, Jiaqi Wang et al.', conference:'ICML 2026', summary:'揭示多模态大模型中视觉感知幻觉，thinking模型视觉幻觉频率是普通VLM的3倍', url:'https://arxiv.org/abs/2605.15864'},{title:'PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs', authors:'百度 PaddlePaddle 团队', conference:'arXiv 2026', summary:'轻量级OCR系统，34.5M参数超越十亿级VLM', url:'https://arxiv.org/abs/2606.13108'},{title:'SENTINEL: Failure-Driven RL for Tool-Using LLM Agents', authors:'Ziyi Wang, Yuxuan Lu 等', conference:'arXiv 2026', summary:'失败驱动强化学习框架，高效训练工具使用agent', url:'https://arxiv.org/abs/2606.12908'},{title:'Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention', authors:'Gilhan Kim, Daniel K. Park', conference:'arXiv 2026', summary:'统计物理Ising模型引入注意力机制', url:'https://arxiv.org/abs/2606.12478'},{title:'HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers', authors:'Zhang, Qiu, Cui 等', conference:'arXiv 2026', summary:'统一多模态模型架构，整体式视觉tokenizer', url:'https://arxiv.org/abs/2606.13289'},{title:'The Hidden Power of Scaling Factor in LoRA Optimization', authors:'Zicheng Zhang, Haoran Li 等', conference:'arXiv 2026', summary:'揭示LoRA缩放因子alpha的独立影响', url:'https://arxiv.org/abs/2606.12883'},{title:'PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs', authors:'百度 PaddlePaddle 团队', conference:'arXiv 2026', summary:'轻量级OCR系统，34.5M参数超越十亿级VLM', url:'https://arxiv.org/abs/2606.13108'},{title:'SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents', authors:'Ziyi Wang, Yuxuan Lu 等', conference:'arXiv 2026', summary:'失败驱动强化学习框架，高效训练工具使用agent', url:'https://arxiv.org/abs/2606.12908'},{title:'Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention', authors:'Gilhan Kim, Daniel K. Park', conference:'arXiv 2026', summary:'统计物理Ising模型引入注意力机制', url:'https://arxiv.org/abs/2606.12478'},{title:'HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers', authors:'Zhang, Qiu, Cui 等', conference:'arXiv 2026', summary:'统一多模态模型架构，整体式视觉tokenizer', url:'https://arxiv.org/abs/2606.13289'},{title:'The Hidden Power of Scaling Factor in LoRA Optimization', authors:'Zicheng Zhang, Haoran Li 等', conference:'arXiv 2026', summary:'揭示LoRA缩放因子alpha的独立影响', url:'https://arxiv.org/abs/2606.12883'},{title:'ExpWeaver: LLM Agents Learn from Experience via Latent RAG', authors:'未公开', conference:'arXiv 2026', summary:'通过潜在表示实现Agent经验积累和复用', url:'https://arxiv.org/abs/2606.01041'},{title:'REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents', authors:'未公开', conference:'arXiv 2026', summary:'针对Agent静默失败提出干预支持的错误归因框架', url:'https://arxiv.org/abs/2606.09071'},{title:'PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs', authors:'百度 PaddlePaddle 团队', conference:'arXiv 2026', summary:'轻量级OCR系统，34.5M参数超越十亿级VLM的OCR能力', url:'https://arxiv.org/abs/2606.13108'},{title:'SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents', authors:'Ziyi Wang, Yuxuan Lu 等', conference:'arXiv 2026', summary:'失败驱动强化学习框架，高效训练工具使用Agent，训练效率提升3-5倍', url:'https://arxiv.org/abs/2606.12908'},{title:'Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention', authors:'Gilhan Kim, Daniel K. Park', conference:'arXiv 2026', summary:'将统计物理Ising模型引入注意力机制，实现注意力头协同工作', url:'https://arxiv.org/abs/2606.12478'},{title:'HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers', authors:'Zhang, Qiu, Cui 等', conference:'arXiv 2026', summary:'原生统一多模态模型架构，整体式视觉tokenizer替代传统patch分割', url:'https://arxiv.org/abs/2606.13289'},{title:'The Hidden Power of Scaling Factor in LoRA Optimization', authors:'Zicheng Zhang, Haoran Li 等', conference:'arXiv 2026', summary:'揭示LoRA缩放因子alpha的独立影响，提出自适应选择策略', url:'https://arxiv.org/abs/2606.12883'},{title:'ExpWeaver: LLM Agents Learn from Experience via Latent RAG', authors:'未公开', conference:'arXiv 2026', summary:'通过潜在表示实现Agent经验积累和复用，构建经验检索库', url:'https://arxiv.org/abs/2606.01041'},{title:'REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents', authors:'未公开', conference:'arXiv 2026', summary:'针对Agent静默失败提出干预支持的错误归因框架，错误检测率提升40%+', url:'https://arxiv.org/abs/2606.09071'}],
+  techNews: [{date:'2026-06-15', title:'韩国投入8000亿韩元加速开发国产在线设备AI半导体', category:'半导体', importance:'high', summary:'韩国政府计划通过建立需求企业、无厂半导体公司、代工厂协作体系，投入8000亿韩元推动本土AI芯片商业化'},{date:'2026-06-15', title:'国产AI芯片巨头6月15日上会审核', category:'半导体/IPO', importance:'high', summary:'上海证券交易所上市审核委员会定于6月15日召开审议会议，审核国产AI芯片龙头企业IPO申请'},{date:'2026-06-15', title:'WSTS预测2026年全球半导体市场增长90%达1.3万亿美元', category:'半导体', importance:'high', summary:'世界半导体贸易统计组织预测2026年全球半导体市场同比增长约90%，AI算力需求是核心驱动力'},{date:'2026-06-15', title:'AI拉动芯片需求，半导体ETF涨3.35%', category:'半导体', importance:'medium', summary:'行业增长预期强劲，芯片ETF（易方达）涨3.35%，产业链各环节景气度提升'},{date:'2026-06-15', title:'深证成指、创业板指等指数6月15日调整样本股', category:'股市', importance:'medium', summary:'深圳证券信息有限公司对深证成指、创业板指等指数实施样本股定期调整，反映A股市场结构新变化'},{date:'2026-06-15', title:'蜜雪冰城以极致性价比模式进军纽约市场', category:'消费品牌', importance:'high', summary:'蜜雪冰城将国内低价高质策略复制到纽约，试图用价格杠杆撬动海外市场'},{date:'2026-06-12', title:'美国商务部新规封堵AI芯片流向中企海外分支', category:'芯片出口管制', importance:'high', summary:'商务部发布最新出口管制细则，进一步封堵中国企业在海外设立的分支机构获取先进AI芯片的渠道'},{date:'2026-06-12', title:'英伟达CEO黄仁勋拒绝出席参议院AI芯片出口听证会', category:'AI芯片', importance:'high', summary:'黄仁勋以日程冲突为由拒绝出席，此前6月8日在首尔称半导体股票暴跌是买入机会'},{date:'2026-06-12', title:'苹果WWDC 2026发布Google Gemini驱动的全新Siri AI', category:'AI产品', importance:'high', summary:'苹果Siri全面接入Google Gemini大模型，实现跨App智能操作、上下文理解和多轮对话'},{date:'2026-06-12', title:'Anthropic秘密提交S-1，估值9650亿美元逼近万亿', category:'AI融资/IPO', importance:'high', summary:'Anthropic秘密向SEC提交S-1，最新估值9650亿美元超越OpenAI，计划10月上市'},{date:'2026-06-12', title:'费城半导体指数连续大涨，芯片股创一年最佳表现', category:'半导体', importance:'medium', summary:'经历6月初暴跌后全球芯片股强劲反弹，费城半导体指数连续三日大涨'},{date:'2026-06-12', title:'SpaceX史上最大IPO登陆纳斯达克，估值1.75万亿美元', category:'IPO', importance:'high', summary:'SpaceX发行价135美元，募资约750亿美元，为美国有史以来最大规模IPO'},{date:'2026-06-12', title:'台积电CoPoS先进封装技术进入量产准备阶段', category:'半导体制造', importance:'medium', summary:'新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务'},{date:'2026-06-12', title:'华为AI芯片获字节跳动和阿里巴巴批量订单', category:'国产芯片', importance:'high', summary:'华为昇腾系列AI芯片获得头部互联网公司批量订单，标志国产AI芯片规模化落地'},{date:'2026-06-12', title:'SpaceX史上最大IPO登陆纳斯达克，估值1.77万亿美元', category:'IPO', importance:'high', summary:'SpaceX发行价135美元，首日收盘161.11美元，募资750亿美元，为美国有史以来最大规模IPO'},{date:'2026-06-12', title:'苹果WWDC 2026发布Siri AI，全面接入Google Gemini', category:'AI产品', importance:'high', summary:'新一代Siri基于Gemini模型重构，支持自然对话和跨设备任务，但市场反应冷淡，股价跌1.89%'},{date:'2026-06-12', title:'Anthropic秘密提交S-1，估值9650亿美元', category:'AI融资/IPO', importance:'high', summary:'Anthropic已向SEC秘密递交S-1，计划10月上市，Q2营收翻倍，估值首次超越OpenAI'},{date:'2026-06-12', title:'美国商务部新规封堵AI芯片流向中企海外分支', category:'芯片出口管制', importance:'high', summary:'最新出口管制细则进一步封堵中国企业在海外分支机构获取先进AI芯片的渠道'},{date:'2026-06-12', title:'黄仁勋拒绝出席参议院AI芯片出口听证会', category:'AI芯片', importance:'high', summary:'英伟达CEO以日程冲突为由拒绝出席，此前称半导体股票暴跌是买入机会'},{date:'2026-06-12', title:'台积电CoPoS先进封装技术进入量产准备阶段', category:'半导体制造', importance:'medium', summary:'新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务'},{date:'2026-06-12', title:'华为昇腾芯片获字节跳动和阿里巴巴批量订单', category:'国产芯片', importance:'high', summary:'昇腾950PR测试顺利，字节跳动预计2026年采购超400亿元，标志国产AI芯片规模化落地'},{date:'2026-06-12', title:'费城半导体指数连续大涨，芯片股创一年最佳表现', category:'半导体', importance:'medium', summary:'经历6月初暴跌后全球芯片股强劲反弹，SK海力士市值突破1万亿美元'},{date:'2026-06-08', title:'英伟达与SK海力士宣布多年期技术合作', category:'半导体', importance:'high', summary:'双方将联手研发下一代AI内存，SK海力士为Vera Rubin开发专用内存，采用CUDA-X加速芯片仿真'},{date:'2026-06-01', title:'证券APP全面AI原生转型', category:'股市应用', importance:'4', summary:'华泰证券推出\'AI涨乐\'（业内首款AI原生交易APP），国泰君安发布\'君弘灵犀\'垂类大模型。AI量化交易全年有望达A股总成交额36.8%'},{date:'2026-06-01', title:'全球半导体与AI市场预测密集发布', category:'半导体/AI', importance:'5', summary:'Gartner预计2026年全球半导体收入超1.3万亿美元(+64%)；IDC预测2026年全球AI市场3010亿美元(+35.2%)；中国成熟制程芯片出口前四个月同比+100.1%'},{date:'2026-05-28', title:'雷军预告小米\'三项自研大会师\'', category:'半导体/AI', importance:'3', summary:'2026年小米最重磅新品将实现自研芯片（玄戒）、自研OS（澎湃OS）、AI大模型三项\'大会师\''},{date:'2026-05-20', title:'Google I/O 2026', category:'AI', importance:'5', summary:'发布Gemini 3.5 Flash、视频模型Omni、全天候AI代理Spark及Android XR，全面聚焦Agentic AI'},{date:'2026-05-14', title:'Anthropic发布Claude 4', category:'AI', importance:'5', summary:'被称为公司历史上最强大的AI模型，Claude Opus 4被评为全球最佳编程模型，Agentic能力显著增强'},{date:'2026-05-08', title:'Figure发布双机协作人形机器人视频', category:'AI', importance:'3', summary:'两台搭载Helix02系统的人形机器人在卧室场景中连续完成复杂协作任务'},{date:'2026-04-29', title:'OpenAI发布GPT-5.5', category:'AI', importance:'5', summary:'与DeepSeek V4几乎同期登场，全球大模型进入\'7大模型混战\'格局'},{date:'2026-04-28', title:'雷军：小米自研芯片出货超百万颗', category:'半导体', importance:'3', summary:'小米玄戒系列自研芯片累计出货已超百万颗，同时新款小米机器人正式亮相'},{date:'2026-04-15', title:'英伟达股价10连涨', category:'股市应用/半导体', importance:'4', summary:'英伟达股价实现10个交易日连涨，累计涨幅超18%，为2023年后最长连涨纪录'},{date:'2026-04-10', title:'国内\'百模大战\'再升级', category:'AI', importance:'4', summary:'阿里、字节跳动、腾讯几乎在同一时期密集发布大模型更新，推理成本持续下降'},{date:'2026-04-08', title:'中国半导体迎IPO潮', category:'半导体', importance:'4', summary:'2025年以来已有10家半导体企业成功IPO，另有85家正在排队申报，涵盖全链条'},{date:'2026-04-04', title:'证监会：2026年将深化细化高频量化交易监管', category:'股市应用', importance:'4', summary:'证监会主席吴清明确表示将突出公平性原则，深化细化高频量化交易监管'},{date:'2026-04-01', title:'DeepSeek-V4预览版发布', category:'AI', importance:'5', summary:'具备世界顶级推理性能，Agent能力大幅提高，聚焦编程能力与超长代码上下文处理'},{date:'2026-03-31', title:'NeurIPS 2026征稿规则引发学界争议', category:'AI', importance:'2', summary:'NeurIPS 2026新增\'引入条款\'引发学术界广泛批评，组委会随后紧急道歉'},{date:'2026-03-20', title:'小米发布三款自研大模型', category:'AI', importance:'3', summary:'雷军表示2026年小米AI投入将超160亿元，未来三年在AI领域计划至少投资600亿元'},{date:'2026-03-16', title:'NVIDIA GTC 2026：Vera Rubin平台登场', category:'半导体/AI', importance:'5', summary:'黄仁勋发布新一代Vera Rubin平台及7款新芯片，预测到2027年全球数据中心AI算力需求将带来至少1万亿美元营收'},{date:'2026-03-08', title:'特斯拉Optimus Gen3量产在即', category:'AI', importance:'4', summary:'市场聚焦特斯拉第三代Optimus人形机器人，预计2026年Q1正式亮相并启动量产'}],
+  analysis: [{title:'瑞幸咖啡 - MCP/CLI/Skill', q1:'降低交易摩擦成本，抢占AI Agent时代的渠道入口', q2:'自然语言点单覆盖增量用户，智能优惠券提升核销率', q3:'P0: 不支持外卖(覆盖仅60-70%订单)\nP1: 语义理解容错性\nP2: MCP协议无壁垒', scholar:'精读MCP协议设计', engineer:'学习MCP server架构', investor:'关注AI渠道投入意愿'},{title:'喜茶 - 全套智能茶饮设备', q1:'将\'手艺\'转化为\'工艺\'，在规模化扩张中保持产品品质一致性', q2:'出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖', q3:'P0: 硬件迭代是刚性约束，单店设备投入数十万元\nP1: \'手工感\'品牌风险\nP2: 设备故障可能直接导致门店瘫痪', scholar:'研究智能设备的专利文件和工程设计思路', engineer:'学习\'手艺转工艺\'的参数化思维', investor:'关注硬件壁垒的战略价值'},{title:'奈雪的茶 - AI溯源预警系统 + 智能茶饮机', q1:'构建\'信任基础设施\'，在食品安全焦虑中建立差异化信任壁垒', q2:'消费者信任度提升，品牌差异化，供应链管理水平提升', q3:'P0: 溯源数据\'第一公里\'真实性无法保证\nP1: AI包装下的实际技术含量存疑\nP2: 全面覆盖成本和管理复杂度极高', scholar:'研究溯源系统的数据架构和异常检测算法', engineer:'学习将\'信任\'产品化的设计思路', investor:'关注信任资产的品牌溢价能力'},{title:'蜜雪冰城 - 雪王爱智慧科技', q1:'在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间', q2:'供应链成本优化，门店补货效率提升，规模化运营能力', q3:'P0: AI系统1-2%成本节约能否覆盖系统建设运维成本\nP1: 下沉市场门店数据录入质量差\nP2: AI只能支撑成本节约，想象空间有限', scholar:'研究大规模供应链ML优化的工程实践', engineer:'学习在极致成本约束下做务实AI', investor:'关注3万+门店规模下供应链效率的亿级利润增量'},{title:'星巴克 - Green Dot Assist（绿点助手）', q1:'降低一线员工认知负荷，在人员高流动率下保障服务一致性', q2:'新员工培训时间缩短，出品一致性提升，员工满意度改善', q3:'P0: 技术壁垒极低，任何品牌几周内可搭建类似系统\nP1: 高并发场景下API成本和延迟问题\nP2: 忙碌时员工是否真的会查询AI', scholar:'研究知识库构建和SOP结构化方法', engineer:'学习将AI嵌入一线员工工作流的产品思路', investor:'关注技术门槛低的工具类AI的投资价值'},{title:'星巴克 - Deep Brew AI 平台', q1:'最大化客户生命周期价值（LTV），将\'偶尔一杯\'转化为\'每天一杯\'', q2:'会员保留率提升15%，创造约2.5亿美元增量年收入', q3:'P0: 2.5亿美元增量的归因方法极其模糊\nP1: 数据飞轮在新市场/新品类上的冷启动问题\nP2: 隐私合规审查日益严格', scholar:'精读星巴克Investor Day关于Deep Brew的技术演示', engineer:'学习AI推荐系统与会员LTV深度绑定的产品思维', investor:'关注AI驱动的会员运营的ROI衡量方法论'},{title:'星巴克 - AI库存管理工具（已停用）', q1:'用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失', q2:'声称可降低库存浪费20-30%（实际未达成）', q3:'P0: 组织适配失败——门店经理抵触AI\'夺权\'\nP1: 长尾品类需求预测精度崩溃\nP2: 底层库存数据不准确（GIGO问题）\nP3: 缺乏渐进式过渡，试图一步到位替代人工', scholar:'精读失败案例的公开报道和员工反馈', engineer:'学习\'先辅助建议后逐步自动化\'的正确路径', investor:'警惕声称\'AI可直接替代人工订货\'的供应商'},{title:'库迪咖啡 - 智慧运营体系', q1:'通过\'去技能化\'实现极速扩张，将门店运营对人的依赖降到最低', q2:'支撑从0到数千家门店的超高速扩张，运营标准化', q3:'P0: 动态定价合规风险（价格歧视/大数据杀熟）\nP1: \'去技能化\'反而加剧人员流动\nP2: 加盟商对\'系统说了算但亏的是我\'不满', scholar:'研究\'去技能化\'运营设计思路', engineer:'学习动态定价的技术实现框架', investor:'评估系统控制+加盟扩张模式的可持续性'},{title:'肯德基 - AI点餐助手\'小K\'', q1:'在得来速和店内场景用语音AI替代人工点餐，降低人力成本', q2:'点餐效率提升，人力成本节约，智能推荐增加客单价', q3:'P0: 嘈杂环境语音识别准确率下降，纠错成本高\nP1: 复杂定制需求（不要酸黄瓜多加酱）处理困难\nP2: 中国方言多样性对ASR要求极高', scholar:'精读嘈杂环境语音识别技术方案', engineer:'学习\'引导式对话\'降低语音识别难度', investor:'评估得来速vs店内场景的落地差异'},{title:'麦当劳 - RGM BOSS + 汉堡大学AI智能陪练', q1:'员工一站式工作辅助与培训数字化化，降低管理成本', q2:'5年内计划投入40亿元数字化创新', q3:'P0: 技术门槛低，RAG应用同质化\nP1: AI陪练\'个性化学习路径\'的实际效果存疑\nP2: 员工对数字化培训的接受度', scholar:'研究AI虚拟导师与脑神经科学结合的设计', engineer:'学习员工辅助AI的产品架构', investor:'关注40亿数字化投入的实际产出'},{title:'海底捞 - AI智慧巡检系统 + 智能体机器人', q1:'将\'巡店\'从人力密集转为自动化、可规模化的智能监控体系', q2:'识别准确率超95%，覆盖率超98%，80%后厨传菜由机器人完成', q3:'P0: Goodhart定律——度量变目标则不再是好度量\nP1: \'有温度的服务\'恰恰最难被AI量化\nP2: 餐饮门店复杂环境下CV准确率', scholar:'研究AI巡检的具体检测维度和误报率数据', engineer:'学习AI巡检与门店管理流程的深度集成', investor:'区分\'提质工具\'vs\'降本工具\'的定位差异'},{title:'茶百道 - 智能管理体系', q1:'8000+门店的统一品控和经营管理数字化', q2:'AI巡检覆盖8000+门店，智能补货和制备系统提升效率', q3:'P0: 依赖第三方大模型（DeepSeek/豆包），自主性不足\nP1: 8000+门店规模下执行一致性挑战\nP2: 飞书平台绑定度', scholar:'研究多模型协同在连锁品控中的应用', engineer:'学习基于飞书的数字化底座构建', investor:'评估AI品控对品牌价值的影响'},{title:'霸王茶姬 - 智能调饮系统 + \'茶茶圈\'AI知识管理', q1:'在极简SKU下实现极致效率和绝对标准化，支撑高速扩张', q2:'8秒出杯，口感误差率<0.2%，全球7000+门店品质一致性', q3:'P0: 极简SKU的品类扩展时系统灵活性不足\nP1: 技术壁垒有限，竞品可采购类似设备\nP2: 高度依赖\'鲜奶茶\'品类持续流行', scholar:'研究\'极简SKU+智能标准化\'的系统性商业设计', engineer:'学习核心产品制作过程彻底参数化的方法论', investor:'关注\'少即是多\'产品哲学的商业回报'},{title:'阿里通义千问 - 千问App\'一句话点奶茶\'', q1:'验证AI Agent作为\'超级入口\'的商业可行性，抢占AI原生消费定义权', q2:'当天不到3小时下单100万单，9小时卖出1000万单', q3:'P0: 补贴驱动不可持续，退坡后留存率未知\nP1: 复购已知商品时可能比App更慢\nP2: 推荐排序公平性——与搜索竞价排名有何本质区别？', scholar:'精读技术架构公开分享（Prompt工程/工具调用/状态管理）', engineer:'学习\'一句话\'极简交互触发复杂后端处理的设计', investor:'评估AI Agent入口的平台级潜力与补贴依赖风险'},{title:'蜜雪冰城 - 雪王爱智慧 - AI公共数据平台', q1:'从应用层向算法与平台层延伸，建立AI底层技术能力', q2:'专注AI底层技术研发，公共数据平台建设', q3:'P0: 技术公司刚成立，尚无可见成果\nP1: 5000万注册资本对AI研发而言偏少\nP2: 从消费品牌跨入底层AI研发的可行性', scholar:'关注其AI公共数据平台的技术方向', engineer:'观察其在供应链AI上的工程实践', investor:'追踪技术公司的后续研发投入和成果'}]
+};
 
-// Brand Radar
-new Chart(document.getElementById('brandRadar'), {
-  type: 'radar',
-  data: {
-    labels: ['AI深度','用户体验','部署规模','技术壁垒','商业化'],
-    datasets: brandData.slice(0,5).map((b,i) => ({
+var colors1 = ['E74C3C','3498DB','2ECC71','9B59B6','E67E22','1ABC9C','F1C40F','E91E63','00BCD4','FF5722','795548','607D8B','8BC34A','FFC107','03A9F4'];
+
+function hexToRgba(hex, a) {{
+  var r = parseInt(hex.substr(0,2),16), g = parseInt(hex.substr(2,2),16), b = parseInt(hex.substr(4,2),16);
+  return 'rgba('+r+','+g+','+b+','+a+')';
+}}
+
+// Consumer AI Radar
+var ctx1 = document.getElementById('consumerRadar').getContext('2d');
+var radarData1 = {
+  labels: ['AI深度','用户体验','部署规模','技术壁垒','商业化'],
+  datasets: DATA.consumerAI.map(function(b,i){{
+    return {{
       label: b.brand,
-      data: b.scores,
-      borderColor: ['#e94560','#7ec8e3','#f9a825','#4caf50','#ab47bc'][i],
-      backgroundColor: ['#e94560','#7ec8e3','#f9a825','#4caf50','#ab47bc'][i]+'33',
+      data: [b.scores.aiDepth, b.scores.ux, b.scores.scale, b.scores.techBarrier, b.scores.commercialization],
+      backgroundColor: hexToRgba(colors1[i],0.15),
+      borderColor: '#'+colors1[i],
+      pointBackgroundColor: '#'+colors1[i],
       borderWidth: 2
-    }))
-  },
-  options: { responsive:true, maintainAspectRatio:false, scales: { r: { min:0, max:10, ticks: { stepSize:2 } } } }
-});
+    }};
+  }})
+};
+new Chart(ctx1, {{type:'radar', data:radarData1, options:{{responsive:true, maintainAspectRatio:false, plugins:{{legend:{{position:'right', labels:{{boxWidth:10, font:{{size:11}}}}}}}}, scales:{{r:{{min:0,max:10, ticks:{{stepSize:2, color:'#8892b0'}}, grid:{{color:'rgba(255,255,255,0.08)'}} }}}}}}});
 
 // Model Radar
-new Chart(document.getElementById('modelRadar'), {
-  type: 'radar',
-  data: {
-    labels: ['推理','编程','多模态','价格竞争力','上下文','生态'],
-    datasets: modelData.slice(0,5).map((m,i) => ({
+var ctx2 = document.getElementById('modelRadar').getContext('2d');
+var radarData2 = {
+  labels: ['推理','编程','多模态','价格竞争力','上下文','生态'],
+  datasets: DATA.aiModels.slice(0,6).map(function(m,i){{
+    return {{
       label: m.name,
-      data: m.scores,
-      borderColor: ['#e94560','#7ec8e3','#f9a825','#4caf50','#ab47bc'][i],
-      backgroundColor: ['#e94560','#7ec8e3','#f9a825','#4caf50','#ab47bc'][i]+'33',
+      data: [m.scores.reasoning, m.scores.coding, m.scores.multimodal, m.scores.price, m.scores.context, m.scores.ecosystem],
+      backgroundColor: hexToRgba(colors1[i],0.15),
+      borderColor: '#'+colors1[i],
+      pointBackgroundColor: '#'+colors1[i],
       borderWidth: 2
-    }))
-  },
-  options: { responsive:true, maintainAspectRatio:false, scales: { r: { min:0, max:10, ticks: { stepSize:2 } } } }
-});
-
-// Stock Line
-new Chart(document.getElementById('stockLine'), {
-  type: 'line',
-  data: {
-    labels: stockDates,
-    datasets: [
-      { label: '上证综指', data: stockSH, borderColor: '#e94560', tension: 0.3, yAxisID:'y' },
-      { label: '纳斯达克', data: stockNQ, borderColor: '#7ec8e3', tension: 0.3, yAxisID:'y1' },
-      { label: '恒生科技', data: stockHK, borderColor: '#f9a825', tension: 0.3, yAxisID:'y1' }
-    ]
-  },
-  options: {
-    responsive:true, maintainAspectRatio:false,
-    interaction: { mode:'index', intersect:false },
-    scales: {
-      y: { type:'linear', display:true, position:'left', title:{display:true,text:'点位'} },
-      y1: { type:'linear', display:true, position:'right', title:{display:true,text:'点位'}, grid:{drawOnChartArea:false} }
-    }
-  }
-});
+    }};
+  }})
+};
+new Chart(ctx2, {{type:'radar', data:radarData2, options:{{responsive:true, maintainAspectRatio:false, plugins:{{legend:{{position:'right', labels:{{boxWidth:10, font:{{size:11}}}}}}}}, scales:{{r:{{min:0,max:10, ticks:{{stepSize:2, color:'#8892b0'}}, grid:{{color:'rgba(255,255,255,0.08)'}} }}}}}}});
 
 // Price Bar
-new Chart(document.getElementById('priceBar'), {
-  type: 'bar',
-  data: {
-    labels: modelData.map(m=>m.name),
-    datasets: [
-      { label:'输入 $/1M tokens', data: modelData.map(m=>m.input), backgroundColor:'#7ec8e3' },
-      { label:'输出 $/1M tokens', data: modelData.map(m=>m.output), backgroundColor:'#e94560' }
-    ]
-  },
-  options: { responsive:true, maintainAspectRatio:false, scales: { y: { title:{display:true,text:'价格 ($)'}, type:'logarithmic' } } }
-});
+var ctx3 = document.getElementById('priceBar').getContext('2d');
+var barData3 = {
+  labels: DATA.aiModels.map(function(m){{ return m.name; }}),
+  datasets: [
+    {{label:'Input', data:DATA.aiModels.map(function(m){{ return m.pricing.input; }}), backgroundColor:'#3498DB'}},
+    {{label:'Output', data:DATA.aiModels.map(function(m){{ return m.pricing.output; }}), backgroundColor:'#E74C3C'}}
+  ]
+};
+new Chart(ctx3, {{type:'bar', data:barData3, options:{{responsive:true, maintainAspectRatio:false, plugins:{{legend:{{position:'top'}}}}, scales:{{y:{{beginAtZero:true, grid:{{color:'rgba(255,255,255,0.08)'}}}}, x:{{grid:{{display:false}}}}}}}}}});
+
+// Semi Bar
+var ctx4 = document.getElementById('semiBar').getContext('2d');
+var semiLabels = ['全球半导体市场(千亿$)','中国芯片出口(亿$)','韩国投入(百亿韩元)','IPO排队企业','已IPO企业'];
+var semiValues = [130,433,80,85,10];
+var barData4 = {
+  labels: semiLabels,
+  datasets: [{{label:'数值', data:semiValues, backgroundColor:['#E74C3C','#3498DB','#2ECC71','#9B59B6','#E67E22']}}]
+};
+new Chart(ctx4, {{type:'bar', data:barData4, options:{{indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{{legend:{{display:false}}}}, scales:{{x:{{beginAtZero:true, grid:{{color:'rgba(255,255,255,0.08)'}}}}, y:{{grid:{{display:false}}}}}}}}}});
+
+// Stock Line
+var ctx5 = document.getElementById('stockLine').getContext('2d');
+var lineData5 = {
+  labels: DATA.stockMarket.map(function(s){{ return s.date; }}),
+  datasets: [
+    {{label:'上证综指', data:DATA.stockMarket.map(function(s){{ return s.a; }}), borderColor:'#E74C3C', backgroundColor:'rgba(231,76,60,0.08)', tension:0.3, fill:true, pointRadius:4, pointBackgroundColor:'#E74C3C'}},
+    {{label:'纳斯达克', data:DATA.stockMarket.map(function(s){{ return s.us; }}), borderColor:'#3498DB', backgroundColor:'rgba(52,152,219,0.08)', tension:0.3, fill:true, pointRadius:4, pointBackgroundColor:'#3498DB', yAxisID:'y1'}},
+    {{label:'恒生科技', data:DATA.stockMarket.map(function(s){{ return s.hk; }}), borderColor:'#2ECC71', backgroundColor:'rgba(46,204,113,0.08)', tension:0.3, fill:true, pointRadius:4, pointBackgroundColor:'#2ECC71', yAxisID:'y1'}}
+  ]
+};
+new Chart(ctx5, {{type:'line', data:lineData5, options:{{responsive:true, maintainAspectRatio:false, interaction:{{mode:'index', intersect:false}}, plugins:{{legend:{{position:'top'}}}}, scales:{{y:{{type:'linear', display:true, position:'left', grid:{{color:'rgba(255,255,255,0.08)'}}}}, y1:{{type:'linear', display:true, position:'right', grid:{{drawOnChartArea:false}}}}, x:{{grid:{{color:'rgba(255,255,255,0.08)'}}}}}}}}}});
+
+// Papers Table
+var tbody = document.querySelector('#papersTable tbody');
+DATA.papers.forEach(function(p) {{
+  var row = document.createElement('tr');
+  row.innerHTML = '<td>'+p.title+'</td><td>'+p.conference+'</td><td>'+(p.award||'')+'</td><td>'+p.authors+'</td><td>'+(p.keyMetric||'')+'</td><td><a href="'+p.url+'" target="_blank">arXiv</a></td>';
+  tbody.appendChild(row);
+}});
+
+// Analysis Cards
+var ac = document.getElementById('analysisContainer');
+DATA.analysis.forEach(function(a, idx) {{
+  var card = document.createElement('div');
+  card.className = 'analysis-card';
+  card.innerHTML = '<div class="analysis-header" onclick="this.parentElement.classList.toggle('open')"><h3>'+a.title+'</h3><span class="toggle">+</span></div>'+
+    '<div class="analysis-body"><div class="analysis-body-inner">'+
+    '<div class="q-block"><div class="q-label">Q1: 真正想解决的问题</div><div class="q-text">'+a.q1+'</div></div>'+
+    '<div class="q-block"><div class="q-label">Q2: 声称的贡献</div><div class="q-text">'+a.q2+'</div></div>'+
+    '<div class="q-block"><div class="q-label">Q3: 最可能被攻击的地方</div><div class="q-text">'+(a.q3||'').replace(/\n/g,'<br>')+'</div></div>'+
+    '<div class="q-block"><div class="q-label">Q4: 行动指南</div><table class="q-table"><tr><td>博士生</td><td>'+a.scholar+'</td></tr><tr><td>工程师</td><td>'+a.engineer+'</td></tr><tr><td>投资人</td><td>'+a.investor+'</td></tr></table></div>'+
+    '</div></div>';
+  ac.appendChild(card);
+}});
+
+// News Timeline
+var tl = document.getElementById('newsTimeline');
+DATA.techNews.forEach(function(n) {{
+  var item = document.createElement('div');
+  var imp = 'low';
+  if(n.importance=='high'||n.importance=='5'||n.importance=='4') imp='high';
+  else if(n.importance=='medium'||n.importance=='3') imp='medium';
+  item.className = 'timeline-item '+imp;
+  item.innerHTML = '<div class="timeline-date">'+n.date+'</div><div class="timeline-title">'+n.title+'</div><div class="timeline-meta"><span>'+n.category+'</span><span>'+n.importance+'</span></div>';
+  tl.appendChild(item);
+}});
 </script>
 </body>
 </html>

@@ -7,14 +7,14 @@
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 19,
+      "repos": 16,
       "trivia": 1,
       "memes": 1,
       "consumerAI": 15,
       "aiModels": 9,
-      "techNews": 56,
-      "stockMarket": 29,
-      "papers": 35
+      "techNews": 53,
+      "stockMarket": 24,
+      "papers": 27
     }
   },
   "tips": [
@@ -248,54 +248,6 @@
       "status": "trending",
       "addedAt": "2026-06-15",
       "whyInteresting": "企业客服领域的开源替代方案，AI客服时代的基础架构"
-    },
-    {
-      "id": "repo-017",
-      "name": "headroom",
-      "description": "在不损失质量的前提下，将LLM输入上下文压缩60%-95%",
-      "url": "https://github.com/chopratejas/headroom",
-      "stars": "20,469",
-      "tags": [
-        "ai",
-        "llm",
-        "context-compression",
-        "agent"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-15",
-      "whyInteresting": "上下文工程正在取代提示词工程，成为AI Agent优化主流范式，大幅降低API成本和延迟"
-    },
-    {
-      "id": "repo-018",
-      "name": "hermes-agent",
-      "description": "可伴随业务成长、支持多模型切换的AI Agent框架",
-      "url": "https://github.com/NousResearch/hermes-agent",
-      "stars": "188,758",
-      "tags": [
-        "ai",
-        "agent",
-        "framework",
-        "multi-model"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-15",
-      "whyInteresting": "AI Agent框架工业化协作趋势代表，具备自我进化能力、可在多个模型间灵活调度"
-    },
-    {
-      "id": "repo-019",
-      "name": "markitdown",
-      "description": "微软开源Python工具，将PDF/Word/PPT等批量转换为Markdown",
-      "url": "https://github.com/microsoft/markitdown",
-      "stars": "149,315",
-      "tags": [
-        "microsoft",
-        "rag",
-        "document-processing",
-        "markdown"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-15",
-      "whyInteresting": "RAG流水线中高质量数据预处理的核心工具，微软官方维护，企业知识库必备"
     }
   ],
   "trivia": [
@@ -1944,33 +1896,6 @@
       "importance": "high",
       "summary": "蜜雪冰城将国内低价高质策略复制到纽约，试图用价格杠杆撬动海外市场",
       "source": "财经客户端"
-    },
-    {
-      "id": "news-054",
-      "date": "2026-06-15",
-      "title": "AI半导体板块6月遭遇剧烈抛售，单日市值蒸发约1.4万亿美元",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "2026年6月初AI半导体板块经历大规模回调，费城半导体指数一度暴跌约10%，英伟达博通等龙头大幅下跌，随后迅速反弹",
-      "source": "Reuters, Intellectia.ai"
-    },
-    {
-      "id": "news-055",
-      "date": "2026-06-15",
-      "title": "Arm有望提前达成150亿美元AI芯片年收入目标",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "Arm Holdings CEO Rene Haas表示有望提前实现150亿美元AI芯片年收入目标，数据中心级AI芯片将带来巨额收入，股价一度大涨16%",
-      "source": "Bloomberg, CNBC"
-    },
-    {
-      "id": "news-056",
-      "date": "2026-06-15",
-      "title": "苹果WWDC 2026发布全新Siri AI独立应用，深度整合Google Gemini",
-      "category": "AI产品",
-      "importance": "high",
-      "summary": "苹果推出全新Siri AI独立应用，底层采用Google Gemini 1.2万亿参数大模型，三层智能架构兼顾性能与隐私",
-      "source": "Apple Newsroom, TechCrunch"
     }
   ],
   "stockMarket": [
@@ -2561,102 +2486,6 @@
       "commercialPotential": 3,
       "arxivUrl": "https://arxiv.org/abs/2606.09071",
       "pdfUrl": "https://arxiv.org/pdf/2606.09071"
-    },
-    {
-      "id": "paper-028",
-      "title": "Gaze Heads: How VLMs Look at What They Describe",
-      "conference": "arXiv 2026",
-      "authors": "Rohit Gandikota, David Bau",
-      "institution": "Northeastern University",
-      "summary": "发现VLM中演化出特殊的gaze heads注意力头，注意力分布追踪模型正在描述的图像区域",
-      "keyMetric": "揭示VLM跨模态对齐新机制",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.14703",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14703"
-    },
-    {
-      "id": "paper-029",
-      "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains",
-      "conference": "arXiv 2026",
-      "authors": "Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang, Ran He, Caifeng Shan",
-      "institution": "南京大学、中国科学院自动化研究所",
-      "summary": "提出OmniVideo-100K数据集，通过实体锚定视频脚本与线索引导问答生成构建结构化证据链",
-      "keyMetric": "10万级结构化音视频推理数据集",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14702",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14702"
-    },
-    {
-      "id": "paper-030",
-      "title": "RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers",
-      "conference": "arXiv 2026",
-      "authors": "Timing Yang, Predrag Neskovic, Jansen Seheult, Wenchao Han, Anand Bhattad, Alan Yuille, Feng Wang",
-      "institution": "Johns Hopkins University, 美国海军研究办公室, Mayo Clinic",
-      "summary": "通过寄存器注意力机制，Transformer patch令牌涌现出对物体部件的显式表达",
-      "keyMetric": "无监督视觉概念学习新路径",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.14701",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14701"
-    },
-    {
-      "id": "paper-031",
-      "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
-      "conference": "arXiv 2026",
-      "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie",
-      "institution": "Meta AI, New York University",
-      "summary": "将MLLM重新用作带噪表示编码器，输出直接作为扩散Transformer条件信号",
-      "keyMetric": "相近推理预算下优于全新去噪网络",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14700",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14700"
-    },
-    {
-      "id": "paper-032",
-      "title": "AdaSR: Adaptive Streaming Reasoning with Hierarchical Relative Policy Optimization",
-      "conference": "arXiv 2026",
-      "authors": "Junlong Tong, Wenqi Xu, Yingqi Fan, Anhao Zhao, Xuan Lu, Yang Tan, Xiaoyu Shen",
-      "institution": "东方理工高等研究院、上海交通大学、香港理工大学、东南大学、西交利物浦大学",
-      "summary": "自适应流式推理框架，输入流式传输过程中即可推理，突破传统读-再想模式延迟瓶颈",
-      "keyMetric": "流式推理延迟突破",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14694",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14694"
-    },
-    {
-      "id": "paper-033",
-      "title": "CORA: Analyzing and Bridging Thinking-Answer Gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment",
-      "conference": "arXiv 2026",
-      "authors": "Jiayue Cao, Zhicong Lu, Xuehan Sun, Wei Jia, Hongling Zheng, Changyuan Tian, Zichuan Lin, Wenqian Lv, Nayu Liu",
-      "institution": "中国科学院大学、武汉大学、清华大学、天津大学",
-      "summary": "CORA通过一致性奖励模型将思维-答案语义一致性引入RLVR，缓解推理与答案脱节",
-      "keyMetric": "多模态推理基准性能显著提升",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14691",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14691"
-    },
-    {
-      "id": "paper-034",
-      "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
-      "conference": "ICML 2026",
-      "authors": "Jinsu Kim, Jihoon Tack, Noah Lee, Jongheon Jeong",
-      "institution": "Korea University — TAIL Lab",
-      "summary": "从单一角色描述中雕刻轻量级角色专属模型，识别并隔离角色对应子网络",
-      "keyMetric": "角色专属子网络压缩",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14695",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14695"
-    },
-    {
-      "id": "paper-035",
-      "title": "Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control",
-      "conference": "arXiv 2026",
-      "authors": "Ruining Li, Yuxin Yao, Matt Zhou, Chuanxia Zheng, Christian Rupprecht, Joan Lasenby, Shangzhe Wu, Andrea Vedaldi",
-      "institution": "牛津大学、剑桥大学、南洋理工大学",
-      "summary": "前馈运动学控制实现3D物体关节结构自动推断与建模，单次前向传播预测可驱动关节对象",
-      "keyMetric": "3D关节物体生成效率大幅提升",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.14699",
-      "pdfUrl": "https://arxiv.org/pdf/2606.14699"
     }
   ]
 }
