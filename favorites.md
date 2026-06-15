@@ -70,4 +70,5 @@
 | 2026-06-11 | 新增：2026 年顶会论文汇总（CVPR/ICLR/ICML/ACL/MLSys） |
 | 2026-06-12 | 每日更新：科技新闻（芯片出口管制/苹果Siri+Gemini/Anthropic S-1/SpaceX IPO）、消费品牌AI（千问App Agent生态/美团LongCat-2.0/喜茶ChatBI）、股市行情、8篇arXiv新论文、四问深度分析、仪表盘重建 |
 | 2026-06-13 | 每日更新：SpaceX史上最大IPO/苹果WWDC Siri+Gemini/Anthropic秘密S-1/英伟达SK海力士合作/华为昇腾获大厂订单/美国芯片出口新规、A股突破4000点、7篇arXiv新论文、4个GitHub热门仓库、8项四问深度分析、Excel+仪表盘重建 |
+| 2026-06-14 | 补全：5个GitHub热门仓库（iptv-org/freeCodeCamp/pytest/swc/chatwoot）、6条科技新闻（韩国AI半导体/燧原科技IPO/WSTS预测）、股市行情、3项四问深度分析 |
 | 2026-06-15 | 每日更新：韩国8000亿韩元AI半导体计划/国产AI芯片巨头IPO上会/WSTS预测半导体市场增长90%/蜜雪冰城进军纽约/瑞幸杀入茶饮赛道/千问App月活破亿、A股沪指4052点、7篇arXiv新论文（PP-OCRv6/SENTINEL/HYDRA-X等）、5个GitHub Trending仓库、8项四问深度分析、Excel+仪表盘重建 |
