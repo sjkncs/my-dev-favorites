@@ -1,7 +1,7 @@
 # 我的开发收藏夹
 
 > 每日更新的效率小技巧 & 热门开源仓库收藏  
-> 最后更新：2026-06-15
+> 最后更新：2026-06-18
 
 ---
 
@@ -72,3 +72,4 @@
 | 2026-06-13 | 每日更新：SpaceX史上最大IPO/苹果WWDC Siri+Gemini/Anthropic秘密S-1/英伟达SK海力士合作/华为昇腾获大厂订单/美国芯片出口新规、A股突破4000点、7篇arXiv新论文、4个GitHub热门仓库、8项四问深度分析、Excel+仪表盘重建 |
 | 2026-06-14 | 补全：5个GitHub热门仓库（iptv-org/freeCodeCamp/pytest/swc/chatwoot）、6条科技新闻（韩国AI半导体/燧原科技IPO/WSTS预测）、股市行情、3项四问深度分析 |
 | 2026-06-15 | 每日更新：韩国8000亿韩元AI半导体计划/国产AI芯片巨头IPO上会/WSTS预测半导体市场增长90%/蜜雪冰城进军纽约/瑞幸杀入茶饮赛道/千问App月活破亿、A股沪指4052点、7篇arXiv新论文（PP-OCRv6/SENTINEL/HYDRA-X等）、5个GitHub Trending仓库、8项四问深度分析、Excel+仪表盘重建 |
+| 2026-06-18 | 每日更新：半导体股蒸发1.3万亿/英特尔18A至强6+/Claude Opus 4.8超GPT-5.5/Anthropic 9650亿融资/Gemini 3.5 Pro 200万Token、A股创业板+科创板双创历史新高(科创50+3.84%)/成交额破3万亿/美联储按兵不动、8篇arXiv论文(OmniAgent/ROGUE/BitsMoE等)、5个GitHub Trending仓库已fork(opencode/kilocode/dify/ragflow/goose)、6项四问深度分析 |

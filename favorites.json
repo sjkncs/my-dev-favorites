@@ -2,19 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-15",
+    "lastUpdated": "2026-06-18",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 19,
+      "repos": 24,
       "trivia": 1,
       "memes": 1,
       "consumerAI": 15,
       "aiModels": 9,
-      "techNews": 56,
-      "stockMarket": 29,
-      "papers": 35
+      "techNews": 63,
+      "stockMarket": 34,
+      "papers": 43
     }
   },
   "tips": [
@@ -296,6 +296,61 @@
       "status": "trending",
       "addedAt": "2026-06-15",
       "whyInteresting": "RAG流水线中高质量数据预处理的核心工具，微软官方维护，企业知识库必备"
+    },
+    {
+      "id": "repo-020",
+      "name": "opencode",
+      "url": "https://github.com/anomalyco/opencode",
+      "description": "开源AI编程智能体，28天增长515星",
+      "stars": "55.5k",
+      "why": "增长最快的coding agent项目",
+      "tags": ["ai", "coding-agent", "go"],
+      "status": "trending",
+      "addedAt": "2026-06-18"
+    },
+    {
+      "id": "repo-021",
+      "name": "kilocode",
+      "url": "https://github.com/Kilo-Org/kilocode",
+      "description": "VSCode Agentic编程平台，多模型协同",
+      "stars": "21.4k",
+      "why": "Agentic IDE新势力",
+      "tags": ["ai", "coding-agent", "vscode"],
+      "status": "trending",
+      "addedAt": "2026-06-18"
+    },
+    {
+      "id": "repo-022",
+      "name": "dify",
+      "url": "https://github.com/langgenius/dify",
+      "description": "开源LLM应用开发平台，MCP+RAG+Agent+Workflow",
+      "stars": "111.5k",
+      "why": "LLM应用开发平台领导者",
+      "tags": ["ai", "llm", "platform", "mcp"],
+      "status": "trending",
+      "addedAt": "2026-06-18"
+    },
+    {
+      "id": "repo-023",
+      "name": "ragflow",
+      "url": "https://github.com/infiniflow/ragflow",
+      "description": "基于深度文档理解的开源RAG引擎",
+      "stars": "83.1k",
+      "why": "企业级RAG基础设施",
+      "tags": ["ai", "rag", "document"],
+      "status": "trending",
+      "addedAt": "2026-06-18"
+    },
+    {
+      "id": "repo-024",
+      "name": "goose",
+      "url": "https://github.com/block/goose",
+      "description": "Block(Square)开源AI编程智能体",
+      "stars": "23.0k",
+      "why": "大厂出品的coding agent",
+      "tags": ["ai", "coding-agent", "rust"],
+      "status": "trending",
+      "addedAt": "2026-06-18"
     }
   ],
   "trivia": [
@@ -1971,6 +2026,69 @@
       "importance": "high",
       "summary": "苹果推出全新Siri AI独立应用，底层采用Google Gemini 1.2万亿参数大模型，三层智能架构兼顾性能与隐私",
       "source": "Apple Newsroom, TechCrunch"
+    },
+    {
+      "id": "news-057",
+      "date": "2026-06-18",
+      "title": "全球半导体股单日蒸发1.3万亿美元创历史最大跌幅",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "S&P 500芯片股票单日蒸发1.3万亿美元，AI投资过热+贸易不确定性+获利回吐",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-058",
+      "date": "2026-06-18",
+      "title": "英特尔18A制程至强6+处理器发布，单线程领先AMD 30%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "Computex 2026发布，288能效核，股价涨超6%",
+      "source": "Intel Newsroom"
+    },
+    {
+      "id": "news-059",
+      "date": "2026-06-18",
+      "title": "台积电全力扩产AI芯片，释放涨价信号",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "AI芯片需求无放缓迹象，英伟达下代芯片台积电独家代工",
+      "source": "Reuters"
+    },
+    {
+      "id": "news-060",
+      "date": "2026-06-18",
+      "title": "Anthropic Claude Opus 4.8基准全面超越GPT-5.5",
+      "category": "AI",
+      "importance": "high",
+      "summary": "SWE-bench Pro 69.2%，幻觉率35.9%远低于GPT-5.5的86%，定价更低",
+      "source": "CodingFleet"
+    },
+    {
+      "id": "news-061",
+      "date": "2026-06-18",
+      "title": "Anthropic完成9650亿美元估值融资，年收入飙至300亿美元",
+      "category": "AI融资",
+      "importance": "high",
+      "summary": "Series G以9650亿估值完成，年收入从90亿飙至超300亿",
+      "source": "TechWire Asia"
+    },
+    {
+      "id": "news-062",
+      "date": "2026-06-18",
+      "title": "谷歌Gemini 3.5 Pro即将发布，200万Token上下文+Deep Think",
+      "category": "AI",
+      "importance": "high",
+      "summary": "Flash已发布(速度GPT-5.5的4倍且免费)，Pro支持200万Token和深度推理",
+      "source": "TechTimes"
+    },
+    {
+      "id": "news-063",
+      "date": "2026-06-18",
+      "title": "OpenAI转向企业市场，苹果谷歌争夺消费级AI入口",
+      "category": "AI",
+      "importance": "medium",
+      "summary": "AI行业战略分化，OpenAI走企业路线，苹果谷歌走消费路线",
+      "source": "CNBC"
     }
   ],
   "stockMarket": [
@@ -2263,6 +2381,56 @@
       "change": "+0.50%",
       "event": "科技股持续反弹",
       "sectorImpact": "阿里、腾讯、美团等科技龙头上涨"
+    },
+    {
+      "id": "stock-030",
+      "date": "2026-06-18",
+      "market": "A股",
+      "index": "上证综指",
+      "value": 4090.48,
+      "change": "-0.43%",
+      "event": "科技股涨停潮但大盘分化",
+      "sectorImpact": "半导体板块领涨，寒武纪逼近1500元"
+    },
+    {
+      "id": "stock-031",
+      "date": "2026-06-18",
+      "market": "A股",
+      "index": "创业板指",
+      "value": 0,
+      "change": "+2.05%",
+      "event": "创历史收盘新高",
+      "sectorImpact": "科技成长板块强势"
+    },
+    {
+      "id": "stock-032",
+      "date": "2026-06-18",
+      "market": "A股",
+      "index": "科创50",
+      "value": 1911.51,
+      "change": "+3.84%",
+      "event": "盘中创1937.3点历史新高",
+      "sectorImpact": "AI芯片板块涨停潮"
+    },
+    {
+      "id": "stock-033",
+      "date": "2026-06-18",
+      "market": "美股",
+      "index": "纳斯达克综合指数",
+      "value": 26021.66,
+      "change": "-1.34%",
+      "event": "美联储维持利率不变",
+      "sectorImpact": "科技股集体回调"
+    },
+    {
+      "id": "stock-034",
+      "date": "2026-06-18",
+      "market": "港股",
+      "index": "恒生指数",
+      "value": 0,
+      "change": "-1.59%",
+      "event": "失守24000点",
+      "sectorImpact": "科网股普跌，半导体逆势强势"
     }
   ],
   "papers": [
