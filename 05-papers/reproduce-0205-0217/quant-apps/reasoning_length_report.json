@@ -1,0 +1,152 @@
+{
+  "paper": "arXiv:2602.09591",
+  "length_performance": {
+    "lengths": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500
+    ],
+    "accuracies": [
+      0.454,
+      0.45,
+      0.468,
+      0.444,
+      0.453,
+      0.438,
+      0.443,
+      0.434,
+      0.466,
+      0.434
+    ],
+    "mode_accuracies": [
+      0.461,
+      0.458,
+      0.471,
+      0.448,
+      0.461,
+      0.444,
+      0.451,
+      0.439,
+      0.467,
+      0.442
+    ],
+    "n_samples_per_length": 20
+  },
+  "strategies": [
+    {
+      "name": "no_control",
+      "accuracy": 0.5,
+      "avg_length": 208.5,
+      "savings": 0.0
+    },
+    {
+      "name": "short_only",
+      "accuracy": 0.5,
+      "avg_length": 185.5,
+      "savings": 0.11031175059952038
+    },
+    {
+      "name": "medium_only",
+      "accuracy": 0.5,
+      "avg_length": 211.83333333333334,
+      "savings": -0.015987210231814594
+    },
+    {
+      "name": "majority_vote",
+      "accuracy": 1.0,
+      "avg_length": 208.5,
+      "savings": 0.0
+    },
+    {
+      "name": "length_weighted_vote",
+      "accuracy": 1.0,
+      "avg_length": 208.5,
+      "savings": 0.0
+    },
+    {
+      "name": "early_stopping",
+      "accuracy": 1.0,
+      "avg_length": 202.83333333333334,
+      "savings": 0.027178257394084686
+    },
+    {
+      "name": "no_control",
+      "accuracy": 0.5,
+      "avg_length": 178.6,
+      "savings": 0.0
+    },
+    {
+      "name": "short_only",
+      "accuracy": 0.6666666666666666,
+      "avg_length": 152.66666666666666,
+      "savings": 0.14520343411720793
+    },
+    {
+      "name": "medium_only",
+      "accuracy": 0.45454545454545453,
+      "avg_length": 182.27272727272728,
+      "savings": -0.020563982490074392
+    },
+    {
+      "name": "majority_vote",
+      "accuracy": 1.0,
+      "avg_length": 178.6,
+      "savings": 0.0
+    },
+    {
+      "name": "length_weighted_vote",
+      "accuracy": 1.0,
+      "avg_length": 178.6,
+      "savings": 0.0
+    },
+    {
+      "name": "early_stopping",
+      "accuracy": 1.0,
+      "avg_length": 180.41666666666666,
+      "savings": -0.010171705860395648
+    },
+    {
+      "name": "no_control",
+      "accuracy": 0.32,
+      "avg_length": 199.46,
+      "savings": 0.0
+    },
+    {
+      "name": "short_only",
+      "accuracy": 0.34615384615384615,
+      "avg_length": 168.30769230769232,
+      "savings": 0.15618323319115454
+    },
+    {
+      "name": "medium_only",
+      "accuracy": 0.25925925925925924,
+      "avg_length": 202.07407407407408,
+      "savings": -0.013105755911330935
+    },
+    {
+      "name": "majority_vote",
+      "accuracy": 1.0,
+      "avg_length": 199.46,
+      "savings": 0.0
+    },
+    {
+      "name": "length_weighted_vote",
+      "accuracy": 1.0,
+      "avg_length": 199.46,
+      "savings": 0.0
+    },
+    {
+      "name": "early_stopping",
+      "accuracy": 1.0,
+      "avg_length": 196.23333333333332,
+      "savings": 0.01617701126374555
+    }
+  ]
+}

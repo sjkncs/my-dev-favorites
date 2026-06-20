@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文复现卡片 | 2026.02.05 - 02.17</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0e1a;color:#e0e6f0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh}
+.header{text-align:center;padding:40px 20px 30px;background:linear-gradient(135deg,#0a1628,#1a1a3e)}
+.header h1{font-size:2em;background:linear-gradient(90deg,#00d4ff,#7b68ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#8892a8;font-size:0.95em}
+.filters{display:flex;justify-content:center;gap:10px;padding:20px;flex-wrap:wrap}
+.filter-btn{padding:8px 18px;border:1px solid #2a3a5c;border-radius:20px;background:transparent;color:#8892a8;cursor:pointer;font-size:0.85em;transition:all 0.3s}
+.filter-btn:hover,.filter-btn.active{background:#00d4ff22;border-color:#00d4ff;color:#00d4ff}
+.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+.card:hover{border-color:#00d4ff44;box-shadow:0 4px 20px rgba(0,212,255,0.1);transform:translateY(-2px)}
+.card-header{padding:16px 20px;display:flex;align-items:center;gap:12px}
+.card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2em;flex-shrink:0}
+.card-icon.agent{background:#1e3a5f;color:#00d4ff}
+.card-icon.rl{background:#3a1e5f;color:#a78bfa}
+.card-icon.embodied{background:#1e5f3a;color:#34d399}
+.card-icon.llm{background:#5f3a1e;color:#fbbf24}
+.card-title{font-size:0.95em;font-weight:600;color:#e0e6f0;line-height:1.4}
+.card-meta{padding:0 20px 12px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:2px 8px;border-radius:4px;font-size:0.7em;font-weight:500}
+.tag.arxiv{background:#1e293b;color:#60a5fa}
+.tag.cat{background:#1e293b;color:#a78bfa}
+.card-summary{padding:0 20px 16px;color:#8892a8;font-size:0.85em;line-height:1.5}
+.card-body{display:none;padding:0 20px 20px;border-top:1px solid #1e293b;margin-top:0;padding-top:16px}
+.card.expanded .card-body{display:block}
+.card-body h3{color:#00d4ff;font-size:0.9em;margin:12px 0 6px}
+.card-body p,.card-body li{color:#b0b8c8;font-size:0.82em;line-height:1.6}
+.card-body ul{padding-left:16px}
+.card-body img{width:100%;border-radius:8px;margin-top:12px;border:1px solid #1e293b}
+.expand-hint{padding:0 20px 12px;color:#4a5568;font-size:0.75em;text-align:right}
+.card.expanded .expand-hint::after{content:'收起'}
+.card:not(.expanded) .expand-hint::after{content:'点击展开详情 ↓'}
+.stats{text-align:center;padding:30px;color:#4a5568;font-size:0.85em}
+.stats span{color:#00d4ff;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>论文复现卡片 · 2026.02.05 - 02.17</h1>
+<p>8 篇前沿论文 | 4 大分类 | 深度解读 + 工程蓝图 + 量化应用</p>
+</div>
+<div class="filters">
+<button class="filter-btn active" onclick="filterCards('all')">全部 (8)</button>
+<button class="filter-btn" onclick="filterCards('agent')">Agent与大模型 (2)</button>
+<button class="filter-btn" onclick="filterCards('rl')">推理与强化学习 (2)</button>
+<button class="filter-btn" onclick="filterCards('embodied')">具身智能与视觉 (2)</button>
+<button class="filter-btn" onclick="filterCards('llm')">LLM理论与分析 (2)</button>
+</div>
+<div class="grid" id="cardGrid">
+
+<div class="card" data-cat="agent" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon agent">A</div><div class="card-title">Nanbeige4.1-3B: 3B参数如何超越30B模型</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.13367</span><span class="tag cat">Agent</span></div>
+<div class="card-summary">组合奖励建模+复杂度感知RL+Turn级监督，让3B小模型在Agent行为和代码生成上全面超越30B级别模型。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>大模型能力强但部署成本高。精巧的训练策略可以弥补参数差距。</p>
+<h3>方法</h3><p>三板斧：(1)组合奖励建模 (2)复杂度感知RL (3)600轮Turn级监督。</p>
+<h3>亮点</h3><ul><li>超越Qwen3-30B-A3B</li><li>600+轮工具调用稳定</li></ul>
+<img src="images/nanbeige.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="agent" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon agent">A</div><div class="card-title">GLM-5: 从Vibe Coding到Agentic Engineering</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.15763</span><span class="tag cat">Agent</span></div>
+<div class="card-summary">754B前沿模型，解耦优化架构让AI编程从"随意生成"升级为"工程化构建"，全代码权重开源。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>当前AI编程擅长写函数但不擅长构建应用。"创造"和"优化"需要不同的思维模式。</p>
+<h3>方法</h3><p>解耦两阶段：创造阶段(架构设计+初始代码) + 优化阶段(审查+修复+调优)，用不同奖励模型训练。</p>
+<h3>亮点</h3><ul><li>754B参数全开源</li><li>实际应用构建能力突出</li></ul>
+<img src="images/glm5.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="rl" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon rl">R</div><div class="card-title">RARL: Reward Modeling for RL Reasoning</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.09305</span><span class="tag cat">推理/RL</span></div>
+<div class="card-summary">给推理RL设计"正确的奖励"——过程→结果→一致性三层奖励链，解决奖励黑客和幻觉问题。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>只看最终答案的奖励导致"奖励黑客"——模型学会捷径而非真正推理。</p>
+<h3>方法</h3><p>序列激励策略：过程奖励(推理步骤质量) → 结果奖励(答案准确) → 一致性奖励(过程与结果对齐)。</p>
+<h3>亮点</h3><ul><li>推理基准+5-8%</li><li>幻觉率降低约20%</li></ul>
+<img src="images/rarl.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="rl" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon rl">R</div><div class="card-title">Optimal Reasoning Length for RL-Trained LMs</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.09591</span><span class="tag cat">推理/RL</span></div>
+<div class="card-summary">推理不是越长越好——中等长度表现最好，但"最常出现的答案"正确率随长度持续上升。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>推理模型生成大量思维链。最优长度是多少？如何控制？</p>
+<h3>方法</h3><p>系统分析长度与性能的非单调关系。发现"分散效应"：长推理在正确答案周围产生更多变体。</p>
+<h3>亮点</h3><ul><li>长度控制减少30-40% token</li><li>不损失准确性</li></ul>
+<img src="images/optimal_length.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="embodied" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon embodied">E</div><div class="card-title">Self-evolving Embodied AI</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.04411</span><span class="tag cat">具身智能</span></div>
+<div class="card-summary">让机器人"自我进化"——5种自主修改机制实现开放环境持续进化，无需人类干预。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>传统机器人需要预定义所有场景。Self-evolving AI让机器人自主发现新挑战、开发新能力。</p>
+<h3>方法</h3><p>5种机制：技能获取→记忆重组→策略适应→身体模型更新→目标演化。</p>
+<h3>亮点</h3><ul><li>6个月后能力覆盖面积增加3倍</li><li>完全自主进化</li></ul>
+<img src="images/self_evolving.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="embodied" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon embodied">E</div><div class="card-title">ViT-5: Vision Transformers for the Mid-2020s</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.08071</span><span class="tag cat">视觉/多模态</span></div>
+<div class="card-summary">原始ViT的"中年升级版"——为多模态AI时代重新设计，原生多模态输入+改进注意力。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>2020年ViT已无法充分利用多模态AI的最新进展。需要系统性架构升级。</p>
+<h3>方法</h3><p>(1)原生多模态输入 (2)改进注意力机制 (3)大尺度训练稳定性。</p>
+<h3>亮点</h3><ul><li>超越当前视觉SOTA</li><li>与多模态大模型天然集成</li></ul>
+<img src="images/vit5.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="llm" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon llm">L</div><div class="card-title">Step 3.5 Flash: 11B激活的前沿智能</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.10604</span><span class="tag cat">LLM理论</span></div>
+<div class="card-summary">196B总参/11B激活，交错3:1注意力+多Token预测，IMO 85.4%对标GPT-5.2。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>前沿模型太慢太贵。能否在保持前沿能力的同时大幅降低推理成本？</p>
+<h3>方法</h3><p>交错3:1注意力(3层滑窗+1层全注意力) + 多Token预测(一次预测多个Token)。</p>
+<h3>亮点</h3><ul><li>IMO-AnswerBench 85.4%</li><li>LiveCodeBench 86.4%</li></ul>
+<img src="images/step35.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="llm" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon llm">L</div><div class="card-title">Symmetry in Language Shapes Model Representations</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.15029</span><span class="tag cat">LLM理论</span></div>
+<div class="card-summary">LLM嵌入空间的美丽几何——月份排成圆圈、年份排成直线，语言对称性决定空间排列。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>嵌入空间的结构是训练算法决定的，还是语言本身的性质决定的？</p>
+<h3>方法</h3><p>发现"平移不变性"直接决定嵌入几何：循环对称性→圆圈，线性对称性→直线。</p>
+<h3>亮点</h3><ul><li>跨架构稳定</li><li>改变训练数据结构不变</li></ul>
+<img src="images/symmetry.png" alt="Architecture" loading="lazy">
+</div></div>
+
+</div>
+
+<div class="stats">
+共 <span>8</span> 篇论文 · <span>4</span> 个分类 · <span>2</span> 个量化应用 · 覆盖 <span>2026.02.05 - 02.17</span>
+</div>
+
+<script>
+function filterCards(cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){c.style.display='';}else{c.style.display='none';}
+  });
+}
+</script>
+</body>
+</html>

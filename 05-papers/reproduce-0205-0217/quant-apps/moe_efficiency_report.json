@@ -1,0 +1,309 @@
+{
+  "paper": "arXiv:2602.10604 & arXiv:2601.21204",
+  "configs": [
+    {
+      "name": "Step3.5-Flash(11B-active)",
+      "total_b": 196,
+      "active_b": 11,
+      "attn": "interleaved"
+    },
+    {
+      "name": "Step3.5-FullAttn",
+      "total_b": 196,
+      "active_b": 11,
+      "attn": "full"
+    },
+    {
+      "name": "Step3.5-NoMTP",
+      "total_b": 196,
+      "active_b": 11,
+      "attn": "interleaved"
+    },
+    {
+      "name": "Dense-11B",
+      "total_b": 11,
+      "active_b": 11,
+      "attn": "full"
+    },
+    {
+      "name": "Dense-196B",
+      "total_b": 196,
+      "active_b": 196,
+      "attn": "full"
+    },
+    {
+      "name": "Embed-Scaled(30B-embed)",
+      "total_b": 196,
+      "active_b": 11,
+      "attn": "interleaved"
+    },
+    {
+      "name": "Expert-Scaled(128experts)",
+      "total_b": 196,
+      "active_b": 11,
+      "attn": "interleaved"
+    },
+    {
+      "name": "Nanbeige-3B",
+      "total_b": 3,
+      "active_b": 3,
+      "attn": "full"
+    }
+  ],
+  "latency": [
+    {
+      "name": "Step3.5-Flash(11B-active)",
+      "latency_ms_per_token": 6.66,
+      "time_to_first_token_ms": 9.98,
+      "tokens_per_second": 150.3,
+      "seq_len": 2048
+    },
+    {
+      "name": "Step3.5-FullAttn",
+      "latency_ms_per_token": 22.0,
+      "time_to_first_token_ms": 33.0,
+      "tokens_per_second": 45.5,
+      "seq_len": 2048
+    },
+    {
+      "name": "Step3.5-NoMTP",
+      "latency_ms_per_token": 12.1,
+      "time_to_first_token_ms": 18.15,
+      "tokens_per_second": 82.6,
+      "seq_len": 2048
+    },
+    {
+      "name": "Dense-11B",
+      "latency_ms_per_token": 22.0,
+      "time_to_first_token_ms": 33.0,
+      "tokens_per_second": 45.5,
+      "seq_len": 2048
+    },
+    {
+      "name": "Dense-196B",
+      "latency_ms_per_token": 392.0,
+      "time_to_first_token_ms": 588.0,
+      "tokens_per_second": 2.6,
+      "seq_len": 2048
+    },
+    {
+      "name": "Embed-Scaled(30B-embed)",
+      "latency_ms_per_token": 6.66,
+      "time_to_first_token_ms": 9.98,
+      "tokens_per_second": 150.3,
+      "seq_len": 2048
+    },
+    {
+      "name": "Expert-Scaled(128experts)",
+      "latency_ms_per_token": 6.66,
+      "time_to_first_token_ms": 9.98,
+      "tokens_per_second": 150.3,
+      "seq_len": 2048
+    },
+    {
+      "name": "Nanbeige-3B",
+      "latency_ms_per_token": 6.0,
+      "time_to_first_token_ms": 9.0,
+      "tokens_per_second": 166.7,
+      "seq_len": 2048
+    }
+  ],
+  "throughput": [
+    {
+      "name": "Step3.5-Flash(11B-active)",
+      "tokens_per_second_batch": 38467.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Step3.5-FullAttn",
+      "tokens_per_second_batch": 16456.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Step3.5-NoMTP",
+      "tokens_per_second_batch": 22627.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Dense-11B",
+      "tokens_per_second_batch": 16456.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Dense-196B",
+      "tokens_per_second_batch": 924.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 0,
+      "memory_per_request_gb": 392
+    },
+    {
+      "name": "Embed-Scaled(30B-embed)",
+      "tokens_per_second_batch": 38467.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Expert-Scaled(128experts)",
+      "tokens_per_second_batch": 38467.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 3,
+      "memory_per_request_gb": 22
+    },
+    {
+      "name": "Nanbeige-3B",
+      "tokens_per_second_batch": 60340.0,
+      "effective_batch_size": 32,
+      "max_batch_a100": 13,
+      "memory_per_request_gb": 6
+    }
+  ],
+  "capability": [
+    {
+      "name": "Step3.5-Flash(11B-active)",
+      "estimated_benchmark_score": 56.1,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 0.625,
+        "embed_bonus": 4.8,
+        "attn_quality": 0.972
+      }
+    },
+    {
+      "name": "Step3.5-FullAttn",
+      "estimated_benchmark_score": 57.5,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 0.625,
+        "embed_bonus": 4.8,
+        "attn_quality": 1.0
+      }
+    },
+    {
+      "name": "Step3.5-NoMTP",
+      "estimated_benchmark_score": 56.1,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 0.625,
+        "embed_bonus": 4.8,
+        "attn_quality": 0.972
+      }
+    },
+    {
+      "name": "Dense-11B",
+      "estimated_benchmark_score": 69.7,
+      "components": {
+        "base": 66.2,
+        "expert_efficiency": 1.0,
+        "embed_bonus": 3.5,
+        "attn_quality": 1.0
+      }
+    },
+    {
+      "name": "Dense-196B",
+      "estimated_benchmark_score": 89.2,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 1.0,
+        "embed_bonus": 4.8,
+        "attn_quality": 1.0
+      }
+    },
+    {
+      "name": "Embed-Scaled(30B-embed)",
+      "estimated_benchmark_score": 88.2,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 1.0,
+        "embed_bonus": 6.2,
+        "attn_quality": 0.972
+      }
+    },
+    {
+      "name": "Expert-Scaled(128experts)",
+      "estimated_benchmark_score": 29.1,
+      "components": {
+        "base": 84.4,
+        "expert_efficiency": 0.312,
+        "embed_bonus": 3.5,
+        "attn_quality": 0.972
+      }
+    },
+    {
+      "name": "Nanbeige-3B",
+      "estimated_benchmark_score": 62.5,
+      "components": {
+        "base": 59.0,
+        "expert_efficiency": 1.0,
+        "embed_bonus": 3.5,
+        "attn_quality": 1.0
+      }
+    }
+  ],
+  "efficiency_ranking": [
+    {
+      "name": "Embed-Scaled(30B-embed)",
+      "score": 88.2,
+      "latency": 6.66,
+      "throughput": 38467.0,
+      "efficiency": 13.24
+    },
+    {
+      "name": "Nanbeige-3B",
+      "score": 62.5,
+      "latency": 6.0,
+      "throughput": 60340.0,
+      "efficiency": 10.42
+    },
+    {
+      "name": "Step3.5-Flash(11B-active)",
+      "score": 56.1,
+      "latency": 6.66,
+      "throughput": 38467.0,
+      "efficiency": 8.42
+    },
+    {
+      "name": "Step3.5-NoMTP",
+      "score": 56.1,
+      "latency": 12.1,
+      "throughput": 22627.0,
+      "efficiency": 4.64
+    },
+    {
+      "name": "Expert-Scaled(128experts)",
+      "score": 29.1,
+      "latency": 6.66,
+      "throughput": 38467.0,
+      "efficiency": 4.37
+    },
+    {
+      "name": "Dense-11B",
+      "score": 69.7,
+      "latency": 22.0,
+      "throughput": 16456.0,
+      "efficiency": 3.17
+    },
+    {
+      "name": "Step3.5-FullAttn",
+      "score": 57.5,
+      "latency": 22.0,
+      "throughput": 16456.0,
+      "efficiency": 2.61
+    },
+    {
+      "name": "Dense-196B",
+      "score": 89.2,
+      "latency": 392.0,
+      "throughput": 924.0,
+      "efficiency": 0.23
+    }
+  ]
+}
