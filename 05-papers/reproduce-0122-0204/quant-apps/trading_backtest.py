@@ -13,9 +13,12 @@ PredictionMarketBench + GT-Score: 量化交易Agent回测框架
 import numpy as np
 import json
 import os
+import warnings
 from datetime import datetime, timedelta
 from dataclasses import dataclass, field
 from typing import List, Dict, Tuple, Optional
+
+warnings.filterwarnings('ignore', category=RuntimeWarning)
 
 # ============================================================
 # 1. 模拟市场数据生成（真实市场统计特征）
@@ -184,9 +187,9 @@ class GTScoreStrategy(BaseStrategy):
             
             gt_score = (mean_ret / (std_ret + 1e-8)) * (1 + self.stability_weight * stability)
             
-            if gt_score > 0.5:
+            if gt_score > 0.05:
                 signals[i] = 1
-            elif gt_score < -0.5:
+            elif gt_score < -0.05:
                 signals[i] = -1
         
         return signals

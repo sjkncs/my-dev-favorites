@@ -1,6 +1,6 @@
 {
   "benchmark": "PredictionMarketBench",
-  "date": "2026-06-20T00:13:19.723457",
+  "date": "2026-06-21T04:40:06.270257",
   "market_data": {
     "period": "2025-01-02 ~ 2026-12-02",
     "n_days": 500
@@ -73,34 +73,34 @@
     {
       "name": "GT-Score-Robust",
       "metrics": {
-        "total_return": 0.0,
-        "annual_return": 0.0,
-        "max_drawdown": 0.0,
-        "sharpe_ratio": 0.0,
-        "sortino_ratio": NaN,
-        "win_rate": 0.0,
-        "n_trades": 0,
-        "avg_trade_pnl": 0.0,
-        "profit_factor": 0.0,
-        "gt_score": 0.0,
-        "mean_oos_sharpe": 0.0,
-        "std_oos_sharpe": 0.0,
-        "mean_stability": 0,
+        "total_return": 142.99,
+        "annual_return": 56.44,
+        "max_drawdown": 15.96,
+        "sharpe_ratio": 1.6744,
+        "sortino_ratio": 2.1945,
+        "win_rate": 29.6,
+        "n_trades": 27,
+        "avg_trade_pnl": -68.47,
+        "profit_factor": 0.66,
+        "gt_score": 2.3189,
+        "mean_oos_sharpe": 1.9891,
+        "std_oos_sharpe": 0.6151,
+        "mean_stability": 1.2087,
         "in_sample_sharpes": [
-          0,
-          0,
-          0,
-          0
+          1.811,
+          0.9864,
+          2.4224,
+          2.555
         ],
         "out_sample_sharpes": [
-          0,
-          0,
-          0,
-          0
+          0.9864,
+          2.4224,
+          2.555,
+          1.9925
         ],
-        "overfitting_ratio": 1
+        "overfitting_ratio": 0
       },
-      "n_trades": 0
+      "n_trades": 27
     }
   ]
 }
