@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文复现卡片 | 2026.01.22 - 02.04</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0e1a;color:#e0e6f0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;min-height:100vh}
+.header{text-align:center;padding:40px 20px 30px;background:linear-gradient(135deg,#0a1628,#1a1a3e)}
+.header h1{font-size:2em;background:linear-gradient(90deg,#00d4ff,#7b68ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.header p{color:#8892a8;font-size:0.95em}
+.filters{display:flex;justify-content:center;gap:10px;padding:20px;flex-wrap:wrap}
+.filter-btn{padding:8px 18px;border:1px solid #2a3a5c;border-radius:20px;background:transparent;color:#8892a8;cursor:pointer;font-size:0.85em;transition:all 0.3s}
+.filter-btn:hover,.filter-btn.active{background:#00d4ff22;border-color:#00d4ff;color:#00d4ff}
+.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px}
+.card{background:#111827;border:1px solid #1e293b;border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+.card:hover{border-color:#00d4ff44;box-shadow:0 4px 20px rgba(0,212,255,0.1);transform:translateY(-2px)}
+.card-header{padding:16px 20px;display:flex;align-items:center;gap:12px}
+.card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2em;flex-shrink:0}
+.card-icon.agent{background:#1e3a5f;color:#00d4ff}
+.card-icon.rl{background:#3a1e5f;color:#a78bfa}
+.card-icon.embodied{background:#1e5f3a;color:#34d399}
+.card-icon.llm{background:#5f3a1e;color:#fbbf24}
+.card-icon.quant{background:#5f1e3a;color:#f472b6}
+.card-title{font-size:0.95em;font-weight:600;color:#e0e6f0;line-height:1.4}
+.card-meta{padding:0 20px 12px;display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:2px 8px;border-radius:4px;font-size:0.7em;font-weight:500}
+.tag.arxiv{background:#1e293b;color:#60a5fa}
+.tag.cat{background:#1e293b;color:#a78bfa}
+.card-summary{padding:0 20px 16px;color:#8892a8;font-size:0.85em;line-height:1.5}
+.card-body{display:none;padding:0 20px 20px;border-top:1px solid #1e293b;margin-top:0;padding-top:16px}
+.card.expanded .card-body{display:block}
+.card-body h3{color:#00d4ff;font-size:0.9em;margin:12px 0 6px}
+.card-body p,.card-body li{color:#b0b8c8;font-size:0.82em;line-height:1.6}
+.card-body ul{padding-left:16px}
+.card-body img{width:100%;border-radius:8px;margin-top:12px;border:1px solid #1e293b}
+.expand-hint{padding:0 20px 12px;color:#4a5568;font-size:0.75em;text-align:right}
+.card.expanded .expand-hint::after{content:'收起'}
+.card:not(.expanded) .expand-hint::after{content:'点击展开详情 ↓'}
+.stats{text-align:center;padding:30px;color:#4a5568;font-size:0.85em}
+.stats span{color:#00d4ff;font-weight:600}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>论文复现卡片 · 2026.01.22 - 02.04</h1>
+<p>12 篇前沿论文 | 5 大分类 | 深度解读 + 工程蓝图 + 量化应用</p>
+</div>
+<div class="filters">
+<button class="filter-btn active" onclick="filterCards('all')">全部 (12)</button>
+<button class="filter-btn" onclick="filterCards('agent')">Agent与多智能体 (3)</button>
+<button class="filter-btn" onclick="filterCards('rl')">推理与强化学习 (2)</button>
+<button class="filter-btn" onclick="filterCards('embodied')">具身智能与物理AI (2)</button>
+<button class="filter-btn" onclick="filterCards('llm')">LLM理论与分析 (2)</button>
+<button class="filter-btn" onclick="filterCards('quant')">量化金融与交易 (3)</button>
+</div>
+<div class="grid" id="cardGrid">
+
+<div class="card" data-cat="agent" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon agent">A</div><div class="card-title">Dynamic Role Assignment for Multi-Agent Debate</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.17152</span><span class="tag cat">Agent</span></div>
+<div class="card-summary">Meta-Debate框架：辩论前先"竞选上岗"，通过Pitch+同行评审分配最优角色，显著优于随机分配。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>多Agent辩论中角色分配（正方/反方/裁判）通常随机或固定。不同Agent能力特质不同，随机分配浪费能力。</p>
+<h3>方法</h3><p>类似公司面试：Agent先为每个角色做定制Pitch → 互相评审打分 → 系统综合分配最优角色。</p>
+<h3>亮点</h3><ul><li>比随机分配提升8-15%</li><li>预评估增加约20%计算开销</li></ul>
+<img src="images/dist_role_debate.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="agent" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon agent">A</div><div class="card-title">MATTRL: Multi-Agent Test-Time RL for Reasoning</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.09667</span><span class="tag cat">Agent</span></div>
+<div class="card-summary">推理时动态组建"答题委员会"——数学专家、医学专家、教育专家各管一摊，用RL优化组队策略。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>训练全能大模型成本极高。不如考试时临时组建专家团队。</p>
+<h3>方法</h3><p>RL策略网络决定邀请哪些专家 + 辩论几轮 + 谁权重更高。共享结构化记忆避免重复论述。</p>
+<h3>亮点</h3><ul><li>医疗/数学/教育基准提升12-18%</li><li>无额外训练成本</li></ul>
+<img src="images/mattrl.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="agent" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon agent">A</div><div class="card-title">PredictionMarketBench: SWE-bench for Trading Agents</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.00133</span><span class="tag cat">Agent/量化</span></div>
+<div class="card-summary">给AI交易员做"高考"——标准化回测基准，不看说得对不对，看策略实际跑起来赚不赚钱。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>AI交易Agent缺乏统一评测标准，各团队用自己的数据评估无法横向对比。</p>
+<h3>方法</h3><p>定义标准金融任务 → 提供统一回测环境 → Agent策略自动执行 → 用Sharpe/MaxDD/胜率评分。</p>
+<h3>亮点</h3><ul><li>"回测即评估"范式</li><li>不同Agent在不同市场环境下各有所长</li></ul>
+<img src="images/pred_market_bench.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="rl" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon rl">R</div><div class="card-title">InT: Self-Proposed Interventions for Credit Assignment</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.14209</span><span class="tag cat">推理/RL</span></div>
+<div class="card-summary">让LLM自己当"错题分析师"——推理出错时自我评估哪步有问题并提出修正，数学准确率提升14%。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>推理RL的信用分配难题：最终答案错了，到底哪步出了问题？传统方法需要外部评分器。</p>
+<h3>方法</h3><p>模型在每步推理后暂停 → 自我评估逻辑 → 生成"干预建议" → RL策略决定是否接受修正。</p>
+<h3>亮点</h3><ul><li>GSM8K和MATH基准+14%</li><li>无需外部奖励模型</li></ul>
+<img src="images/int_credit_assign.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="rl" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon rl">R</div><div class="card-title">PrAg-PO: Prompt Augmentation for GRPO Training</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.03190</span><span class="tag cat">推理/RL</span></div>
+<div class="card-summary">给GRPO训练"换着花样出题"——多种提示模板+模板专属奖励，防止训练早期崩溃。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>GRPO训练常遇早期崩溃：模型过早收敛到次优策略。根本原因是训练信号多样性不足。</p>
+<h3>方法</h3><p>同一题用多种模板呈现 + 每种模板配专属格式奖励，迫使模型多角度理解。</p>
+<h3>亮点</h3><ul><li>MATH/GSM8K提升3-5%</li><li>训练曲线更平稳</li></ul>
+<img src="images/pragpo.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="embodied" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon embodied">E</div><div class="card-title">EquiForm: SE(3)-Equivariant Policy Learning</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.17486</span><span class="tag cat">具身智能</span></div>
+<div class="card-summary">给机器人装"抗噪眼睛"——SE(3)等变+几何去噪，真实机器人操作成功率提升28.1%。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>3D传感器数据充满噪声和遮挡，现有策略在干净数据上好用到真实环境就崩溃。</p>
+<h3>方法</h3><p>网络内在理解3D旋转/平移对称性 + 特征空间去噪 + 对比等变对齐。</p>
+<h3>亮点</h3><ul><li>仿真+17.2%，真实+28.1%</li><li>计算开销增加约30%</li></ul>
+<img src="images/equiform.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="embodied" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon embodied">E</div><div class="card-title">ZEST: Zero-shot Embodied Skill Transfer</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.00401</span><span class="tag cat">具身智能</span></div>
+<div class="card-summary">机器人在虚拟世界学会翻跟头，直接在真实世界表演——零样本迁移，无需任何微调。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>高动态动作的Sim-to-Real Gap极大，传统微调昂贵且危险（机器人可能摔坏）。</p>
+<h3>方法</h3><p>极端域随机化训练 + 技能压缩编码 → 直接驱动真实执行器。</p>
+<h3>亮点</h3><ul><li>3种机器人平台，5种动态技能</li><li>成功率85%+</li></ul>
+<img src="images/zest.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="llm" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon llm">L</div><div class="card-title">Reasoning or Guessing? Mechanistic Analysis</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.10679</span><span class="tag cat">LLM理论</span></div>
+<div class="card-summary">推理模型的"皇帝新衣"——它们经常在"猜"而非真正"推理"，三种失败模式被识别。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>o1/R1等模型benchmark惊人，但真在"推理"还是高级"模式匹配"？</p>
+<h3>方法</h3><p>精巧探针实验：(1)简单问题注入扰动 (2)追踪中间层准确率跳变 (3)分析错误恢复能力。</p>
+<h3>亮点</h3><ul><li>三种失败模式普遍存在</li><li>即使高分模型也会"猜测"</li></ul>
+<img src="images/reasoning_guessing.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="llm" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon llm">L</div><div class="card-title">Scaling Embeddings Outperforms Scaling Experts</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.21204</span><span class="tag cat">LLM理论</span></div>
+<div class="card-summary">MoE新发现：参数花在"词汇理解"（嵌入层）比花在"专家数量"上更划算，3B激活超越更大模型。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>MoE扩展方向：增加专家数 vs 扩展嵌入维度，哪个更有效？</p>
+<h3>方法</h3><p>系统对比两种扩展策略。嵌入扩展提升Token表示丰富度，过多专家导致路由不稳定。</p>
+<h3>亮点</h3><ul><li>LongCat-Flash-Lite: 68.5B总/3B激活</li><li>推理时无额外计算成本</li></ul>
+<img src="images/scaling_embed.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="quant" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon quant">Q</div><div class="card-title">GT-Score: Anti-Overfitting for Trading Strategies</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.00080</span><span class="tag cat">量化金融</span></div>
+<div class="card-summary">给量化策略做"防过拟合体检"——walk-forward验证替代Sharpe Ratio，样本外收益高40-60%。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>传统优化目标（Sharpe/收益）天然鼓励过拟合。策略历史完美实盘崩溃。</p>
+<h3>方法</h3><p>数据分N fold → 样本内外Sharpe对比 → GT-Score奖励样本外一致性。</p>
+<h3>亮点</h3><ul><li>样本外收益比Sharpe优化高40-60%</li><li>最大回撤更低</li></ul>
+<img src="images/gt_score.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="quant" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon quant">Q</div><div class="card-title">LLM News Sentiment for Stock Prediction</div></div>
+<div class="card-meta"><span class="tag arxiv">2602.00086</span><span class="tag cat">量化金融</span></div>
+<div class="card-summary">用LLM当"新闻分析师"——多维度情感分析比传统NLP多带来47%年化Alpha增量。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>传统NLP对金融文本理解有限。LLM能否做得更好？增量有多大？</p>
+<h3>方法</h3><p>LLM多维度情感打分（方向+幅度+范围+不确定性）→ 作为预测特征 → 对比传统NLP。</p>
+<h3>亮点</h3><ul><li>IC增量+0.15</li><li>年化Alpha增量约47%</li></ul>
+<img src="images/llm_sentiment.png" alt="Architecture" loading="lazy">
+</div></div>
+
+<div class="card" data-cat="quant" onclick="this.classList.toggle('expanded')">
+<div class="card-header"><div class="card-icon quant">Q</div><div class="card-title">QuantEval: Financial Quant Benchmark for LLMs</div></div>
+<div class="card-meta"><span class="tag arxiv">2601.08689</span><span class="tag cat">量化金融</span></div>
+<div class="card-summary">给LLM做"量化面试"——知识/推理/代码三维度评测，生成的策略代码直接跑回测。</div>
+<div class="expand-hint"></div>
+<div class="card-body">
+<h3>核心动机</h3><p>LLM到底能不能做量化？知识够不够？计算准不准？代码能跑吗？</p>
+<h3>方法</h3><p>三层评测：金融知识QA → 数值推理 → 交易代码生成+回测执行。</p>
+<h3>亮点</h3><ul><li>知识0.68 vs 人类专家0.92</li><li>数值推理0.27 vs 0.88，差距大</li></ul>
+<img src="images/quant_eval.png" alt="Architecture" loading="lazy">
+</div></div>
+
+</div>
+
+<div class="stats">
+共 <span>12</span> 篇论文 · <span>5</span> 个分类 · <span>3</span> 个量化应用 · 覆盖 <span>2026.01.22 - 02.04</span>
+</div>
+
+<script>
+function filterCards(cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){
+      c.style.display='';
+    } else {
+      c.style.display='none';
+    }
+  });
+}
+</script>
+</body>
+</html>

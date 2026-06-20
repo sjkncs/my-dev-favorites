@@ -1,0 +1,320 @@
+{
+  "benchmark": "QuantEval",
+  "paper": "arXiv:2601.08689",
+  "timestamp": "2026-06-20T00:13:24.961102",
+  "results": {
+    "knowledge": [
+      {
+        "id": "K001",
+        "category": "knowledge",
+        "difficulty": "easy",
+        "score": 0.959,
+        "key_points_total": 4,
+        "key_points_covered": 3,
+        "covered": [
+          "超额收益/波动率",
+          "无风险利率",
+          "过拟合警告"
+        ],
+        "missed": [
+          "风险调整收益"
+        ]
+      },
+      {
+        "id": "K002",
+        "category": "knowledge",
+        "difficulty": "medium",
+        "score": 0.624,
+        "key_points_total": 5,
+        "key_points_covered": 3,
+        "covered": [
+          "Jegadeesh Titman 1993",
+          "3-12月回望期",
+          "相对强弱"
+        ],
+        "missed": [
+          "行为金融解释",
+          "风险解释"
+        ]
+      },
+      {
+        "id": "K003",
+        "category": "knowledge",
+        "difficulty": "hard",
+        "score": 0.354,
+        "key_points_total": 4,
+        "key_points_covered": 1,
+        "covered": [
+          "SVI参数化"
+        ],
+        "missed": [
+          "5个参数含义",
+          "无套利约束",
+          "蝶式套利条件"
+        ]
+      },
+      {
+        "id": "K004",
+        "category": "knowledge",
+        "difficulty": "easy",
+        "score": 0.884,
+        "key_points_total": 4,
+        "key_points_covered": 3,
+        "covered": [
+          "峰谷最大损失",
+          "vs VaR",
+          "路径依赖"
+        ],
+        "missed": [
+          "恢复时间"
+        ]
+      },
+      {
+        "id": "K005",
+        "category": "knowledge",
+        "difficulty": "medium",
+        "score": 0.558,
+        "key_points_total": 5,
+        "key_points_covered": 2,
+        "covered": [
+          "协整关系",
+          "价差均值回归"
+        ],
+        "missed": [
+          "Engle-Granger",
+          "半衰期",
+          "对冲比率"
+        ]
+      }
+    ],
+    "reasoning": [
+      {
+        "id": "R001",
+        "category": "reasoning",
+        "difficulty": "easy",
+        "reference": 0.6,
+        "predicted": 0.695,
+        "error_pct": 15.83,
+        "correct": false
+      },
+      {
+        "id": "R002",
+        "category": "reasoning",
+        "difficulty": "medium",
+        "sub_results": {
+          "return": {
+            "reference": 0.096,
+            "predicted": 0.1006,
+            "correct": false
+          },
+          "vol": {
+            "reference": 0.1026,
+            "predicted": 0.1094,
+            "correct": false
+          }
+        },
+        "all_correct": false,
+        "score": 0.0
+      },
+      {
+        "id": "R003",
+        "category": "reasoning",
+        "difficulty": "hard",
+        "sub_results": {
+          "expected_per_trade": {
+            "reference": 0.01,
+            "predicted": 0.0099,
+            "correct": true
+          },
+          "gross_annual": {
+            "reference": 0.3,
+            "predicted": 0.2811,
+            "correct": false
+          },
+          "net_annual": {
+            "reference": 0.27,
+            "predicted": 0.2321,
+            "correct": false
+          }
+        },
+        "all_correct": false,
+        "score": 0.3333333333333333
+      },
+      {
+        "id": "R004",
+        "category": "reasoning",
+        "difficulty": "medium",
+        "sub_results": {
+          "cumulative_return": {
+            "reference": -0.001,
+            "predicted": -0.0008,
+            "correct": false
+          },
+          "daily_vol": {
+            "reference": 0.0131,
+            "predicted": 0.0076,
+            "correct": false
+          },
+          "annual_vol": {
+            "reference": 0.2079,
+            "predicted": 0.1936,
+            "correct": false
+          },
+          "var_95": {
+            "reference": -0.0215,
+            "predicted": -0.0245,
+            "correct": false
+          }
+        },
+        "all_correct": false,
+        "score": 0.0
+      },
+      {
+        "id": "R005",
+        "category": "reasoning",
+        "difficulty": "hard",
+        "sub_results": {
+          "d1": {
+            "reference": -0.0988,
+            "predicted": -0.1273,
+            "correct": true
+          },
+          "d2": {
+            "reference": -0.2755,
+            "predicted": -0.2436,
+            "correct": true
+          },
+          "call_price": {
+            "reference": 6.52,
+            "predicted": 6.0263,
+            "correct": true
+          }
+        },
+        "all_correct": true,
+        "score": 1.0
+      }
+    ],
+    "code": [
+      {
+        "id": "C001",
+        "category": "code",
+        "difficulty": "easy",
+        "requirements_met": [
+          "短期均线",
+          "长期均线",
+          "金叉买入",
+          "死叉卖出"
+        ],
+        "requirements_unmet": [
+          "收益计算"
+        ],
+        "coverage": 0.8,
+        "backtest_metrics": {
+          "annual_return": 9.3,
+          "sharpe": 0.81,
+          "max_drawdown": 15.13,
+          "win_rate": 48.1
+        },
+        "compilable": true
+      },
+      {
+        "id": "C002",
+        "category": "code",
+        "difficulty": "medium",
+        "requirements_met": [
+          "布林带计算",
+          "上轨卖出",
+          "下轨买入"
+        ],
+        "requirements_unmet": [
+          "止损逻辑",
+          "参数化"
+        ],
+        "coverage": 0.6,
+        "backtest_metrics": {
+          "annual_return": 12.94,
+          "sharpe": 1.022,
+          "max_drawdown": 15.05,
+          "win_rate": 50.0
+        },
+        "compilable": true
+      },
+      {
+        "id": "C003",
+        "category": "code",
+        "difficulty": "hard",
+        "requirements_met": [
+          "多因子计算",
+          "标准化"
+        ],
+        "requirements_unmet": [
+          "缺失值处理",
+          "异常值处理",
+          "排序选股"
+        ],
+        "coverage": 0.4,
+        "backtest_metrics": {},
+        "compilable": true
+      },
+      {
+        "id": "C004",
+        "category": "code",
+        "difficulty": "medium",
+        "requirements_met": [
+          "RSI计算",
+          "多级仓位",
+          "建仓/加仓"
+        ],
+        "requirements_unmet": [
+          "减仓/清仓",
+          "资金管理"
+        ],
+        "coverage": 0.6,
+        "backtest_metrics": {},
+        "compilable": true
+      }
+    ]
+  },
+  "summary": {
+    "knowledge": {
+      "avg_score": 0.676,
+      "easy_avg": 0.922,
+      "medium_avg": 0.591,
+      "hard_avg": 0.354
+    },
+    "reasoning": {
+      "pass_rate": 0.267
+    },
+    "code": {
+      "avg_coverage": 0.6,
+      "compilation_rate": 1.0
+    },
+    "overall": 0.49
+  },
+  "human_comparison": {
+    "维度": [
+      "金融事实知识",
+      "数值推理",
+      "代码生成",
+      "综合"
+    ],
+    "AI得分": [
+      0.676,
+      0.267,
+      0.6,
+      0.49
+    ],
+    "人类专家": [
+      0.92,
+      0.88,
+      0.85,
+      0.88
+    ],
+    "人类初级": [
+      0.65,
+      0.55,
+      0.45,
+      0.55
+    ]
+  }
+}

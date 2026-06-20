@@ -1,0 +1,24 @@
+{
+  "title": "LLM News Sentiment vs Traditional NLP - Incremental Alpha Analysis",
+  "paper": "arXiv:2602.00086",
+  "period": "2025-06-01 ~ 2025-09-08",
+  "n_news": 479,
+  "alpha_analysis": {
+    "ic_llm": 0.0561,
+    "ic_nlp": -0.0948,
+    "incremental_ic": 0.1509,
+    "llm_long_short_spread": 0.001847,
+    "nlp_long_short_spread": -0.003998,
+    "incremental_spread": 0.005845,
+    "llm_annualized_alpha": 46.55,
+    "nlp_annualized_alpha": -100.75
+  },
+  "llm_sentiment_stats": {
+    "mean": 0.1493,
+    "std": 0.2527
+  },
+  "nlp_sentiment_stats": {
+    "mean": 0.1812,
+    "std": 0.2388
+  }
+}

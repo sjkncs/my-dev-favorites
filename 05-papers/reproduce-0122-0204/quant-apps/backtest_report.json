@@ -1,0 +1,106 @@
+{
+  "benchmark": "PredictionMarketBench",
+  "date": "2026-06-20T00:13:19.723457",
+  "market_data": {
+    "period": "2025-01-02 ~ 2026-12-02",
+    "n_days": 500
+  },
+  "strategies": [
+    {
+      "name": "Momentum-20D",
+      "metrics": {
+        "total_return": 344.8,
+        "annual_return": 112.17,
+        "max_drawdown": 13.68,
+        "sharpe_ratio": 2.43,
+        "sortino_ratio": 3.8536,
+        "win_rate": 22.6,
+        "n_trades": 53,
+        "avg_trade_pnl": -165.79,
+        "profit_factor": 0.48,
+        "gt_score": 1.7589,
+        "mean_oos_sharpe": 2.3677,
+        "std_oos_sharpe": 1.2499,
+        "mean_stability": 3.2428,
+        "in_sample_sharpes": [
+          3.6956,
+          0.334,
+          3.7394,
+          2.7786
+        ],
+        "out_sample_sharpes": [
+          0.334,
+          3.7394,
+          2.7786,
+          2.6189
+        ],
+        "overfitting_ratio": 0
+      },
+      "n_trades": 53
+    },
+    {
+      "name": "MeanReversion-BB",
+      "metrics": {
+        "total_return": -83.04,
+        "annual_return": -59.11,
+        "max_drawdown": 83.05,
+        "sharpe_ratio": -5.1114,
+        "sortino_ratio": -3.1449,
+        "win_rate": 39.3,
+        "n_trades": 28,
+        "avg_trade_pnl": -141.12,
+        "profit_factor": 0.31,
+        "gt_score": -6.3492,
+        "mean_oos_sharpe": -5.1852,
+        "std_oos_sharpe": 0.5617,
+        "mean_stability": 1.0255,
+        "in_sample_sharpes": [
+          -4.6658,
+          -4.6056,
+          -5.0811,
+          -6.1108
+        ],
+        "out_sample_sharpes": [
+          -4.6056,
+          -5.0811,
+          -6.1108,
+          -4.9433
+        ],
+        "overfitting_ratio": 0
+      },
+      "n_trades": 28
+    },
+    {
+      "name": "GT-Score-Robust",
+      "metrics": {
+        "total_return": 0.0,
+        "annual_return": 0.0,
+        "max_drawdown": 0.0,
+        "sharpe_ratio": 0.0,
+        "sortino_ratio": NaN,
+        "win_rate": 0.0,
+        "n_trades": 0,
+        "avg_trade_pnl": 0.0,
+        "profit_factor": 0.0,
+        "gt_score": 0.0,
+        "mean_oos_sharpe": 0.0,
+        "std_oos_sharpe": 0.0,
+        "mean_stability": 0,
+        "in_sample_sharpes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "out_sample_sharpes": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "overfitting_ratio": 1
+      },
+      "n_trades": 0
+    }
+  ]
+}
