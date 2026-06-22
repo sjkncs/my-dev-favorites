@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的开发收藏夹 - 综合分析看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 6px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #90a0b0;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat-pill {
+    background: #16213e;
+    border: 1px solid #0f3460;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-pill .num {
+    color: #4fc3f7;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid #0f3460;
+    display: flex;
+    flex-direction: column;
+  }
+  .card.full-width {
+    grid-column: 1 / -1;
+  }
+  .card.wide {
+    grid-column: span 2;
+  }
+  @media (max-width: 900px) {
+    .card.wide { grid-column: 1 / -1; }
+    .grid { grid-template-columns: 1fr; }
+  }
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #0f3460;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .chart-wrap {
+    position: relative;
+    flex: 1;
+    min-height: 280px;
+  }
+  .chart-wrap.small { min-height: 220px; }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    max-height: 520px;
+    overflow-y: auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: rgba(255,255,255,0.12);
+  }
+  .t-item {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 18px;
+  }
+  .t-item::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4fc3f7;
+    border: 2px solid #1a1a2e;
+    z-index: 1;
+  }
+  .t-item.high::before { background: #ef5350; }
+  .t-item.medium::before { background: #ffa726; }
+  .t-item.low::before { background: #66bb6a; }
+  .t-date {
+    font-size: 0.75rem;
+    color: #90a0b0;
+    margin-bottom: 2px;
+  }
+  .t-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .t-summary {
+    font-size: 0.8rem;
+    color: #b0bec5;
+    line-height: 1.4;
+  }
+  .t-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 1px 8px;
+    border-radius: 10px;
+    margin-top: 4px;
+    background: #0f3460;
+    color: #90caf9;
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    max-height: 520px;
+    overflow-y: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #0f3460;
+    white-space: nowrap;
+  }
+  th {
+    background: #0f3460;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  th:hover { background: #1a4a7a; }
+  tr:hover { background: rgba(255,255,255,0.03); }
+  .award {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    background: #ff8f00;
+    color: #1a1a2e;
+    font-weight: 700;
+  }
+  .award-nom { background: #ffd54f; }
+  .award-oral { background: #4fc3f7; color: #0a192f; }
+  .link-btn {
+    color: #4fc3f7;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .link-btn:hover { text-decoration: underline; }
+
+  /* Expandable cards */
+  .fq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .fq-card {
+    background: #1a1a2e;
+    border: 1px solid #0f3460;
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .fq-card:hover { border-color: #4fc3f7; }
+  .fq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .fq-brand {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .fq-tool {
+    font-size: 0.8rem;
+    color: #90a0b0;
+  }
+  .fq-toggle {
+    font-size: 1.2rem;
+    color: #4fc3f7;
+    transition: transform 0.3s;
+  }
+  .fq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .fq-card.expanded .fq-body {
+    max-height: 800px;
+    padding-top: 12px;
+  }
+  .fq-card.expanded .fq-toggle {
+    transform: rotate(180deg);
+  }
+  .fq-section {
+    margin-bottom: 10px;
+  }
+  .fq-label {
+    font-size: 0.8rem;
+    color: #4fc3f7;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .fq-text {
+    font-size: 0.85rem;
+    color: #cfd8dc;
+  }
+  .fq-list {
+    list-style: none;
+    font-size: 0.85rem;
+    color: #cfd8dc;
+  }
+  .fq-list li { padding: 2px 0; }
+  .fq-list li::before {
+    content: '• ';
+    color: #ef5350;
+  }
+  .fq-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .fq-act {
+    background: #0f3460;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  .fq-act strong {
+    display: block;
+    color: #4fc3f7;
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+</style>
+</head>
+<body>
+
+<h1>我的开发收藏夹 · 综合分析看板</h1>
+<div class="subtitle" id="lastUpdated"></div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="grid">
+
+  <div class="card wide">
+    <div class="card-title">(a) 消费品牌 AI 能力雷达</div>
+    <div class="chart-wrap"><canvas id="consumerRadar"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">(b) AI 大模型能力雷达</div>
+    <div class="chart-wrap"><canvas id="modelRadar"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">(b) API 输出价格对比 ($/1M tokens)</div>
+    <div class="chart-wrap small"><canvas id="priceBar"></canvas></div>
+  </div>
+
+  <div class="card wide">
+    <div class="card-title">(c) 股市月度走势（上证 vs 纳斯达克 / 恒生科技）</div>
+    <div class="chart-wrap"><canvas id="stockLine"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">(d) 半导体行业关键指标</div>
+    <div class="chart-wrap"><canvas id="semiBar"></canvas></div>
+  </div>
+
+  <div class="card wide">
+    <div class="card-title">(e) 顶会论文与 arXiv 热点（点击表头排序）</div>
+    <div class="table-wrap">
+      <table id="papersTable">
+        <thead>
+          <tr>
+            <th data-key="title">标题</th>
+            <th data-key="conference">会议</th>
+            <th data-key="award">奖项</th>
+            <th data-key="authors">作者</th>
+            <th data-key="institution">机构</th>
+            <th data-key="keyMetric">核心指标</th>
+            <th data-key="commercialPotential">商业潜力</th>
+            <th>链接</th>
+          </tr>
+        </thead>
+        <tbody id="papersBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card full-width">
+    <div class="card-title">(f) 消费品牌 AI 四问分析卡片（点击展开）</div>
+    <div class="fq-grid" id="fqGrid"></div>
+  </div>
+
+  <div class="card wide">
+    <div class="card-title">(g) 科技新闻时间轴</div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+</div>
+
+<script>
+// ======================== DATA ========================
+const DATA = {
+  meta: {
+    lastUpdated: "2026-06-15",
+    totalItems: { tips: 2, repos: 19, trivia: 1, memes: 1, consumerAI: 15, aiModels: 9, techNews: 56, stockMarket: 29, papers: 35 }
+  },
+  consumerAI: [
+    {"id":"brand-001","brand":"瑞幸咖啡","tool":"MCP/CLI/Skill","category":"AI点单","scores":{"aiDepth":8,"ux":7,"scale":9,"techBarrier":6,"commercialization":7},"fourQuestions":{"realProblem":"降低交易摩擦成本，抢占AI Agent时代的渠道入口","claimedContribution":"自然语言点单覆盖增量用户，智能优惠券提升核销率","attackPoints":["P0: 不支持外卖(覆盖仅60-70%订单)","P1: 语义理解容错性","P2: MCP协议无壁垒"],"actionGuide":{"scholar":"精读MCP协议设计","engineer":"学习MCP server架构","investor":"关注AI渠道投入意愿"}}},
+    {"id":"brand-002","brand":"喜茶","tool":"全套智能茶饮设备","category":"门店自动化","scores":{"aiDepth":6,"ux":8,"scale":8,"techBarrier":9,"commercialization":8},"fourQuestions":{"realProblem":"将'手艺'转化为'工艺'，在规模化扩张中保持产品品质一致性","claimedContribution":"出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖","attackPoints":["P0: 硬件迭代是刚性约束，单店设备投入数十万元","P1: '手工感'品牌风险","P2: 设备故障可能直接导致门店瘫痪"],"actionGuide":{"scholar":"研究智能设备的专利文件和工程设计思路","engineer":"学习'手艺转工艺'的参数化思维","investor":"关注硬件壁垒的战略价值"}}},
+    {"id":"brand-003","brand":"奈雪的茶","tool":"AI溯源预警系统 + 智能茶饮机","category":"食品安全AI","scores":{"aiDepth":7,"ux":7,"scale":7,"techBarrier":7,"commercialization":6},"fourQuestions":{"realProblem":"构建'信任基础设施'，在食品安全焦虑中建立差异化信任壁垒","claimedContribution":"消费者信任度提升，品牌差异化，供应链管理水平提升","attackPoints":["P0: 溯源数据'第一公里'真实性无法保证","P1: AI包装下的实际技术含量存疑","P2: 全面覆盖成本和管理复杂度极高"],"actionGuide":{"scholar":"研究溯源系统的数据架构和异常检测算法","engineer":"学习将'信任'产品化的设计思路","investor":"关注信任资产的品牌溢价能力"}}},
+    {"id":"brand-004","brand":"蜜雪冰城","tool":"雪王爱智慧科技","category":"AI底层技术","scores":{"aiDepth":5,"ux":5,"scale":10,"techBarrier":5,"commercialization":6},"fourQuestions":{"realProblem":"在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间","claimedContribution":"供应链成本优化，门店补货效率提升，规模化运营能力","attackPoints":["P0: AI系统1-2%成本节约能否覆盖系统建设运维成本","P1: 下沉市场门店数据录入质量差","P2: AI只能支撑成本节约，想象空间有限"],"actionGuide":{"scholar":"研究大规模供应链ML优化的工程实践","engineer":"学习在极致成本约束下做务实AI","investor":"关注3万+门店规模下供应链效率的亿级利润增量"}}},
+    {"id":"brand-005","brand":"星巴克","tool":"Green Dot Assist（绿点助手）","category":"员工辅助AI","scores":{"aiDepth":4,"ux":7,"scale":7,"techBarrier":3,"commercialization":5},"fourQuestions":{"realProblem":"降低一线员工认知负荷，在人员高流动率下保障服务一致性","claimedContribution":"新员工培训时间缩短，出品一致性提升，员工满意度改善","attackPoints":["P0: 技术壁垒极低，任何品牌几周内可搭建类似系统","P1: 高并发场景下API成本和延迟问题","P2: 忙碌时员工是否真的会查询AI"],"actionGuide":{"scholar":"研究知识库构建和SOP结构化方法","engineer":"学习将AI嵌入一线员工工作流的产品思路","investor":"关注技术门槛低的工具类AI的投资价值"}}},
+    {"id":"brand-006","brand":"星巴克","tool":"Deep Brew AI 平台","category":"个性化推荐","scores":{"aiDepth":8,"ux":9,"scale":10,"techBarrier":7,"commercialization":9},"fourQuestions":{"realProblem":"最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'","claimedContribution":"会员保留率提升15%，创造约2.5亿美元增量年收入","attackPoints":["P0: 2.5亿美元增量的归因方法极其模糊","P1: 数据飞轮在新市场/新品类上的冷启动问题","P2: 隐私合规审查日益严格"],"actionGuide":{"scholar":"精读星巴克Investor Day关于Deep Brew的技术演示","engineer":"学习AI推荐系统与会员LTV深度绑定的产品思维","investor":"关注AI驱动的会员运营的ROI衡量方法论"}}},
+    {"id":"brand-007","brand":"星巴克","tool":"AI库存管理工具（已停用）","category":"需求预测AI（失败案例）","scores":{"aiDepth":5,"ux":2,"scale":1,"techBarrier":5,"commercialization":0},"fourQuestions":{"realProblem":"用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失","claimedContribution":"声称可降低库存浪费20-30%（实际未达成）","attackPoints":["P0: 组织适配失败——门店经理抵触AI'夺权'","P1: 长尾品类需求预测精度崩溃","P2: 底层库存数据不准确（GIGO问题）","P3: 缺乏渐进式过渡，试图一步到位替代人工"],"actionGuide":{"scholar":"精读失败案例的公开报道和员工反馈","engineer":"学习'先辅助建议后逐步自动化'的正确路径","investor":"警惕声称'AI可直接替代人工订货'的供应商"}}},
+    {"id":"brand-008","brand":"库迪咖啡","tool":"智慧运营体系","category":"智慧运营","scores":{"aiDepth":7,"ux":6,"scale":9,"techBarrier":6,"commercialization":7},"fourQuestions":{"realProblem":"通过'去技能化'实现极速扩张，将门店运营对人的依赖降到最低","claimedContribution":"支撑从0到数千家门店的超高速扩张，运营标准化","attackPoints":["P0: 动态定价合规风险（价格歧视/大数据杀熟）","P1: '去技能化'反而加剧人员流动","P2: 加盟商对'系统说了算但亏的是我'不满"],"actionGuide":{"scholar":"研究'去技能化'运营设计思路","engineer":"学习动态定价的技术实现框架","investor":"评估系统控制+加盟扩张模式的可持续性"}}},
+    {"id":"brand-009","brand":"肯德基","tool":"AI点餐助手'小K'","category":"AI语音点餐","scores":{"aiDepth":7,"ux":7,"scale":8,"techBarrier":6,"commercialization":7},"fourQuestions":{"realProblem":"在得来速和店内场景用语音AI替代人工点餐，降低人力成本","claimedContribution":"点餐效率提升，人力成本节约，智能推荐增加客单价","attackPoints":["P0: 嘈杂环境语音识别准确率下降，纠错成本高","P1: 复杂定制需求（不要酸黄瓜多加酱）处理困难","P2: 中国方言多样性对ASR要求极高"],"actionGuide":{"scholar":"精读嘈杂环境语音识别技术方案","engineer":"学习'引导式对话'降低语音识别难度","investor":"评估得来速vs店内场景的落地差异"}}},
+    {"id":"brand-010","brand":"麦当劳","tool":"RGM BOSS + 汉堡大学AI智能陪练","category":"员工数字化","scores":{"aiDepth":5,"ux":7,"scale":8,"techBarrier":4,"commercialization":6},"fourQuestions":{"realProblem":"员工一站式工作辅助与培训数字化化，降低管理成本","claimedContribution":"5年内计划投入40亿元数字化创新","attackPoints":["P0: 技术门槛低，RAG应用同质化","P1: AI陪练'个性化学习路径'的实际效果存疑","P2: 员工对数字化培训的接受度"],"actionGuide":{"scholar":"研究AI虚拟导师与脑神经科学结合的设计","engineer":"学习员工辅助AI的产品架构","investor":"关注40亿数字化投入的实际产出"}}},
+    {"id":"brand-011","brand":"海底捞","tool":"AI智慧巡检系统 + 智能体机器人","category":"AI巡检","scores":{"aiDepth":7,"ux":7,"scale":9,"techBarrier":7,"commercialization":8},"fourQuestions":{"realProblem":"将'巡店'从人力密集转为自动化、可规模化的智能监控体系","claimedContribution":"识别准确率超95%，覆盖率超98%，80%后厨传菜由机器人完成","attackPoints":["P0: Goodhart定律——度量变目标则不再是好度量","P1: '有温度的服务'恰恰最难被AI量化","P2: 餐饮门店复杂环境下CV准确率"],"actionGuide":{"scholar":"研究AI巡检的具体检测维度和误报率数据","engineer":"学习AI巡检与门店管理流程的深度集成","investor":"区分'提质工具'vs'降本工具'的定位差异"}}},
+    {"id":"brand-012","brand":"茶百道","tool":"智能管理体系","category":"AI巡检+品控","scores":{"aiDepth":6,"ux":7,"scale":9,"techBarrier":5,"commercialization":7},"fourQuestions":{"realProblem":"8000+门店的统一品控和经营管理数字化","claimedContribution":"AI巡检覆盖8000+门店，智能补货和制备系统提升效率","attackPoints":["P0: 依赖第三方大模型（DeepSeek/豆包），自主性不足","P1: 8000+门店规模下执行一致性挑战","P2: 飞书平台绑定度"],"actionGuide":{"scholar":"研究多模型协同在连锁品控中的应用","engineer":"学习基于飞书的数字化底座构建","investor":"评估AI品控对品牌价值的影响"}}},
+    {"id":"brand-013","brand":"霸王茶姬","tool":"智能调饮系统 + '茶茶圈'AI知识管理","category":"智能标准化","scores":{"aiDepth":6,"ux":9,"scale":9,"techBarrier":6,"commercialization":9},"fourQuestions":{"realProblem":"在极简SKU下实现极致效率和绝对标准化，支撑高速扩张","claimedContribution":"8秒出杯，口感误差率<0.2%，全球7000+门店品质一致性","attackPoints":["P0: 极简SKU的品类扩展时系统灵活性不足","P1: 技术壁垒有限，竞品可采购类似设备","P2: 高度依赖'鲜奶茶'品类持续流行"],"actionGuide":{"scholar":"研究'极简SKU+智能标准化'的系统性商业设计","engineer":"学习核心产品制作过程彻底参数化的方法论","investor":"关注'少即是多'产品哲学的商业回报"}}},
+    {"id":"brand-014","brand":"阿里通义千问","tool":"千问App'一句话点奶茶'","category":"AI Agent消费入口","scores":{"aiDepth":8,"ux":8,"scale":10,"techBarrier":7,"commercialization":7},"fourQuestions":{"realProblem":"验证AI Agent作为'超级入口'的商业可行性，抢占AI原生消费定义权","claimedContribution":"当天不到3小时下单100万单，9小时卖出1000万单","attackPoints":["P0: 补贴驱动不可持续，退坡后留存率未知","P1: 复购已知商品时可能比App更慢","P2: 推荐排序公平性——与搜索竞价排名有何本质区别？"],"actionGuide":{"scholar":"精读技术架构公开分享（Prompt工程/工具调用/状态管理）","engineer":"学习'一句话'极简交互触发复杂后端处理的设计","investor":"评估AI Agent入口的平台级潜力与补贴依赖风险"}}},
+    {"id":"brand-015","brand":"蜜雪冰城","tool":"雪王爱智慧 - AI公共数据平台","category":"AI数据平台","scores":{"aiDepth":6,"ux":3,"scale":8,"techBarrier":6,"commercialization":4},"fourQuestions":{"realProblem":"从应用层向算法与平台层延伸，建立AI底层技术能力","claimedContribution":"专注AI底层技术研发，公共数据平台建设","attackPoints":["P0: 技术公司刚成立，尚无可见成果","P1: 5000万注册资本对AI研发而言偏少","P2: 从消费品牌跨入底层AI研发的可行性"],"actionGuide":{"scholar":"关注其AI公共数据平台的技术方向","engineer":"观察其在供应链AI上的工程实践","investor":"追踪技术公司的后续研发投入和成果"}}}
+  ],
+  aiModels: [
+    {"id":"model-001","name":"GPT-5.5","vendor":"OpenAI","scores":{"reasoning":9,"coding":8,"multimodal":9,"priceCompetitiveness":3,"contextLength":7,"ecosystem":10},"pricing":{"input":15,"output":60,"unit":"$/1M tokens"}},
+    {"id":"model-002","name":"DeepSeek V4","vendor":"DeepSeek","scores":{"reasoning":8,"coding":8,"multimodal":6,"priceCompetitiveness":10,"contextLength":7,"ecosystem":7},"pricing":{"input":2,"output":8,"unit":"$/1M tokens"}},
+    {"id":"model-003","name":"Claude 4 Opus","vendor":"Anthropic","scores":{"reasoning":9,"coding":10,"multimodal":8,"priceCompetitiveness":4,"contextLength":8,"ecosystem":8},"pricing":{"input":15,"output":75,"unit":"$/1M tokens"}},
+    {"id":"model-004","name":"Claude 4 Sonnet","vendor":"Anthropic","scores":{"reasoning":8,"coding":9,"multimodal":8,"priceCompetitiveness":6,"contextLength":8,"ecosystem":8},"pricing":{"input":3,"output":15,"unit":"$/1M tokens"}},
+    {"id":"model-005","name":"Gemini 3.5 Flash","vendor":"Google","scores":{"reasoning":8,"coding":7,"multimodal":9,"priceCompetitiveness":7,"contextLength":9,"ecosystem":9},"pricing":{"input":1,"output":4,"unit":"$/1M tokens"}},
+    {"id":"model-006","name":"Gemini 3 Deep Think","vendor":"Google","scores":{"reasoning":10,"coding":7,"multimodal":8,"priceCompetitiveness":5,"contextLength":8,"ecosystem":8},"pricing":{"input":10,"output":40,"unit":"$/1M tokens"}},
+    {"id":"model-007","name":"豆包 2.0","vendor":"字节跳动","scores":{"reasoning":7,"coding":7,"multimodal":8,"priceCompetitiveness":8,"contextLength":7,"ecosystem":10},"pricing":{"input":2,"output":6,"unit":"$/1M tokens"}},
+    {"id":"model-008","name":"通义千问 (Qwen)","vendor":"阿里巴巴","scores":{"reasoning":7,"coding":7,"multimodal":7,"priceCompetitiveness":9,"contextLength":8,"ecosystem":8},"pricing":{"input":1,"output":3,"unit":"$/1M tokens"}},
+    {"id":"model-009","name":"MiniMax","vendor":"MiniMax","scores":{"reasoning":7,"coding":6,"multimodal":8,"priceCompetitiveness":9,"contextLength":8,"ecosystem":6},"pricing":{"input":1.5,"output":5,"unit":"$/1M tokens"}}
+  ],
+  stockMarket: [
+    {"date":"2026-01-31","index":"上证指数","value":3350},{"date":"2026-01-31","index":"纳斯达克综合指数","value":19800},{"date":"2026-01-31","index":"恒生科技指数","value":5200},
+    {"date":"2026-02-28","index":"上证指数","value":3420},{"date":"2026-02-28","index":"纳斯达克综合指数","value":20100},{"date":"2026-02-28","index":"恒生科技指数","value":5380},
+    {"date":"2026-03-31","index":"上证指数","value":3380},{"date":"2026-03-31","index":"纳斯达克综合指数","value":20500},{"date":"2026-03-31","index":"恒生科技指数","value":5500},
+    {"date":"2026-04-30","index":"上证指数","value":3450},{"date":"2026-04-30","index":"纳斯达克综合指数","value":21200},{"date":"2026-04-30","index":"恒生科技指数","value":5650},
+    {"date":"2026-05-31","index":"上证综指","value":3987},{"date":"2026-05-31","index":"纳斯达克综合指数","value":23500},{"date":"2026-05-31","index":"恒生科技指数","value":5100},
+    {"date":"2026-06-15","index":"上证综指","value":4052.18},{"date":"2026-06-15","index":"纳斯达克综合指数","value":25948.22},{"date":"2026-06-15","index":"恒生科技指数","value":4735.8}
+  ],
+  semiMetrics: [
+    { label: "中国芯片出口增速", value: 72.6 },
+    { label: "全球半导体市场增速", value: 90.0 },
+    { label: "中国成熟制程出口增速", value: 100.1 },
+    { label: "三星2nm订单增长目标", value: 130.0 },
+    { label: "全球AI市场增速", value: 35.2 },
+    { label: "三星2nm良率", value: 60.0 }
+  ],
+  techNews: [
+    {"date":"2026-01-05","title":"AMD CES 2026全面扩展AI布局","category":"半导体","importance":4,"summary":"AMD发布新款锐龙处理器、Ryzen AI及AMD ROCm，全面扩展客户端、图形和AI领域领导力"},
+    {"date":"2026-01-06","title":"CES 2026：AI硬件与机器人走出实验室","category":"AI","importance":4,"summary":"4500余家科技企业参展，AI PC、AI眼镜、AI机器人、数字健康成为六大前沿趋势。现代汽车展示波士顿动力新一代Atlas机器人"},
+    {"date":"2026-01-08","title":"小米玄戒O1获最高技术大奖","category":"半导体","importance":3,"summary":"小米自研芯片玄戒O1斩获最高奖，雷军宣布未来五年研发投入2000亿元。玄戒O2预计2026年8月上市"},
+    {"date":"2026-01-09","title":"周鸿祎发布2026年20个AI预言","category":"AI","importance":2,"summary":"360集团创始人预言2026年将成为'百亿智能体时代'的开端，Agent框架和企业级应用将迎来爆发"},
+    {"date":"2026-01-20","title":"DeepSeek新模型预热","category":"AI","importance":3,"summary":"代号为'Model1'的模型意外出现在测试平台，引发市场对DeepSeek下一代模型的广泛猜想"},
+    {"date":"2026-01-22","title":"百度文心Moment大会","category":"AI","importance":3,"summary":"百度在上海举办文心Moment大会，发布文心大模型最新进展及行业应用"},
+    {"date":"2026-02-01","title":"优必选发布开源具身智能模型Thinker","category":"AI","importance":3,"summary":"开源具身智能模型Thinker，参数规模4B，具备任务规划、空间建模与时序推理能力"},
+    {"date":"2026-02-06","title":"三星激进目标：2026年2nm芯片订单增长130%","category":"半导体","importance":4,"summary":"三星电子代工部门计划2nm芯片订单量同比增长130%，2nm GAA工艺良率已达到50%以上"},
+    {"date":"2026-02-12","title":"Google发布Gemini 3 Deep Think","category":"AI","importance":4,"summary":"专为科学研究与工程难题设计，标志着Gemini系列在深度推理方向的重大升级"},
+    {"date":"2026-02-14","title":"字节跳动发布豆包大模型2.0","category":"AI","importance":5,"summary":"包含1万亿参数基础模型，重点提升企业级Agent能力与复杂任务执行能力，支撑亿级用户场景"},
+    {"date":"2026-03-01","title":"中国芯片出口强劲开局","category":"半导体","importance":5,"summary":"2026年1-2月中国集成电路出口额约433亿美元，同比暴涨72.6%，成熟制程芯片成为出口主力"},
+    {"date":"2026-03-01","title":"三星2nm工艺良率突破60%","category":"半导体","importance":4,"summary":"三星2纳米GAA工艺良率已突破60%，较2025年下半年约20%大幅提升，商业化进程显著提速"},
+    {"date":"2026-03-01","title":"国产大模型全球调用量首次反超海外","category":"AI","importance":4,"summary":"MiniMax、阿里通义千问等国产旗舰模型在推理效率、上下文长度和成本优化上表现突出"},
+    {"date":"2026-03-08","title":"特斯拉Optimus Gen3量产在即","category":"AI","importance":4,"summary":"市场聚焦特斯拉第三代Optimus人形机器人，预计2026年Q1正式亮相并启动量产"},
+    {"date":"2026-03-16","title":"NVIDIA GTC 2026：Vera Rubin平台登场","category":"半导体/AI","importance":5,"summary":"黄仁勋发布新一代Vera Rubin平台及7款新芯片，预测到2027年全球数据中心AI算力需求将带来至少1万亿美元营收"},
+    {"date":"2026-03-20","title":"小米发布三款自研大模型","category":"AI","importance":3,"summary":"雷军表示2026年小米AI投入将超160亿元，未来三年在AI领域计划至少投资600亿元"},
+    {"date":"2026-03-31","title":"NeurIPS 2026征稿规则引发学界争议","category":"AI","importance":2,"summary":"NeurIPS 2026新增'引入条款'引发学术界广泛批评，组委会随后紧急道歉"},
+    {"date":"2026-04-01","title":"DeepSeek-V4预览版发布","category":"AI","importance":5,"summary":"具备世界顶级推理性能，Agent能力大幅提高，聚焦编程能力与超长代码上下文处理"},
+    {"date":"2026-04-04","title":"证监会：2026年将深化细化高频量化交易监管","category":"股市应用","importance":4,"summary":"证监会主席吴清明确表示将突出公平性原则，深化细化高频量化交易监管"},
+    {"date":"2026-04-08","title":"中国半导体迎IPO潮","category":"半导体","importance":4,"summary":"2025年以来已有10家半导体企业成功IPO，另有85家正在排队申报，涵盖全链条"},
+    {"date":"2026-04-10","title":"国内'百模大战'再升级","category":"AI","importance":4,"summary":"阿里、字节跳动、腾讯几乎在同一时期密集发布大模型更新，推理成本持续下降"},
+    {"date":"2026-04-15","title":"英伟达股价10连涨","category":"股市应用/半导体","importance":4,"summary":"英伟达股价实现10个交易日连涨，累计涨幅超18%，为2023年后最长连涨纪录"},
+    {"date":"2026-04-28","title":"雷军：小米自研芯片出货超百万颗","category":"半导体","importance":3,"summary":"小米玄戒系列自研芯片累计出货已超百万颗，同时新款小米机器人正式亮相"},
+    {"date":"2026-04-29","title":"OpenAI发布GPT-5.5","category":"AI","importance":5,"summary":"与DeepSeek V4几乎同期登场，全球大模型进入'7大模型混战'格局"},
+    {"date":"2026-05-08","title":"Figure发布双机协作人形机器人视频","category":"AI","importance":3,"summary":"两台搭载Helix02系统的人形机器人在卧室场景中连续完成复杂协作任务"},
+    {"date":"2026-05-14","title":"Anthropic发布Claude 4","category":"AI","importance":5,"summary":"被称为公司历史上最强大的AI模型，Claude Opus 4被评为全球最佳编程模型，Agentic能力显著增强"},
+    {"date":"2026-05-20","title":"Google I/O 2026","category":"AI","importance":5,"summary":"发布Gemini 3.5 Flash、视频模型Omni、全天候AI代理Spark及Android XR，全面聚焦Agentic AI"},
+    {"date":"2026-05-28","title":"雷军预告小米'三项自研大会师'","category":"半导体/AI","importance":3,"summary":"2026年小米最重磅新品将实现自研芯片（玄戒）、自研OS（澎湃OS）、AI大模型三项'大会师'"},
+    {"date":"2026-06-01","title":"证券APP全面AI原生转型","category":"股市应用","importance":4,"summary":"华泰证券推出'AI涨乐'（业内首款AI原生交易APP），国泰君安发布'君弘灵犀'垂类大模型。AI量化交易全年有望达A股总成交额36.8%"},
+    {"date":"2026-06-01","title":"全球半导体与AI市场预测密集发布","category":"半导体/AI","importance":5,"summary":"Gartner预计2026年全球半导体收入超1.3万亿美元(+64%)；IDC预测2026年全球AI市场3010亿美元(+35.2%)；中国成熟制程芯片出口前四个月同比+100.1%"},
+    {"date":"2026-06-08","title":"英伟达与SK海力士宣布多年期技术合作","category":"半导体","importance":"high","summary":"双方将联手研发下一代AI内存，SK海力士为Vera Rubin开发专用内存，采用CUDA-X加速芯片仿真"},
+    {"date":"2026-06-12","title":"美国商务部新规封堵AI芯片流向中企海外分支","category":"芯片出口管制","importance":"high","summary":"商务部发布最新出口管制细则，进一步封堵中国企业在海外设立的分支机构获取先进AI芯片的渠道"},
+    {"date":"2026-06-12","title":"英伟达CEO黄仁勋拒绝出席参议院AI芯片出口听证会","category":"AI芯片","importance":"high","summary":"黄仁勋以日程冲突为由拒绝出席，此前6月8日在首尔称半导体股票暴跌是买入机会"},
+    {"date":"2026-06-12","title":"苹果WWDC 2026发布Google Gemini驱动的全新Siri AI","category":"AI产品","importance":"high","summary":"苹果Siri全面接入Google Gemini大模型，实现跨App智能操作、上下文理解和多轮对话"},
+    {"date":"2026-06-12","title":"Anthropic秘密提交S-1，估值9650亿美元逼近万亿","category":"AI融资/IPO","importance":"high","summary":"Anthropic秘密向SEC提交S-1，最新估值9650亿美元超越OpenAI，计划10月上市"},
+    {"date":"2026-06-12","title":"费城半导体指数连续大涨，芯片股创一年最佳表现","category":"半导体","importance":"medium","summary":"经历6月初暴跌后全球芯片股强劲反弹，费城半导体指数连续三日大涨"},
+    {"date":"2026-06-12","title":"SpaceX史上最大IPO登陆纳斯达克，估值1.75万亿美元","category":"IPO","importance":"high","summary":"SpaceX发行价135美元，募资约750亿美元，为美国有史以来最大规模IPO"},
+    {"date":"2026-06-12","title":"台积电CoPoS先进封装技术进入量产准备阶段","category":"半导体制造","importance":"medium","summary":"新型Chip-on-Panel-on-Substrate封装技术预计下半年为AI芯片客户提供服务"},
+    {"date":"2026-06-12","title":"华为AI芯片获字节跳动和阿里巴巴批量订单","category":"国产芯片","importance":"high","summary":"华为昇腾系列AI芯片获得头部互联网公司批量订单，标志国产AI芯片规模化落地"},
+    {"date":"2026-06-15","title":"韩国投入8000亿韩元加速开发国产在线设备AI半导体","category":"半导体","importance":"high","summary":"韩国政府计划通过建立需求企业、无厂半导体公司、代工厂协作体系，投入8000亿韩元推动本土AI芯片商业化"},
+    {"date":"2026-06-15","title":"国产AI芯片巨头6月15日上会审核","category":"半导体/IPO","importance":"high","summary":"上海证券交易所上市审核委员会定于6月15日召开审议会议，审核国产AI芯片龙头企业IPO申请"},
+    {"date":"2026-06-15","title":"WSTS预测2026年全球半导体市场增长90%达1.3万亿美元","category":"半导体","importance":"high","summary":"世界半导体贸易统计组织预测2026年全球半导体市场同比增长约90%，AI算力需求是核心驱动力"},
+    {"date":"2026-06-15","title":"AI拉动芯片需求，半导体ETF涨3.35%","category":"半导体","importance":"medium","summary":"行业增长预期强劲，芯片ETF（易方达）涨3.35%，产业链各环节景气度提升"},
+    {"date":"2026-06-15","title":"深证成指、创业板指等指数6月15日调整样本股","category":"股市","importance":"medium","summary":"深圳证券信息有限公司对深证成指、创业板指等指数实施样本股定期调整，反映A股市场结构新变化"},
+    {"date":"2026-06-15","title":"蜜雪冰城以极致性价比模式进军纽约市场","category":"消费品牌","importance":"high","summary":"蜜雪冰城将国内低价高质策略复制到纽约，试图用价格杠杆撬动海外市场"},
+    {"date":"2026-06-15","title":"AI半导体板块6月遭遇剧烈抛售，单日市值蒸发约1.4万亿美元","category":"半导体","importance":"high","summary":"2026年6月初AI半导体板块经历大规模回调，费城半导体指数一度暴跌约10%，英伟达博通等龙头大幅下跌，随后迅速反弹"},
+    {"date":"2026-06-15","title":"Arm有望提前达成150亿美元AI芯片年收入目标","category":"半导体","importance":"high","summary":"Arm Holdings CEO Rene Haas表示有望提前实现150亿美元AI芯片年收入目标，数据中心级AI芯片将带来巨额收入，股价一度大涨16%"},
+    {"date":"2026-06-15","title":"苹果WWDC 2026发布全新Siri AI独立应用，深度整合Google Gemini","category":"AI产品","importance":"high","summary":"苹果推出全新Siri AI独立应用，底层采用Google Gemini 1.2万亿参数大模型，三层智能架构兼顾性能与隐私"}
+  ],
+  papers: [
+    {"id":"paper-001","title":"D4RT: Unified, Fast 4D Scene Reconstruction & Tracking","conference":"CVPR 2026","award":"最佳论文","authors":"Chuhan Zhang, Guillaume Le Moing, Skanda Koppula et al.","institution":"Google DeepMind, UCL, Oxford","summary":"统一前馈Transformer联合推断深度/时空/相机参数，速度快18-300倍","keyMetric":"速度提升18-300x","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2512.08924","pdfUrl":"https://arxiv.org/pdf/2512.08924"},
+    {"id":"paper-002","title":"TRELLIS.2: Native and Compact Structured Latents for 3D Generation","conference":"CVPR 2026","award":"最佳学生论文","authors":"Jianfeng Xiang, Xiaoxue Chen, Sicheng Xu et al.","institution":"清华大学、微软研究院、中国科学技术大学","summary":"提出O-Voxel结构化潜表示，实现原生3D大模型生成，17秒内生成超高精度PBR资产","keyMetric":"17秒生成游戏级PBR资产","commercialPotential":5,"arxivUrl":"https://arxiv.org/abs/2512.14692","pdfUrl":"https://arxiv.org/pdf/2512.14692"},
+    {"id":"paper-003","title":"NitroGen: An Open Foundation Model for Generalist Gaming Agents","conference":"CVPR 2026","award":"最佳论文荣誉提名","authors":"Loic Magne et al.","institution":"NVIDIA","summary":"基于40,000小时游戏视频训练的通用视觉-动作基础模型，可在1,000多款游戏中执行通用游戏智能体任务","keyMetric":"40,000小时训练数据，1000+游戏泛化","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2601.02427","pdfUrl":"https://arxiv.org/pdf/2601.02427"},
+    {"id":"paper-004","title":"Transformers are Inherently Succinct","conference":"ICLR 2026","award":"杰出论文奖","authors":"Pascal Bergstraesser, Ryan Cotterell, Anthony W. Lin","institution":"ETH Zurich, MPI-SWS","summary":"理论证明固定精度的Transformer在表达能力上具有内在简洁性，指数级压缩成为可能","keyMetric":"指数级简洁性证明 + EXPSPACE验证不可能性","commercialPotential":2,"arxivUrl":"https://arxiv.org/abs/2510.19315","pdfUrl":"https://arxiv.org/pdf/2510.19315"},
+    {"id":"paper-005","title":"LLMs Get Lost In Multi-Turn Conversation","conference":"ICLR 2026","award":"杰出论文奖","authors":"Philippe Laban, Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville","institution":"Salesforce AI Research","summary":"系统评估LLM在多轮对话中的退化现象，性能下降达39%，早期假设锚定效应导致纠正失败","keyMetric":"多轮对话性能下降39%，纠正失败率>95%","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2505.06120","pdfUrl":"https://arxiv.org/pdf/2505.06120"},
+    {"id":"paper-006","title":"OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration","conference":"ICML 2026","award":"Oral","authors":"Shaobo Wang, Xuan Ouyang, Tianyi Xu, Yuzheng Hu et al.","institution":"未公开","summary":"提出在LLM预训练每次迭代中进行高效数据选择的方法，仅用1/7数据超越全量训练","keyMetric":"1/7数据超越全量训练","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2602.05400","pdfUrl":"https://arxiv.org/pdf/2602.05400"},
+    {"id":"paper-007","title":"Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs","conference":"ICML 2026","award":"Oral","authors":"Sagnik Mukherjee, Lifan Yuan, Pavan Jayasinha, Dilek Hakkani-Tuer, Hao Peng","institution":"未公开","summary":"挑战Adam优化器在LLM RL中的主导地位，SGD仅更新0.02%参数即匹配AdamW效果","keyMetric":"0.02%参数更新匹配AdamW","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2602.07729","pdfUrl":"https://arxiv.org/pdf/2602.07729"},
+    {"id":"paper-008","title":"Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs","conference":"ICML 2026","award":"Oral","authors":"Chufan Shi, Cheng Yang, Jiaqi Wang et al.","institution":"未公开","summary":"揭示多模态大模型中视觉感知幻觉，thinking模型视觉幻觉频率是普通VLM的3倍","keyMetric":"thinking模型视觉幻觉3倍于普通VLM","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2605.15864","pdfUrl":"https://arxiv.org/pdf/2605.15864"},
+    {"id":"paper-009","title":"PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs","conference":"arXiv 2026","award":"","authors":"百度 PaddlePaddle 团队","institution":"百度","summary":"轻量级OCR系统，34.5M参数超越十亿级VLM","keyMetric":"34.5M参数超越Billion-scale VLM","commercialPotential":5,"arxivUrl":"https://arxiv.org/abs/2606.13108","pdfUrl":"https://arxiv.org/pdf/2606.13108"},
+    {"id":"paper-010","title":"SENTINEL: Failure-Driven RL for Tool-Using LLM Agents","conference":"arXiv 2026","award":"","authors":"Ziyi Wang, Yuxuan Lu 等","institution":"未公开","summary":"失败驱动强化学习框架，高效训练工具使用agent","keyMetric":"训练效率提升3-5x","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.12908","pdfUrl":"https://arxiv.org/pdf/2606.12908"},
+    {"id":"paper-011","title":"Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention","conference":"arXiv 2026","award":"","authors":"Gilhan Kim, Daniel K. Park","institution":"未公开","summary":"统计物理Ising模型引入注意力机制","keyMetric":"注意力协同效果提升","commercialPotential":2,"arxivUrl":"https://arxiv.org/abs/2606.12478","pdfUrl":"https://arxiv.org/pdf/2606.12478"},
+    {"id":"paper-012","title":"HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers","conference":"arXiv 2026","award":"","authors":"Zhang, Qiu, Cui 等","institution":"未公开","summary":"统一多模态模型架构，整体式视觉tokenizer","keyMetric":"统一多模态架构","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.13289","pdfUrl":"https://arxiv.org/pdf/2606.13289"},
+    {"id":"paper-013","title":"The Hidden Power of Scaling Factor in LoRA Optimization","conference":"arXiv 2026","award":"","authors":"Zicheng Zhang, Haoran Li 等","institution":"未公开","summary":"揭示LoRA缩放因子alpha的独立影响","keyMetric":"NLP/CV任务提升1-3pp","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2606.12883","pdfUrl":"https://arxiv.org/pdf/2606.12883"},
+    {"id":"paper-014","title":"ExpWeaver: LLM Agents Learn from Experience via Latent RAG","conference":"arXiv 2026","award":"","authors":"未公开","institution":"未公开","summary":"通过潜在表示实现Agent经验积累和复用","keyMetric":"Agent经验复用","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2606.01041","pdfUrl":"https://arxiv.org/pdf/2606.01041"},
+    {"id":"paper-015","title":"REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents","conference":"arXiv 2026","award":"","authors":"未公开","institution":"未公开","summary":"针对Agent静默失败提出干预支持的错误归因框架","keyMetric":"错误检测率+40%","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2606.09071","pdfUrl":"https://arxiv.org/pdf/2606.09071"},
+    {"id":"paper-016","title":"Gaze Heads: How VLMs Look at What They Describe","conference":"arXiv 2026","award":"","authors":"Rohit Gandikota, David Bau","institution":"Northeastern University","summary":"发现VLM中演化出特殊的gaze heads注意力头，注意力分布追踪模型正在描述的图像区域","keyMetric":"揭示VLM跨模态对齐新机制","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2606.14703","pdfUrl":"https://arxiv.org/pdf/2606.14703"},
+    {"id":"paper-017","title":"OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains","conference":"arXiv 2026","award":"","authors":"Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang, Ran He, Caifeng Shan","institution":"南京大学、中国科学院自动化研究所","summary":"提出OmniVideo-100K数据集，通过实体锚定视频脚本与线索引导问答生成构建结构化证据链","keyMetric":"10万级结构化音视频推理数据集","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14702","pdfUrl":"https://arxiv.org/pdf/2606.14702"},
+    {"id":"paper-018","title":"RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers","conference":"arXiv 2026","award":"","authors":"Timing Yang, Predrag Neskovic, Jansen Seheult, Wenchao Han, Anand Bhattad, Alan Yuille, Feng Wang","institution":"Johns Hopkins University, 美国海军研究办公室, Mayo Clinic","summary":"通过寄存器注意力机制，Transformer patch令牌涌现出对物体部件的显式表达","keyMetric":"无监督视觉概念学习新路径","commercialPotential":3,"arxivUrl":"https://arxiv.org/abs/2606.14701","pdfUrl":"https://arxiv.org/pdf/2606.14701"},
+    {"id":"paper-019","title":"RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space","conference":"arXiv 2026","award":"","authors":"Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie","institution":"Meta AI, New York University","summary":"将MLLM重新用作带噪表示编码器，输出直接作为扩散Transformer条件信号","keyMetric":"相近推理预算下优于全新去噪网络","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14700","pdfUrl":"https://arxiv.org/pdf/2606.14700"},
+    {"id":"paper-020","title":"AdaSR: Adaptive Streaming Reasoning with Hierarchical Relative Policy Optimization","conference":"arXiv 2026","award":"","authors":"Junlong Tong, Wenqi Xu, Yingqi Fan, Anhao Zhao, Xuan Lu, Yang Tan, Xiaoyu Shen","institution":"东方理工高等研究院、上海交通大学、香港理工大学、东南大学、西交利物浦大学","summary":"自适应流式推理框架，输入流式传输过程中即可推理，突破传统读-再想模式延迟瓶颈","keyMetric":"流式推理延迟突破","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14694","pdfUrl":"https://arxiv.org/pdf/2606.14694"},
+    {"id":"paper-021","title":"CORA: Analyzing and Bridging Thinking-Answer Gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment","conference":"arXiv 2026","award":"","authors":"Jiayue Cao, Zhicong Lu, Xuehan Sun, Wei Jia, Hongling Zheng, Changyuan Tian, Zichuan Lin, Wenqian Lv, Nayu Liu","institution":"中国科学院大学、武汉大学、清华大学、天津大学","summary":"CORA通过一致性奖励模型将思维-答案语义一致性引入RLVR，缓解推理与答案脱节","keyMetric":"多模态推理基准性能显著提升","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14691","pdfUrl":"https://arxiv.org/pdf/2606.14691"},
+    {"id":"paper-022","title":"Persona-Pruner: Sculpting Lightweight Models for Role-Playing","conference":"ICML 2026","award":"","authors":"Jinsu Kim, Jihoon Tack, Noah Lee, Jongheon Jeong","institution":"Korea University — TAIL Lab","summary":"从单一角色描述中雕刻轻量级角色专属模型，识别并隔离角色对应子网络","keyMetric":"角色专属子网络压缩","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14695","pdfUrl":"https://arxiv.org/pdf/2606.14695"},
+    {"id":"paper-023","title":"Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control","conference":"arXiv 2026","award":"","authors":"Ruining Li, Yuxin Yao, Matt Zhou, Chuanxia Zheng, Christian Rupprecht, Joan Lasenby, Shangzhe Wu, Andrea Vedaldi","institution":"牛津大学、剑桥大学、南洋理工大学","summary":"前馈运动学控制实现3D物体关节结构自动推断与建模，单次前向传播预测可驱动关节对象","keyMetric":"3D关节物体生成效率大幅提升","commercialPotential":4,"arxivUrl":"https://arxiv.org/abs/2606.14699","pdfUrl":"https://arxiv.org/pdf/2606.14699"}
+  ]
+};
+
+// ======================== INIT ========================
+Chart.defaults.color = '#e0e0e0';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+
+// Stats bar
+document.getElementById('lastUpdated').textContent = `最后更新：${DATA.meta.lastUpdated}`;
+const totals = DATA.meta.totalItems;
+const statsHtml = [
+  {k:'tips',l:'效率技巧',v:totals.tips},{k:'repos',l:'开源仓库',v:totals.repos},
+  {k:'consumerAI',l:'消费品牌AI',v:totals.consumerAI},{k:'aiModels',l:'AI模型',v:totals.aiModels},
+  {k:'techNews',l:'科技新闻',v:totals.techNews},{k:'stockMarket',l:'股市记录',v:totals.stockMarket},
+  {k:'papers',l:'论文',v:totals.papers}
+].map(s => `<div class="stat-pill"><span>${s.l}</span><span class="num">${s.v}</span></div>`).join('');
+document.getElementById('statsBar').innerHTML = statsHtml;
+
+// (a) Consumer brand radar
+const brandColors = ['#e74c3c','#3498db','#2ecc71','#f39c12','#9b59b6','#1abc9c','#e91e63','#ff5722','#00bcd4','#8bc34a','#ffc107','#3f51b5','#009688','#ff9800','#795548'];
+const consumerCtx = document.getElementById('consumerRadar').getContext('2d');
+new Chart(consumerCtx, {
+  type: 'radar',
+  data: {
+    labels: ['AI深度', '用户体验', '部署规模', '技术壁垒', '商业化'],
+    datasets: DATA.consumerAI.slice(0,15).map((b,i) => ({
+      label: b.brand + ' · ' + b.tool,
+      data: [b.scores.aiDepth, b.scores.ux, b.scores.scale, b.scores.techBarrier, b.scores.commercialization],
+      borderColor: brandColors[i % brandColors.length],
+      backgroundColor: brandColors[i % brandColors.length] + '20',
+      borderWidth: 1.5,
+      pointRadius: 2
+    }))
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } } },
+    scales: {
+      r: {
+        min: 0, max: 10,
+        ticks: { stepSize: 2, backdropColor: 'transparent' },
+        grid: { color: 'rgba(255,255,255,0.08)' },
+        pointLabels: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// (b) AI model radar
+const modelCtx = document.getElementById('modelRadar').getContext('2d');
+const modelColors = ['#ef5350','#42a5f5','#ab47bc','#26a69a','#ffa726','#78909c','#ec407a','#5c6bc0','#8d6e63'];
+new Chart(modelCtx, {
+  type: 'radar',
+  data: {
+    labels: ['推理能力', '编程能力', '多模态', '价格竞争力', '上下文长度', '生态成熟度'],
+    datasets: DATA.aiModels.map((m,i) => ({
+      label: m.name,
+      data: [m.scores.reasoning, m.scores.coding, m.scores.multimodal, m.scores.priceCompetitiveness, m.scores.contextLength, m.scores.ecosystem],
+      borderColor: modelColors[i % modelColors.length],
+      backgroundColor: modelColors[i % modelColors.length] + '18',
+      borderWidth: 1.5,
+      pointRadius: 2
+    }))
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+    scales: {
+      r: {
+        min: 0, max: 10,
+        ticks: { stepSize: 2, backdropColor: 'transparent' },
+        grid: { color: 'rgba(255,255,255,0.08)' },
+        pointLabels: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// (b) API price bar
+const priceCtx = document.getElementById('priceBar').getContext('2d');
+new Chart(priceCtx, {
+  type: 'bar',
+  data: {
+    labels: DATA.aiModels.map(m => m.name),
+    datasets: [{
+      label: 'Output ($/1M tokens)',
+      data: DATA.aiModels.map(m => m.pricing.output),
+      backgroundColor: modelColors,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.08)' } },
+      x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+    }
+  }
+});
+
+// (c) Stock line chart (monthly aggregated)
+const months = ['1月','2月','3月','4月','5月','6月'];
+const szValues = [3350,3420,3380,3450,3987,4052.18];
+const ndValues = [19800,20100,20500,21200,23500,25948.22];
+const hsValues = [5200,5380,5500,5650,5100,4735.8];
+const stockCtx = document.getElementById('stockLine').getContext('2d');
+new Chart(stockCtx, {
+  type: 'line',
+  data: {
+    labels: months,
+    datasets: [
+      { label: '上证指数', data: szValues, borderColor: '#ef5350', backgroundColor: '#ef5350', yAxisID: 'y', tension: 0.3, pointRadius: 3 },
+      { label: '纳斯达克', data: ndValues, borderColor: '#42a5f5', backgroundColor: '#42a5f5', yAxisID: 'y1', tension: 0.3, pointRadius: 3 },
+      { label: '恒生科技', data: hsValues, borderColor: '#ffa726', backgroundColor: '#ffa726', yAxisID: 'y1', tension: 0.3, pointRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      y: {
+        type: 'linear', display: true, position: 'left',
+        title: { display: true, text: '上证指数' },
+        grid: { color: 'rgba(255,255,255,0.08)' }
+      },
+      y1: {
+        type: 'linear', display: true, position: 'right',
+        title: { display: true, text: '纳斯达克 / 恒生科技' },
+        grid: { drawOnChartArea: false }
+      },
+      x: { grid: { display: false } }
+    }
+  }
+});
+
+// (d) Semiconductor horizontal bar
+const semiCtx = document.getElementById('semiBar').getContext('2d');
+new Chart(semiCtx, {
+  type: 'bar',
+  data: {
+    labels: DATA.semiMetrics.map(m => m.label),
+    datasets: [{
+      label: '数值',
+      data: DATA.semiMetrics.map(m => m.value),
+      backgroundColor: ['#ef5350','#42a5f5','#66bb6a','#ffa726','#ab47bc','#26a69a'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: 'rgba(255,255,255,0.08)' }, title: { display: true, text: '%' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// (e) Papers table (sortable)
+let papersSort = { key: null, dir: 1 };
+function renderPapers(sortKey) {
+  const tbody = document.getElementById('papersBody');
+  let rows = DATA.papers.map(p => ({
+    ...p,
+    _award: p.award || '',
+    _authors: p.authors || '',
+    _institution: p.institution || '',
+    _keyMetric: p.keyMetric || '',
+    _commercialPotential: p.commercialPotential != null ? p.commercialPotential : '',
+    _arxivUrl: p.arxivUrl || p.url || '',
+    _pdfUrl: p.pdfUrl || p.url || ''
+  }));
+  if (sortKey) {
+    if (papersSort.key === sortKey) papersSort.dir *= -1; else { papersSort.key = sortKey; papersSort.dir = 1; }
+    rows.sort((a,b) => {
+      let av = a[sortKey] != null ? a[sortKey] : '';
+      let bv = b[sortKey] != null ? b[sortKey] : '';
+      if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * papersSort.dir;
+      return String(av).localeCompare(String(bv), 'zh') * papersSort.dir;
+    });
+  }
+  tbody.innerHTML = rows.map(p => {
+    let awardClass = 'award';
+    if (p._award.includes('荣誉')) awardClass += ' award-nom';
+    else if (p._award === 'Oral') awardClass += ' award-oral';
+    const awardHtml = p._award ? `<span class="${awardClass}">${p._award}</span>` : '';
+    const links = [];
+    if (p._arxivUrl) links.push(`<a class="link-btn" href="${p._arxivUrl}" target="_blank">arXiv</a>`);
+    if (p._pdfUrl && p._pdfUrl !== p._arxivUrl) links.push(`<a class="link-btn" href="${p._pdfUrl}" target="_blank">PDF</a>`);
+    return `<tr>
+      <td title="${p.title}">${p.title}</td>
+      <td>${p.conference}</td>
+      <td>${awardHtml}</td>
+      <td title="${p._authors}">${p._authors}</td>
+      <td title="${p._institution}">${p._institution}</td>
+      <td>${p._keyMetric}</td>
+      <td>${p._commercialPotential !== '' ? '★'.repeat(p._commercialPotential) + '☆'.repeat(5-p._commercialPotential) : ''}</td>
+      <td>${links.join(' ')}</td>
+    </tr>`;
+  }).join('');
+}
+renderPapers();
+document.querySelectorAll('#papersTable th[data-key]').forEach(th => {
+  th.addEventListener('click', () => renderPapers(th.dataset.key));
+});
+
+// (f) Four-question cards
+const fqGrid = document.getElementById('fqGrid');
+fqGrid.innerHTML = DATA.consumerAI.map(b => {
+  const fq = b.fourQuestions;
+  const apList = (fq.attackPoints || []).map(ap => `<li>${ap}</li>`).join('');
+  const ag = fq.actionGuide || {};
+  return `<div class="fq-card collapsed" onclick="this.classList.toggle('expanded')">
+    <div class="fq-header">
+      <div>
+        <div class="fq-brand">${b.brand}</div>
+        <div class="fq-tool">${b.tool} · ${b.category}</div>
+      </div>
+      <div class="fq-toggle">▼</div>
+    </div>
+    <div class="fq-body">
+      <div class="fq-section">
+        <div class="fq-label">真问题</div>
+        <div class="fq-text">${fq.realProblem}</div>
+      </div>
+      <div class="fq-section">
+        <div class="fq-label">声称贡献</div>
+        <div class="fq-text">${fq.claimedContribution}</div>
+      </div>
+      <div class="fq-section">
+        <div class="fq-label">攻击点</div>
+        <ul class="fq-list">${apList}</ul>
+      </div>
+      <div class="fq-section">
+        <div class="fq-label">行动指南</div>
+        <div class="fq-actions">
+          <div class="fq-act"><strong>学者</strong>${ag.scholar || ''}</div>
+          <div class="fq-act"><strong>工程师</strong>${ag.engineer || ''}</div>
+          <div class="fq-act"><strong>投资者</strong>${ag.investor || ''}</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}).join('');
+
+// (g) Tech news timeline
+function importanceClass(imp) {
+  if (imp === 'high' || imp === 5) return 'high';
+  if (imp === 'medium' || imp === 4) return 'medium';
+  if (imp === 3) return 'medium';
+  return 'low';
+}
+function importanceLabel(imp) {
+  if (imp === 'high' || imp === 5) return '重磅';
+  if (imp === 'medium' || imp === 4) return '重要';
+  if (imp === 3) return '关注';
+  return '一般';
+}
+const seen = new Set();
+const uniqueNews = [];
+for (const n of DATA.techNews) {
+  const key = n.date + '|' + n.title;
+  if (!seen.has(key)) { seen.add(key); uniqueNews.push(n); }
+}
+uniqueNews.sort((a,b) => a.date.localeCompare(b.date));
+const timelineEl = document.getElementById('timeline');
+timelineEl.innerHTML = uniqueNews.map(n => {
+  const cls = importanceClass(n.importance);
+  const tag = importanceLabel(n.importance);
+  return `<div class="t-item ${cls}">
+    <div class="t-date">${n.date} · ${n.category}</div>
+    <div class="t-title">${n.title}</div>
+    <div class="t-summary">${n.summary}</div>
+    <span class="t-tag">${tag}</span>
+  </div>`;
+}).join('');
+</script>
+
+</body>
+</html>

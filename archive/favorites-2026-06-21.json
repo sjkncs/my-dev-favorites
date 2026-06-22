@@ -2,18 +2,18 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-22",
+    "lastUpdated": "2026-06-18",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 28,
+      "repos": 24,
       "trivia": 1,
       "memes": 1,
-      "consumerAI": 16,
-      "aiModels": 10,
-      "techNews": 68,
-      "stockMarket": 43,
+      "consumerAI": 15,
+      "aiModels": 9,
+      "techNews": 63,
+      "stockMarket": 34,
       "papers": 43
     }
   },
@@ -304,11 +304,7 @@
       "description": "开源AI编程智能体，28天增长515星",
       "stars": "55.5k",
       "why": "增长最快的coding agent项目",
-      "tags": [
-        "ai",
-        "coding-agent",
-        "go"
-      ],
+      "tags": ["ai", "coding-agent", "go"],
       "status": "trending",
       "addedAt": "2026-06-18"
     },
@@ -319,11 +315,7 @@
       "description": "VSCode Agentic编程平台，多模型协同",
       "stars": "21.4k",
       "why": "Agentic IDE新势力",
-      "tags": [
-        "ai",
-        "coding-agent",
-        "vscode"
-      ],
+      "tags": ["ai", "coding-agent", "vscode"],
       "status": "trending",
       "addedAt": "2026-06-18"
     },
@@ -334,12 +326,7 @@
       "description": "开源LLM应用开发平台，MCP+RAG+Agent+Workflow",
       "stars": "111.5k",
       "why": "LLM应用开发平台领导者",
-      "tags": [
-        "ai",
-        "llm",
-        "platform",
-        "mcp"
-      ],
+      "tags": ["ai", "llm", "platform", "mcp"],
       "status": "trending",
       "addedAt": "2026-06-18"
     },
@@ -350,11 +337,7 @@
       "description": "基于深度文档理解的开源RAG引擎",
       "stars": "83.1k",
       "why": "企业级RAG基础设施",
-      "tags": [
-        "ai",
-        "rag",
-        "document"
-      ],
+      "tags": ["ai", "rag", "document"],
       "status": "trending",
       "addedAt": "2026-06-18"
     },
@@ -365,79 +348,9 @@
       "description": "Block(Square)开源AI编程智能体",
       "stars": "23.0k",
       "why": "大厂出品的coding agent",
-      "tags": [
-        "ai",
-        "coding-agent",
-        "rust"
-      ],
+      "tags": ["ai", "coding-agent", "rust"],
       "status": "trending",
       "addedAt": "2026-06-18"
-    },
-    {
-      "id": "repo-025",
-      "name": "deer-flow",
-      "description": "字节跳动开源的长周期SuperAgent harness，可研究、编码、创作",
-      "url": "https://github.com/bytedance/deer-flow",
-      "stars": "72.8k",
-      "why": "代表大厂入场SuperAgent框架，支持长周期任务编排、MCP和IM通道",
-      "tags": [
-        "ai",
-        "agent",
-        "superagent",
-        "mcp",
-        "bytedance"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-22"
-    },
-    {
-      "id": "repo-026",
-      "name": "OpenMontage",
-      "description": "全球首个开源Agentic视频生产系统",
-      "url": "https://github.com/calesthio/OpenMontage",
-      "stars": "9.7k",
-      "why": "将AI编程助手扩展为完整视频制作工作室，12条pipeline、500+ agent skills",
-      "tags": [
-        "ai",
-        "video",
-        "agent",
-        "production"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-22"
-    },
-    {
-      "id": "repo-027",
-      "name": "palmier-pro",
-      "description": "macOS原生AI视频编辑器，集成Seedance/Kling/Nano Banana Pro",
-      "url": "https://github.com/palmier-io/palmier-pro",
-      "stars": "5.9k",
-      "why": "AI视频编辑向桌面原生应用迁移的代表，支持Claude/Codex/Cursor通过MCP连接",
-      "tags": [
-        "ai",
-        "video",
-        "macos",
-        "swift",
-        "mcp"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-22"
-    },
-    {
-      "id": "repo-028",
-      "name": "codebase-memory-mcp",
-      "description": "高性能代码智能MCP server",
-      "url": "https://github.com/DeusData/codebase-memory-mcp",
-      "stars": "1.0k+",
-      "why": "MCP生态基础设施，为AI coding agent提供代码记忆能力",
-      "tags": [
-        "ai",
-        "coding-agent",
-        "mcp",
-        "code-intelligence"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-22"
     }
   ],
   "trivia": [
@@ -1223,54 +1136,6 @@
         "36氪",
         "财联社"
       ]
-    },
-    {
-      "id": "brand-016",
-      "brand": "科创板AI大模型企业",
-      "tool": "A股IPO通道",
-      "category": "资本市场AI",
-      "launchDate": "2026-06-17",
-      "features": [
-        "科创板第五套标准扩容AI大模型",
-        "市值+研发考核体系",
-        "优先支持未盈利但具备核心技术企业",
-        "智谱、MiniMax筹备回A"
-      ],
-      "limitations": [
-        "估值泡沫风险",
-        "技术迭代风险",
-        "收入真实性验证",
-        "解禁期股价波动"
-      ],
-      "techStack": [
-        "资本市场制度",
-        "AI大模型"
-      ],
-      "deploymentScale": "A股市场",
-      "scores": {
-        "aiDepth": 7,
-        "ux": 5,
-        "scale": 8,
-        "techBarrier": 6,
-        "commercialization": 9
-      },
-      "fourQuestions": {
-        "realProblem": "为资本开支前置、收入后置的AI大模型企业提供合规上市路径",
-        "claimedContribution": "境内投资者首次可直接定价国产大模型核心资产",
-        "attackPoints": [
-          "P0: 估值泡沫与一级市场估值转移风险",
-          "P1: 技术迭代快导致长期竞争力不确定",
-          "P2: 收入真实性需严格审核"
-        ],
-        "actionGuide": {
-          "scholar": "研究政策对AI核心技术界定标准",
-          "engineer": "学习构建可上市的技术壁垒叙事",
-          "investor": "关注招股书收入结构和研发投入资本化"
-        }
-      },
-      "sources": [
-        "https://www.stcn.com/article/detail/3967608.html"
-      ]
     }
   ],
   "aiModels": [
@@ -1594,40 +1459,6 @@
       ],
       "sources": [
         "https://cloud.tencent.com/developer/article/2658611"
-      ]
-    },
-    {
-      "id": "model-010",
-      "name": "GLM-5.2",
-      "vendor": "智谱",
-      "parameters": "未公开",
-      "scores": {
-        "reasoning": 8,
-        "coding": 7,
-        "multimodal": 7,
-        "priceCompetitiveness": 7,
-        "contextLength": 8,
-        "ecosystem": 7
-      },
-      "pricing": {
-        "input": 2,
-        "output": 8,
-        "unit": "$/1M tokens"
-      },
-      "contextWindow": "128K",
-      "openSource": false,
-      "launchDate": "2026",
-      "highlights": [
-        "智谱主力模型",
-        "API调用量增长400%",
-        "支撑智谱万亿市值"
-      ],
-      "weaknesses": [
-        "与DeepSeek V4、豆包2.0竞争激烈",
-        "商业化规模待验证"
-      ],
-      "sources": [
-        "https://www.stcn.com/article/detail/3971526.html"
       ]
     }
   ],
@@ -2258,61 +2089,6 @@
       "importance": "medium",
       "summary": "AI行业战略分化，OpenAI走企业路线，苹果谷歌走消费路线",
       "source": "CNBC"
-    },
-    {
-      "id": "news-064",
-      "date": "2026-06-22",
-      "title": "科创板第五套标准扩围至AI大模型企业",
-      "category": "政策/AI",
-      "importance": "high",
-      "summary": "上交所发布指引，人工智能大模型企业可适用科创板第五套上市标准，优先支持尚未形成收入规模但具备核心技术的主体，智谱、MiniMax等筹备回A",
-      "keyData": "科创板第五套标准扩容AI大模型",
-      "impact": "国产大模型核心资产A股定价通道打开",
-      "source": "https://www.stcn.com/article/detail/3967608.html"
-    },
-    {
-      "id": "news-065",
-      "date": "2026-06-22",
-      "title": "智谱股价大涨超40%，市值突破万亿港元",
-      "category": "AI融资",
-      "importance": "high",
-      "summary": "智谱股价大涨逾40%，盘中触及2980港元，总市值突破1万亿港元。GLM-5.2模型表现优异，API调用量增幅达400%，公司推进科创板IPO拟募资150亿元",
-      "keyData": "智谱市值破万亿港元",
-      "impact": "全球首家万亿市值大模型公司诞生",
-      "source": "https://www.stcn.com/article/detail/3971526.html"
-    },
-    {
-      "id": "news-066",
-      "date": "2026-06-22",
-      "title": "MiniMax涨超20%，港股AI大模型双子星闪耀",
-      "category": "AI融资",
-      "importance": "high",
-      "summary": "MiniMax-W股价攀升20.2%，估值达1876亿港元。作为恒生科技指数新成分股，MiniMax与智谱共同带动港股大模型概念股逆势走强",
-      "keyData": "MiniMax涨20.2%",
-      "impact": "港股成为国产大模型估值发现重要战场",
-      "source": "https://www.forbeschina.com/business/71767"
-    },
-    {
-      "id": "news-067",
-      "date": "2026-06-22",
-      "title": "AI芯片需求推动韩国6月上旬出口强劲增长",
-      "category": "半导体",
-      "importance": "medium",
-      "summary": "韩国6月前10天出口受AI芯片需求拉动再度强劲增长，半导体出口保持双位数增速，SK海力士市值此前已突破1万亿美元",
-      "keyData": "韩国半导体出口双位数增长",
-      "impact": "AI算力上游存储和先进封装持续景气",
-      "source": "https://finance.sina.com.cn/stock/bxjj/2026-06-22/doc-iniehfpu0324852.shtml"
-    },
-    {
-      "id": "news-068",
-      "date": "2026-06-22",
-      "title": "AI需求外溢至制造环节，半导体设备ETF涨近3%",
-      "category": "半导体",
-      "importance": "medium",
-      "summary": "AI算力需求向晶圆制造、封装测试等设备环节传导，半导体设备ETF（易方达）涨2.94%，市场关注国产半导体设备厂商替代机会",
-      "keyData": "半导体设备ETF涨2.94%",
-      "impact": "国产半导体设备迎AI需求+自主可控双重催化",
-      "source": "https://www.nbd.com.cn/articles/2026-06-22/4432542.html"
     }
   ],
   "stockMarket": [
@@ -2655,96 +2431,6 @@
       "change": "-1.59%",
       "event": "失守24000点",
       "sectorImpact": "科网股普跌，半导体逆势强势"
-    },
-    {
-      "id": "stock-035",
-      "date": "2026-06-22",
-      "market": "A股",
-      "index": "上证综指",
-      "value": 4163.1,
-      "change": "+1.78%",
-      "event": "沪指突破4160点",
-      "sectorImpact": "AI大模型、半导体领涨"
-    },
-    {
-      "id": "stock-036",
-      "date": "2026-06-22",
-      "market": "A股",
-      "index": "深证成指",
-      "value": 16372.5,
-      "change": "+2.13%",
-      "event": "深成指大涨",
-      "sectorImpact": "科技成长板块全面活跃"
-    },
-    {
-      "id": "stock-037",
-      "date": "2026-06-22",
-      "market": "A股",
-      "index": "创业板指",
-      "value": 4359.39,
-      "change": "+2.52%",
-      "event": "创业板指涨超2.5%",
-      "sectorImpact": "新能源、医药、AI应用普涨"
-    },
-    {
-      "id": "stock-038",
-      "date": "2026-06-22",
-      "market": "A股",
-      "index": "科创50",
-      "value": 1948.93,
-      "change": "+1.96%",
-      "event": "科创板延续强势",
-      "sectorImpact": "AI芯片、半导体材料强势"
-    },
-    {
-      "id": "stock-039",
-      "date": "2026-06-18",
-      "market": "美股",
-      "index": "纳斯达克综合指数",
-      "value": 26517.93,
-      "change": "+1.91%",
-      "event": "美联储维持利率不变后反弹",
-      "sectorImpact": "科技股集体反弹"
-    },
-    {
-      "id": "stock-040",
-      "date": "2026-06-18",
-      "market": "美股",
-      "index": "标准普尔500指数",
-      "value": 7500.58,
-      "change": "+1.08%",
-      "event": "标普500涨至7500点",
-      "sectorImpact": "大盘蓝筹温和上涨"
-    },
-    {
-      "id": "stock-041",
-      "date": "2026-06-18",
-      "market": "美股",
-      "index": "道琼斯工业平均指数",
-      "value": 51564.7,
-      "change": "+0.14%",
-      "event": "道指小幅收涨",
-      "sectorImpact": "工业金融板块稳健"
-    },
-    {
-      "id": "stock-042",
-      "date": "2026-06-22",
-      "market": "港股",
-      "index": "恒生指数",
-      "value": 23828.25,
-      "change": "-0.40%",
-      "event": "恒指小幅收跌",
-      "sectorImpact": "传统互联网龙头承压"
-    },
-    {
-      "id": "stock-043",
-      "date": "2026-06-22",
-      "market": "港股",
-      "index": "恒生科技指数",
-      "value": 4573.71,
-      "change": "-0.67%",
-      "event": "科指小幅收跌",
-      "sectorImpact": "AI大模型概念股逆势走强"
     }
   ],
   "papers": [
@@ -3139,102 +2825,6 @@
       "commercialPotential": 4,
       "arxivUrl": "https://arxiv.org/abs/2606.14699",
       "pdfUrl": "https://arxiv.org/pdf/2606.14699"
-    },
-    {
-      "id": "paper-036",
-      "title": "Marginal Advantage Accumulation for Memory-Driven Agent Self-Evolution",
-      "conference": "arXiv 2026",
-      "authors": "Mingyu Yang, Keye Zheng, Congchao Cheng 等",
-      "institution": "未公开",
-      "summary": "提出边缘优势累积机制，使Agent能够基于记忆驱动实现自我进化",
-      "keyMetric": "记忆驱动自我进化",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.20475",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20475"
-    },
-    {
-      "id": "paper-037",
-      "title": "Contagion Networks: Evaluator Bias Propagation in Multi-Agent LLM Systems",
-      "conference": "arXiv 2026",
-      "authors": "Zewen Liu 等",
-      "institution": "未公开",
-      "summary": "揭示多智能体LLM系统中评估者偏见的传播网络",
-      "keyMetric": "评估者偏见传播建模",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.20493",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20493"
-    },
-    {
-      "id": "paper-038",
-      "title": "Beyond Global Replanning: Hierarchical Recovery for Cross-Device Agent Systems",
-      "conference": "arXiv 2026",
-      "authors": "Yao 等",
-      "institution": "未公开",
-      "summary": "针对跨设备Agent系统提出层次化恢复机制，提升复杂任务容错性",
-      "keyMetric": "跨设备Agent容错提升",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.20487",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20487"
-    },
-    {
-      "id": "paper-039",
-      "title": "Your Mouse and Eyes Secretly Leak Your Preference: LLM Alignment using Implicit Feedback from Users",
-      "conference": "arXiv 2026",
-      "authors": "Chang 等",
-      "institution": "未公开",
-      "summary": "利用鼠标移动和眼动等隐式反馈进行LLM对齐",
-      "keyMetric": "隐式反馈对齐",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.20482",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20482"
-    },
-    {
-      "id": "paper-040",
-      "title": "StylisticBias: A Few Human Visual Cues Drive Most Social Biases in MLLMs",
-      "conference": "arXiv 2026",
-      "authors": "Kolli 等",
-      "institution": "未公开",
-      "summary": "发现少数人类视觉线索驱动了多模态大模型中的大部分社会偏见",
-      "keyMetric": "社会偏见新靶点",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.20527",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20527"
-    },
-    {
-      "id": "paper-041",
-      "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
-      "conference": "arXiv 2026",
-      "authors": "Gina Wong, Drew Prinster, Suchi Saria, Rama Chellappa, Anqi Liu",
-      "institution": "未公开",
-      "summary": "研究分布偏移下MoE模型的校准问题",
-      "keyMetric": "MoE分布偏移校准",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.20544",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20544"
-    },
-    {
-      "id": "paper-042",
-      "title": "The Token Is a Group Element: On Lie-Algebra Attention over Matrix Lie Groups",
-      "conference": "arXiv 2026",
-      "authors": "Przemyslaw Musialski 等",
-      "institution": "未公开",
-      "summary": "将李群与李代数引入注意力机制",
-      "keyMetric": "几何化注意力",
-      "commercialPotential": 2,
-      "arxivUrl": "https://arxiv.org/abs/2606.20547",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20547"
-    },
-    {
-      "id": "paper-043",
-      "title": "How Transparent is DiffusionGemma?",
-      "conference": "arXiv 2026",
-      "authors": "Joshua Engels",
-      "institution": "未公开",
-      "summary": "评估Google DiffusionGemma文本到图像模型的透明性与可解释性",
-      "keyMetric": "扩散模型可解释性",
-      "commercialPotential": 2,
-      "arxivUrl": "https://arxiv.org/abs/2606.20560",
-      "pdfUrl": "https://arxiv.org/pdf/2606.20560"
     }
   ]
 }
