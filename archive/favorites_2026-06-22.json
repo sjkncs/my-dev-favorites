@@ -2,19 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-23",
+    "lastUpdated": "2026-06-22",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 31,
+      "repos": 28,
       "trivia": 1,
       "memes": 1,
-      "consumerAI": 19,
+      "consumerAI": 16,
       "aiModels": 10,
-      "techNews": 74,
-      "stockMarket": 52,
-      "papers": 51
+      "techNews": 68,
+      "stockMarket": 43,
+      "papers": 43
     }
   },
   "tips": [
@@ -438,54 +438,6 @@
       ],
       "status": "trending",
       "addedAt": "2026-06-22"
-    },
-    {
-      "id": "repo-029",
-      "name": "OpenClaw",
-      "url": "https://github.com/OpenClaw/OpenClaw",
-      "description": "完全运行在本地设备上的个人AI助手，210k+ stars",
-      "stars": "210,000+",
-      "why": "本地优先AI助手的代表作，隐私与离线场景的终极解决方案",
-      "tags": [
-        "ai",
-        "local",
-        "privacy",
-        "assistant"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-23"
-    },
-    {
-      "id": "repo-030",
-      "name": "Langflow",
-      "url": "https://github.com/langflow-ai/langflow",
-      "description": "低代码AI Agent设计与部署平台，支持RAG工作流",
-      "stars": "未公开",
-      "why": "降低AI Agent开发门槛，可视化构建复杂RAG+Agent流水线",
-      "tags": [
-        "ai",
-        "low-code",
-        "rag",
-        "agent"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-23"
-    },
-    {
-      "id": "repo-031",
-      "name": "Open WebUI",
-      "url": "https://github.com/open-webui/open-webui",
-      "description": "自托管AI平台，完全离线运行，124k+ stars",
-      "stars": "124,000+",
-      "why": "企业级离线AI对话平台的开源标杆",
-      "tags": [
-        "ai",
-        "self-hosted",
-        "offline",
-        "chat"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-23"
     }
   ],
   "trivia": [
@@ -1318,151 +1270,6 @@
       },
       "sources": [
         "https://www.stcn.com/article/detail/3967608.html"
-      ]
-    },
-    {
-      "id": "brand-017",
-      "brand": "瑞幸咖啡",
-      "tool": "Lucky AI智能体",
-      "category": "鸿蒙原生AI点单",
-      "launchDate": "2026-06-23",
-      "features": [
-        "鸿蒙原生应用",
-        "Lucky AI智能体",
-        "一句话喝到咖啡",
-        "与MCP/CLI/Skill互补"
-      ],
-      "limitations": [
-        "鸿蒙生态渗透率有限",
-        "智能体调用量未披露",
-        "与现有MCP平台功能重叠"
-      ],
-      "techStack": [
-        "HarmonyOS",
-        "Lucky AI智能体",
-        "MCP协议"
-      ],
-      "deploymentScale": "全国门店",
-      "scores": {
-        "aiDepth": 8,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 6,
-        "commercialization": 8
-      },
-      "fourQuestions": {
-        "realProblem": "通过多端智能体覆盖用户在不同操作系统和场景下的咖啡点单需求",
-        "claimedContribution": "鸿蒙原生应用让'一句话喝到咖啡'成为现实，扩大MCP以外的触达面",
-        "attackPoints": [
-          "P0: 鸿蒙生态在消费端渗透率有限",
-          "P1: 智能体与MCP/CLI功能高度重叠",
-          "P2: 智能体实际调用转化效果未公开"
-        ],
-        "actionGuide": {
-          "scholar": "研究跨操作系统智能体部署策略",
-          "engineer": "学习鸿蒙原生+MCP多通道架构",
-          "investor": "关注AI点单在不同生态下的GMV占比"
-        }
-      },
-      "sources": [
-        "https://m.sohu.com/a/1036550816_104421"
-      ]
-    },
-    {
-      "id": "brand-018",
-      "brand": "美团",
-      "tool": "LongCat-Next 原生多模态大模型",
-      "category": "AI基础设施",
-      "launchDate": "2026-03-27",
-      "features": [
-        "原生多模态模型",
-        "将物理世界转化为AI'文字'",
-        "工具调用能力领先",
-        "两个月发布四大模型"
-      ],
-      "limitations": [
-        "开源生态不及Qwen/豆包",
-        "美团自身场景绑定过深",
-        "商业化路径尚不清晰"
-      ],
-      "techStack": [
-        "LongCat-Next",
-        "LongCat-Flash-Thinking",
-        "开源模型"
-      ],
-      "deploymentScale": "美团内部+开源社区",
-      "scores": {
-        "aiDepth": 8,
-        "ux": 6,
-        "scale": 7,
-        "techBarrier": 7,
-        "commercialization": 5
-      },
-      "fourQuestions": {
-        "realProblem": "构建物理世界多模态理解能力，支撑外卖/到店/酒旅等场景智能化",
-        "claimedContribution": "LongCat系列工具调用能力登顶开源榜单，两个月密集发布四大模型",
-        "attackPoints": [
-          "P0: 开源模型生态难以与Qwen/豆包竞争",
-          "P1: 美团自身场景绑定可能限制外部采用",
-          "P2: 商业化变现路径不明确"
-        ],
-        "actionGuide": {
-          "scholar": "精读LongCat-Flash-Thinking的多模态推理方案",
-          "engineer": "学习'物理世界变文字'的原生多模态架构",
-          "investor": "评估美团从'平台'向'AI基础设施'转型的战略可行性"
-        }
-      },
-      "sources": [
-        "http://client.sina.com.cn/news/2026-03-27/doc-inhsmamw5416189.shtml",
-        "https://zhuanlan.zhihu.com/p/1996883835200239173"
-      ]
-    },
-    {
-      "id": "brand-019",
-      "brand": "霸王茶姬",
-      "tool": "增长停滞与AI战略反思",
-      "category": "智能标准化调整",
-      "launchDate": "2026-06",
-      "features": [
-        "张俊杰深刻反思增长瓶颈",
-        "智能调饮系统持续迭代",
-        "茶茶圈AI知识管理优化",
-        "极简SKU策略调整"
-      ],
-      "limitations": [
-        "Q1增长停滞暴露扩张天花板",
-        "智能调饮系统灵活性不足",
-        "单一品类(鲜奶茶)依赖"
-      ],
-      "techStack": [
-        "自主研发自动化设备",
-        "飞书多维表格AI"
-      ],
-      "deploymentScale": "全球7000+门店",
-      "scores": {
-        "aiDepth": 6,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 6,
-        "commercialization": 8
-      },
-      "fourQuestions": {
-        "realProblem": "在极简SKU战略遇到增长天花板后，如何通过AI和产品策略调整突破瓶颈",
-        "claimedContribution": "智能调饮系统持续优化，茶茶圈AI知识管理覆盖全球门店",
-        "attackPoints": [
-          "P0: 增长停滞是否意味着极简SKU模式的终结",
-          "P1: 智能调饮系统能否快速适应新品类",
-          "P2: 张俊杰的'反思'是否只是PR话术"
-        ],
-        "actionGuide": {
-          "scholar": "研究极简SKU模式下的AI智能化极限",
-          "engineer": "学习'从反思中优化'的产品迭代思维",
-          "investor": "重新评估'极简SKU+智能标准化'的估值模型"
-        }
-      },
-      "sources": [
-        "https://www.iyiou.com/news/202604151126657",
-        "https://www.tmtpost.com/8006838.html"
       ]
     }
   ],
@@ -2506,72 +2313,6 @@
       "keyData": "半导体设备ETF涨2.94%",
       "impact": "国产半导体设备迎AI需求+自主可控双重催化",
       "source": "https://www.nbd.com.cn/articles/2026-06-22/4432542.html"
-    },
-    {
-      "id": "news-069",
-      "date": "2026-06-23",
-      "title": "AI飞轮驱动加速半导体更多领域进入上行周期",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "证券时报报道，AI算力需求持续拉动存储、功率、封装等多环节景气，业内预计2026年全球半导体规模将超1.5万亿美元，内存市场缺口约5%，设备端高景气预见到8个季度后。",
-      "keyData": "2026全球半导体超1.5万亿美元，内存缺口5%",
-      "impact": "AI飞轮驱动多环节进入上行周期",
-      "source": "https://www.stcn.com/article/detail/3973285.html"
-    },
-    {
-      "id": "news-070",
-      "date": "2026-06-23",
-      "title": "AI算力新变局：谁能动英伟达奶酪",
-      "category": "AI算力",
-      "importance": "high",
-      "summary": "21财经深度分析，华为昇腾、英特尔18A、AMD、台积电等多方挑战英伟达GPU垄断地位，AI算力格局正从'一家独大'走向多元竞争。",
-      "keyData": "英伟达算力垄断面临多方挑战",
-      "impact": "AI算力多元化竞争加速",
-      "source": "https://www.21jingji.com/article/20260623/herald/0aab3df2caeedc633acdef0dc0912cde.html"
-    },
-    {
-      "id": "news-071",
-      "date": "2026-06-23",
-      "title": "新洁能涨停：功率半导体+产品升级+AI需求增长",
-      "category": "半导体",
-      "importance": "medium",
-      "summary": "A股功率半导体龙头新洁能6月23日涨停，分析师认为AI数据中心功率器件需求+产品升级双轮驱动，功率半导体景气度进入新一轮上行期。",
-      "keyData": "功率半导体涨停，AI数据中心需求驱动",
-      "impact": "功率半导体板块受益AI需求",
-      "source": "https://finance.sina.com.cn/stock/aiassist/ydfx/2026-06-23/doc-iniekeey2076576.shtml"
-    },
-    {
-      "id": "news-072",
-      "date": "2026-06-23",
-      "title": "标普500历史首次站上7000点，纳指涨1.59%至24016点",
-      "category": "美股",
-      "importance": "high",
-      "summary": "标普500历史首次收盘站上7000点整数关口，纳指涨1.59%至24016.02点，道指微涨220点创历史新高。英伟达日线11连涨，光纤概念股Lumen与AWS合作后暴涨10.13%。",
-      "keyData": "标普首次站上7000点，纳指24016点",
-      "impact": "美股科技+AI板块创新高",
-      "source": "https://www.cls.cn/detail/2345486"
-    },
-    {
-      "id": "news-073",
-      "date": "2026-06-23",
-      "title": "英伟达日线11连涨，AI算力龙头再创新高",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "英伟达股价实现日线11连涨，创2023年以来最长连涨纪录。市场对其数据中心AI GPU需求持续乐观，Vera Rubin平台预期进一步提振估值。",
-      "keyData": "英伟达日线11连涨",
-      "impact": "AI算力龙头持续创新高",
-      "source": "https://www.cls.cn/detail/2345486"
-    },
-    {
-      "id": "news-074",
-      "date": "2026-06-23",
-      "title": "港股午盘走低：恒指跌1.13%，科技指数重挫2.21%",
-      "category": "港股",
-      "importance": "medium",
-      "summary": "港股恒生指数午盘跌1.13%，恒生科技指数跌2.21%，京东、小米、腾讯、阿里、美团等科技龙头普跌，大模型概念股走低，智谱盘中一度跌超15%。",
-      "keyData": "恒指跌1.13%，恒科跌2.21%",
-      "impact": "港股科技板块回调",
-      "source": "https://www.cls.cn/detail/2406512"
     }
   ],
   "stockMarket": [
@@ -3004,96 +2745,6 @@
       "change": "-0.67%",
       "event": "科指小幅收跌",
       "sectorImpact": "AI大模型概念股逆势走强"
-    },
-    {
-      "id": "stock-044",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "上证综指",
-      "value": 4200.5,
-      "change": "+0.90%",
-      "event": "AI+金融板块持续拉升",
-      "sectorImpact": "半导体、AI大模型、金融板块领涨"
-    },
-    {
-      "id": "stock-045",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "深证成指",
-      "value": 16580.2,
-      "change": "+1.27%",
-      "event": "科技成长板块活跃",
-      "sectorImpact": "新能源、AI应用板块普涨"
-    },
-    {
-      "id": "stock-046",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "创业板指",
-      "value": 4410.8,
-      "change": "+1.18%",
-      "event": "创业板续创新高",
-      "sectorImpact": "新能源、医药、AI应用普涨"
-    },
-    {
-      "id": "stock-047",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "科创50",
-      "value": 1970.5,
-      "change": "+1.11%",
-      "event": "科创板延续强势",
-      "sectorImpact": "AI芯片、功率半导体强势"
-    },
-    {
-      "id": "stock-048",
-      "date": "2026-06-22",
-      "market": "美股",
-      "index": "纳斯达克综合指数",
-      "value": 24016.02,
-      "change": "+1.59%",
-      "event": "纳指大涨，英伟达11连涨",
-      "sectorImpact": "AI算力板块持续走强"
-    },
-    {
-      "id": "stock-049",
-      "date": "2026-06-22",
-      "market": "美股",
-      "index": "标准普尔500指数",
-      "value": 7030.0,
-      "change": "+0.20%",
-      "event": "标普500历史首次站上7000点",
-      "sectorImpact": "大盘蓝筹温和上涨"
-    },
-    {
-      "id": "stock-050",
-      "date": "2026-06-22",
-      "market": "美股",
-      "index": "道琼斯工业平均指数",
-      "value": 51784.7,
-      "change": "+0.43%",
-      "event": "道指创历史新高",
-      "sectorImpact": "传统工业+消费板块走强"
-    },
-    {
-      "id": "stock-051",
-      "date": "2026-06-23",
-      "market": "港股",
-      "index": "恒生指数",
-      "value": 23550.0,
-      "change": "-1.17%",
-      "event": "恒指回调，科技股普跌",
-      "sectorImpact": "科技龙头承压"
-    },
-    {
-      "id": "stock-052",
-      "date": "2026-06-23",
-      "market": "港股",
-      "index": "恒生科技指数",
-      "value": 4460.0,
-      "change": "-2.49%",
-      "event": "科技指数重挫",
-      "sectorImpact": "大模型概念股走低，智谱盘中跌超15%"
     }
   ],
   "papers": [
@@ -3584,102 +3235,6 @@
       "commercialPotential": 2,
       "arxivUrl": "https://arxiv.org/abs/2606.20560",
       "pdfUrl": "https://arxiv.org/pdf/2606.20560"
-    },
-    {
-      "id": "paper-044",
-      "title": "Open Problem: Is AdamW Effective Under Heavy-Tailed Noise?",
-      "conference": "arXiv 2026",
-      "authors": "Dingzhi Yu, Hongyi Tao, Yuanyu Wan, Luo Luo, Lijun Zhang",
-      "institution": "未公开",
-      "summary": "针对AdamW优化器在重尾噪声下的有效性提出开放问题，建立了加权度量基准，解释了分母存储器如何影响大梯度的表现",
-      "keyMetric": "AdamW重尾噪声收敛性开放问题",
-      "commercialPotential": 2,
-      "arxivUrl": "https://arxiv.org/abs/2606.23676",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23676"
-    },
-    {
-      "id": "paper-045",
-      "title": "Tapered Language Models",
-      "conference": "arXiv 2026",
-      "authors": "Reza Bayat, Ali Behrouz, Aaron Courville",
-      "institution": "未公开",
-      "summary": "提出锥形语言模型架构，探索模型参数分布新范式",
-      "keyMetric": "语言模型参数分布新范式",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.23670",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23670"
-    },
-    {
-      "id": "paper-046",
-      "title": "MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?",
-      "conference": "arXiv 2026",
-      "authors": "Juyang Bai, Laixi Shi",
-      "institution": "未公开",
-      "summary": "系统评估多智能体LLM系统中提示优化的效果，揭示优化在不同工作流和团队规模下的收益与搜索空间挑战",
-      "keyMetric": "多智能体系统提示优化基准",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.23664",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23664"
-    },
-    {
-      "id": "paper-047",
-      "title": "Learning Process Rewards via Success Visitation Matching for Efficient RL",
-      "conference": "arXiv 2026",
-      "authors": "Raymond Tsao, Andrew Wagenmaker, Sergey Levine",
-      "institution": "UC Berkeley",
-      "summary": "通过成功访问匹配学习过程奖励，提升强化学习效率",
-      "keyMetric": "过程奖励学习新范式",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.23640",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23640"
-    },
-    {
-      "id": "paper-048",
-      "title": "DiT-Reward: Generative Representations for Text-to-Image Reward Modeling",
-      "conference": "arXiv 2026",
-      "authors": "Yuanming Yang, Guoqing Ma, Bo Wang 等",
-      "institution": "未公开",
-      "summary": "利用预训练扩散模型进行文本到图像奖励建模，性能超越HPSv3，推理速度提升1.65倍",
-      "keyMetric": "HPDv2 85.6%，HPDv3 77.6%，推理加速1.65x",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.23626",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23626"
-    },
-    {
-      "id": "paper-049",
-      "title": "Scaling Linear Mode Connectivity and Merging to Billion Parameter Pretrained Transformers",
-      "conference": "arXiv 2026",
-      "authors": "Tianyi Li, Zhiqiang Shen",
-      "institution": "未公开",
-      "summary": "将线性模式连接和模型合并扩展至十亿参数级预训练Transformer",
-      "keyMetric": "十亿参数级模型合并",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.23607",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23607"
-    },
-    {
-      "id": "paper-050",
-      "title": "LLM-as-Code: Agentic Programming for Agent Harness",
-      "conference": "arXiv 2026",
-      "authors": "Junjia Qi, Zichuan Fu, Jingtong Gao 等",
-      "institution": "未公开",
-      "summary": "提出Agentic Programming范式，由程序掌控控制流、LLM作为代码组件被调用，DAG结构化上下文，在OSWorld上15步达成86.8%成功率",
-      "keyMetric": "15步86.8%成功率(OSWorld)",
-      "commercialPotential": 5,
-      "arxivUrl": "https://arxiv.org/abs/2606.15874",
-      "pdfUrl": "https://arxiv.org/pdf/2606.15874"
-    },
-    {
-      "id": "paper-051",
-      "title": "On the Limits of Prompt-Conditioned Language Models as General-Purpose Learners",
-      "conference": "arXiv 2026",
-      "authors": "David Mguni, Julian Ma, Jun Wang",
-      "institution": "未公开",
-      "summary": "揭示提示条件化语言模型作为通用学习者的能力极限",
-      "keyMetric": "LLM通用学习能力边界",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.23668",
-      "pdfUrl": "https://arxiv.org/pdf/2606.23668"
     }
   ]
 }
