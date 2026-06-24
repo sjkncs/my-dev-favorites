@@ -2,19 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-06-24",
+    "lastUpdated": "2026-06-23",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 34,
+      "repos": 31,
       "trivia": 1,
       "memes": 1,
-      "consumerAI": 21,
+      "consumerAI": 19,
       "aiModels": 10,
-      "techNews": 80,
-      "stockMarket": 65,
-      "papers": 59
+      "techNews": 74,
+      "stockMarket": 52,
+      "papers": 51
     }
   },
   "tips": [
@@ -486,55 +486,6 @@
       ],
       "status": "trending",
       "addedAt": "2026-06-23"
-    },
-    {
-      "id": "repo-032",
-      "name": "OpenThoughts-Agent",
-      "url": "https://github.com/OpenThoughts/OpenThoughts-Agent",
-      "description": "开放智能体训练数据流水线，100K高质量样本+44.8%准确率",
-      "stars": "未公开",
-      "why": "首个完全开放的Agent数据curation pipeline，降低Agent训练门槛",
-      "tags": [
-        "ai",
-        "agent",
-        "data-curation",
-        "open-source"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-24"
-    },
-    {
-      "id": "repo-033",
-      "name": "BluTrain",
-      "url": "https://github.com/BluTrain/blutrain",
-      "description": "C++/CUDA高性能AI训练框架，GPU利用率优化",
-      "stars": "未公开",
-      "why": "填补C++/CUDA原生AI训练框架空白，面向极致性能优化",
-      "tags": [
-        "ai",
-        "cuda",
-        "cpp",
-        "training",
-        "performance"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-24"
-    },
-    {
-      "id": "repo-034",
-      "name": "n8n",
-      "url": "https://github.com/n8n-io/n8n",
-      "description": "开源工作流自动化平台，可视化+无代码+AI集成",
-      "stars": "未公开",
-      "why": "企业级工作流自动化的开源替代，AI Agent编排基础设施",
-      "tags": [
-        "automation",
-        "workflow",
-        "no-code",
-        "ai"
-      ],
-      "status": "trending",
-      "addedAt": "2026-06-24"
     }
   ],
   "trivia": [
@@ -1512,104 +1463,6 @@
       "sources": [
         "https://www.iyiou.com/news/202604151126657",
         "https://www.tmtpost.com/8006838.html"
-      ]
-    },
-    {
-      "id": "brand-020",
-      "brand": "霸王茶姬",
-      "tool": "北美首店开业+冰淇淋品类扩展",
-      "category": "全球化+品类扩张",
-      "launchDate": "2026-06",
-      "features": [
-        "北美首店开业",
-        "海外门店超200家",
-        "推出冰淇淋产品线",
-        "与蜜雪冰城正面竞争冰淇淋赛道"
-      ],
-      "limitations": [
-        "北美市场消费习惯差异",
-        "冰淇淋与茶饮供应链协同有限",
-        "海外运营成本高昂"
-      ],
-      "techStack": [
-        "智能调饮系统",
-        "飞书多维表格AI",
-        "全球化供应链"
-      ],
-      "deploymentScale": "全球7000+门店，海外200+",
-      "scores": {
-        "aiDepth": 6,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 6,
-        "commercialization": 8
-      },
-      "fourQuestions": {
-        "realProblem": "通过品类扩展（冰淇淋）和全球化（北美首店）突破鲜奶茶单一品类天花板",
-        "claimedContribution": "北美首店开业，海外门店超200家，冰淇淋产品线开辟第二增长曲线",
-        "attackPoints": [
-          "P0: 冰淇淋与茶饮的消费场景和用户画像差异大",
-          "P1: 北美市场对中国茶饮品牌的认知度有限",
-          "P2: 海外运营成本可能侵蚀利润"
-        ],
-        "actionGuide": {
-          "scholar": "研究新茶饮全球化中的品类扩展策略",
-          "engineer": "学习多品类供应链协同的技术架构",
-          "investor": "评估'茶饮+冰淇淋'双轮驱动的估值模型"
-        }
-      },
-      "sources": [
-        "https://www.ebrun.com/20260423/656985.shtml",
-        "https://finance.sina.com.cn/wm/2026-05-24/doc-inhyyhws4543670.shtml"
-      ]
-    },
-    {
-      "id": "brand-021",
-      "brand": "蜜雪冰城",
-      "tool": "冰淇淋赛道正面竞争霸王茶姬",
-      "category": "品类竞争",
-      "launchDate": "2026-06",
-      "features": [
-        "冰淇淋产品线成熟",
-        "极致性价比策略",
-        "3万+门店渠道优势",
-        "与霸王茶姬正面竞争"
-      ],
-      "limitations": [
-        "低价模式下冰淇淋利润空间有限",
-        "品牌形象固化在低价区间",
-        "加盟商执行一致性挑战"
-      ],
-      "techStack": [
-        "雪王爱智慧科技",
-        "供应链AI优化",
-        "数据平台"
-      ],
-      "deploymentScale": "3万+门店",
-      "scores": {
-        "aiDepth": 5,
-        "ux": 6,
-        "scale": 10,
-        "techBarrier": 5,
-        "commercialization": 7
-      },
-      "fourQuestions": {
-        "realProblem": "利用3万+门店渠道优势和极致性价比策略，在冰淇淋赛道建立规模壁垒",
-        "claimedContribution": "冰淇淋产品线覆盖全部门店，以价格杠杆撬动冰淇淋市场",
-        "attackPoints": [
-          "P0: 冰淇淋品类与茶饮的季节性互补vs竞争关系",
-          "P1: 低价冰淇淋利润极薄，规模效应能否覆盖",
-          "P2: 与霸王茶姬的差异化竞争不够明显"
-        ],
-        "actionGuide": {
-          "scholar": "研究极致性价比模式下的品类扩展逻辑",
-          "engineer": "学习3万+门店规模下的冰淇淋供应链AI优化",
-          "investor": "比较蜜雪冰城vs霸王茶姬冰淇淋战略的ROI差异"
-        }
-      },
-      "sources": [
-        "https://m.36kr.com/p/3835505880309767",
-        "https://xinwen.bjd.com.cn/content/s68f0a060e4b02424b0c1a091.html"
       ]
     }
   ],
@@ -2719,72 +2572,6 @@
       "keyData": "恒指跌1.13%，恒科跌2.21%",
       "impact": "港股科技板块回调",
       "source": "https://www.cls.cn/detail/2406512"
-    },
-    {
-      "id": "news-075",
-      "date": "2026-06-24",
-      "title": "美股芯片股重挫：纳指跌超2%，费城半导体指数暴跌近8%",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "美股三大指数集体收跌，纳指重挫2.2%，费城半导体指数暴跌近8%。英伟达跌超4%，美光科技暴跌13%。投资者重新审视AI资本支出规模，质疑大规模芯片投资是否合理。",
-      "keyData": "纳指跌2.2%，费城半导体指数跌近8%",
-      "impact": "AI算力投资遭市场重新审视",
-      "source": "https://www.stcn.com/article/detail/3975996.html"
-    },
-    {
-      "id": "news-076",
-      "date": "2026-06-24",
-      "title": "AI投资热潮遭重新审视，资本支出合理性受质疑",
-      "category": "AI",
-      "importance": "high",
-      "summary": "分析师开始质疑科技巨头大规模AI资本支出是否合理，市场从追逐AI动量交易转向理性评估。SpaceX暴跌16%加剧科技股恐慌情绪。",
-      "keyData": "AI资本支出合理性受质疑，SpaceX暴跌16%",
-      "impact": "AI投资从动量交易转向理性评估",
-      "source": "https://news.sina.com.cn/zx/2026-06-24/doc-iniemwqf8441358.shtml"
-    },
-    {
-      "id": "news-077",
-      "date": "2026-06-24",
-      "title": "人工智能让网络安全成为2026年稀缺性投资赛道",
-      "category": "AI安全",
-      "importance": "high",
-      "summary": "AI技术显著降低漏洞挖掘难度，网络安全成为稀缺资产。CrowdStrike八次创盘中新高，帕洛阿尔托网络涨幅228%，ETF收益27%。资金从芯片领域转向安全赛道。",
-      "keyData": "CrowdStrike八次创新高，Palo Alto涨228%",
-      "impact": "AI安全赛道成为资金新宠",
-      "source": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-24/doc-inienicz8321972.shtml"
-    },
-    {
-      "id": "news-078",
-      "date": "2026-06-24",
-      "title": "科创芯片设计ETF富国正在发行，2026是AI产业推理落地大年",
-      "category": "半导体",
-      "importance": "medium",
-      "summary": "全球算力资本开支持续攀升，芯片自主可控战略持续加码。科创芯片设计指数成分股2025年净利润同比增速超190%，2026年被视为AI产业推理落地大年。",
-      "keyData": "成分股净利润增速超190%",
-      "impact": "AI推理落地催化芯片设计需求",
-      "source": "https://finance.sina.com.cn/stock/stockzmt/2026-06-24/doc-inieniee6403635.shtml"
-    },
-    {
-      "id": "news-079",
-      "date": "2026-06-24",
-      "title": "港股半导体板块强势：华虹宏力飙升16%，中芯国际涨逾8%",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "港股半导体板块表现强势，华虹宏力飙升16%，中芯国际涨逾8%。恒生科技指数涨1.34%，与美股芯片股暴跌形成鲜明反差，反映资金在港股寻找半导体结构性机会。",
-      "keyData": "华虹宏力+16%，中芯国际+8%",
-      "impact": "港股半导体与美股形成反差行情",
-      "source": "https://www.chnfund.com/article/81239efc-759a-c0a4-f963-3a2209f67748"
-    },
-    {
-      "id": "news-080",
-      "date": "2026-06-24",
-      "title": "A股券商板块延续涨势，28只成分股飘红",
-      "category": "股市",
-      "importance": "medium",
-      "summary": "A股市场整体调整后券商板块逆势走强，28只成分股飘红。学者评价'本轮券商上涨的持续性相对更强'，成交额维持在3.46万亿元高位。",
-      "keyData": "28只券商股飘红，成交3.46万亿",
-      "impact": "券商板块成为市场结构性亮点",
-      "source": "https://www.21jingji.com/article/20260624/herald/0428b1d2288ab2943276f43347a4174d.html"
     }
   ],
   "stockMarket": [
@@ -3307,136 +3094,6 @@
       "change": "-2.49%",
       "event": "科技指数重挫",
       "sectorImpact": "大模型概念股走低，智谱盘中跌超15%"
-    },
-    {
-      "id": "stock-053",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "上证综指",
-      "value": 4106.1,
-      "change": "-1.37%",
-      "event": "科技股回调，成交3.46万亿",
-      "sectorImpact": "半导体、AI板块承压"
-    },
-    {
-      "id": "stock-054",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "深证成指",
-      "value": 15853.1,
-      "change": "-3.17%",
-      "event": "深成指大跌超3%",
-      "sectorImpact": "科技成长板块普跌"
-    },
-    {
-      "id": "stock-055",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "创业板指",
-      "value": 4191.9,
-      "change": "-3.84%",
-      "event": "创业板指跌近4%",
-      "sectorImpact": "新能源、AI应用普跌"
-    },
-    {
-      "id": "stock-056",
-      "date": "2026-06-23",
-      "market": "A股",
-      "index": "科创50",
-      "value": 1921.2,
-      "change": "-2.50%",
-      "event": "科创板回调",
-      "sectorImpact": "AI芯片板块承压"
-    },
-    {
-      "id": "stock-057",
-      "date": "2026-06-24",
-      "market": "A股",
-      "index": "上证综指",
-      "value": 4120.0,
-      "change": "+0.34%",
-      "event": "券商板块领涨带动回暖",
-      "sectorImpact": "券商、金融板块走强"
-    },
-    {
-      "id": "stock-058",
-      "date": "2026-06-24",
-      "market": "A股",
-      "index": "深证成指",
-      "value": 15950.0,
-      "change": "+0.61%",
-      "event": "科技股温和反弹",
-      "sectorImpact": "半导体、AI应用温和修复"
-    },
-    {
-      "id": "stock-059",
-      "date": "2026-06-24",
-      "market": "A股",
-      "index": "创业板指",
-      "value": 4210.0,
-      "change": "+0.43%",
-      "event": "创业板小幅反弹",
-      "sectorImpact": "新能源、医药温和上涨"
-    },
-    {
-      "id": "stock-060",
-      "date": "2026-06-24",
-      "market": "A股",
-      "index": "科创50",
-      "value": 1935.0,
-      "change": "+0.72%",
-      "event": "科创板温和反弹",
-      "sectorImpact": "AI芯片、半导体材料温和修复"
-    },
-    {
-      "id": "stock-061",
-      "date": "2026-06-23",
-      "market": "美股",
-      "index": "纳斯达克综合指数",
-      "value": 23535.7,
-      "change": "-2.00%",
-      "event": "芯片股重挫拖累纳指",
-      "sectorImpact": "费城半导体指数暴跌近8%"
-    },
-    {
-      "id": "stock-062",
-      "date": "2026-06-23",
-      "market": "美股",
-      "index": "标准普尔500指数",
-      "value": 6960.0,
-      "change": "-1.00%",
-      "event": "科技股回调拖累大盘",
-      "sectorImpact": "医疗保健和工业板块逆势走强"
-    },
-    {
-      "id": "stock-063",
-      "date": "2026-06-23",
-      "market": "美股",
-      "index": "道琼斯工业平均指数",
-      "value": 51850.0,
-      "change": "+0.13%",
-      "event": "道指微涨，工业板块支撑",
-      "sectorImpact": "传统工业+医疗保健走强"
-    },
-    {
-      "id": "stock-064",
-      "date": "2026-06-24",
-      "market": "港股",
-      "index": "恒生指数",
-      "value": 23560.0,
-      "change": "+0.04%",
-      "event": "恒指微涨",
-      "sectorImpact": "半导体板块强势"
-    },
-    {
-      "id": "stock-065",
-      "date": "2026-06-24",
-      "market": "港股",
-      "index": "恒生科技指数",
-      "value": 4520.0,
-      "change": "+1.34%",
-      "event": "科技指数涨1.34%",
-      "sectorImpact": "华虹宏力+16%，中芯国际+8%"
     }
   ],
   "papers": [
@@ -4023,102 +3680,6 @@
       "commercialPotential": 3,
       "arxivUrl": "https://arxiv.org/abs/2606.23668",
       "pdfUrl": "https://arxiv.org/pdf/2606.23668"
-    },
-    {
-      "id": "paper-052",
-      "title": "OpenThoughts-Agent: Data Recipes for Agentic Models",
-      "conference": "arXiv 2026",
-      "authors": "Negin Raoof, Richard Zhuang, Marianna Nezhurina 等",
-      "institution": "未公开",
-      "summary": "构建开放智能体训练数据流水线，通过系统性实验筛选高质量样本，微调后模型在44.8%平均准确率上超越现有开放基线，全部资源公开",
-      "keyMetric": "44.8%平均准确率，100K训练样本",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.24855",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24855"
-    },
-    {
-      "id": "paper-053",
-      "title": "World Models in Pieces: Structural Certification for General Agents",
-      "conference": "arXiv 2026",
-      "authors": "Yikai Lu, Yifei Wu, Xinyu Lu, Tongxin Li",
-      "institution": "未公开",
-      "summary": "针对通用代理能力非普适性提出结构认证框架，通过过滤特定转换并证明误差界，实现长程规划的可靠性验证",
-      "keyMetric": "Agent结构认证框架",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.24842",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24842"
-    },
-    {
-      "id": "paper-054",
-      "title": "Can Scale Save Us From Plasticity Loss in Large Language Models?",
-      "conference": "arXiv 2026",
-      "authors": "J. Fernando Hernandez-Garcia, Tomás Figliolia, Beren Millidge",
-      "institution": "未公开",
-      "summary": "评估大模型可塑性丧失问题，发现扩大规模只能延缓不能根除适应力衰退，在固定训练语料下同样存在",
-      "keyMetric": "规模无法根除可塑性丧失",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.24752",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24752"
-    },
-    {
-      "id": "paper-055",
-      "title": "Grading the Grader: Lessons from Evaluating an Agentic Data Analysis System",
-      "conference": "arXiv 2026",
-      "authors": "Zheng, Hsu",
-      "institution": "未公开",
-      "summary": "评估Agentic数据分析系统的经验教训，揭示自动评估器本身的可靠性问题",
-      "keyMetric": "Agent评估器可靠性分析",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.24839",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24839"
-    },
-    {
-      "id": "paper-056",
-      "title": "Accuracy and Satisfaction in Multi-Turn LLM Dialogues for NFR Assessment",
-      "conference": "arXiv 2026",
-      "authors": "Fatideh, Baldwin, Dhakal, McMillan, Ghanavati",
-      "institution": "未公开",
-      "summary": "评估多轮LLM对话在非功能需求评估中的准确性和用户满意度",
-      "keyMetric": "多轮对话NFR评估基准",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.24834",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24834"
-    },
-    {
-      "id": "paper-057",
-      "title": "BluTrain: A C++/CUDA Framework for AI Systems",
-      "conference": "arXiv 2026",
-      "authors": "Charan, Suresh, Kumar 等",
-      "institution": "未公开",
-      "summary": "C++/CUDA高性能AI训练框架，优化GPU利用率",
-      "keyMetric": "C++/CUDA AI训练框架",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2606.24780",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24780"
-    },
-    {
-      "id": "paper-058",
-      "title": "Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder PLMs",
-      "conference": "arXiv 2026",
-      "authors": "Pouramini, Faili",
-      "institution": "未公开",
-      "summary": "系统评估编码器-解码器预训练语言模型的微调与提示微调策略匹配",
-      "keyMetric": "微调vs提示微调策略匹配",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2606.24841",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24841"
-    },
-    {
-      "id": "paper-059",
-      "title": "Solving Inverse Problems of Chaotic Systems with Bidirectional Conditional Flow Matching",
-      "conference": "arXiv 2026",
-      "authors": "Hu, Zhang, Pan, Feng, Zhang, Ma, Ting, Li, Wu",
-      "institution": "未公开",
-      "summary": "双向条件流匹配解决混沌系统逆问题",
-      "keyMetric": "混沌系统逆问题新解法",
-      "commercialPotential": 2,
-      "arxivUrl": "https://arxiv.org/abs/2606.24824",
-      "pdfUrl": "https://arxiv.org/pdf/2606.24824"
     }
   ]
 }

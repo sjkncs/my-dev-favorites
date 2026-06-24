@@ -1,7 +1,7 @@
 # 我的开发收藏夹
 
 > 每日更新的效率小技巧 & 热门开源仓库收藏  
-> 最后更新：2026-06-24
+> 最后更新：2026-06-23
 
 ---
 
@@ -75,4 +75,3 @@
 | 2026-06-18 | 每日更新：半导体股蒸发1.3万亿/英特尔18A至强6+/Claude Opus 4.8超GPT-5.5/Anthropic 9650亿融资/Gemini 3.5 Pro 200万Token、A股创业板+科创板双创历史新高(科创50+3.84%)/成交额破3万亿/美联储按兵不动、8篇arXiv论文(OmniAgent/ROGUE/BitsMoE等)、5个GitHub Trending仓库已fork(opencode/kilocode/dify/ragflow/goose)、6项四问深度分析 |
 | 2026-06-22 | 每日更新：科创板第五套标准扩围AI大模型/智谱股价大涨40%市值破万亿港元/MiniMax涨20%/AI芯片需求拉动韩国出口、A股沪指大涨1.78%突破4160点/港股AI大模型股逆势走强、8篇arXiv论文(Agent自进化/偏见传播/跨设备恢复等)、4个GitHub Trending仓库(deer-flow/OpenMontage/palmier-pro/codebase-memory-mcp)、7项四问深度分析、Excel+仪表盘重建 |
 | 2026-06-23 | 每日更新：AI飞轮驱动半导体上行周期/标普500首站7000点/英伟达11连涨/港股科技股回调、A股沪指4200点+0.90%/创业板4410+1.18%、8篇arXiv论文(LLM-as-Code/DiT-Reward/AdamW重尾噪声等)、3个GitHub Trending仓库(OpenClaw/Langflow/Open WebUI)、6项四问深度分析、Excel+仪表盘重建 |
-| 2026-06-24 | 每日更新：美股芯片股重挫纳指跌2%/费城半导体暴跌8%/英伟达跌4%美光跌13%、AI安全赛道成稀缺投资(CrowdStrike八次创新高)、港股半导体逆势走强(华虹宏力+16%中芯国际+8%)、A股券商板块逆势飘红、霸王茶姬北美首店+冰淇淋vs蜜雪冰城竞争、8篇arXiv论文(OpenThoughts-Agent/World Models/可塑性丧失等)、3个GitHub仓库、6项四问深度分析 |
