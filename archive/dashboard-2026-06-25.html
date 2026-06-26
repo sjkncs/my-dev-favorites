@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的开发收藏夹 - 交互式仪表盘</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg: #1a1a2e; --card: #16213e; --accent: #0f3460; --text: #e0e0e0; --muted: #a0a0a0; --high: #e94560; --med: #f4d03f; --low: #58d68d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { background: var(--card); padding: 1.5rem; text-align: center; border-bottom: 2px solid var(--accent); }
+  header h1 { margin: 0; font-size: 1.8rem; }
+  header p { margin: 0.3rem 0 0; color: var(--muted); }
+  .container { max-width: 1400px; margin: 0 auto; padding: 1rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 1.2rem; }
+  .card { background: var(--card); border-radius: 12px; padding: 1.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .card h2 { margin: 0 0 1rem; font-size: 1.15rem; color: #fff; border-left: 4px solid var(--high); padding-left: 0.6rem; }
+  .card-full { grid-column: 1 / -1; }
+  canvas { max-height: 320px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.6rem; text-align: left; border-bottom: 1px solid var(--accent); }
+  th { color: #fff; background: var(--accent); position: sticky; top: 0; cursor: pointer; }
+  tr:hover { background: rgba(255,255,255,0.05); }
+  .award { background: var(--high); color: #fff; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.4rem; }
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
+  .tl-item { position: relative; margin-bottom: 1rem; padding-left: 1rem; }
+  .tl-item::before { content: ''; position: absolute; left: -1.45rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+  .tl-item.high::before { background: var(--high); box-shadow: 0 0 8px var(--high); }
+  .tl-item.medium::before { background: var(--med); }
+  .tl-item.low::before { background: var(--low); }
+  .tl-title { font-weight: 600; color: #fff; }
+  .tl-meta { font-size: 0.8rem; color: var(--muted); }
+  .analysis-card { background: rgba(255,255,255,0.03); border-radius: 8px; margin-bottom: 0.8rem; overflow: hidden; }
+  .analysis-header { padding: 0.8rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .analysis-header:hover { background: rgba(255,255,255,0.05); }
+  .analysis-body { padding: 0 0.8rem 0.8rem; display: none; white-space: pre-wrap; }
+  .analysis-body.open { display: block; }
+  .toggle { color: var(--muted); font-size: 1.2rem; }
+  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 12px; background: var(--accent); font-size: 0.75rem; margin-right: 0.4rem; }
+  .stats { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .stat { background: var(--card); padding: 0.8rem 1.2rem; border-radius: 8px; min-width: 120px; }
+  .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--high); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); }
+  @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>我的开发收藏夹 · 交互式仪表盘</h1>
+  <p>最后更新：2026-06-25 | 数据源：favorites.json</p>
+</header>
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-value">85</div><div class="stat-label">科技新闻</div></div>
+    <div class="stat"><div class="stat-value">26</div><div class="stat-label">消费品牌AI</div></div>
+    <div class="stat"><div class="stat-value">11</div><div class="stat-label">AI大模型</div></div>
+    <div class="stat"><div class="stat-value">71</div><div class="stat-label">股市记录</div></div>
+    <div class="stat"><div class="stat-value">69</div><div class="stat-label">论文</div></div>
+    <div class="stat"><div class="stat-value">39</div><div class="stat-label">开源仓库</div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>(a) 消费品牌AI雷达</h2>
+      <canvas id="consumerRadar"></canvas>
+    </div>
+    <div class="card">
+      <h2>(b) AI大模型雷达 + API价格</h2>
+      <canvas id="modelRadar"></canvas>
+      <canvas id="priceBar" style="margin-top:1rem;max-height:220px;"></canvas>
+    </div>
+    <div class="card">
+      <h2>(c) 主要股指走势</h2>
+      <canvas id="stockLine"></canvas>
+    </div>
+    <div class="card">
+      <h2>(d) 半导体市场情绪</h2>
+      <canvas id="semiBar"></canvas>
+    </div>
+    <div class="card card-full">
+      <h2>(e) 前沿论文列表（可排序）</h2>
+      <table id="papersTable">
+        <thead>
+          <tr><th onclick="sortTable(0)">标题</th><th onclick="sortTable(1)">会议</th><th onclick="sortTable(2)">机构</th><th onclick="sortTable(3)">商业潜力</th><th>链接</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="card card-full">
+      <h2>(f) 四问深度分析</h2>
+      <div id="analysisContainer"></div>
+    </div>
+    <div class="card card-full">
+      <h2>(g) 今日科技新闻时间线</h2>
+      <div class="timeline" id="newsTimeline"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA = {"consumerAI": [{"id": "brand-001", "brand": "瑞幸咖啡", "tool": "MCP/CLI/Skill", "category": "AI点单", "launchDate": "2026-06-10", "features": ["自然语言点单", "智能优惠券匹配", "门店商品查询", "外卖/配送服务", "支付后取餐码获取"], "limitations": ["不支持外卖配送（当前仅到店自提）", "实际调用量未披露", "MCP协议无壁垒，竞品可零成本复制"], "techStack": ["MCP Protocol", "CLI", ".Skill"], "deploymentScale": "全国门店", "scores": {"aiDepth": 8, "ux": 7, "scale": 9, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "降低交易摩擦成本，抢占AI Agent时代的渠道入口", "claimedContribution": "自然语言点单覆盖增量用户，智能优惠券提升核销率", "attackPoints": ["P0: 不支持外卖(覆盖仅60-70%订单)", "P1: 语义理解容错性", "P2: MCP协议无壁垒"], "actionGuide": {"scholar": "精读MCP协议设计", "engineer": "学习MCP server架构", "investor": "关注AI渠道投入意愿"}}, "sources": ["https://open.luckincoffee.com/mcp", "https://open.lkcoffee.com/cli"]}, {"id": "brand-002", "brand": "喜茶", "tool": "全套智能茶饮设备", "category": "门店自动化", "launchDate": "2024-2025", "features": ["自动去皮/去核/锤柠/切丁", "智能出茶", "智能蒸煮", "智能摇茶", "覆盖茶饮制作全流程"], "limitations": ["硬件迭代周期长（2-3年），纠错成本高", "自动化与'手工感'品牌叙事存在矛盾", "设备维护故障率是刚性约束"], "techStack": ["全栈自研硬件", "70余项技术专利"], "deploymentScale": "全国门店", "scores": {"aiDepth": 6, "ux": 8, "scale": 8, "techBarrier": 9, "commercialization": 8}, "fourQuestions": {"realProblem": "将'手艺'转化为'工艺'，在规模化扩张中保持产品品质一致性", "claimedContribution": "出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖", "attackPoints": ["P0: 硬件迭代是刚性约束，单店设备投入数十万元", "P1: '手工感'品牌风险", "P2: 设备故障可能直接导致门店瘫痪"], "actionGuide": {"scholar": "研究智能设备的专利文件和工程设计思路", "engineer": "学习'手艺转工艺'的参数化思维", "investor": "关注硬件壁垒的战略价值"}}, "sources": ["FoodTalks", "新京报", "新华网"]}, {"id": "brand-003", "brand": "奈雪的茶", "tool": "AI溯源预警系统 + 智能茶饮机", "category": "食品安全AI", "launchDate": "2023", "features": ["AI溯源预警覆盖所有门店", "食材有效期智能管理", "智能订货系统", "全流程数字化（下单-二维码-贴杯-扫码-制作）"], "limitations": ["溯源数据真实性取决于上游供应商", "'AI'在溯源中的实际角色模糊", "消费者扫码查看溯源信息的使用率极低"], "techStack": ["自研智能茶饮机（已迭代至第三代）", "AI溯源预警系统"], "deploymentScale": "全门店覆盖", "scores": {"aiDepth": 7, "ux": 7, "scale": 7, "techBarrier": 7, "commercialization": 6}, "fourQuestions": {"realProblem": "构建'信任基础设施'，在食品安全焦虑中建立差异化信任壁垒", "claimedContribution": "消费者信任度提升，品牌差异化，供应链管理水平提升", "attackPoints": ["P0: 溯源数据'第一公里'真实性无法保证", "P1: AI包装下的实际技术含量存疑", "P2: 全面覆盖成本和管理复杂度极高"], "actionGuide": {"scholar": "研究溯源系统的数据架构和异常检测算法", "engineer": "学习将'信任'产品化的设计思路", "investor": "关注信任资产的品牌溢价能力"}}, "sources": ["新华网", "中新经纬", "CBNData"]}, {"id": "brand-004", "brand": "蜜雪冰城", "tool": "雪王爱智慧科技", "category": "AI底层技术", "launchDate": "2024-11", "features": ["新兴能源技术研发", "AI理论与算法软件开发", "AI公共数据平台建设", "供应链智能化", "智慧门店探索"], "limitations": ["低价模式下AI投入产出的ROI有限", "3万+门店数据质量参差不齐", "加盟商对智慧系统的实际获得感有限"], "techStack": ["AI算法", "供应链优化ML", "数据平台"], "deploymentScale": "3万+门店", "scores": {"aiDepth": 5, "ux": 5, "scale": 10, "techBarrier": 5, "commercialization": 6}, "fourQuestions": {"realProblem": "在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间", "claimedContribution": "供应链成本优化，门店补货效率提升，规模化运营能力", "attackPoints": ["P0: AI系统1-2%成本节约能否覆盖系统建设运维成本", "P1: 下沉市场门店数据录入质量差", "P2: AI只能支撑成本节约，想象空间有限"], "actionGuide": {"scholar": "研究大规模供应链ML优化的工程实践", "engineer": "学习在极致成本约束下做务实AI", "investor": "关注3万+门店规模下供应链效率的亿级利润增量"}}, "sources": ["36氪", "财联社", "21经济网"]}, {"id": "brand-005", "brand": "星巴克", "tool": "Green Dot Assist（绿点助手）", "category": "员工辅助AI", "launchDate": "2025-06", "features": ["面向咖啡师的生成式AI虚拟助手", "加速出餐与简化门店工作流程", "自然语言查询配方和促销信息"], "limitations": ["技术壁垒极低，本质是RAG应用", "ROI难以量化", "员工实际采纳率未知"], "techStack": ["Microsoft Azure OpenAI", "RAG"], "deploymentScale": "北美35家门店试点，计划2026财年全面推广", "scores": {"aiDepth": 4, "ux": 7, "scale": 7, "techBarrier": 3, "commercialization": 5}, "fourQuestions": {"realProblem": "降低一线员工认知负荷，在人员高流动率下保障服务一致性", "claimedContribution": "新员工培训时间缩短，出品一致性提升，员工满意度改善", "attackPoints": ["P0: 技术壁垒极低，任何品牌几周内可搭建类似系统", "P1: 高并发场景下API成本和延迟问题", "P2: 忙碌时员工是否真的会查询AI"], "actionGuide": {"scholar": "研究知识库构建和SOP结构化方法", "engineer": "学习将AI嵌入一线员工工作流的产品思路", "investor": "关注技术门槛低的工具类AI的投资价值"}}, "sources": ["星巴克官方新闻", "千家网"]}, {"id": "brand-006", "brand": "星巴克", "tool": "Deep Brew AI 平台", "category": "个性化推荐", "launchDate": "2019", "features": ["个性化饮品推荐", "有针对性的促销活动", "客户保留与忠诚度提升", "库存优化", "跨渠道一致性体验"], "limitations": ["2.5亿美元增量收入的归因方法模糊", "15%保留率提升的基线不明", "数据飞轮冷启动问题", "隐私合规灰色地带"], "techStack": ["AI推荐引擎", "客户旅程编排", "3.9亿+会员数据"], "deploymentScale": "全球门店", "scores": {"aiDepth": 8, "ux": 9, "scale": 10, "techBarrier": 7, "commercialization": 9}, "fourQuestions": {"realProblem": "最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'", "claimedContribution": "会员保留率提升15%，创造约2.5亿美元增量年收入", "attackPoints": ["P0: 2.5亿美元增量的归因方法极其模糊", "P1: 数据飞轮在新市场/新品类上的冷启动问题", "P2: 隐私合规审查日益严格"], "actionGuide": {"scholar": "精读星巴克Investor Day关于Deep Brew的技术演示", "engineer": "学习AI推荐系统与会员LTV深度绑定的产品思维", "investor": "关注AI驱动的会员运营的ROI衡量方法论"}}, "sources": ["Runwise 创新社区", "Ivey 商学院案例"]}, {"id": "brand-007", "brand": "星巴克", "tool": "AI库存管理工具（已停用）", "category": "需求预测AI（失败案例）", "launchDate": "2025", "features": ["AI需求预测替代手工订货", "基于天气/节假日/历史数据自动预测"], "limitations": ["技术失准、错误频发", "增加员工工作负荷", "上线仅9个月即停用", "预测精度在长尾品类上崩溃"], "techStack": ["需求预测模型", "历史销售数据分析"], "deploymentScale": "已停用", "scores": {"aiDepth": 5, "ux": 2, "scale": 1, "techBarrier": 5, "commercialization": 0}, "fourQuestions": {"realProblem": "用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失", "claimedContribution": "声称可降低库存浪费20-30%（实际未达成）", "attackPoints": ["P0: 组织适配失败——门店经理抵触AI'夺权'", "P1: 长尾品类需求预测精度崩溃", "P2: 底层库存数据不准确（GIGO问题）", "P3: 缺乏渐进式过渡，试图一步到位替代人工"], "actionGuide": {"scholar": "精读失败案例的公开报道和员工反馈", "engineer": "学习'先辅助建议后逐步自动化'的正确路径", "investor": "警惕声称'AI可直接替代人工订货'的供应商"}}, "sources": ["财联社", "新浪财经", "香港 Unwire"]}, {"id": "brand-008", "brand": "库迪咖啡", "tool": "智慧运营体系", "category": "智慧运营", "launchDate": "2025", "features": ["AI智能排班与订货", "门店IOT设备互联与监测", "咖啡机自动萃取控制", "AI识别员工卫生规范", "AI客服", "图像识别品控", "动态定价系统"], "limitations": ["动态定价存在合规风险（大数据杀熟嫌疑）", "'去技能化'加剧人员流动", "加盟商关系紧张", "价格战可持续性存疑"], "techStack": ["智慧信息系统", "智慧物联系统", "智慧营销系统"], "deploymentScale": "数千家门店，支撑单日千万杯级产能", "scores": {"aiDepth": 7, "ux": 6, "scale": 9, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "通过'去技能化'实现极速扩张，将门店运营对人的依赖降到最低", "claimedContribution": "支撑从0到数千家门店的超高速扩张，运营标准化", "attackPoints": ["P0: 动态定价合规风险（价格歧视/大数据杀熟）", "P1: '去技能化'反而加剧人员流动", "P2: 加盟商对'系统说了算但亏的是我'不满"], "actionGuide": {"scholar": "研究'去技能化'运营设计思路", "engineer": "学习动态定价的技术实现框架", "investor": "评估系统控制+加盟扩张模式的可持续性"}}, "sources": ["证券时报", "21财经", "新华网"]}], "aiModels": [{"id": "model-001", "name": "GPT-5.5", "vendor": "OpenAI", "parameters": "未公开", "scores": {"reasoning": 9, "coding": 8, "multimodal": 9, "priceCompetitiveness": 3, "contextLength": 7, "ecosystem": 10}, "pricing": {"input": 15, "output": 60, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": false, "launchDate": "2026-04-29", "highlights": ["多项基准SOTA", "GPT-5.5 Instant更智能", "企业级功能成熟度领先"], "weaknesses": ["性价比劣势（定价约为DeepSeek V4的7倍）", "创新放缓质疑——代际提升递减", "Scaling Law边际递减信号"], "sources": ["https://finance.sina.com.cn/wm/2026-04-29/doc-inhwcvff1034726.shtml"]}, {"id": "model-002", "name": "DeepSeek V4", "vendor": "DeepSeek（幻方量化）", "parameters": "未公开（MoE架构）", "scores": {"reasoning": 8, "coding": 8, "multimodal": 6, "priceCompetitiveness": 10, "contextLength": 7, "ecosystem": 7}, "pricing": {"input": 2, "output": 8, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": true, "launchDate": "2026-04", "highlights": ["世界顶级推理性能", "Agent能力大幅提高", "API定价仅为GPT-5.5的约1/7", "聚焦编程能力与超长代码上下文"], "weaknesses": ["预览版完成度不足，稳定性存疑", "效率优化边际递减", "开源可持续性依赖母公司输血"], "sources": ["https://www.deepseek.com/", "https://m.zhiding.cn/article/3180582.htm"]}, {"id": "model-003", "name": "Claude 4 Opus", "vendor": "Anthropic", "parameters": "未公开", "scores": {"reasoning": 9, "coding": 10, "multimodal": 8, "priceCompetitiveness": 4, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 15, "output": 75, "unit": "$/1M tokens"}, "contextWindow": "200K", "openSource": false, "launchDate": "2026-05-14", "highlights": ["全球最佳编程模型（SWE-bench领先）", "Agentic能力显著增强", "AI安全（Constitutional AI）企业级差异化"], "weaknesses": ["非编程任务提升有限", "对Amazon/AWS依赖度高", "安全叙事边际效用递减"], "sources": ["https://www.anthropic.com/news/claude-4", "https://www.cls.cn/detail/2038777"]}, {"id": "model-004", "name": "Claude 4 Sonnet", "vendor": "Anthropic", "parameters": "未公开", "scores": {"reasoning": 8, "coding": 9, "multimodal": 8, "priceCompetitiveness": 6, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 3, "output": 15, "unit": "$/1M tokens"}, "contextWindow": "200K", "openSource": false, "launchDate": "2026-05-14", "highlights": ["性价比优于Opus", "编程能力接近Opus水平", "适合日常开发使用"], "weaknesses": ["复杂推理略逊于Opus", "多模态能力有限"], "sources": ["https://www.anthropic.com/news/claude-4"]}, {"id": "model-005", "name": "Gemini 3.5 Flash", "vendor": "Google", "parameters": "未公开", "scores": {"reasoning": 8, "coding": 7, "multimodal": 9, "priceCompetitiveness": 7, "contextLength": 9, "ecosystem": 9}, "pricing": {"input": 1, "output": 4, "unit": "$/1M tokens"}, "contextWindow": "1M", "openSource": false, "launchDate": "2026-05-20", "highlights": ["端侧部署和低延迟推理", "1M超长上下文窗口", "Google I/O 2026重磅发布", "聚焦Agentic AI"], "weaknesses": ["隐私与广告的深层冲突", "开发者生态面临OpenAI/Apple竞争", "端侧表现需POC验证"], "sources": ["https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhynvwq2736993.shtml"]}, {"id": "model-006", "name": "Gemini 3 Deep Think", "vendor": "Google", "parameters": "未公开", "scores": {"reasoning": 10, "coding": 7, "multimodal": 8, "priceCompetitiveness": 5, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 10, "output": 40, "unit": "$/1M tokens"}, "contextWindow": "512K", "openSource": false, "launchDate": "2026-02-12", "highlights": ["专为科学研究与工程难题设计", "深度推理方向重大升级", "Gemini系列推理能力天花板"], "weaknesses": ["应用场景较窄（科研/工程）", "日常任务性价比不高", "定价偏高"], "sources": ["https://zhuanlan.zhihu.com/p/2006304089840058657"]}, {"id": "model-007", "name": "豆包 2.0", "vendor": "字节跳动", "parameters": "1万亿（MoE总参数）", "scores": {"reasoning": 7, "coding": 7, "multimodal": 8, "priceCompetitiveness": 8, "contextLength": 7, "ecosystem": 10}, "pricing": {"input": 2, "output": 6, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": false, "launchDate": "2026-02-14", "highlights": ["万亿参数基础模型", "企业级Agent能力提升", "亿级用户场景（抖音/飞书/番茄小说）", "中国用户规模最大AI产品之一"], "weaknesses": ["万亿参数宣传意义大于技术意义", "每次推理实际激活参数可能仅数千亿", "面临监管风险（AI生成内容/数据隐私）"], "sources": ["https://www.cls.cn/detail/2288038", "https://www.stcn.com/article/detail/3644236.html"]}, {"id": "model-008", "name": "通义千问 (Qwen)", "vendor": "阿里巴巴", "parameters": "未公开", "scores": {"reasoning": 7, "coding": 7, "multimodal": 7, "priceCompetitiveness": 9, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 1, "output": 3, "unit": "$/1M tokens"}, "contextWindow": "256K", "openSource": true, "launchDate": "2026", "highlights": ["全球API调用量领先", "'一句话点奶茶'验证AI Agent消费入口", "开源生态活跃", "与阿里云深度集成"], "weaknesses": ["复杂推理与GPT-5.5/Claude 4有差距", "品牌认知度在海外市场较低", "AI Agent品类扩展待验证"], "sources": ["https://cloud.tencent.com/developer/article/2658611"]}], "stockDates": ["2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-12", "2026-06-15", "2026-06-18", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25"], "上证": [null, null, null, null, 3987, 4031.51, 4052.18, 4090.48, 4163.1, 4106.1, 4120.0, null], "纳斯达克": [19800, 20100, 20500, 21200, 23500, 25888.84, 25948.22, 26517.93, 24016.02, 23535.7, null, 25476.64], "恒生科技": [5200, 5380, 5500, 5650, 5100, 4705.2, 4735.8, null, 4573.71, 4460.0, 4520.0, 4497.27], "papers": [{"id": "paper-050", "title": "LLM-as-Code: Agentic Programming for Agent Harness", "conference": "arXiv 2026", "authors": "Junjia Qi, Zichuan Fu, Jingtong Gao 等", "institution": "未公开", "summary": "提出Agentic Programming范式，由程序掌控控制流、LLM作为代码组件被调用，DAG结构化上下文，在OSWorld上15步达成86.8%成功率", "keyMetric": "15步86.8%成功率(OSWorld)", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.15874", "pdfUrl": "https://arxiv.org/pdf/2606.15874"}, {"id": "paper-051", "title": "On the Limits of Prompt-Conditioned Language Models as General-Purpose Learners", "conference": "arXiv 2026", "authors": "David Mguni, Julian Ma, Jun Wang", "institution": "未公开", "summary": "揭示提示条件化语言模型作为通用学习者的能力极限", "keyMetric": "LLM通用学习能力边界", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.23668", "pdfUrl": "https://arxiv.org/pdf/2606.23668"}, {"id": "paper-052", "title": "OpenThoughts-Agent: Data Recipes for Agentic Models", "conference": "arXiv 2026", "authors": "Negin Raoof, Richard Zhuang, Marianna Nezhurina 等", "institution": "未公开", "summary": "构建开放智能体训练数据流水线，通过系统性实验筛选高质量样本，微调后模型在44.8%平均准确率上超越现有开放基线，全部资源公开", "keyMetric": "44.8%平均准确率，100K训练样本", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24855", "pdfUrl": "https://arxiv.org/pdf/2606.24855"}, {"id": "paper-053", "title": "World Models in Pieces: Structural Certification for General Agents", "conference": "arXiv 2026", "authors": "Yikai Lu, Yifei Wu, Xinyu Lu, Tongxin Li", "institution": "未公开", "summary": "针对通用代理能力非普适性提出结构认证框架，通过过滤特定转换并证明误差界，实现长程规划的可靠性验证", "keyMetric": "Agent结构认证框架", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24842", "pdfUrl": "https://arxiv.org/pdf/2606.24842"}, {"id": "paper-054", "title": "Can Scale Save Us From Plasticity Loss in Large Language Models?", "conference": "arXiv 2026", "authors": "J. Fernando Hernandez-Garcia, Tomás Figliolia, Beren Millidge", "institution": "未公开", "summary": "评估大模型可塑性丧失问题，发现扩大规模只能延缓不能根除适应力衰退，在固定训练语料下同样存在", "keyMetric": "规模无法根除可塑性丧失", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24752", "pdfUrl": "https://arxiv.org/pdf/2606.24752"}, {"id": "paper-055", "title": "Grading the Grader: Lessons from Evaluating an Agentic Data Analysis System", "conference": "arXiv 2026", "authors": "Zheng, Hsu", "institution": "未公开", "summary": "评估Agentic数据分析系统的经验教训，揭示自动评估器本身的可靠性问题", "keyMetric": "Agent评估器可靠性分析", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24839", "pdfUrl": "https://arxiv.org/pdf/2606.24839"}, {"id": "paper-056", "title": "Accuracy and Satisfaction in Multi-Turn LLM Dialogues for NFR Assessment", "conference": "arXiv 2026", "authors": "Fatideh, Baldwin, Dhakal, McMillan, Ghanavati", "institution": "未公开", "summary": "评估多轮LLM对话在非功能需求评估中的准确性和用户满意度", "keyMetric": "多轮对话NFR评估基准", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24834", "pdfUrl": "https://arxiv.org/pdf/2606.24834"}, {"id": "paper-057", "title": "BluTrain: A C++/CUDA Framework for AI Systems", "conference": "arXiv 2026", "authors": "Charan, Suresh, Kumar 等", "institution": "未公开", "summary": "C++/CUDA高性能AI训练框架，优化GPU利用率", "keyMetric": "C++/CUDA AI训练框架", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24780", "pdfUrl": "https://arxiv.org/pdf/2606.24780"}, {"id": "paper-058", "title": "Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder PLMs", "conference": "arXiv 2026", "authors": "Pouramini, Faili", "institution": "未公开", "summary": "系统评估编码器-解码器预训练语言模型的微调与提示微调策略匹配", "keyMetric": "微调vs提示微调策略匹配", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24841", "pdfUrl": "https://arxiv.org/pdf/2606.24841"}, {"id": "paper-059", "title": "Solving Inverse Problems of Chaotic Systems with Bidirectional Conditional Flow Matching", "conference": "arXiv 2026", "authors": "Hu, Zhang, Pan, Feng, Zhang, Ma, Ting, Li, Wu", "institution": "未公开", "summary": "双向条件流匹配解决混沌系统逆问题", "keyMetric": "混沌系统逆问题新解法", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.24824", "pdfUrl": "https://arxiv.org/pdf/2606.24824"}, {"title": "Grad Detect: Gradient-Based Hallucination Detection in LLMs", "conference": "arXiv 2026", "award": "", "authors": "Anand Kamat, Daniel Blake, Brent M. Werness", "institution": "未公开", "summary": "提出基于梯度的方法识别大语言模型中的幻觉内容", "keyMetric": "新的幻觉检测范式", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24790", "pdfUrl": "https://arxiv.org/pdf/2606.24790", "id": "paper-060"}, {"title": "FlowPipe: LLM-Enhanced Conditional Generative Flow Networks for Data Preparation Pipeline Construction", "conference": "arXiv 2026", "award": "", "authors": "Kunyu Ni, Lei Cao, Jie He, Xiaotong Zhang, Jianfeng Jin, Junyu Dong, Yanwei Yu", "institution": "未公开", "summary": "利用LLM增强的条件生成流网络自动化构建数据准备流水线", "keyMetric": "自动化数据准备流水线", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24679", "pdfUrl": "https://arxiv.org/pdf/2606.24679", "id": "paper-061"}, {"title": "Reasoning as Attractor Dynamics: Latent Memory Retrieval via Gibbs-Weighted Energy Minimization", "conference": "arXiv 2026", "award": "", "authors": "Kanishk Awadhiya", "institution": "未公开", "summary": "将推理过程建模为吸引子动力学，通过Gibbs加权能量最小化实现潜在记忆检索", "keyMetric": "推理与记忆检索新视角", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24543", "pdfUrl": "https://arxiv.org/pdf/2606.24543", "id": "paper-062"}, {"title": "Data Augmentation: A Fourier Analysis Perspective", "conference": "arXiv 2026", "award": "", "authors": "Behrooz Tahmasebi, Melanie Weber, Stefanie Jegelka", "institution": "MIT", "summary": "从傅里叶分析视角重新审视数据增强方法的理论机制", "keyMetric": "数据增强理论分析", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.24418", "pdfUrl": "https://arxiv.org/pdf/2606.24418", "id": "paper-063"}, {"title": "A Fair Evaluation of Graph Foundation Models for Node Property Prediction", "conference": "arXiv 2026", "award": "", "authors": "Oleg Platonov, Gleb Bazhenov, Dmitry Eremeev, Liudmila Prokhorenkova", "institution": "未公开", "summary": "为图基础模型在节点属性预测任务上提供公平评估框架", "keyMetric": "图基础模型公平评测", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.24509", "pdfUrl": "https://arxiv.org/pdf/2606.24509", "id": "paper-064"}, {"title": "DiffusionBench: On Holistic Evaluation of Diffusion Transformers", "conference": "arXiv 2026", "award": "", "authors": "Xingjian Leng, Jaskirat Singh", "institution": "未公开", "summary": "提出扩散Transformer的综合评估框架", "keyMetric": "DiT全面评测", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24888", "pdfUrl": "https://arxiv.org/pdf/2606.24888", "id": "paper-065"}, {"title": "FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation", "conference": "arXiv 2026", "award": "", "authors": "Haorui Ji, Weizhe Liu", "institution": "未公开", "summary": "通过扩散对齐的稀疏表示实现高保真3D高斯生成", "keyMetric": "高保真3D生成", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24874", "pdfUrl": "https://arxiv.org/pdf/2606.24874", "id": "paper-066"}, {"title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation", "conference": "arXiv 2026", "award": "", "authors": "Zixuan Li, Haokun Lin", "institution": "未公开", "summary": "将隐式视觉思维链引入结构感知的文本到图像生成", "keyMetric": "结构感知图像生成", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24849", "pdfUrl": "https://arxiv.org/pdf/2606.24849", "id": "paper-067"}, {"title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents", "conference": "arXiv 2026", "award": "", "authors": "Hovhannes Tamoyan", "institution": "未公开", "summary": "为代码修复智能体开发结构化诊断定位方法", "keyMetric": "代码修复Agent诊断定位", "commercialPotential": 8, "arxivUrl": "https://arxiv.org/abs/2606.24820", "pdfUrl": "https://arxiv.org/pdf/2606.24820", "id": "paper-068"}, {"title": "Are We Ready For An Agent-Native Memory System?", "conference": "arXiv 2026", "award": "", "authors": "Wei Zhou", "institution": "未公开", "summary": "评估支撑自主智能体持久化记忆的基础设施就绪度", "keyMetric": "Agent记忆系统 readiness", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24775", "pdfUrl": "https://arxiv.org/pdf/2606.24775", "id": "paper-069"}], "analysis": [{"title": "1. OpenAI发布首款自研AI推理芯片Jalapeño", "summary": "OpenAI与博通联合发布首款定制AI推理芯片\"Jalapeño\"，专为大语言模型推理设计，9个月完成流片，预计可降低约50%推理成本，测试负载覆盖GPT5.3、Codex和Spark。\n\n#", "content": "\n**概要**: OpenAI与博通联合发布首款定制AI推理芯片\"Jalapeño\"，专为大语言模型推理设计，9个月完成流片，预计可降低约50%推理成本，测试负载覆盖GPT5.3、Codex和Spark。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：大模型推理成本是AI规模化商业化的核心瓶颈。当前AI公司高度依赖英伟达GPU，议价能力弱、供应链风险高。OpenAI自研芯片旨在掌握算力主权，从\"软件公司\"进化为\"软硬一体\"的AI基础设施公司。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：9个月超短开发周期、推理成本降低约50%、工程样片达到量产标准。这些数字如果属实，将证明非传统芯片公司也能快速推出高性能AI芯片。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: \"50%成本降低\"是否包含全栈成本（设计、制造、软件生态），还是仅指芯片单位算力成本\nP1: 9个月流片是否依赖博通大量既有IP和成熟方案，OpenAI真实自研比例有多少\nP2: 推理芯片能否支持训练场景，若不能则无法完全替代英伟达生态\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：精读定制AI芯片与LLM工作负载协同设计的方法论\n- 👨‍💻 工程师：学习软硬协同优化和推理引擎适配经验\n- 💰 投资人：关注OpenAI供应链\"去英伟达化\"对博通、Marvell等ASIC设计商的利好，以及英伟达护城河是否被侵蚀\n\n---"}, {"title": "2. 美股科技股回调与AI资本开支争议", "summary": "6月25日纳指跌0.43%，大型科技股普跌。市场持续质疑科技巨头大规模AI资本开支是否合理，黄仁勋回应称\"有用的AI已经能够赚钱\"。\n\n#", "content": "\n**概要**: 6月25日纳指跌0.43%，大型科技股普跌。市场持续质疑科技巨头大规模AI资本开支是否合理，黄仁勋回应称\"有用的AI已经能够赚钱\"。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：AI投资是否正在经历从\"信仰驱动\"到\"回报验证\"的转折点。过去两年科技巨头数千亿美元资本开支需要向股东证明回报，否则估值将承压。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：黄仁勋称AI回报\"已有答案\"，暗示AI投资已开始产生实际收益。但缺乏具体财务数据支撑。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: \"有用的AI已经能赚钱\"是定性判断还是可量化的财务事实\nP1: 若AI资本开支回报不及预期，是否会导致2026-2027年资本开支下修\nP2: 股价下跌反映的是短期估值修正，还是AI需求周期见顶\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：研究AI资本开支与企业收入/利润的滞后关系\n- 👨‍💻 工程师：关注AI应用层哪些场景真正产生可衡量的商业价值\n- 💰 投资人：区分\"AI需求证伪\"和\"估值过高修正\"两种情景，前者是趋势终结，后者是买入机会\n\n---"}, {"title": "3. A股半导体芯片领涨，科创50涨超3%续创新高", "summary": "6月25日A股半导体芯片方向涨幅居前，科创50指数拉升涨超3%，创业板指涨逾2%，延续科技成长强势格局。\n\n#", "content": "\n**概要**: 6月25日A股半导体芯片方向涨幅居前，科创50指数拉升涨超3%，创业板指涨逾2%，延续科技成长强势格局。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：在地缘政治与AI产业变革双重驱动下，国产半导体自主可控成为长期战略主线。资金正在押注中国半导体产业从\"替代\"走向\"创新\"的拐点。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：科创50涨超3%创新高，反映市场对科创板半导体龙头的强烈信心；板块普涨显示资金持续流入。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: 短期涨幅是否过度透支基本面，部分公司估值是否已远超业绩增速\nP1: 国产替代叙事在先进制程领域仍面临较大技术与设备瓶颈\nP2: 全球半导体周期与A股结构性行情是否完全同步\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：研究科创板半导体企业的技术路线图与国际对标差距\n- 👨‍💻 工程师：关注国产EDA、设备、材料的实际突破点\n- 💰 投资人：优选有真实订单和产能释放的龙头，规避纯概念炒作\n\n---"}, {"title": "4. 美团LongCat-Flash-Thinking-2601开源大模型", "summary": "美团发布并开源LongCat-Flash-Thinking-2601，在Agentic Search、Agentic Tool Use、TIR等评测基准上达到开源SOTA，工具调用复杂任务中超越Claude，首个完整开源并支持免费在线体验\"重思考模式\"。\n\n#", "content": "\n**概要**: 美团发布并开源LongCat-Flash-Thinking-2601，在Agentic Search、Agentic Tool Use、TIR等评测基准上达到开源SOTA，工具调用复杂任务中超越Claude，首个完整开源并支持免费在线体验\"重思考模式\"。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：当前开源模型在需要多步工具调用的复杂任务上仍落后于闭源模型（如Claude）。美团希望证明开源社区也能做出顶级的Agent-oriented模型，并借此建立开发者生态。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：多个Agent评测基准开源SOTA、工具调用任务超越Claude、首个完整开源+免费在线重思考模式。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: \"超越Claude\"是否在相同测试条件（prompt、温度、版本）下进行公平比较\nP1: 美团是否有持续投入大模型研发的长期决心，还是短期PR行为\nP2: 重思考模式推理成本如何，能否支撑规模化应用\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：精读Agentic Tool Use和TIR基准的评测方法\n- 👨‍💻 工程师：学习其工具调用实现和推理优化方案，复用到自己的Agent系统\n- 💰 投资人：关注美团通过开源大模型降低AI应用成本、提升本地生活业务效率的长期战略价值\n\n---"}, {"title": "5. Grad Detect: 基于梯度的LLM幻觉检测", "summary": "论文提出Grad Detect方法，利用梯度信息识别大语言模型生成的幻觉内容。\n\n#", "content": "\n**概要**: 论文提出Grad Detect方法，利用梯度信息识别大语言模型生成的幻觉内容。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：LLM幻觉是高风险应用场景（医疗、法律、金融）的核心障碍。现有检测方法多基于生成概率或外部检索，Grad Detect尝试从模型内部梯度信号入手，提供更可解释的幻觉预警。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：提出新的基于梯度的幻觉检测范式，可能比基于logit的方法更准确地定位幻觉来源。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: 梯度计算成本远高于前向推理，实际部署可行性如何\nP1: 是否在足够多的模型架构（Decoder-only、Encoder-Decoder、MoE）上验证\nP2: 对对抗性幻觉和语义级幻觉的检测能力是否足够\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：精读梯度与模型置信度/不确定性关系的理论分析\n- 👨‍💻 工程师：学习其实现方式，但在生产环境中需谨慎评估计算开销\n- 💰 投资人：关注幻觉检测作为AI安全赛道的细分机会，但需看清规模化瓶颈\n\n---"}, {"title": "6. SHERLOC: 代码修复智能体的结构化诊断定位", "summary": "论文提出SHERLOC框架，为代码修复Agent提供结构化诊断定位能力，帮助Agent更精确地识别错误位置。\n\n#", "content": "\n**概要**: 论文提出SHERLOC框架，为代码修复Agent提供结构化诊断定位能力，帮助Agent更精确地识别错误位置。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：现有AI编程Agent（如GitHub Copilot、Devin）在修复bug时 often 尝试盲目修改多个位置，效率低且容易引入新bug。SHERLOC试图让Agent先\"诊断\"再\"治疗\"，模仿人类工程师的调试过程。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：结构化诊断定位提升代码修复Agent的准确性和可解释性，减少无效修改。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: 诊断定位的精度是否足以覆盖真实世界中复杂的多文件bug\nP1: 结构化表示是否依赖大量手工设计的规则，泛化性如何\nP2: 与现有Agent框架（如SWE-agent）的集成成本是否过高\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：精读\"诊断-修复\"两阶段框架的设计和训练策略\n- 👨‍💻 工程师：学习将SHERLOC集成到现有AI编程工具中的方法\n- 💰 投资人：这是AI Coding Agent能力跃迁的关键方向之一，值得关注\n\n---"}, {"title": "7. OpenMontage: AI编码助手变视频工作室", "summary": "GitHub trending仓库OpenMontage将AI coding assistant扩展为完整视频生产工作室，短时间内获得近4000 star增长。\n\n#", "content": "\n**概要**: GitHub trending仓库OpenMontage将AI coding assistant扩展为完整视频生产工作室，短时间内获得近4000 star增长。\n\n#"}, {"title": "Q1: 它真正想解决的问题是什么？", "summary": "", "content": "本质问题：视频制作门槛高、工具链复杂。OpenMontage尝试用Agent方式统一脚本、素材、剪辑、配音、字幕等环节，让开发者用自然语言生成视频。\n\n#"}, {"title": "Q2: 它声称的贡献是什么？", "summary": "", "content": "声称贡献：+3,719 stars trending，说明社区对\"AI coding assistant → video studio\"方向的高度兴趣。\n\n#"}, {"title": "Q3: 最可能被reviewer攻击的地方在哪里？", "summary": "", "content": "P0: 视频生成的实际质量是否达到可用水平，还是仅停留在demo阶段\nP1: 版权、肖像权、素材授权问题如何解决\nP2: 与Runway、Pika等专业视频生成工具相比差异化在哪\n\n#"}, {"title": "Q4: 如果我是同方向从业者，应该精读/学习/模仿/跳过什么？", "summary": "", "content": "- 🎓 博士生：研究多模态Agent的工作流编排方法\n- 👨‍💻 工程师：学习其将代码生成能力迁移到视频生产Pipeline的思路\n- 💰 投资人：关注AIGC视频创作工具的社区热度，但需区分真实PMF和短期 hype"}], "news": [{"date": "2026-06-25", "title": "OpenAI发布首款自研AI推理芯片Jalapeño，与博通合作9个月流片", "category": "芯片", "importance": "high", "summary": "OpenAI与博通（Broadcom）联合发布首款定制AI推理芯片Jalapeño，专为大语言模型推理设计，9个月完成流片，预计可节省约50%推理成本。", "keyData": "9个月流片、推理成本降约50%", "impact": "AI实验室转向定制硬件，去英伟达化加速，竞争进入模型+芯片+系统+网络时代", "source": "https://www.esmchina.com/news/14297.html", "id": "news-081"}, {"date": "2026-06-25", "title": "美股科技股回调，纳指跌0.43%，AI估值与资本开支担忧持续", "category": "美股", "importance": "high", "summary": "6月25日美股收盘纳指跌0.43%收于25476.64点，标普500跌0.10%，道指涨0.35%，大型科技股普跌。", "keyData": "纳指-0.43%（25476.64）、标普-0.10%（7358.22）、道指+0.35%（51848.90）", "impact": "高估值与AI资本开支合理性仍是市场核心矛盾", "source": "https://news.sina.com.cn/zx/2026-06-25/doc-inieqfvk2647425.shtml", "id": "news-082"}, {"date": "2026-06-25", "title": "黄仁勋：有用的AI已经到来，并且已经能够赚钱", "category": "AI产业", "importance": "medium", "summary": "英伟达CEO黄仁勋公开回应AI投资回报质疑，称有用的AI已经到来且能够赚钱。", "keyData": "AI回报已有答案", "impact": "为AI芯片需求叙事提供支撑，但市场仍待财务数据验证", "source": "https://news.sina.com.cn/zx/2026-06-25/doc-inieqfvk2647425.shtml", "id": "news-083"}, {"date": "2026-06-25", "title": "A股半导体芯片领涨，科创50涨超3%续创新高", "category": "A股", "importance": "high", "summary": "6月25日A股半导体芯片方向涨幅居前，创业板指拉升涨逾2%，科创50指数拉升涨超3%。", "keyData": "科创50涨超3%、创业板指涨逾2%", "impact": "国产半导体自主可控叙事强化，资金持续流入科技成长板块", "source": "https://www.cls.cn/detail/2408694", "id": "news-084"}, {"date": "2026-06-25", "title": "AI算力产业链迎超级周期，半导体ETF受关注", "category": "产业", "importance": "medium", "summary": "随着OpenAI自研芯片发布及国产AI芯片需求增长，AI算力产业链被视为进入超级周期，公募基金半导体配置从概念转向业绩驱动。", "keyData": "半导体配置从概念转向业绩驱动", "impact": "产业链景气度向上，但需警惕短期估值过热", "source": "https://finance.sina.com.cn/jjxw/2026-06-25/doc-inieqnce5847431.shtml", "id": "news-085"}]};
+
+Chart.defaults.color = '#a0a0a0';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
+
+// (a) Consumer AI Radar
+const caLabels = ['AI深度','用户体验','部署规模','技术壁垒','商业化'];
+const caColors = ['#e94560','#58d68d','#f4d03f','#3498db','#9b59b6'];
+const caDatasets = DATA.consumerAI.slice(0,5).map((item, idx) => ({
+  label: item.brand,
+  data: [item.scores.aiDepth, item.scores.ux, item.scores.scale, item.scores.techBarrier, item.scores.commercialization],
+  fill: true,
+  backgroundColor: caColors[idx % caColors.length] + '33',
+  borderColor: caColors[idx % caColors.length],
+  pointBackgroundColor: caColors[idx % caColors.length]
+}));
+new Chart(document.getElementById('consumerRadar'), { type: 'radar', data: { labels: caLabels, datasets: caDatasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { suggestedMin: 0, suggestedMax: 10, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' } } } } });
+
+// (b) AI Model Radar
+const modelLabels = ['推理','编程','多模态','价格竞争力','上下文长度','生态'];
+const modelDatasets = DATA.aiModels.slice(0,5).map((item, idx) => ({
+  label: item.name,
+  data: [item.scores.reasoning, item.scores.coding, item.scores.multimodal, item.scores.priceCompetitiveness, item.scores.contextLength, item.scores.ecosystem],
+  fill: true,
+  backgroundColor: caColors[idx % caColors.length] + '33',
+  borderColor: caColors[idx % caColors.length]
+}));
+new Chart(document.getElementById('modelRadar'), { type: 'radar', data: { labels: modelLabels, datasets: modelDatasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { suggestedMin: 0, suggestedMax: 10, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' } } } } });
+
+// API Price Bar
+new Chart(document.getElementById('priceBar'), { type: 'bar', data: {
+  labels: DATA.aiModels.map(m => m.name),
+  datasets: [
+    { label: '输入价格', data: DATA.aiModels.map(m => m.pricing.input), backgroundColor: '#3498db' },
+    { label: '输出价格', data: DATA.aiModels.map(m => m.pricing.output), backgroundColor: '#e94560' }
+  ]
+}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#fff' } } }, scales: { y: { title: { display: true, text: '$/1M tokens', color: '#fff' } }, x: { ticks: { color: '#fff' } } } } });
+
+// (c) Stock Line
+new Chart(document.getElementById('stockLine'), { type: 'line', data: {
+  labels: DATA.stockDates,
+  datasets: [
+    { label: '上证', data: DATA.上证, borderColor: '#e94560', yAxisID: 'y', tension: 0.3 },
+    { label: '纳斯达克', data: DATA.纳斯达克, borderColor: '#58d68d', yAxisID: 'y1', tension: 0.3 },
+    { label: '恒生科技', data: DATA.恒生科技, borderColor: '#f4d03f', yAxisID: 'y1', tension: 0.3 }
+  ]
+}, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: {
+  y: { type: 'linear', display: true, position: 'left', title: { display: true, text: '上证', color: '#fff' } },
+  y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: '纳斯达克/恒生科技', color: '#fff' } },
+  x: { ticks: { color: '#fff' } }
+} } });
+
+// (d) Semiconductor Bar
+const semiLabels = ['OpenAI Jalapeño', 'A股科创50', '费城半导体', '英伟达', '中芯国际', '华虹宏力'];
+const semiValues = [9, 8, 3, 4, 7, 8];
+new Chart(document.getElementById('semiBar'), { type: 'bar', data: { labels: semiLabels, datasets: [{ label: '情绪热度', data: semiValues, backgroundColor: ['#e94560','#58d68d','#f4d03f','#3498db','#9b59b6','#e67e22'] }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { suggestedMax: 10, title: { display: true, text: '热度(0-10)', color: '#fff' } }, y: { ticks: { color: '#fff' } } } } });
+
+// (e) Papers Table
+const tbody = document.querySelector('#papersTable tbody');
+function renderPapers(list) {
+  tbody.innerHTML = list.map(p => `
+    <tr>
+      <td>${p.title}${p.award ? '<span class="award">'+p.award+'</span>' : ''}</td>
+      <td>${p.conference}</td>
+      <td>${p.institution}</td>
+      <td>${p.commercialPotential}</td>
+      <td><a href="${p.arxivUrl}" target="_blank" style="color:#58d68d;">arXiv</a></td>
+    </tr>
+  `).join('');
+}
+renderPapers(DATA.papers);
+let sortDir = {};
+function sortTable(col) {
+  const key = ['title','conference','institution','commercialPotential'][col];
+  sortDir[key] = !sortDir[key];
+  const sorted = [...DATA.papers].sort((a,b) => {
+    let va = a[key], vb = b[key];
+    if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+    if (va < vb) return sortDir[key] ? -1 : 1;
+    if (va > vb) return sortDir[key] ? 1 : -1;
+    return 0;
+  });
+  renderPapers(sorted);
+}
+
+// (f) Analysis Cards
+const analysisContainer = document.getElementById('analysisContainer');
+analysisContainer.innerHTML = DATA.analysis.map((card, idx) => `
+  <div class="analysis-card">
+    <div class="analysis-header" onclick="toggleAnalysis(${idx})">
+      <div><strong>${card.title}</strong><br><span style="color:var(--muted);font-size:0.85rem;">${card.summary || ''}</span></div>
+      <span class="toggle" id="toggle-${idx}">+</span>
+    </div>
+    <div class="analysis-body" id="analysis-${idx}">${card.content}</div>
+  </div>
+`).join('');
+function toggleAnalysis(idx) {
+  const body = document.getElementById('analysis-'+idx);
+  const toggle = document.getElementById('toggle-'+idx);
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '−' : '+';
+}
+
+// (g) News Timeline
+const timeline = document.getElementById('newsTimeline');
+timeline.innerHTML = DATA.news.map(n => `
+  <div class="tl-item ${n.importance}">
+    <div class="tl-title">${n.title}</div>
+    <div class="tl-meta">
+      <span class="tag">${n.category}</span>
+      <span class="tag">${n.importance === 'high' ? '高' : n.importance === 'medium' ? '中' : '低'}重要</span>
+      ${n.keyData}
+    </div>
+  </div>
+`).join('');
+</script>
+</body>
+</html>

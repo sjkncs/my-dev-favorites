@@ -1,7 +1,7 @@
 # 我的开发收藏夹
 
 > 每日更新的效率小技巧 & 热门开源仓库收藏  
-> 最后更新：2026-06-26
+> 最后更新：2026-06-25
 
 ---
 
@@ -77,4 +77,3 @@
 | 2026-06-23 | 每日更新：AI飞轮驱动半导体上行周期/标普500首站7000点/英伟达11连涨/港股科技股回调、A股沪指4200点+0.90%/创业板4410+1.18%、8篇arXiv论文(LLM-as-Code/DiT-Reward/AdamW重尾噪声等)、3个GitHub Trending仓库(OpenClaw/Langflow/Open WebUI)、6项四问深度分析、Excel+仪表盘重建 |
 | 2026-06-24 | 每日更新：美股芯片股重挫纳指跌2%/费城半导体暴跌8%/英伟达跌4%美光跌13%、AI安全赛道成稀缺投资(CrowdStrike八次创新高)、港股半导体逆势走强(华虹宏力+16%中芯国际+8%)、A股券商板块逆势飘红、霸王茶姬北美首店+冰淇淋vs蜜雪冰城竞争、8篇arXiv论文(OpenThoughts-Agent/World Models/可塑性丧失等)、3个GitHub仓库、6项四问深度分析 |
 | 2026-06-25 | 每日更新：OpenAI发布自研AI推理芯片Jalapeño(9个月流片/推理成本降50%)/美股科技股回调纳指跌0.43%、A股半导体领涨科创50涨超3%/创业板指涨逾2%、美团LongCat开源SOTA/瑞幸AI开放平台/蜜雪雪王AI大脑/星巴克Deep Brew/库迪AI全链路、10篇arXiv前沿论文(幻觉检测/Agent记忆/代码修复Agent等)、5个GitHub Trending仓库(OpenMontage/apple容器等)、7项四问深度分析、Excel+仪表盘重建 |
-| 2026-06-26 | 每日更新：IBM发布全球首个亚1纳米芯片技术/美光财报大超预期带动芯片股大涨/苹果WWDC发布新一代Apple Intelligence与Siri AI、A股6月25日收盘科创50涨3.87%/港股恒生科技跌1.63%/美股6月26日纳指跌0.46%、8篇arXiv前沿论文(TryOnCrafter/Scaling LLM Reasoning/Voice AI情感鸿沟等)、5个GitHub Trending仓库(OpenMontage/design.md/apple container/AWS Agent Toolkit/MinerU)、5项消费品牌AI动态(美团/星巴克/阿里通义千问/饿了么/霸王茶姬)、10项四问深度分析、Excel+仪表盘重建 |
