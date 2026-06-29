@@ -43,22 +43,24 @@
   .stat { background: var(--card); padding: 0.8rem 1.2rem; border-radius: 8px; min-width: 120px; }
   .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--high); }
   .stat-label { font-size: 0.8rem; color: var(--muted); }
+  .paper-link { color: #58d68d; text-decoration: none; }
+  .paper-link:hover { text-decoration: underline; }
   @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <header>
   <h1>我的开发收藏夹 · 交互式仪表盘</h1>
-  <p>最后更新：2026-06-26 | 数据源：favorites.json</p>
+  <p>最后更新：2026-06-27 | 数据源：favorites.json</p>
 </header>
 <div class="container">
   <div class="stats">
-    <div class="stat"><div class="stat-value">91</div><div class="stat-label">科技新闻</div></div>
-    <div class="stat"><div class="stat-value">31</div><div class="stat-label">消费品牌AI</div></div>
+    <div class="stat"><div class="stat-value">96</div><div class="stat-label">科技新闻</div></div>
+    <div class="stat"><div class="stat-value">32</div><div class="stat-label">消费品牌AI</div></div>
     <div class="stat"><div class="stat-value">11</div><div class="stat-label">AI大模型</div></div>
-    <div class="stat"><div class="stat-value">81</div><div class="stat-label">股市记录</div></div>
-    <div class="stat"><div class="stat-value">77</div><div class="stat-label">论文</div></div>
-    <div class="stat"><div class="stat-value">44</div><div class="stat-label">开源仓库</div></div>
+    <div class="stat"><div class="stat-value">90</div><div class="stat-label">股市记录</div></div>
+    <div class="stat"><div class="stat-value">92</div><div class="stat-label">论文</div></div>
+    <div class="stat"><div class="stat-value">52</div><div class="stat-label">开源仓库</div></div>
   </div>
 
   <div class="grid">
@@ -90,17 +92,2495 @@
     </div>
     <div class="card card-full">
       <h2>(f) 四问深度分析</h2>
-      <div id="analysisContainer"></div>
+      <div id="analysisContainer">
+
+      </div>
     </div>
     <div class="card card-full">
       <h2>(g) 科技新闻时间线</h2>
-      <div class="timeline" id="newsTimeline"></div>
+      <div class="timeline" id="newsTimeline">
+<div class="tl-item high">
+  <div class="tl-title">Anthropic势将与美国政府达成协议，解除对AI模型的限制</div>
+  <div class="tl-meta">2026-06-27 · AI监管 · 重要程度: high</div>
+  <div>Anthropic正接近与美国政府达成协议，有望解除此前对AI模型的部分限制，可能缓解Claude全球部署的合规不确定性。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">纳指收跌0.2%，芯片股下挫，西部数据大跌13%</div>
+  <div class="tl-meta">2026-06-27 · 半导体/美股 · 重要程度: high</div>
+  <div>6月27日美股收盘纳指跌0.2%，费城半导体指数大跌5.29%；西部数据跌超13%，希捷跌超12%，闪迪跌超10%，软银尾盘重挫13%。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">半导体设备迎来增长大年，2026年设备增速预期上调至23.5%</div>
+  <div class="tl-meta">2026-06-27 · 半导体 · 重要程度: high</div>
+  <div>上下游扩产忙，半导体设备赛道高景气。相关企业合计投资近450亿元，交付周期从3-6个月拉长至8-12个月。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">A股大涨后风险积聚，市值一天蒸发约2.9万亿元</div>
+  <div class="tl-meta">2026-06-27 · A股 · 重要程度: medium</div>
+  <div>不到两月百股翻倍后风险积聚，6月27日沪指跌幅明显，创业板指跌逾4%，深证成指与科创50同步下行。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">AI开启半导体新时代，2026年产业规模接近万亿美元</div>
+  <div class="tl-meta">2026-06-27 · 半导体 · 重要程度: medium</div>
+  <div>AI热潮持续推动半导体产业扩容，2026年全球半导体产业规模预计接近万亿美元，AI算力需求成为主要增长引擎。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">IBM发布全球首个亚1纳米芯片技术，采用0.7纳米晶体管架构</div>
+  <div class="tl-meta">2026-06-26 · 半导体 · 重要程度: high</div>
+  <div>IBM推出全球首个亚1纳米芯片技术，采用0.7纳米（7埃）节点晶体管架构，被视为延续摩尔定律的重大突破。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">美光财报大超预期，AI存储需求带动芯片股大涨</div>
+  <div class="tl-meta">2026-06-26 · 半导体 · 重要程度: high</div>
+  <div>美光科技Q3 FY2026营收414.6亿美元，目标营收可达500亿美元，股价大涨15%，闪迪涨近22%。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">苹果WWDC 2026发布新一代Apple Intelligence与Siri AI</div>
+  <div class="tl-meta">2026-06-26 · AI应用 · 重要程度: high</div>
+  <div>苹果发布iOS 27，推出全新Siri AI，应用启动速度提升30%，但中国大陆暂不可用。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">中国芯片出口额暴增110%，存储芯片短缺推升价格</div>
+  <div class="tl-meta">2026-06-26 · 半导体 · 重要程度: medium</div>
+  <div>2026年6月官方数据显示中国集成电路出口额超355.5亿美元，同比暴增约110%，主要由存储芯片短缺导致价格飙升。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">苹果M6跳过传闻被证伪，不符合半导体行业基本常识</div>
+  <div class="tl-meta">2026-06-26 · 半导体 · 重要程度: medium</div>
+  <div>经供应链数据交叉验证，苹果将跳过M6直接发布M7的传闻为不实消息，芯片架构规划通常提前数年制定。</div>
+</div>
+<div class="tl-item low">
+  <div class="tl-title">世界经济论坛公布新一批AI应用之星，超半数案例来自中国</div>
+  <div class="tl-meta">2026-06-26 · AI产业 · 重要程度: low</div>
+  <div>世界经济论坛公布新一批AI应用之星名单，超半数入选案例来自中国，涵盖制造、医疗、消费等领域。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">OpenAI发布首款自研AI推理芯片Jalapeño，与博通合作9个月流片</div>
+  <div class="tl-meta">2026-06-25 · 芯片 · 重要程度: high</div>
+  <div>OpenAI与博通（Broadcom）联合发布首款定制AI推理芯片Jalapeño，专为大语言模型推理设计，9个月完成流片，预计可节省约50%推理成本。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">美股科技股回调，纳指跌0.43%，AI估值与资本开支担忧持续</div>
+  <div class="tl-meta">2026-06-25 · 美股 · 重要程度: high</div>
+  <div>6月25日美股收盘纳指跌0.43%收于25476.64点，标普500跌0.10%，道指涨0.35%，大型科技股普跌。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">黄仁勋：有用的AI已经到来，并且已经能够赚钱</div>
+  <div class="tl-meta">2026-06-25 · AI产业 · 重要程度: medium</div>
+  <div>英伟达CEO黄仁勋公开回应AI投资回报质疑，称有用的AI已经到来且能够赚钱。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">A股半导体芯片领涨，科创50涨超3%续创新高</div>
+  <div class="tl-meta">2026-06-25 · A股 · 重要程度: high</div>
+  <div>6月25日A股半导体芯片方向涨幅居前，创业板指拉升涨逾2%，科创50指数拉升涨超3%。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">AI算力产业链迎超级周期，半导体ETF受关注</div>
+  <div class="tl-meta">2026-06-25 · 产业 · 重要程度: medium</div>
+  <div>随着OpenAI自研芯片发布及国产AI芯片需求增长，AI算力产业链被视为进入超级周期，公募基金半导体配置从概念转向业绩驱动。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">美股芯片股重挫：纳指跌超2%，费城半导体指数暴跌近8%</div>
+  <div class="tl-meta">2026-06-24 · 半导体 · 重要程度: high</div>
+  <div>美股三大指数集体收跌，纳指重挫2.2%，费城半导体指数暴跌近8%。英伟达跌超4%，美光科技暴跌13%。投资者重新审视AI资本支出规模，质疑大规模芯片投资是否合理。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">AI投资热潮遭重新审视，资本支出合理性受质疑</div>
+  <div class="tl-meta">2026-06-24 · AI · 重要程度: high</div>
+  <div>分析师开始质疑科技巨头大规模AI资本支出是否合理，市场从追逐AI动量交易转向理性评估。SpaceX暴跌16%加剧科技股恐慌情绪。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">人工智能让网络安全成为2026年稀缺性投资赛道</div>
+  <div class="tl-meta">2026-06-24 · AI安全 · 重要程度: high</div>
+  <div>AI技术显著降低漏洞挖掘难度，网络安全成为稀缺资产。CrowdStrike八次创盘中新高，帕洛阿尔托网络涨幅228%，ETF收益27%。资金从芯片领域转向安全赛道。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">科创芯片设计ETF富国正在发行，2026是AI产业推理落地大年</div>
+  <div class="tl-meta">2026-06-24 · 半导体 · 重要程度: medium</div>
+  <div>全球算力资本开支持续攀升，芯片自主可控战略持续加码。科创芯片设计指数成分股2025年净利润同比增速超190%，2026年被视为AI产业推理落地大年。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">港股半导体板块强势：华虹宏力飙升16%，中芯国际涨逾8%</div>
+  <div class="tl-meta">2026-06-24 · 半导体 · 重要程度: high</div>
+  <div>港股半导体板块表现强势，华虹宏力飙升16%，中芯国际涨逾8%。恒生科技指数涨1.34%，与美股芯片股暴跌形成鲜明反差，反映资金在港股寻找半导体结构性机会。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">A股券商板块延续涨势，28只成分股飘红</div>
+  <div class="tl-meta">2026-06-24 · 股市 · 重要程度: medium</div>
+  <div>A股市场整体调整后券商板块逆势走强，28只成分股飘红。学者评价'本轮券商上涨的持续性相对更强'，成交额维持在3.46万亿元高位。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">AI飞轮驱动加速半导体更多领域进入上行周期</div>
+  <div class="tl-meta">2026-06-23 · 半导体 · 重要程度: high</div>
+  <div>证券时报报道，AI算力需求持续拉动存储、功率、封装等多环节景气，业内预计2026年全球半导体规模将超1.5万亿美元，内存市场缺口约5%，设备端高景气预见到8个季度后。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">AI算力新变局：谁能动英伟达奶酪</div>
+  <div class="tl-meta">2026-06-23 · AI算力 · 重要程度: high</div>
+  <div>21财经深度分析，华为昇腾、英特尔18A、AMD、台积电等多方挑战英伟达GPU垄断地位，AI算力格局正从'一家独大'走向多元竞争。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">新洁能涨停：功率半导体+产品升级+AI需求增长</div>
+  <div class="tl-meta">2026-06-23 · 半导体 · 重要程度: medium</div>
+  <div>A股功率半导体龙头新洁能6月23日涨停，分析师认为AI数据中心功率器件需求+产品升级双轮驱动，功率半导体景气度进入新一轮上行期。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">标普500历史首次站上7000点，纳指涨1.59%至24016点</div>
+  <div class="tl-meta">2026-06-23 · 美股 · 重要程度: high</div>
+  <div>标普500历史首次收盘站上7000点整数关口，纳指涨1.59%至24016.02点，道指微涨220点创历史新高。英伟达日线11连涨，光纤概念股Lumen与AWS合作后暴涨10.13%。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">英伟达日线11连涨，AI算力龙头再创新高</div>
+  <div class="tl-meta">2026-06-23 · 半导体 · 重要程度: high</div>
+  <div>英伟达股价实现日线11连涨，创2023年以来最长连涨纪录。市场对其数据中心AI GPU需求持续乐观，Vera Rubin平台预期进一步提振估值。</div>
+</div>
+<div class="tl-item medium">
+  <div class="tl-title">港股午盘走低：恒指跌1.13%，科技指数重挫2.21%</div>
+  <div class="tl-meta">2026-06-23 · 港股 · 重要程度: medium</div>
+  <div>港股恒生指数午盘跌1.13%，恒生科技指数跌2.21%，京东、小米、腾讯、阿里、美团等科技龙头普跌，大模型概念股走低，智谱盘中一度跌超15%。</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">科创板第五套标准扩围至AI大模型企业</div>
+  <div class="tl-meta">2026-06-22 · 政策/AI · 重要程度: high</div>
+  <div>上交所发布指引，人工智能大模型企业可适用科创板第五套上市标准，优先支持尚未形成收入规模但具备核心技术的主体，智谱、MiniMax等筹备回A</div>
+</div>
+<div class="tl-item high">
+  <div class="tl-title">智谱股价大涨超40%，市值突破万亿港元</div>
+  <div class="tl-meta">2026-06-22 · AI融资 · 重要程度: high</div>
+  <div>智谱股价大涨逾40%，盘中触及2980港元，总市值突破1万亿港元。GLM-5.2模型表现优异，API调用量增幅达400%，公司推进科创板IPO拟募资150亿元</div>
+</div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-const DATA = {"consumerAI": [{"id": "brand-001", "brand": "瑞幸咖啡", "tool": "MCP/CLI/Skill", "category": "AI点单", "launchDate": "2026-06-10", "features": ["自然语言点单", "智能优惠券匹配", "门店商品查询", "外卖/配送服务", "支付后取餐码获取"], "limitations": ["不支持外卖配送（当前仅到店自提）", "实际调用量未披露", "MCP协议无壁垒，竞品可零成本复制"], "techStack": ["MCP Protocol", "CLI", ".Skill"], "deploymentScale": "全国门店", "scores": {"aiDepth": 8, "ux": 7, "scale": 9, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "降低交易摩擦成本，抢占AI Agent时代的渠道入口", "claimedContribution": "自然语言点单覆盖增量用户，智能优惠券提升核销率", "attackPoints": ["P0: 不支持外卖(覆盖仅60-70%订单)", "P1: 语义理解容错性", "P2: MCP协议无壁垒"], "actionGuide": {"scholar": "精读MCP协议设计", "engineer": "学习MCP server架构", "investor": "关注AI渠道投入意愿"}}, "sources": ["https://open.luckincoffee.com/mcp", "https://open.lkcoffee.com/cli"]}, {"id": "brand-002", "brand": "喜茶", "tool": "全套智能茶饮设备", "category": "门店自动化", "launchDate": "2024-2025", "features": ["自动去皮/去核/锤柠/切丁", "智能出茶", "智能蒸煮", "智能摇茶", "覆盖茶饮制作全流程"], "limitations": ["硬件迭代周期长（2-3年），纠错成本高", "自动化与'手工感'品牌叙事存在矛盾", "设备维护故障率是刚性约束"], "techStack": ["全栈自研硬件", "70余项技术专利"], "deploymentScale": "全国门店", "scores": {"aiDepth": 6, "ux": 8, "scale": 8, "techBarrier": 9, "commercialization": 8}, "fourQuestions": {"realProblem": "将'手艺'转化为'工艺'，在规模化扩张中保持产品品质一致性", "claimedContribution": "出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖", "attackPoints": ["P0: 硬件迭代是刚性约束，单店设备投入数十万元", "P1: '手工感'品牌风险", "P2: 设备故障可能直接导致门店瘫痪"], "actionGuide": {"scholar": "研究智能设备的专利文件和工程设计思路", "engineer": "学习'手艺转工艺'的参数化思维", "investor": "关注硬件壁垒的战略价值"}}, "sources": ["FoodTalks", "新京报", "新华网"]}, {"id": "brand-003", "brand": "奈雪的茶", "tool": "AI溯源预警系统 + 智能茶饮机", "category": "食品安全AI", "launchDate": "2023", "features": ["AI溯源预警覆盖所有门店", "食材有效期智能管理", "智能订货系统", "全流程数字化（下单-二维码-贴杯-扫码-制作）"], "limitations": ["溯源数据真实性取决于上游供应商", "'AI'在溯源中的实际角色模糊", "消费者扫码查看溯源信息的使用率极低"], "techStack": ["自研智能茶饮机（已迭代至第三代）", "AI溯源预警系统"], "deploymentScale": "全门店覆盖", "scores": {"aiDepth": 7, "ux": 7, "scale": 7, "techBarrier": 7, "commercialization": 6}, "fourQuestions": {"realProblem": "构建'信任基础设施'，在食品安全焦虑中建立差异化信任壁垒", "claimedContribution": "消费者信任度提升，品牌差异化，供应链管理水平提升", "attackPoints": ["P0: 溯源数据'第一公里'真实性无法保证", "P1: AI包装下的实际技术含量存疑", "P2: 全面覆盖成本和管理复杂度极高"], "actionGuide": {"scholar": "研究溯源系统的数据架构和异常检测算法", "engineer": "学习将'信任'产品化的设计思路", "investor": "关注信任资产的品牌溢价能力"}}, "sources": ["新华网", "中新经纬", "CBNData"]}, {"id": "brand-004", "brand": "蜜雪冰城", "tool": "雪王爱智慧科技", "category": "AI底层技术", "launchDate": "2024-11", "features": ["新兴能源技术研发", "AI理论与算法软件开发", "AI公共数据平台建设", "供应链智能化", "智慧门店探索"], "limitations": ["低价模式下AI投入产出的ROI有限", "3万+门店数据质量参差不齐", "加盟商对智慧系统的实际获得感有限"], "techStack": ["AI算法", "供应链优化ML", "数据平台"], "deploymentScale": "3万+门店", "scores": {"aiDepth": 5, "ux": 5, "scale": 10, "techBarrier": 5, "commercialization": 6}, "fourQuestions": {"realProblem": "在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间", "claimedContribution": "供应链成本优化，门店补货效率提升，规模化运营能力", "attackPoints": ["P0: AI系统1-2%成本节约能否覆盖系统建设运维成本", "P1: 下沉市场门店数据录入质量差", "P2: AI只能支撑成本节约，想象空间有限"], "actionGuide": {"scholar": "研究大规模供应链ML优化的工程实践", "engineer": "学习在极致成本约束下做务实AI", "investor": "关注3万+门店规模下供应链效率的亿级利润增量"}}, "sources": ["36氪", "财联社", "21经济网"]}, {"id": "brand-005", "brand": "星巴克", "tool": "Green Dot Assist（绿点助手）", "category": "员工辅助AI", "launchDate": "2025-06", "features": ["面向咖啡师的生成式AI虚拟助手", "加速出餐与简化门店工作流程", "自然语言查询配方和促销信息"], "limitations": ["技术壁垒极低，本质是RAG应用", "ROI难以量化", "员工实际采纳率未知"], "techStack": ["Microsoft Azure OpenAI", "RAG"], "deploymentScale": "北美35家门店试点，计划2026财年全面推广", "scores": {"aiDepth": 4, "ux": 7, "scale": 7, "techBarrier": 3, "commercialization": 5}, "fourQuestions": {"realProblem": "降低一线员工认知负荷，在人员高流动率下保障服务一致性", "claimedContribution": "新员工培训时间缩短，出品一致性提升，员工满意度改善", "attackPoints": ["P0: 技术壁垒极低，任何品牌几周内可搭建类似系统", "P1: 高并发场景下API成本和延迟问题", "P2: 忙碌时员工是否真的会查询AI"], "actionGuide": {"scholar": "研究知识库构建和SOP结构化方法", "engineer": "学习将AI嵌入一线员工工作流的产品思路", "investor": "关注技术门槛低的工具类AI的投资价值"}}, "sources": ["星巴克官方新闻", "千家网"]}, {"id": "brand-006", "brand": "星巴克", "tool": "Deep Brew AI 平台", "category": "个性化推荐", "launchDate": "2019", "features": ["个性化饮品推荐", "有针对性的促销活动", "客户保留与忠诚度提升", "库存优化", "跨渠道一致性体验"], "limitations": ["2.5亿美元增量收入的归因方法模糊", "15%保留率提升的基线不明", "数据飞轮冷启动问题", "隐私合规灰色地带"], "techStack": ["AI推荐引擎", "客户旅程编排", "3.9亿+会员数据"], "deploymentScale": "全球门店", "scores": {"aiDepth": 8, "ux": 9, "scale": 10, "techBarrier": 7, "commercialization": 9}, "fourQuestions": {"realProblem": "最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'", "claimedContribution": "会员保留率提升15%，创造约2.5亿美元增量年收入", "attackPoints": ["P0: 2.5亿美元增量的归因方法极其模糊", "P1: 数据飞轮在新市场/新品类上的冷启动问题", "P2: 隐私合规审查日益严格"], "actionGuide": {"scholar": "精读星巴克Investor Day关于Deep Brew的技术演示", "engineer": "学习AI推荐系统与会员LTV深度绑定的产品思维", "investor": "关注AI驱动的会员运营的ROI衡量方法论"}}, "sources": ["Runwise 创新社区", "Ivey 商学院案例"]}, {"id": "brand-007", "brand": "星巴克", "tool": "AI库存管理工具（已停用）", "category": "需求预测AI（失败案例）", "launchDate": "2025", "features": ["AI需求预测替代手工订货", "基于天气/节假日/历史数据自动预测"], "limitations": ["技术失准、错误频发", "增加员工工作负荷", "上线仅9个月即停用", "预测精度在长尾品类上崩溃"], "techStack": ["需求预测模型", "历史销售数据分析"], "deploymentScale": "已停用", "scores": {"aiDepth": 5, "ux": 2, "scale": 1, "techBarrier": 5, "commercialization": 0}, "fourQuestions": {"realProblem": "用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失", "claimedContribution": "声称可降低库存浪费20-30%（实际未达成）", "attackPoints": ["P0: 组织适配失败——门店经理抵触AI'夺权'", "P1: 长尾品类需求预测精度崩溃", "P2: 底层库存数据不准确（GIGO问题）", "P3: 缺乏渐进式过渡，试图一步到位替代人工"], "actionGuide": {"scholar": "精读失败案例的公开报道和员工反馈", "engineer": "学习'先辅助建议后逐步自动化'的正确路径", "investor": "警惕声称'AI可直接替代人工订货'的供应商"}}, "sources": ["财联社", "新浪财经", "香港 Unwire"]}, {"id": "brand-008", "brand": "库迪咖啡", "tool": "智慧运营体系", "category": "智慧运营", "launchDate": "2025", "features": ["AI智能排班与订货", "门店IOT设备互联与监测", "咖啡机自动萃取控制", "AI识别员工卫生规范", "AI客服", "图像识别品控", "动态定价系统"], "limitations": ["动态定价存在合规风险（大数据杀熟嫌疑）", "'去技能化'加剧人员流动", "加盟商关系紧张", "价格战可持续性存疑"], "techStack": ["智慧信息系统", "智慧物联系统", "智慧营销系统"], "deploymentScale": "数千家门店，支撑单日千万杯级产能", "scores": {"aiDepth": 7, "ux": 6, "scale": 9, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "通过'去技能化'实现极速扩张，将门店运营对人的依赖降到最低", "claimedContribution": "支撑从0到数千家门店的超高速扩张，运营标准化", "attackPoints": ["P0: 动态定价合规风险（价格歧视/大数据杀熟）", "P1: '去技能化'反而加剧人员流动", "P2: 加盟商对'系统说了算但亏的是我'不满"], "actionGuide": {"scholar": "研究'去技能化'运营设计思路", "engineer": "学习动态定价的技术实现框架", "investor": "评估系统控制+加盟扩张模式的可持续性"}}, "sources": ["证券时报", "21财经", "新华网"]}, {"id": "brand-009", "brand": "肯德基", "tool": "AI点餐助手'小K'", "category": "AI语音点餐", "launchDate": "2026-03-02", "features": ["自然语言语音点餐", "车载语音服务", "记忆用户偏好并智能推荐", "'选品-点单-支付-取餐'全流程闭环"], "limitations": ["嘈杂环境语音识别鲁棒性差", "复杂定制需求处理能力有限", "方言和口音覆盖不足", "老年用户接受度问题"], "techStack": ["阿里千问大模型", "语音交互", "自然语言理解"], "deploymentScale": "全国门店", "scores": {"aiDepth": 7, "ux": 7, "scale": 8, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "在得来速和店内场景用语音AI替代人工点餐，降低人力成本", "claimedContribution": "点餐效率提升，人力成本节约，智能推荐增加客单价", "attackPoints": ["P0: 嘈杂环境语音识别准确率下降，纠错成本高", "P1: 复杂定制需求（不要酸黄瓜多加酱）处理困难", "P2: 中国方言多样性对ASR要求极高"], "actionGuide": {"scholar": "精读嘈杂环境语音识别技术方案", "engineer": "学习'引导式对话'降低语音识别难度", "investor": "评估得来速vs店内场景的落地差异"}}, "sources": ["亿欧快讯", "新浪财经", "潮新闻"]}, {"id": "brand-010", "brand": "麦当劳", "tool": "RGM BOSS + 汉堡大学AI智能陪练", "category": "员工数字化", "launchDate": "2025", "features": ["排班查询与管理", "培训参与", "任务管理", "福利政策查询", "AI智能陪练", "虚拟导师", "个性化学习路径推荐"], "limitations": ["RGM BOSS技术门槛低", "AI陪练系统仍在建设中", "员工使用率数据未披露"], "techStack": ["自主研发", "AI虚拟导师", "脑神经科学结合"], "deploymentScale": "麦当劳中国全部门店", "scores": {"aiDepth": 5, "ux": 7, "scale": 8, "techBarrier": 4, "commercialization": 6}, "fourQuestions": {"realProblem": "员工一站式工作辅助与培训数字化化，降低管理成本", "claimedContribution": "5年内计划投入40亿元数字化创新", "attackPoints": ["P0: 技术门槛低，RAG应用同质化", "P1: AI陪练'个性化学习路径'的实际效果存疑", "P2: 员工对数字化培训的接受度"], "actionGuide": {"scholar": "研究AI虚拟导师与脑神经科学结合的设计", "engineer": "学习员工辅助AI的产品架构", "investor": "关注40亿数字化投入的实际产出"}}, "sources": ["麦当劳中国官网", "深圳新闻网", "新京报"]}, {"id": "brand-011", "brand": "海底捞", "tool": "AI智慧巡检系统 + 智能体机器人", "category": "AI巡检", "launchDate": "2024", "features": ["24小时门店智能巡店管理", "AI智能餐后评价系统", "机械臂自动识别抓取菜品后厨传菜", "识别准确率超95%"], "limitations": ["Goodhart定律：员工为AI'表演'而非真正改善", "'服务温度'不可量化", "持续AI监控对员工心理压力", "复杂场景计算机视觉准确率存疑"], "techStack": ["计算机视觉", "IoT传感器", "火山引擎合作", "机械臂"], "deploymentScale": "所有门店100%覆盖，已开发50+ AI应用", "scores": {"aiDepth": 7, "ux": 7, "scale": 9, "techBarrier": 7, "commercialization": 8}, "fourQuestions": {"realProblem": "将'巡店'从人力密集转为自动化、可规模化的智能监控体系", "claimedContribution": "识别准确率超95%，覆盖率超98%，80%后厨传菜由机器人完成", "attackPoints": ["P0: Goodhart定律——度量变目标则不再是好度量", "P1: '有温度的服务'恰恰最难被AI量化", "P2: 餐饮门店复杂环境下CV准确率"], "actionGuide": {"scholar": "研究AI巡检的具体检测维度和误报率数据", "engineer": "学习AI巡检与门店管理流程的深度集成", "investor": "区分'提质工具'vs'降本工具'的定位差异"}}, "sources": ["新浪财经", "QQ新闻", "东方财富", "DoNews"]}, {"id": "brand-012", "brand": "茶百道", "tool": "智能管理体系", "category": "AI巡检+品控", "launchDate": "2025-03", "features": ["AI自动化巡检覆盖8000+门店", "智能补货及智能制备系统", "'茶茶员工'AI智能服务台", "千家门店统一品控"], "limitations": ["深度融合DeepSeek/豆包，模型切换成本高", "8000+门店执行一致性存疑", "AI巡检准确率需持续验证"], "techStack": ["DeepSeek大模型", "豆包大模型", "飞书平台"], "deploymentScale": "全国8000余家门店", "scores": {"aiDepth": 6, "ux": 7, "scale": 9, "techBarrier": 5, "commercialization": 7}, "fourQuestions": {"realProblem": "8000+门店的统一品控和经营管理数字化", "claimedContribution": "AI巡检覆盖8000+门店，智能补货和制备系统提升效率", "attackPoints": ["P0: 依赖第三方大模型（DeepSeek/豆包），自主性不足", "P1: 8000+门店规模下执行一致性挑战", "P2: 飞书平台绑定度"], "actionGuide": {"scholar": "研究多模型协同在连锁品控中的应用", "engineer": "学习基于飞书的数字化底座构建", "investor": "评估AI品控对品牌价值的影响"}}, "sources": ["新华网", "东方财富", "知乎/火山引擎案例", "飞书客户案例"]}, {"id": "brand-013", "brand": "霸王茶姬", "tool": "智能调饮系统 + '茶茶圈'AI知识管理", "category": "智能标准化", "launchDate": "2024-2025", "features": ["门店端自动精准出料、标准化复现", "平均8秒出杯", "口感误差率低于千分之二", "'茶茶圈'汇聚全球门店一线声音", "AI提炼集体智慧"], "limitations": ["极简SKU品类扩展风险", "技术壁垒有限（配方参数化+设备自动化）", "对单一品类（鲜奶茶）过度依赖"], "techStack": ["自主研发自动化设备", "飞书多维表格AI"], "deploymentScale": "全球7000+门店", "scores": {"aiDepth": 6, "ux": 9, "scale": 9, "techBarrier": 6, "commercialization": 9}, "fourQuestions": {"realProblem": "在极简SKU下实现极致效率和绝对标准化，支撑高速扩张", "claimedContribution": "8秒出杯，口感误差率<0.2%，全球7000+门店品质一致性", "attackPoints": ["P0: 极简SKU的品类扩展时系统灵活性不足", "P1: 技术壁垒有限，竞品可采购类似设备", "P2: 高度依赖'鲜奶茶'品类持续流行"], "actionGuide": {"scholar": "研究'极简SKU+智能标准化'的系统性商业设计", "engineer": "学习核心产品制作过程彻底参数化的方法论", "investor": "关注'少即是多'产品哲学的商业回报"}}, "sources": ["中国食品安全网", "飞书客户案例", "Tediatech"]}, {"id": "brand-014", "brand": "阿里通义千问", "tool": "千问App'一句话点奶茶'", "category": "AI Agent消费入口", "launchDate": "2026-02-06", "features": ["自然语言一句话下单奶茶", "覆盖蜜雪冰城/瑞幸/霸王茶姬/奈雪/喜茶/茶百道等30万+门店", "意图理解+商品筛选+门店匹配+下单全链路"], "limitations": ["大概率依赖大量补贴驱动", "复购场景可能比App更慢", "推荐排序的公平性问题", "品类扩展难度大"], "techStack": ["通义千问大模型", "意图理解", "工具调用", "电商集成"], "deploymentScale": "全国30多万家奶茶店", "scores": {"aiDepth": 8, "ux": 8, "scale": 10, "techBarrier": 7, "commercialization": 7}, "fourQuestions": {"realProblem": "验证AI Agent作为'超级入口'的商业可行性，抢占AI原生消费定义权", "claimedContribution": "当天不到3小时下单100万单，9小时卖出1000万单", "attackPoints": ["P0: 补贴驱动不可持续，退坡后留存率未知", "P1: 复购已知商品时可能比App更慢", "P2: 推荐排序公平性——与搜索竞价排名有何本质区别？"], "actionGuide": {"scholar": "精读技术架构公开分享（Prompt工程/工具调用/状态管理）", "engineer": "学习'一句话'极简交互触发复杂后端处理的设计", "investor": "评估AI Agent入口的平台级潜力与补贴依赖风险"}}, "sources": ["CBNData", "财联社", "量子位", "证券时报"]}, {"id": "brand-015", "brand": "蜜雪冰城", "tool": "雪王爱智慧 - AI公共数据平台", "category": "AI数据平台", "launchDate": "2024-11", "features": ["AI公共数据平台建设", "新兴能源技术研发", "人工智能理论与算法软件开发"], "limitations": ["注册资本5000万，相对有限", "技术公司刚成立，成果尚待验证", "从应用层向算法层延伸的路径不确定"], "techStack": ["AI算法", "数据平台", "能源技术"], "deploymentScale": "技术公司层面，尚未全面部署", "scores": {"aiDepth": 6, "ux": 3, "scale": 8, "techBarrier": 6, "commercialization": 4}, "fourQuestions": {"realProblem": "从应用层向算法与平台层延伸，建立AI底层技术能力", "claimedContribution": "专注AI底层技术研发，公共数据平台建设", "attackPoints": ["P0: 技术公司刚成立，尚无可见成果", "P1: 5000万注册资本对AI研发而言偏少", "P2: 从消费品牌跨入底层AI研发的可行性"], "actionGuide": {"scholar": "关注其AI公共数据平台的技术方向", "engineer": "观察其在供应链AI上的工程实践", "investor": "追踪技术公司的后续研发投入和成果"}}, "sources": ["36氪", "财联社"]}, {"id": "brand-016", "brand": "科创板AI大模型企业", "tool": "A股IPO通道", "category": "资本市场AI", "launchDate": "2026-06-17", "features": ["科创板第五套标准扩容AI大模型", "市值+研发考核体系", "优先支持未盈利但具备核心技术企业", "智谱、MiniMax筹备回A"], "limitations": ["估值泡沫风险", "技术迭代风险", "收入真实性验证", "解禁期股价波动"], "techStack": ["资本市场制度", "AI大模型"], "deploymentScale": "A股市场", "scores": {"aiDepth": 7, "ux": 5, "scale": 8, "techBarrier": 6, "commercialization": 9}, "fourQuestions": {"realProblem": "为资本开支前置、收入后置的AI大模型企业提供合规上市路径", "claimedContribution": "境内投资者首次可直接定价国产大模型核心资产", "attackPoints": ["P0: 估值泡沫与一级市场估值转移风险", "P1: 技术迭代快导致长期竞争力不确定", "P2: 收入真实性需严格审核"], "actionGuide": {"scholar": "研究政策对AI核心技术界定标准", "engineer": "学习构建可上市的技术壁垒叙事", "investor": "关注招股书收入结构和研发投入资本化"}}, "sources": ["https://www.stcn.com/article/detail/3967608.html"]}, {"id": "brand-017", "brand": "瑞幸咖啡", "tool": "Lucky AI智能体", "category": "鸿蒙原生AI点单", "launchDate": "2026-06-23", "features": ["鸿蒙原生应用", "Lucky AI智能体", "一句话喝到咖啡", "与MCP/CLI/Skill互补"], "limitations": ["鸿蒙生态渗透率有限", "智能体调用量未披露", "与现有MCP平台功能重叠"], "techStack": ["HarmonyOS", "Lucky AI智能体", "MCP协议"], "deploymentScale": "全国门店", "scores": {"aiDepth": 8, "ux": 8, "scale": 9, "techBarrier": 6, "commercialization": 8}, "fourQuestions": {"realProblem": "通过多端智能体覆盖用户在不同操作系统和场景下的咖啡点单需求", "claimedContribution": "鸿蒙原生应用让'一句话喝到咖啡'成为现实，扩大MCP以外的触达面", "attackPoints": ["P0: 鸿蒙生态在消费端渗透率有限", "P1: 智能体与MCP/CLI功能高度重叠", "P2: 智能体实际调用转化效果未公开"], "actionGuide": {"scholar": "研究跨操作系统智能体部署策略", "engineer": "学习鸿蒙原生+MCP多通道架构", "investor": "关注AI点单在不同生态下的GMV占比"}}, "sources": ["https://m.sohu.com/a/1036550816_104421"]}, {"id": "brand-018", "brand": "美团", "tool": "LongCat-Next 原生多模态大模型", "category": "AI基础设施", "launchDate": "2026-03-27", "features": ["原生多模态模型", "将物理世界转化为AI'文字'", "工具调用能力领先", "两个月发布四大模型"], "limitations": ["开源生态不及Qwen/豆包", "美团自身场景绑定过深", "商业化路径尚不清晰"], "techStack": ["LongCat-Next", "LongCat-Flash-Thinking", "开源模型"], "deploymentScale": "美团内部+开源社区", "scores": {"aiDepth": 8, "ux": 6, "scale": 7, "techBarrier": 7, "commercialization": 5}, "fourQuestions": {"realProblem": "构建物理世界多模态理解能力，支撑外卖/到店/酒旅等场景智能化", "claimedContribution": "LongCat系列工具调用能力登顶开源榜单，两个月密集发布四大模型", "attackPoints": ["P0: 开源模型生态难以与Qwen/豆包竞争", "P1: 美团自身场景绑定可能限制外部采用", "P2: 商业化变现路径不明确"], "actionGuide": {"scholar": "精读LongCat-Flash-Thinking的多模态推理方案", "engineer": "学习'物理世界变文字'的原生多模态架构", "investor": "评估美团从'平台'向'AI基础设施'转型的战略可行性"}}, "sources": ["http://client.sina.com.cn/news/2026-03-27/doc-inhsmamw5416189.shtml", "https://zhuanlan.zhihu.com/p/1996883835200239173"]}, {"id": "brand-019", "brand": "霸王茶姬", "tool": "增长停滞与AI战略反思", "category": "智能标准化调整", "launchDate": "2026-06", "features": ["张俊杰深刻反思增长瓶颈", "智能调饮系统持续迭代", "茶茶圈AI知识管理优化", "极简SKU策略调整"], "limitations": ["Q1增长停滞暴露扩张天花板", "智能调饮系统灵活性不足", "单一品类(鲜奶茶)依赖"], "techStack": ["自主研发自动化设备", "飞书多维表格AI"], "deploymentScale": "全球7000+门店", "scores": {"aiDepth": 6, "ux": 8, "scale": 9, "techBarrier": 6, "commercialization": 8}, "fourQuestions": {"realProblem": "在极简SKU战略遇到增长天花板后，如何通过AI和产品策略调整突破瓶颈", "claimedContribution": "智能调饮系统持续优化，茶茶圈AI知识管理覆盖全球门店", "attackPoints": ["P0: 增长停滞是否意味着极简SKU模式的终结", "P1: 智能调饮系统能否快速适应新品类", "P2: 张俊杰的'反思'是否只是PR话术"], "actionGuide": {"scholar": "研究极简SKU模式下的AI智能化极限", "engineer": "学习'从反思中优化'的产品迭代思维", "investor": "重新评估'极简SKU+智能标准化'的估值模型"}}, "sources": ["https://www.iyiou.com/news/202604151126657", "https://www.tmtpost.com/8006838.html"]}, {"id": "brand-020", "brand": "霸王茶姬", "tool": "北美首店开业+冰淇淋品类扩展", "category": "全球化+品类扩张", "launchDate": "2026-06", "features": ["北美首店开业", "海外门店超200家", "推出冰淇淋产品线", "与蜜雪冰城正面竞争冰淇淋赛道"], "limitations": ["北美市场消费习惯差异", "冰淇淋与茶饮供应链协同有限", "海外运营成本高昂"], "techStack": ["智能调饮系统", "飞书多维表格AI", "全球化供应链"], "deploymentScale": "全球7000+门店，海外200+", "scores": {"aiDepth": 6, "ux": 8, "scale": 9, "techBarrier": 6, "commercialization": 8}, "fourQuestions": {"realProblem": "通过品类扩展（冰淇淋）和全球化（北美首店）突破鲜奶茶单一品类天花板", "claimedContribution": "北美首店开业，海外门店超200家，冰淇淋产品线开辟第二增长曲线", "attackPoints": ["P0: 冰淇淋与茶饮的消费场景和用户画像差异大", "P1: 北美市场对中国茶饮品牌的认知度有限", "P2: 海外运营成本可能侵蚀利润"], "actionGuide": {"scholar": "研究新茶饮全球化中的品类扩展策略", "engineer": "学习多品类供应链协同的技术架构", "investor": "评估'茶饮+冰淇淋'双轮驱动的估值模型"}}, "sources": ["https://www.ebrun.com/20260423/656985.shtml", "https://finance.sina.com.cn/wm/2026-05-24/doc-inhyyhws4543670.shtml"]}, {"id": "brand-021", "brand": "蜜雪冰城", "tool": "冰淇淋赛道正面竞争霸王茶姬", "category": "品类竞争", "launchDate": "2026-06", "features": ["冰淇淋产品线成熟", "极致性价比策略", "3万+门店渠道优势", "与霸王茶姬正面竞争"], "limitations": ["低价模式下冰淇淋利润空间有限", "品牌形象固化在低价区间", "加盟商执行一致性挑战"], "techStack": ["雪王爱智慧科技", "供应链AI优化", "数据平台"], "deploymentScale": "3万+门店", "scores": {"aiDepth": 5, "ux": 6, "scale": 10, "techBarrier": 5, "commercialization": 7}, "fourQuestions": {"realProblem": "利用3万+门店渠道优势和极致性价比策略，在冰淇淋赛道建立规模壁垒", "claimedContribution": "冰淇淋产品线覆盖全部门店，以价格杠杆撬动冰淇淋市场", "attackPoints": ["P0: 冰淇淋品类与茶饮的季节性互补vs竞争关系", "P1: 低价冰淇淋利润极薄，规模效应能否覆盖", "P2: 与霸王茶姬的差异化竞争不够明显"], "actionGuide": {"scholar": "研究极致性价比模式下的品类扩展逻辑", "engineer": "学习3万+门店规模下的冰淇淋供应链AI优化", "investor": "比较蜜雪冰城vs霸王茶姬冰淇淋战略的ROI差异"}}, "sources": ["https://m.36kr.com/p/3835505880309767", "https://xinwen.bjd.com.cn/content/s68f0a060e4b02424b0c1a091.html"]}, {"brand": "美团", "tool": "LongCat-Flash-Thinking-2601", "category": "AI大模型/智能体工具调用", "launchDate": "2026-06", "features": ["Agentic Search/TIR等基准开源SOTA", "工具调用复杂任务超越Claude", "首个完整开源并支持免费在线重思考模式"], "limitations": ["与Claude对比条件是否公平待验证", "推理成本与规模化部署挑战", "美团大模型长期投入决心待观察"], "techStack": ["自研大模型", "Agentic Tool Use", "在线推理服务"], "deploymentScale": "开源社区+美团内部业务", "scores": {"aiDepth": 9, "ux": 7, "scale": 7, "techBarrier": 8, "commercialization": 7}, "fourQuestions": {"realProblem": "开源模型在多步工具调用复杂任务上落后闭源模型，美团希望证明开源社区也能做出顶级Agent-oriented模型", "claimedContribution": "多个Agent评测基准开源SOTA、工具调用任务超越Claude、首个完整开源+免费在线重思考模式", "attackPoints": ["P0: 与Claude对比是否在相同条件下公平进行", "P1: 美团是否有持续投入大模型研发的长期决心", "P2: 重思考模式推理成本能否支撑规模化应用"], "actionGuide": {"scholar": "精读Agentic Tool Use和TIR基准评测方法", "engineer": "学习其工具调用实现和推理优化方案", "investor": "关注美团通过开源大模型降低AI应用成本的长期战略价值"}}, "sources": ["https://www.meituan.com/news/NN260116211001625"], "id": "brand-022"}, {"brand": "瑞幸咖啡", "tool": "Lucky AI智能体 / AI开放平台", "category": "智能点单/跨平台Agent", "launchDate": "2026-06", "features": ["鸿蒙原生应用一句话点咖啡", "AI开放平台向生态伙伴开放", "会员推荐与智能营销"], "limitations": ["开放平台生态成熟度待验证", "与星巴克/库迪的AI差异化不够明显", "跨平台一致性体验挑战"], "techStack": ["鸿蒙原生应用", "大模型Agent", "RGM策略", "会员推荐系统"], "deploymentScale": "全国2万+门店", "scores": {"aiDepth": 7, "ux": 8, "scale": 8, "techBarrier": 6, "commercialization": 8}, "fourQuestions": {"realProblem": "新茶饮/咖啡品牌需要降低点单门槛、提升会员转化和跨平台获客效率", "claimedContribution": "通过鸿蒙生态和AI开放平台实现一句话点咖啡与生态扩展", "attackPoints": ["P0: 开放平台能否吸引足够多的第三方开发者", "P1: 一句话点咖啡的识别准确率在高噪场景下如何", "P2: 与美团/饿了么平台流量入口的博弈关系"], "actionGuide": {"scholar": "研究LLM Agent在零售点单场景的任务拆解", "engineer": "学习鸿蒙原生应用与大模型Agent的集成方式", "investor": "关注瑞幸AI开放平台对会员体系和复购率的提升"}}, "sources": ["https://www.dtinsight.com.cn/sys-nd/3484.html", "https://open.lkcoffee.com/"], "id": "brand-023"}, {"brand": "蜜雪冰城", "tool": "雪王爱智慧科技", "category": "供应链AI/智慧运营", "launchDate": "2024-11", "features": ["成立AI技术公司布局人工智能", "雪王AI大脑支撑极致平价战略", "供应链成本效率优化"], "limitations": ["AI投入产出比尚未公开验证", "低价模式下的技术预算约束", "数据基础与人才储备相对薄弱"], "techStack": ["供应链AI优化", "数据平台", "智慧门店系统"], "deploymentScale": "3万+门店", "scores": {"aiDepth": 6, "ux": 6, "scale": 10, "techBarrier": 5, "commercialization": 8}, "fourQuestions": {"realProblem": "在极致低价模式下，蜜雪冰城需要通过AI优化供应链和运营效率来维持利润率", "claimedContribution": "雪王AI大脑筑牢平价战略护城河，支撑3万+门店规模化运营", "attackPoints": ["P0: AI投入是否能真正覆盖低价模式下的微薄利润", "P1: 数据基础设施能否支撑全国3万+门店实时优化", "P2: 与霸王茶姬等高端品牌的AI投入差距"], "actionGuide": {"scholar": "研究低价零售的供应链AI优化案例", "engineer": "学习大规模门店网络的运营数据平台建设", "investor": "关注蜜雪冰城AI投入对同店盈利能力的实际改善"}}, "sources": ["https://m.36kr.com/p/3048400607316612"], "id": "brand-024"}, {"brand": "星巴克", "tool": "Deep Brew / Green Dot Assist", "category": "门店运营AI/个性化推荐", "launchDate": "2026", "features": ["需求预测与库存优化", "个性化推荐", "咖啡师实时操作建议"], "limitations": ["全球门店IT基础设施差异大", "AI推荐可能与咖啡师经验冲突", "个性化与隐私平衡"], "techStack": ["微软Azure OpenAI", "机器学习推荐系统", "门店IoT"], "deploymentScale": "全球数万家门店", "scores": {"aiDepth": 8, "ux": 8, "scale": 10, "techBarrier": 7, "commercialization": 8}, "fourQuestions": {"realProblem": "星巴克需要在全球数万家门店中平衡标准化运营与本地化、个性化体验，同时降低员工培训成本", "claimedContribution": "Deep Brew实现预测、推荐、运营辅助一体化，Green Dot Assist让AI成为咖啡师助手而非替代者", "attackPoints": ["P0: AI推荐是否真的提升了客单价和复购率", "P1: 咖啡师对AI辅助的接受度如何", "P2: 大规模全球部署的ROI能否被量化验证"], "actionGuide": {"scholar": "研究零售场景中的需求预测与推荐系统", "engineer": "学习门店IoT与实时辅助系统的架构", "investor": "关注星巴克AI对运营效率和同店销售的长期贡献"}}, "sources": ["https://about.starbucks.com/press/2026/supporting-the-moments-that-matter-with-artificial-intelligence/"], "id": "brand-025"}, {"brand": "库迪咖啡", "tool": "AI全链路运营体系", "category": "智慧运营/供应链优化", "launchDate": "2025", "features": ["从原料到终端AI全链路重塑", "9.9元咖啡也赚钱", "智能选址与动态定价"], "limitations": ["盈利模型依赖规模效应", "与瑞幸贴身竞争压力大", "AI系统成熟度待验证"], "techStack": ["AI供应链管理", "智能选址", "动态定价"], "deploymentScale": "全球1万+门店", "scores": {"aiDepth": 6, "ux": 6, "scale": 8, "techBarrier": 5, "commercialization": 7}, "fourQuestions": {"realProblem": "库迪需要在激烈价格战中通过AI提升运营效率，实现低价仍能盈利", "claimedContribution": "AI全链路重塑咖啡行业运营逻辑，支撑全球万店扩张", "attackPoints": ["P0: 9.9元盈利模式是否真正可持续", "P1: AI优化效果是否被价格战完全抵消", "P2: 与瑞幸相比数据积累和算法成熟度差距"], "actionGuide": {"scholar": "研究低价咖啡行业的运营优化模型", "engineer": "学习动态定价与智能选址系统实现", "investor": "关注库迪单店模型改善和扩张节奏"}}, "sources": ["https://www.stcn.com/article/detail/3488088.html"], "id": "brand-026"}, {"brand": "美团", "tool": "小团/小美AI Agent、智能掌柜、Tabbit", "category": "AI Agent / 生态战略", "launchDate": "2026-06", "features": ["2026年Q1 AI经营亏损收窄至65亿元", "小美牵手腾讯元宝构建AI入口", "LongCat系列模型开源SOTA", "智能派单与A2A互通"], "limitations": ["合作协同效果待验证", "65亿亏损仍较大", "与阿里千问App入口竞争"], "techStack": ["AI Agent", "大模型", "智能派单", "A2A互通", "Agentic Tool Use"], "deploymentScale": "美团内部业务+开源社区", "scores": {"aiDepth": 8, "ux": 7, "scale": 9, "techBarrier": 7, "commercialization": 7}, "fourQuestions": {"realProblem": "美团有场景缺AI入口，腾讯有元宝入口缺线下场景，合作解决AI Agent落地物理世界问题", "claimedContribution": "Q1 AI亏损收窄至65亿元，小美与元宝互通形成AI入口+本地服务闭环", "attackPoints": ["P0: 合作是否只是流量互换而非真正协同", "P1: AI投资回报周期不明", "P2: 与阿里千问App一句话点奶茶直接竞争"], "actionGuide": {"scholar": "研究AI Agent与本地生活服务的任务拆解", "engineer": "学习跨平台Agent互通架构", "investor": "关注AI对美团单用户价值和交易频次的提升"}}, "sources": ["http://www.news.cn/tech/20260601/979f59ba54314fd58d0db1ca6e828745/c.html", "https://www.21jingji.com/article/20260602/herald/4141713d90a308f581af4d29aa1180d5.html"], "id": "brand-027"}, {"brand": "星巴克", "tool": "AI助理、中国创新科技中心、电子菜单板、AI库存系统", "category": "门店体验 / 战略合作 / 供应链运营", "launchDate": "2026", "features": ["与博裕投资合作发布千店千面战略", "AI赋能门店个性化体验", "电子菜单板个性化推荐"], "limitations": ["北美AI库存系统因错误频发已停用", "全球门店IT基础设施差异大", "AI推荐可能与咖啡师经验冲突"], "techStack": ["人工智能", "电子菜单板", "个性化推荐", "LiDAR"], "deploymentScale": "全球数万家门店，中国市场为重点", "scores": {"aiDepth": 7, "ux": 8, "scale": 10, "techBarrier": 6, "commercialization": 7}, "fourQuestions": {"realProblem": "在全球数万家门店中平衡标准化运营与本地化、个性化体验", "claimedContribution": "千店千面战略以AI赋能门店个性化体验，提升本地市场相关性", "attackPoints": ["P0: 北美AI库存系统失败案例显示运营AI落地难度", "P1: 个性化推荐对客单价和复购率的实际提升未量化", "P2: 大规模全球部署的ROI验证困难"]}, "sources": ["https://cn.wicinternet.org/2026-06/02/content_38807804.htm", "https://finance.sina.com.cn/stock/t/2026-05-23/doc-inhywcxr7030210.shtml"], "id": "brand-028"}, {"brand": "阿里通义千问", "tool": "千问云、Qwen3.7-Max、Qwen3.7-Plus", "category": "大模型 / 云服务", "launchDate": "2026-06", "features": ["千问云在新加坡发布", "Qwen3.7-Max支持百万词元上下文", "Qwen3.7-Plus在618期间上线开发者社区"], "limitations": ["百万上下文有效利用率待验证", "海外市场面临OpenAI/Google竞争", "618上线更多是营销事件"], "techStack": ["大语言模型", "Agent", "超长上下文", "DashScope API"], "deploymentScale": "云服务+开发者社区", "scores": {"aiDepth": 8, "ux": 7, "scale": 8, "techBarrier": 7, "commercialization": 7}, "fourQuestions": {"realProblem": "阿里需要在B端和开发者市场建立大模型生态壁垒，推动国产大模型出海与商业化", "claimedContribution": "千问云在新加坡发布，Qwen3.7-Max支持百万词元上下文，推进代理AI时代战略", "attackPoints": ["P0: 百万上下文实际任务利用率如何", "P1: 海外市场能否与OpenAI/Google/Anthropic竞争", "P2: 618上线开发者社区是否更多是营销事件"]}, "sources": ["https://www.eet-china.com/mp/a503288.html", "https://developer.aliyun.com/article/1740777"], "id": "brand-029"}, {"brand": "饿了么", "tool": "AutoGLM（智谱AI Agent）演示", "category": "AI Agent / 移动交互", "launchDate": "2026-06", "features": ["智谱AI Agent AutoGLM演示在饿了么点咖啡", "AI学会使用手机App完成外卖点餐"], "limitations": ["演示阶段，未规模化部署", "App自动化操作的稳定性和安全性待验证", "与平台原生AI点单存在竞争"], "techStack": ["AI Agent", "AutoGLM", "App自动化操作"], "deploymentScale": "演示阶段", "scores": {"aiDepth": 7, "ux": 6, "scale": 5, "techBarrier": 6, "commercialization": 4}, "fourQuestions": {"realProblem": "探索通用AI Agent如何通过操作手机App完成真实世界任务，降低用户使用门槛", "claimedContribution": "AutoGLM演示在饿了么点咖啡，展示Agent操作第三方App的能力", "attackPoints": ["P0: 演示到规模化部署距离遥远", "P1: App自动化操作的安全性和权限边界", "P2: 平台方可能限制第三方Agent操作"]}, "sources": ["https://www.stdaily.com/web/gdxw/2026-06/11/content_530557.html"], "id": "brand-030"}, {"brand": "霸王茶姬", "tool": "线上点单系统、AI补贴平台", "category": "运营 / 增长", "launchDate": "2026-05", "features": ["2026年Q1总GMV达79.18亿元", "海外增速超84%", "线上点单系统与AI平台补贴支撑增长"], "limitations": ["增长由补贴驱动成分不明", "海外扩张成本高昂", "单一品类依赖仍存"], "techStack": ["AI平台", "线上点单", "大数据"], "deploymentScale": "全球7000+门店，海外200+", "scores": {"aiDepth": 6, "ux": 8, "scale": 9, "techBarrier": 5, "commercialization": 8}, "fourQuestions": {"realProblem": "通过智能化运营和补贴策略支撑高速增长，同时开拓海外市场", "claimedContribution": "Q1 GMV 79.18亿元，海外增速超84%，线上点单与AI补贴平台支撑增长", "attackPoints": ["P0: 增长中补贴驱动成分占比不明", "P1: 海外扩张成本可能侵蚀利润", "P2: 对鲜奶茶单一品类的依赖仍存"]}, "sources": ["https://www.tmtpost.com/8006838.html"], "id": "brand-031"}], "aiModels": [{"id": "model-001", "name": "GPT-5.5", "vendor": "OpenAI", "parameters": "未公开", "scores": {"reasoning": 9, "coding": 8, "multimodal": 9, "priceCompetitiveness": 3, "contextLength": 7, "ecosystem": 10}, "pricing": {"input": 15, "output": 60, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": false, "launchDate": "2026-04-29", "highlights": ["多项基准SOTA", "GPT-5.5 Instant更智能", "企业级功能成熟度领先"], "weaknesses": ["性价比劣势（定价约为DeepSeek V4的7倍）", "创新放缓质疑——代际提升递减", "Scaling Law边际递减信号"], "sources": ["https://finance.sina.com.cn/wm/2026-04-29/doc-inhwcvff1034726.shtml"]}, {"id": "model-002", "name": "DeepSeek V4", "vendor": "DeepSeek（幻方量化）", "parameters": "未公开（MoE架构）", "scores": {"reasoning": 8, "coding": 8, "multimodal": 6, "priceCompetitiveness": 10, "contextLength": 7, "ecosystem": 7}, "pricing": {"input": 2, "output": 8, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": true, "launchDate": "2026-04", "highlights": ["世界顶级推理性能", "Agent能力大幅提高", "API定价仅为GPT-5.5的约1/7", "聚焦编程能力与超长代码上下文"], "weaknesses": ["预览版完成度不足，稳定性存疑", "效率优化边际递减", "开源可持续性依赖母公司输血"], "sources": ["https://www.deepseek.com/", "https://m.zhiding.cn/article/3180582.htm"]}, {"id": "model-003", "name": "Claude 4 Opus", "vendor": "Anthropic", "parameters": "未公开", "scores": {"reasoning": 9, "coding": 10, "multimodal": 8, "priceCompetitiveness": 4, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 15, "output": 75, "unit": "$/1M tokens"}, "contextWindow": "200K", "openSource": false, "launchDate": "2026-05-14", "highlights": ["全球最佳编程模型（SWE-bench领先）", "Agentic能力显著增强", "AI安全（Constitutional AI）企业级差异化"], "weaknesses": ["非编程任务提升有限", "对Amazon/AWS依赖度高", "安全叙事边际效用递减"], "sources": ["https://www.anthropic.com/news/claude-4", "https://www.cls.cn/detail/2038777"]}, {"id": "model-004", "name": "Claude 4 Sonnet", "vendor": "Anthropic", "parameters": "未公开", "scores": {"reasoning": 8, "coding": 9, "multimodal": 8, "priceCompetitiveness": 6, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 3, "output": 15, "unit": "$/1M tokens"}, "contextWindow": "200K", "openSource": false, "launchDate": "2026-05-14", "highlights": ["性价比优于Opus", "编程能力接近Opus水平", "适合日常开发使用"], "weaknesses": ["复杂推理略逊于Opus", "多模态能力有限"], "sources": ["https://www.anthropic.com/news/claude-4"]}, {"id": "model-005", "name": "Gemini 3.5 Flash", "vendor": "Google", "parameters": "未公开", "scores": {"reasoning": 8, "coding": 7, "multimodal": 9, "priceCompetitiveness": 7, "contextLength": 9, "ecosystem": 9}, "pricing": {"input": 1, "output": 4, "unit": "$/1M tokens"}, "contextWindow": "1M", "openSource": false, "launchDate": "2026-05-20", "highlights": ["端侧部署和低延迟推理", "1M超长上下文窗口", "Google I/O 2026重磅发布", "聚焦Agentic AI"], "weaknesses": ["隐私与广告的深层冲突", "开发者生态面临OpenAI/Apple竞争", "端侧表现需POC验证"], "sources": ["https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhynvwq2736993.shtml"]}, {"id": "model-006", "name": "Gemini 3 Deep Think", "vendor": "Google", "parameters": "未公开", "scores": {"reasoning": 10, "coding": 7, "multimodal": 8, "priceCompetitiveness": 5, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 10, "output": 40, "unit": "$/1M tokens"}, "contextWindow": "512K", "openSource": false, "launchDate": "2026-02-12", "highlights": ["专为科学研究与工程难题设计", "深度推理方向重大升级", "Gemini系列推理能力天花板"], "weaknesses": ["应用场景较窄（科研/工程）", "日常任务性价比不高", "定价偏高"], "sources": ["https://zhuanlan.zhihu.com/p/2006304089840058657"]}, {"id": "model-007", "name": "豆包 2.0", "vendor": "字节跳动", "parameters": "1万亿（MoE总参数）", "scores": {"reasoning": 7, "coding": 7, "multimodal": 8, "priceCompetitiveness": 8, "contextLength": 7, "ecosystem": 10}, "pricing": {"input": 2, "output": 6, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": false, "launchDate": "2026-02-14", "highlights": ["万亿参数基础模型", "企业级Agent能力提升", "亿级用户场景（抖音/飞书/番茄小说）", "中国用户规模最大AI产品之一"], "weaknesses": ["万亿参数宣传意义大于技术意义", "每次推理实际激活参数可能仅数千亿", "面临监管风险（AI生成内容/数据隐私）"], "sources": ["https://www.cls.cn/detail/2288038", "https://www.stcn.com/article/detail/3644236.html"]}, {"id": "model-008", "name": "通义千问 (Qwen)", "vendor": "阿里巴巴", "parameters": "未公开", "scores": {"reasoning": 7, "coding": 7, "multimodal": 7, "priceCompetitiveness": 9, "contextLength": 8, "ecosystem": 8}, "pricing": {"input": 1, "output": 3, "unit": "$/1M tokens"}, "contextWindow": "256K", "openSource": true, "launchDate": "2026", "highlights": ["全球API调用量领先", "'一句话点奶茶'验证AI Agent消费入口", "开源生态活跃", "与阿里云深度集成"], "weaknesses": ["复杂推理与GPT-5.5/Claude 4有差距", "品牌认知度在海外市场较低", "AI Agent品类扩展待验证"], "sources": ["https://cloud.tencent.com/developer/article/2658611"]}, {"id": "model-009", "name": "MiniMax", "vendor": "MiniMax", "parameters": "未公开", "scores": {"reasoning": 7, "coding": 6, "multimodal": 8, "priceCompetitiveness": 9, "contextLength": 8, "ecosystem": 6}, "pricing": {"input": 1.5, "output": 5, "unit": "$/1M tokens"}, "contextWindow": "256K", "openSource": true, "launchDate": "2026", "highlights": ["推理效率突出", "全球调用量跻身国产旗舰", "长上下文处理能力强", "成本优化表现优异"], "weaknesses": ["品牌知名度和生态不如Qwen/豆包", "企业级客户占比待提升", "商业化路径尚不清晰"], "sources": ["https://cloud.tencent.com/developer/article/2658611"]}, {"id": "model-010", "name": "GLM-5.2", "vendor": "智谱", "parameters": "未公开", "scores": {"reasoning": 8, "coding": 7, "multimodal": 7, "priceCompetitiveness": 7, "contextLength": 8, "ecosystem": 7}, "pricing": {"input": 2, "output": 8, "unit": "$/1M tokens"}, "contextWindow": "128K", "openSource": false, "launchDate": "2026", "highlights": ["智谱主力模型", "API调用量增长400%", "支撑智谱万亿市值"], "weaknesses": ["与DeepSeek V4、豆包2.0竞争激烈", "商业化规模待验证"], "sources": ["https://www.stcn.com/article/detail/3971526.html"]}, {"id": "model-011", "name": "LongCat-Flash-Thinking-2601", "vendor": "美团", "parameters": "未公开", "scores": {"reasoning": 9, "coding": 8, "multimodal": 5, "priceCompetitiveness": 10, "contextLength": 7, "ecosystem": 7}, "pricing": {"input": 0, "output": 0, "unit": "开源免费"}, "contextWindow": "未公开", "openSource": true, "launchDate": "2026-06", "highlights": ["Agentic工具调用超越Claude", "首个完整开源重思考模式", "在线免费体验"], "weaknesses": ["多模态能力未强调", "长上下文窗口未公开", "社区生态尚处早期"], "sources": ["https://www.meituan.com/news/NN260116211001625"]}], "stockDates": ["2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06"], "上证": [3350, 3420, 3380, 3450, 3987, 4120.28], "纳斯达克": [19800, 20100, 20500, 21200, 23500, 25359.45], "恒生科技": [5200, 5380, 5500, 5650, 5100, 4423.97], "papers": [{"id": "paper-001", "title": "D4RT: Unified, Fast 4D Scene Reconstruction & Tracking", "conference": "CVPR 2026", "award": "最佳论文", "authors": "Chuhan Zhang, Guillaume Le Moing, Skanda Koppula et al.", "institution": "Google DeepMind, UCL, Oxford", "summary": "统一前馈Transformer联合推断深度/时空/相机参数，速度快18-300倍", "keyMetric": "速度提升18-300x", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2512.08924", "pdfUrl": "https://arxiv.org/pdf/2512.08924"}, {"id": "paper-002", "title": "TRELLIS.2: Native and Compact Structured Latents for 3D Generation", "conference": "CVPR 2026", "award": "最佳学生论文", "authors": "Jianfeng Xiang, Xiaoxue Chen, Sicheng Xu et al.", "institution": "清华大学、微软研究院、中国科学技术大学", "summary": "提出O-Voxel结构化潜表示，实现原生3D大模型生成，17秒内生成超高精度PBR资产", "keyMetric": "17秒生成游戏级PBR资产", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2512.14692", "pdfUrl": "https://arxiv.org/pdf/2512.14692"}, {"id": "paper-003", "title": "NitroGen: An Open Foundation Model for Generalist Gaming Agents", "conference": "CVPR 2026", "award": "最佳论文荣誉提名", "authors": "Loic Magne et al.", "institution": "NVIDIA", "summary": "基于40,000小时游戏视频训练的通用视觉-动作基础模型，可在1,000多款游戏中执行通用游戏智能体任务", "keyMetric": "40,000小时训练数据，1000+游戏泛化", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2601.02427", "pdfUrl": "https://arxiv.org/pdf/2601.02427"}, {"id": "paper-004", "title": "Transformers are Inherently Succinct", "conference": "ICLR 2026", "award": "杰出论文奖", "authors": "Pascal Bergstraesser, Ryan Cotterell, Anthony W. Lin", "institution": "ETH Zurich, MPI-SWS", "summary": "理论证明固定精度的Transformer在表达能力上具有内在简洁性，指数级压缩成为可能", "keyMetric": "指数级简洁性证明 + EXPSPACE验证不可能性", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2510.19315", "pdfUrl": "https://arxiv.org/pdf/2510.19315"}, {"id": "paper-005", "title": "LLMs Get Lost In Multi-Turn Conversation", "conference": "ICLR 2026", "award": "杰出论文奖", "authors": "Philippe Laban, Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville", "institution": "Salesforce AI Research", "summary": "系统评估LLM在多轮对话中的退化现象，性能下降达39%，早期假设锚定效应导致纠正失败", "keyMetric": "多轮对话性能下降39%，纠正失败率>95%", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2505.06120", "pdfUrl": "https://arxiv.org/pdf/2505.06120"}, {"id": "paper-006", "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration", "conference": "ICML 2026", "award": "Oral", "authors": "Shaobo Wang, Xuan Ouyang, Tianyi Xu, Yuzheng Hu et al.", "institution": "未公开", "summary": "提出在LLM预训练每次迭代中进行高效数据选择的方法，仅用1/7数据超越全量训练", "keyMetric": "1/7数据超越全量训练", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2602.05400", "pdfUrl": "https://arxiv.org/pdf/2602.05400"}, {"id": "paper-007", "title": "Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs", "conference": "ICML 2026", "award": "Oral", "authors": "Sagnik Mukherjee, Lifan Yuan, Pavan Jayasinha, Dilek Hakkani-Tuer, Hao Peng", "institution": "未公开", "summary": "挑战Adam优化器在LLM RL中的主导地位，SGD仅更新0.02%参数即匹配AdamW效果", "keyMetric": "0.02%参数更新匹配AdamW", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2602.07729", "pdfUrl": "https://arxiv.org/pdf/2602.07729"}, {"id": "paper-008", "title": "Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs", "conference": "ICML 2026", "award": "Oral", "authors": "Chufan Shi, Cheng Yang, Jiaqi Wang et al.", "institution": "未公开", "summary": "揭示多模态大模型中视觉感知幻觉，thinking模型视觉幻觉频率是普通VLM的3倍", "keyMetric": "thinking模型视觉幻觉3倍于普通VLM", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2605.15864", "pdfUrl": "https://arxiv.org/pdf/2605.15864"}, {"id": "paper-009", "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs", "authors": "百度 PaddlePaddle 团队", "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM", "arxiv": "2606.13108", "url": "https://arxiv.org/abs/2606.13108", "conference": "arXiv 2026"}, {"id": "paper-010", "title": "SENTINEL: Failure-Driven RL for Tool-Using LLM Agents", "authors": "Ziyi Wang, Yuxuan Lu 等", "summary": "失败驱动强化学习框架，高效训练工具使用agent", "arxiv": "2606.12908", "url": "https://arxiv.org/abs/2606.12908", "conference": "arXiv 2026"}, {"id": "paper-011", "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention", "authors": "Gilhan Kim, Daniel K. Park", "summary": "统计物理Ising模型引入注意力机制", "arxiv": "2606.12478", "url": "https://arxiv.org/abs/2606.12478", "conference": "arXiv 2026"}, {"id": "paper-012", "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers", "authors": "Zhang, Qiu, Cui 等", "summary": "统一多模态模型架构，整体式视觉tokenizer", "arxiv": "2606.13289", "url": "https://arxiv.org/abs/2606.13289", "conference": "arXiv 2026"}, {"id": "paper-013", "title": "The Hidden Power of Scaling Factor in LoRA Optimization", "authors": "Zicheng Zhang, Haoran Li 等", "summary": "揭示LoRA缩放因子alpha的独立影响", "arxiv": "2606.12883", "url": "https://arxiv.org/abs/2606.12883", "conference": "arXiv 2026"}, {"id": "paper-014", "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs", "conference": "arXiv 2026", "authors": "百度 PaddlePaddle 团队", "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM", "arxiv": "2606.13108", "url": "https://arxiv.org/abs/2606.13108"}, {"id": "paper-015", "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents", "conference": "arXiv 2026", "authors": "Ziyi Wang, Yuxuan Lu 等", "summary": "失败驱动强化学习框架，高效训练工具使用agent", "arxiv": "2606.12908", "url": "https://arxiv.org/abs/2606.12908"}, {"id": "paper-016", "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention", "conference": "arXiv 2026", "authors": "Gilhan Kim, Daniel K. Park", "summary": "统计物理Ising模型引入注意力机制", "arxiv": "2606.12478", "url": "https://arxiv.org/abs/2606.12478"}, {"id": "paper-017", "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers", "conference": "arXiv 2026", "authors": "Zhang, Qiu, Cui 等", "summary": "统一多模态模型架构，整体式视觉tokenizer", "arxiv": "2606.13289", "url": "https://arxiv.org/abs/2606.13289"}, {"id": "paper-018", "title": "The Hidden Power of Scaling Factor in LoRA Optimization", "conference": "arXiv 2026", "authors": "Zicheng Zhang, Haoran Li 等", "summary": "揭示LoRA缩放因子alpha的独立影响", "arxiv": "2606.12883", "url": "https://arxiv.org/abs/2606.12883"}, {"id": "paper-019", "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG", "conference": "arXiv 2026", "authors": "未公开", "summary": "通过潜在表示实现Agent经验积累和复用", "arxiv": "2606.01041", "url": "https://arxiv.org/abs/2606.01041"}, {"id": "paper-020", "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents", "conference": "arXiv 2026", "authors": "未公开", "summary": "针对Agent静默失败提出干预支持的错误归因框架", "arxiv": "2606.09071", "url": "https://arxiv.org/abs/2606.09071"}, {"id": "paper-021", "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs", "conference": "arXiv 2026", "authors": "百度 PaddlePaddle 团队", "institution": "百度", "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM的OCR能力", "keyMetric": "34.5M参数超越Billion-scale VLM", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.13108", "pdfUrl": "https://arxiv.org/pdf/2606.13108"}, {"id": "paper-022", "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents", "conference": "arXiv 2026", "authors": "Ziyi Wang, Yuxuan Lu 等", "institution": "未公开", "summary": "失败驱动强化学习框架，高效训练工具使用Agent，训练效率提升3-5倍", "keyMetric": "训练效率提升3-5x", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.12908", "pdfUrl": "https://arxiv.org/pdf/2606.12908"}, {"id": "paper-023", "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention", "conference": "arXiv 2026", "authors": "Gilhan Kim, Daniel K. Park", "institution": "未公开", "summary": "将统计物理Ising模型引入注意力机制，实现注意力头协同工作", "keyMetric": "注意力协同效果提升", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.12478", "pdfUrl": "https://arxiv.org/pdf/2606.12478"}, {"id": "paper-024", "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers", "conference": "arXiv 2026", "authors": "Zhang, Qiu, Cui 等", "institution": "未公开", "summary": "原生统一多模态模型架构，整体式视觉tokenizer替代传统patch分割", "keyMetric": "统一多模态架构", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.13289", "pdfUrl": "https://arxiv.org/pdf/2606.13289"}, {"id": "paper-025", "title": "The Hidden Power of Scaling Factor in LoRA Optimization", "conference": "arXiv 2026", "authors": "Zicheng Zhang, Haoran Li 等", "institution": "未公开", "summary": "揭示LoRA缩放因子alpha的独立影响，提出自适应选择策略", "keyMetric": "NLP/CV任务提升1-3pp", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.12883", "pdfUrl": "https://arxiv.org/pdf/2606.12883"}, {"id": "paper-026", "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG", "conference": "arXiv 2026", "authors": "未公开", "institution": "未公开", "summary": "通过潜在表示实现Agent经验积累和复用，构建经验检索库", "keyMetric": "Agent经验复用", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.01041", "pdfUrl": "https://arxiv.org/pdf/2606.01041"}, {"id": "paper-027", "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents", "conference": "arXiv 2026", "authors": "未公开", "institution": "未公开", "summary": "针对Agent静默失败提出干预支持的错误归因框架，错误检测率提升40%+", "keyMetric": "错误检测率+40%", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.09071", "pdfUrl": "https://arxiv.org/pdf/2606.09071"}, {"id": "paper-028", "title": "Gaze Heads: How VLMs Look at What They Describe", "conference": "arXiv 2026", "authors": "Rohit Gandikota, David Bau", "institution": "Northeastern University", "summary": "发现VLM中演化出特殊的gaze heads注意力头，注意力分布追踪模型正在描述的图像区域", "keyMetric": "揭示VLM跨模态对齐新机制", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.14703", "pdfUrl": "https://arxiv.org/pdf/2606.14703"}, {"id": "paper-029", "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains", "conference": "arXiv 2026", "authors": "Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang, Ran He, Caifeng Shan", "institution": "南京大学、中国科学院自动化研究所", "summary": "提出OmniVideo-100K数据集，通过实体锚定视频脚本与线索引导问答生成构建结构化证据链", "keyMetric": "10万级结构化音视频推理数据集", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14702", "pdfUrl": "https://arxiv.org/pdf/2606.14702"}, {"id": "paper-030", "title": "RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers", "conference": "arXiv 2026", "authors": "Timing Yang, Predrag Neskovic, Jansen Seheult, Wenchao Han, Anand Bhattad, Alan Yuille, Feng Wang", "institution": "Johns Hopkins University, 美国海军研究办公室, Mayo Clinic", "summary": "通过寄存器注意力机制，Transformer patch令牌涌现出对物体部件的显式表达", "keyMetric": "无监督视觉概念学习新路径", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.14701", "pdfUrl": "https://arxiv.org/pdf/2606.14701"}, {"id": "paper-031", "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space", "conference": "arXiv 2026", "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie", "institution": "Meta AI, New York University", "summary": "将MLLM重新用作带噪表示编码器，输出直接作为扩散Transformer条件信号", "keyMetric": "相近推理预算下优于全新去噪网络", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14700", "pdfUrl": "https://arxiv.org/pdf/2606.14700"}, {"id": "paper-032", "title": "AdaSR: Adaptive Streaming Reasoning with Hierarchical Relative Policy Optimization", "conference": "arXiv 2026", "authors": "Junlong Tong, Wenqi Xu, Yingqi Fan, Anhao Zhao, Xuan Lu, Yang Tan, Xiaoyu Shen", "institution": "东方理工高等研究院、上海交通大学、香港理工大学、东南大学、西交利物浦大学", "summary": "自适应流式推理框架，输入流式传输过程中即可推理，突破传统读-再想模式延迟瓶颈", "keyMetric": "流式推理延迟突破", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14694", "pdfUrl": "https://arxiv.org/pdf/2606.14694"}, {"id": "paper-033", "title": "CORA: Analyzing and Bridging Thinking-Answer Gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment", "conference": "arXiv 2026", "authors": "Jiayue Cao, Zhicong Lu, Xuehan Sun, Wei Jia, Hongling Zheng, Changyuan Tian, Zichuan Lin, Wenqian Lv, Nayu Liu", "institution": "中国科学院大学、武汉大学、清华大学、天津大学", "summary": "CORA通过一致性奖励模型将思维-答案语义一致性引入RLVR，缓解推理与答案脱节", "keyMetric": "多模态推理基准性能显著提升", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14691", "pdfUrl": "https://arxiv.org/pdf/2606.14691"}, {"id": "paper-034", "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing", "conference": "ICML 2026", "authors": "Jinsu Kim, Jihoon Tack, Noah Lee, Jongheon Jeong", "institution": "Korea University — TAIL Lab", "summary": "从单一角色描述中雕刻轻量级角色专属模型，识别并隔离角色对应子网络", "keyMetric": "角色专属子网络压缩", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14695", "pdfUrl": "https://arxiv.org/pdf/2606.14695"}, {"id": "paper-035", "title": "Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control", "conference": "arXiv 2026", "authors": "Ruining Li, Yuxin Yao, Matt Zhou, Chuanxia Zheng, Christian Rupprecht, Joan Lasenby, Shangzhe Wu, Andrea Vedaldi", "institution": "牛津大学、剑桥大学、南洋理工大学", "summary": "前馈运动学控制实现3D物体关节结构自动推断与建模，单次前向传播预测可驱动关节对象", "keyMetric": "3D关节物体生成效率大幅提升", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.14699", "pdfUrl": "https://arxiv.org/pdf/2606.14699"}, {"id": "paper-036", "title": "Marginal Advantage Accumulation for Memory-Driven Agent Self-Evolution", "conference": "arXiv 2026", "authors": "Mingyu Yang, Keye Zheng, Congchao Cheng 等", "institution": "未公开", "summary": "提出边缘优势累积机制，使Agent能够基于记忆驱动实现自我进化", "keyMetric": "记忆驱动自我进化", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.20475", "pdfUrl": "https://arxiv.org/pdf/2606.20475"}, {"id": "paper-037", "title": "Contagion Networks: Evaluator Bias Propagation in Multi-Agent LLM Systems", "conference": "arXiv 2026", "authors": "Zewen Liu 等", "institution": "未公开", "summary": "揭示多智能体LLM系统中评估者偏见的传播网络", "keyMetric": "评估者偏见传播建模", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.20493", "pdfUrl": "https://arxiv.org/pdf/2606.20493"}, {"id": "paper-038", "title": "Beyond Global Replanning: Hierarchical Recovery for Cross-Device Agent Systems", "conference": "arXiv 2026", "authors": "Yao 等", "institution": "未公开", "summary": "针对跨设备Agent系统提出层次化恢复机制，提升复杂任务容错性", "keyMetric": "跨设备Agent容错提升", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.20487", "pdfUrl": "https://arxiv.org/pdf/2606.20487"}, {"id": "paper-039", "title": "Your Mouse and Eyes Secretly Leak Your Preference: LLM Alignment using Implicit Feedback from Users", "conference": "arXiv 2026", "authors": "Chang 等", "institution": "未公开", "summary": "利用鼠标移动和眼动等隐式反馈进行LLM对齐", "keyMetric": "隐式反馈对齐", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.20482", "pdfUrl": "https://arxiv.org/pdf/2606.20482"}, {"id": "paper-040", "title": "StylisticBias: A Few Human Visual Cues Drive Most Social Biases in MLLMs", "conference": "arXiv 2026", "authors": "Kolli 等", "institution": "未公开", "summary": "发现少数人类视觉线索驱动了多模态大模型中的大部分社会偏见", "keyMetric": "社会偏见新靶点", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.20527", "pdfUrl": "https://arxiv.org/pdf/2606.20527"}, {"id": "paper-041", "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift", "conference": "arXiv 2026", "authors": "Gina Wong, Drew Prinster, Suchi Saria, Rama Chellappa, Anqi Liu", "institution": "未公开", "summary": "研究分布偏移下MoE模型的校准问题", "keyMetric": "MoE分布偏移校准", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.20544", "pdfUrl": "https://arxiv.org/pdf/2606.20544"}, {"id": "paper-042", "title": "The Token Is a Group Element: On Lie-Algebra Attention over Matrix Lie Groups", "conference": "arXiv 2026", "authors": "Przemyslaw Musialski 等", "institution": "未公开", "summary": "将李群与李代数引入注意力机制", "keyMetric": "几何化注意力", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.20547", "pdfUrl": "https://arxiv.org/pdf/2606.20547"}, {"id": "paper-043", "title": "How Transparent is DiffusionGemma?", "conference": "arXiv 2026", "authors": "Joshua Engels", "institution": "未公开", "summary": "评估Google DiffusionGemma文本到图像模型的透明性与可解释性", "keyMetric": "扩散模型可解释性", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.20560", "pdfUrl": "https://arxiv.org/pdf/2606.20560"}, {"id": "paper-044", "title": "Open Problem: Is AdamW Effective Under Heavy-Tailed Noise?", "conference": "arXiv 2026", "authors": "Dingzhi Yu, Hongyi Tao, Yuanyu Wan, Luo Luo, Lijun Zhang", "institution": "未公开", "summary": "针对AdamW优化器在重尾噪声下的有效性提出开放问题，建立了加权度量基准，解释了分母存储器如何影响大梯度的表现", "keyMetric": "AdamW重尾噪声收敛性开放问题", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.23676", "pdfUrl": "https://arxiv.org/pdf/2606.23676"}, {"id": "paper-045", "title": "Tapered Language Models", "conference": "arXiv 2026", "authors": "Reza Bayat, Ali Behrouz, Aaron Courville", "institution": "未公开", "summary": "提出锥形语言模型架构，探索模型参数分布新范式", "keyMetric": "语言模型参数分布新范式", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.23670", "pdfUrl": "https://arxiv.org/pdf/2606.23670"}, {"id": "paper-046", "title": "MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?", "conference": "arXiv 2026", "authors": "Juyang Bai, Laixi Shi", "institution": "未公开", "summary": "系统评估多智能体LLM系统中提示优化的效果，揭示优化在不同工作流和团队规模下的收益与搜索空间挑战", "keyMetric": "多智能体系统提示优化基准", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.23664", "pdfUrl": "https://arxiv.org/pdf/2606.23664"}, {"id": "paper-047", "title": "Learning Process Rewards via Success Visitation Matching for Efficient RL", "conference": "arXiv 2026", "authors": "Raymond Tsao, Andrew Wagenmaker, Sergey Levine", "institution": "UC Berkeley", "summary": "通过成功访问匹配学习过程奖励，提升强化学习效率", "keyMetric": "过程奖励学习新范式", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.23640", "pdfUrl": "https://arxiv.org/pdf/2606.23640"}, {"id": "paper-048", "title": "DiT-Reward: Generative Representations for Text-to-Image Reward Modeling", "conference": "arXiv 2026", "authors": "Yuanming Yang, Guoqing Ma, Bo Wang 等", "institution": "未公开", "summary": "利用预训练扩散模型进行文本到图像奖励建模，性能超越HPSv3，推理速度提升1.65倍", "keyMetric": "HPDv2 85.6%，HPDv3 77.6%，推理加速1.65x", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.23626", "pdfUrl": "https://arxiv.org/pdf/2606.23626"}, {"id": "paper-049", "title": "Scaling Linear Mode Connectivity and Merging to Billion Parameter Pretrained Transformers", "conference": "arXiv 2026", "authors": "Tianyi Li, Zhiqiang Shen", "institution": "未公开", "summary": "将线性模式连接和模型合并扩展至十亿参数级预训练Transformer", "keyMetric": "十亿参数级模型合并", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.23607", "pdfUrl": "https://arxiv.org/pdf/2606.23607"}, {"id": "paper-050", "title": "LLM-as-Code: Agentic Programming for Agent Harness", "conference": "arXiv 2026", "authors": "Junjia Qi, Zichuan Fu, Jingtong Gao 等", "institution": "未公开", "summary": "提出Agentic Programming范式，由程序掌控控制流、LLM作为代码组件被调用，DAG结构化上下文，在OSWorld上15步达成86.8%成功率", "keyMetric": "15步86.8%成功率(OSWorld)", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.15874", "pdfUrl": "https://arxiv.org/pdf/2606.15874"}, {"id": "paper-051", "title": "On the Limits of Prompt-Conditioned Language Models as General-Purpose Learners", "conference": "arXiv 2026", "authors": "David Mguni, Julian Ma, Jun Wang", "institution": "未公开", "summary": "揭示提示条件化语言模型作为通用学习者的能力极限", "keyMetric": "LLM通用学习能力边界", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.23668", "pdfUrl": "https://arxiv.org/pdf/2606.23668"}, {"id": "paper-052", "title": "OpenThoughts-Agent: Data Recipes for Agentic Models", "conference": "arXiv 2026", "authors": "Negin Raoof, Richard Zhuang, Marianna Nezhurina 等", "institution": "未公开", "summary": "构建开放智能体训练数据流水线，通过系统性实验筛选高质量样本，微调后模型在44.8%平均准确率上超越现有开放基线，全部资源公开", "keyMetric": "44.8%平均准确率，100K训练样本", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24855", "pdfUrl": "https://arxiv.org/pdf/2606.24855"}, {"id": "paper-053", "title": "World Models in Pieces: Structural Certification for General Agents", "conference": "arXiv 2026", "authors": "Yikai Lu, Yifei Wu, Xinyu Lu, Tongxin Li", "institution": "未公开", "summary": "针对通用代理能力非普适性提出结构认证框架，通过过滤特定转换并证明误差界，实现长程规划的可靠性验证", "keyMetric": "Agent结构认证框架", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24842", "pdfUrl": "https://arxiv.org/pdf/2606.24842"}, {"id": "paper-054", "title": "Can Scale Save Us From Plasticity Loss in Large Language Models?", "conference": "arXiv 2026", "authors": "J. Fernando Hernandez-Garcia, Tomás Figliolia, Beren Millidge", "institution": "未公开", "summary": "评估大模型可塑性丧失问题，发现扩大规模只能延缓不能根除适应力衰退，在固定训练语料下同样存在", "keyMetric": "规模无法根除可塑性丧失", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24752", "pdfUrl": "https://arxiv.org/pdf/2606.24752"}, {"id": "paper-055", "title": "Grading the Grader: Lessons from Evaluating an Agentic Data Analysis System", "conference": "arXiv 2026", "authors": "Zheng, Hsu", "institution": "未公开", "summary": "评估Agentic数据分析系统的经验教训，揭示自动评估器本身的可靠性问题", "keyMetric": "Agent评估器可靠性分析", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24839", "pdfUrl": "https://arxiv.org/pdf/2606.24839"}, {"id": "paper-056", "title": "Accuracy and Satisfaction in Multi-Turn LLM Dialogues for NFR Assessment", "conference": "arXiv 2026", "authors": "Fatideh, Baldwin, Dhakal, McMillan, Ghanavati", "institution": "未公开", "summary": "评估多轮LLM对话在非功能需求评估中的准确性和用户满意度", "keyMetric": "多轮对话NFR评估基准", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24834", "pdfUrl": "https://arxiv.org/pdf/2606.24834"}, {"id": "paper-057", "title": "BluTrain: A C++/CUDA Framework for AI Systems", "conference": "arXiv 2026", "authors": "Charan, Suresh, Kumar 等", "institution": "未公开", "summary": "C++/CUDA高性能AI训练框架，优化GPU利用率", "keyMetric": "C++/CUDA AI训练框架", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24780", "pdfUrl": "https://arxiv.org/pdf/2606.24780"}, {"id": "paper-058", "title": "Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder PLMs", "conference": "arXiv 2026", "authors": "Pouramini, Faili", "institution": "未公开", "summary": "系统评估编码器-解码器预训练语言模型的微调与提示微调策略匹配", "keyMetric": "微调vs提示微调策略匹配", "commercialPotential": 3, "arxivUrl": "https://arxiv.org/abs/2606.24841", "pdfUrl": "https://arxiv.org/pdf/2606.24841"}, {"id": "paper-059", "title": "Solving Inverse Problems of Chaotic Systems with Bidirectional Conditional Flow Matching", "conference": "arXiv 2026", "authors": "Hu, Zhang, Pan, Feng, Zhang, Ma, Ting, Li, Wu", "institution": "未公开", "summary": "双向条件流匹配解决混沌系统逆问题", "keyMetric": "混沌系统逆问题新解法", "commercialPotential": 2, "arxivUrl": "https://arxiv.org/abs/2606.24824", "pdfUrl": "https://arxiv.org/pdf/2606.24824"}, {"title": "Grad Detect: Gradient-Based Hallucination Detection in LLMs", "conference": "arXiv 2026", "award": "", "authors": "Anand Kamat, Daniel Blake, Brent M. Werness", "institution": "未公开", "summary": "提出基于梯度的方法识别大语言模型中的幻觉内容", "keyMetric": "新的幻觉检测范式", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24790", "pdfUrl": "https://arxiv.org/pdf/2606.24790", "id": "paper-060"}, {"title": "FlowPipe: LLM-Enhanced Conditional Generative Flow Networks for Data Preparation Pipeline Construction", "conference": "arXiv 2026", "award": "", "authors": "Kunyu Ni, Lei Cao, Jie He, Xiaotong Zhang, Jianfeng Jin, Junyu Dong, Yanwei Yu", "institution": "未公开", "summary": "利用LLM增强的条件生成流网络自动化构建数据准备流水线", "keyMetric": "自动化数据准备流水线", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24679", "pdfUrl": "https://arxiv.org/pdf/2606.24679", "id": "paper-061"}, {"title": "Reasoning as Attractor Dynamics: Latent Memory Retrieval via Gibbs-Weighted Energy Minimization", "conference": "arXiv 2026", "award": "", "authors": "Kanishk Awadhiya", "institution": "未公开", "summary": "将推理过程建模为吸引子动力学，通过Gibbs加权能量最小化实现潜在记忆检索", "keyMetric": "推理与记忆检索新视角", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.24543", "pdfUrl": "https://arxiv.org/pdf/2606.24543", "id": "paper-062"}, {"title": "Data Augmentation: A Fourier Analysis Perspective", "conference": "arXiv 2026", "award": "", "authors": "Behrooz Tahmasebi, Melanie Weber, Stefanie Jegelka", "institution": "MIT", "summary": "从傅里叶分析视角重新审视数据增强方法的理论机制", "keyMetric": "数据增强理论分析", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.24418", "pdfUrl": "https://arxiv.org/pdf/2606.24418", "id": "paper-063"}, {"title": "A Fair Evaluation of Graph Foundation Models for Node Property Prediction", "conference": "arXiv 2026", "award": "", "authors": "Oleg Platonov, Gleb Bazhenov, Dmitry Eremeev, Liudmila Prokhorenkova", "institution": "未公开", "summary": "为图基础模型在节点属性预测任务上提供公平评估框架", "keyMetric": "图基础模型公平评测", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.24509", "pdfUrl": "https://arxiv.org/pdf/2606.24509", "id": "paper-064"}, {"title": "DiffusionBench: On Holistic Evaluation of Diffusion Transformers", "conference": "arXiv 2026", "award": "", "authors": "Xingjian Leng, Jaskirat Singh", "institution": "未公开", "summary": "提出扩散Transformer的综合评估框架", "keyMetric": "DiT全面评测", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24888", "pdfUrl": "https://arxiv.org/pdf/2606.24888", "id": "paper-065"}, {"title": "FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation", "conference": "arXiv 2026", "award": "", "authors": "Haorui Ji, Weizhe Liu", "institution": "未公开", "summary": "通过扩散对齐的稀疏表示实现高保真3D高斯生成", "keyMetric": "高保真3D生成", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24874", "pdfUrl": "https://arxiv.org/pdf/2606.24874", "id": "paper-066"}, {"title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation", "conference": "arXiv 2026", "award": "", "authors": "Zixuan Li, Haokun Lin", "institution": "未公开", "summary": "将隐式视觉思维链引入结构感知的文本到图像生成", "keyMetric": "结构感知图像生成", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.24849", "pdfUrl": "https://arxiv.org/pdf/2606.24849", "id": "paper-067"}, {"title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents", "conference": "arXiv 2026", "award": "", "authors": "Hovhannes Tamoyan", "institution": "未公开", "summary": "为代码修复智能体开发结构化诊断定位方法", "keyMetric": "代码修复Agent诊断定位", "commercialPotential": 8, "arxivUrl": "https://arxiv.org/abs/2606.24820", "pdfUrl": "https://arxiv.org/pdf/2606.24820", "id": "paper-068"}, {"title": "Are We Ready For An Agent-Native Memory System?", "conference": "arXiv 2026", "award": "", "authors": "Wei Zhou", "institution": "未公开", "summary": "评估支撑自主智能体持久化记忆的基础设施就绪度", "keyMetric": "Agent记忆系统 readiness", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.24775", "pdfUrl": "https://arxiv.org/pdf/2606.24775", "id": "paper-069"}, {"title": "Scaling LLM Reasoning from Minimal Labels: A Semi-Supervised Framework with a Lightweight Verifier", "conference": "arXiv 2026", "award": "", "authors": "Keizo Kato, Chenhui Chu, Yugo Murawaki, Sado Kurohashi", "institution": "Fujitsu Limited; Kyoto University; National Institute of Informatics", "summary": "提出半监督推理训练框架，将验证推理是否正确本身变成数据生成机制，用极少标注数据扩展LLM推理能力", "keyMetric": "数学推理上仅200条标注样本达到10-15倍标注数据的传统方法性能", "commercialPotential": 8, "arxivUrl": "https://arxiv.org/abs/2606.16811", "pdfUrl": "https://arxiv.org/pdf/2606.16811", "id": "paper-070"}, {"title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents", "conference": "arXiv 2026", "award": "", "authors": "Changdae Oh, Wendi Li, Seongheon Park, Samuel Yeh, Tanwi Mallick, Sharon Li", "institution": "University of Wisconsin–Madison; Argonne National Laboratory", "summary": "发现RL后训练过程中策略与参考策略的对数概率比可直接导出最优优势函数，无需单独训练过程奖励模型即可提升LLM Agent表现", "keyMetric": "在5个基准、4个模型家族上持续优于基于置信度的基线", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.26080", "pdfUrl": "https://arxiv.org/pdf/2606.26080", "id": "paper-071"}, {"title": "TryOnCrafter: Unleashing Camera Trajectories for Realistic Video Virtual Try-on via a Renderable 4D Try-on Proxy", "conference": "arXiv 2026", "award": "", "authors": "Hao Sun, Hao Yan, Mengting Chen, Quanjian Song, Yu Li, Juan Cao, Jinsong Lan, Xiaoyong Zhu, Bo Zheng, Sheng Tang", "institution": "ICT CAS; UCAS; Xiamen University; Alibaba Group", "summary": "提出首个面向相机可控视频虚拟试衣的统一DiT框架，通过可渲染4D试衣代理实现任意相机轨迹下的真实感试衣视频生成", "keyMetric": "CaM-VVTBench Overall Score 75.47，达到SOTA", "commercialPotential": 9, "arxivUrl": "https://arxiv.org/abs/2606.26092", "pdfUrl": "https://arxiv.org/pdf/2606.26092", "id": "paper-072"}, {"title": "Real-Time Voice AI Hears but Does Not Listen", "conference": "arXiv 2026", "award": "", "authors": "Martijn Bartelds, Federico Bianchi, James Zou", "institution": "Together AI; Stanford University", "summary": "评测四个主流实时语音AI系统，发现它们普遍依赖文本内容而忽略声音中的情绪、讽刺、恐惧等副语言信号", "keyMetric": "测试GPT Realtime 2、Gemini 3.1 Flash Live、Qwen3.5 Omni Plus/Flash", "commercialPotential": 6, "arxivUrl": "https://arxiv.org/abs/2606.26083", "pdfUrl": "https://arxiv.org/pdf/2606.26083", "id": "paper-073"}, {"title": "How Robust is OCR-Reasoning? Evaluating OCR-Reasoning Robustness of Vision-Language Models under Visual Perturbations", "conference": "arXiv 2026", "award": "", "authors": "Yuxing Cheng, Yuan Wu, Yi Chang", "institution": "Jilin University", "summary": "构建OCR-Robust基准，系统评估18个视觉语言模型在五种视觉扰动下的OCR推理鲁棒性", "keyMetric": "数据集812条样本，提出RCR/WCR/CRI等鲁棒性指标", "commercialPotential": 7, "arxivUrl": "https://arxiv.org/abs/2606.26041", "pdfUrl": "https://arxiv.org/pdf/2606.26041", "id": "paper-074"}, {"title": "Age of LLM: A Strategic 1v1 Benchmark for Reasoning, Diplomacy and Reliability of Large Language Models under Fog of War", "conference": "arXiv 2026", "award": "", "authors": "Arnaud Ricci", "institution": "Independent researcher, Switzerland", "summary": "推出融合战争迷雾、外交谈判与严格JSON动作可靠性的1v1策略对战基准，评估LLM长程推理与可信赖性", "keyMetric": "15个模型、54场对局、5258步动作；GPT-5.5保持不败", "commercialPotential": 5, "arxivUrl": "https://arxiv.org/abs/2606.24391", "pdfUrl": "https://arxiv.org/pdf/2606.24391", "id": "paper-075"}, {"title": "Representing Time Series as Structured Programs for LLM Reasoning", "conference": "arXiv 2026", "award": "", "authors": "Jaeho Kim, Changjun Oh, Seokhyun Lee, Irina Rish, Changhee Lee", "institution": "Korea University; Mila, University of Montreal", "summary": "提出T2SP方法，将时间序列表示为结构化符号程序，使现成LLM无需额外训练即可进行时间序列推理", "keyMetric": "ETI任务上Claude配合T2SP准确率达91.0%，原始表示仅56.5%", "commercialPotential": 8, "arxivUrl": "https://arxiv.org/abs/2606.12481", "pdfUrl": "https://arxiv.org/pdf/2606.12481", "id": "paper-076"}, {"title": "The Periodic Table of LLM Reasoning: A Structured Survey of Reasoning Paradigms, Methods, and Failure Modes", "conference": "arXiv 2026", "award": "", "authors": "Avinash Anand, Mahisha Ramesh, Avni Mittal, Ashutosh Kumar, Erik Cambria, Zhengkui Wang, Timothy Liu, Aik Beng Ng, Simon See, Rajiv Ratn Shah", "institution": "SIT × Nvidia AI Center; MIDAS Lab IIIT Delhi; IIT Mandi; NTU Singapore", "summary": "对300余篇近期LLM推理研究进行系统综述，提出结构化分类体系并梳理主要推理范式、方法与失效模式", "keyMetric": "将海量文献组织为推理元素周期表式分类", "commercialPotential": 4, "arxivUrl": "https://arxiv.org/abs/2606.11470", "pdfUrl": "https://arxiv.org/pdf/2606.11470", "id": "paper-077"}], "analysis": [{"title": "1. IBM发布全球首个亚1纳米芯片技术", "summary": "IBM推出0.7纳米晶体管架构，被视为延续摩尔定律的重大突破。", "content": "Q1 它真正想解决的问题是什么？\n在2nm/3nm工艺逼近物理极限的背景下，半导体行业急需新节点延续算力增长。IBM想解决先进制程下一步往哪走的问题。\n\nQ2 它声称的贡献是什么？\n声称实现0.7nm节点晶体管架构，是全球首个亚1nm芯片技术，将半导体工艺推进埃米时代。\n\nQ3 最可能被攻击的地方？\nP0: 实验室到量产鸿沟巨大；P1: 缺乏性能/功耗/良率数据；P2: 高NA EUV等设备产业链配套能否跟上。\n\nQ4 行动指南\n博士生：精读晶体管架构创新思路；工程师：关注新工艺对EDA的影响；投资人：关注IBM与制造伙伴的合作进展。"}, {"title": "2. 美光财报大超预期，AI存储需求引爆芯片股", "summary": "美光Q3 FY2026营收414.6亿美元，目标500亿美元，股价大涨15%。", "content": "Q1 它真正想解决的问题是什么？\nAI大模型对HBM需求激增，传统DRAM供给跟不上。美光想证明自己是AI存储周期的核心受益者。\n\nQ2 它声称的贡献是什么？\nQ3营收414.6亿美元，目标营收500亿美元，股价大涨15%，验证AI存储需求强劲。\n\nQ3 最可能被攻击的地方？\nP0: 500亿目标是否含价格泡沫；P1: 三星/SK海力士扩产挤压份额；P2: 存储芯片周期性强，高价可能透支未来增长。\n\nQ4 行动指南\n博士生：研究HBM架构；工程师：分析存储系统在AI集群中的瓶颈；投资人：关注HBM产能扩张节奏。"}, {"title": "3. 苹果WWDC 2026发布新一代Apple Intelligence与Siri AI", "summary": "iOS 27推出全新Siri AI，应用启动速度提升30%，但中国大陆暂不可用。", "content": "Q1 它真正想解决的问题是什么？\n苹果需要证明自己在端侧AI竞赛中不落后，让iPhone成为真正的AI Agent入口。\n\nQ2 它声称的贡献是什么？\niOS 27推出全新Siri AI，应用启动速度提升30%，引入儿童适龄保护。\n\nQ3 最可能被攻击的地方？\nP0: 中国大陆不可用；P1: Siri AI能否追上ChatGPT/Gemini；P2: 端侧模型能力受硬件限制。\n\nQ4 行动指南\n博士生：研究端侧模型压缩；工程师：学习iOS AI框架集成；投资人：关注Apple Intelligence对换机周期的拉动。"}, {"title": "4. 美团小美牵手腾讯元宝，构建AI入口", "summary": "美团Q1 AI亏损收窄至65亿元，小美与元宝互通形成AI入口+本地服务闭环。", "content": "Q1 它真正想解决的问题是什么？\n美团有场景缺AI入口，腾讯有元宝入口缺线下场景，合作解决AI Agent落地物理世界问题。\n\nQ2 它声称的贡献是什么？\nAI经营亏损收窄至65亿元，小美与元宝互通，有望形成AI入口+本地服务闭环。\n\nQ3 最可能被攻击的地方？\nP0: 合作是否只是流量互换；P1: 65亿亏损仍巨大；P2: 与阿里千问App直接竞争。\n\nQ4 行动指南\n博士生：研究AI Agent与本地生活服务的任务拆解；工程师：学习跨平台Agent互通架构；投资人：关注AI对单用户价值的提升。"}, {"title": "5. 阿里通义千问Qwen3.7-Max与千问云", "summary": "千问云在新加坡发布，Qwen3.7-Max支持百万词元上下文。", "content": "Q1 它真正想解决的问题是什么？\n阿里需要在B端和开发者市场建立大模型生态壁垒，推动国产大模型出海与商业化。\n\nQ2 它声称的贡献是什么？\n千问云在新加坡发布，Qwen3.7-Max支持百万词元上下文，推进代理AI时代战略。\n\nQ3 最可能被攻击的地方？\nP0: 百万上下文有效利用率如何；P1: 海外市场能否与OpenAI/Google竞争；P2: 618上线是否更多是营销事件。\n\nQ4 行动指南\n博士生：研究长上下文建模；工程师：学习DashScope API和千问云部署；投资人：关注阿里云AI收入增速。"}, {"title": "6. TryOnCrafter：相机可控视频虚拟试衣", "summary": "统一DiT框架通过可渲染4D试衣代理实现任意相机轨迹下的真实感试衣视频生成。", "content": "Q1 它真正想解决的问题是什么？\n电商和时尚零售需要更真实的虚拟试衣体验，支持360度环绕、子弹时间等自由视角。\n\nQ2 它声称的贡献是什么？\nCaM-VVTBench Overall Score 75.47，达到SOTA。\n\nQ3 最可能被攻击的地方？\nP0: 真实场景泛化能力待验证；P1: 生成速度是否满足实时性；P2: 4D代理构建成本高。\n\nQ4 行动指南\n博士生：精读4D人体重建；工程师：学习可渲染代理的工程实现；投资人：关注电商/时尚零售落地场景。"}, {"title": "7. Scaling LLM Reasoning from Minimal Labels", "summary": "半监督框架用200条标注样本达到10-15倍标注数据的传统方法性能。", "content": "Q1 它真正想解决的问题是什么？\n大模型推理提升依赖大量人工标注，该论文解决如何用极少标注数据扩展推理能力。\n\nQ2 它声称的贡献是什么？\n轻量验证器+熵阈值伪标签过滤，200条标注达到传统方法10-15倍数据的性能。\n\nQ3 最可能被攻击的地方？\nP0: 伪标签质量依赖验证器能力；P1: 仅在数学推理和GQA验证；P2: 200条标注实验是否过于理想化。\n\nQ4 行动指南\n博士生：精读半监督推理训练；工程师：集成验证器到数据生成pipeline；投资人：关注可降低标注成本的技术。"}, {"title": "8. Real-Time Voice AI Hears but Does Not Listen", "summary": "评测四个主流实时语音AI系统，发现它们忽略情绪、讽刺、恐惧等副语言信号。", "content": "Q1 它真正想解决的问题是什么？\n实时语音AI在高风险场景中可能只识别文字而不理解情绪，论文揭示这一安全漏洞。\n\nQ2 它声称的贡献是什么？\n测试GPT Realtime 2、Gemini 3.1 Flash Live、Qwen3.5 Omni Plus/Flash，提出语音AI情感智能鸿沟概念。\n\nQ3 最可能被攻击的地方？\nP0: 测试场景是否足够全面；P1: 如何定义听到vs倾听的差异；P2: 改进方向是否具体可行。\n\nQ4 行动指南\n博士生：研究副语言信号处理；工程师：设计语音AI安全红线和测试方法；投资人：关注语音AI安全合规赛道。"}, {"title": "9. OpenMontage：开源Agentic视频生产系统", "summary": "将AI coding assistant扩展为完整视频生产工作室，单日新增约3.4k Star。", "content": "Q1 它真正想解决的问题是什么？\n视频制作门槛高、流程复杂，OpenMontage想用Agent方式自动化完整视频生产流程。\n\nQ2 它声称的贡献是什么？\n500+ Agent技能整合，将AI coding assistant变成完整视频工作室。\n\nQ3 最可能被攻击的地方？\nP0: 500+ Agent协调复杂度极高；P1: 视频生成质量是否达商业标准；P2: 与Runway/Pika差异化在哪。\n\nQ4 行动指南\n博士生：研究多Agent协作架构；工程师：学习多媒体工作流自动化；投资人：关注Agentic内容生产落地。"}, {"title": "10. apple/container：苹果官方容器工具", "summary": "苹果开源Swift编写的容器工具，针对Apple Silicon优化。", "content": "Q1 它真正想解决的问题是什么？\nMac开发者依赖Docker Desktop存在性能、兼容性和许可问题，苹果想提供原生轻量容器方案。\n\nQ2 它声称的贡献是什么？\n苹果官方开源容器工具，Swift编写，利用macOS轻量虚拟机运行Linux容器。\n\nQ3 最可能被攻击的地方？\nP0: 能否替代Docker Desktop；P1: 苹果是否会长期维护；P2: 虚拟化开销瓶颈能否解决。\n\nQ4 行动指南\n博士生：研究macOS虚拟化技术；工程师：学习苹果容器工具使用方式；投资人：关注苹果开发者生态扩张信号。"}], "news": [{"id": "news-077", "date": "2026-06-24", "title": "人工智能让网络安全成为2026年稀缺性投资赛道", "category": "AI安全", "importance": "high", "summary": "AI技术显著降低漏洞挖掘难度，网络安全成为稀缺资产。CrowdStrike八次创盘中新高，帕洛阿尔托网络涨幅228%，ETF收益27%。资金从芯片领域转向安全赛道。", "keyData": "CrowdStrike八次创新高，Palo Alto涨228%", "impact": "AI安全赛道成为资金新宠", "source": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-24/doc-inienicz8321972.shtml"}, {"id": "news-078", "date": "2026-06-24", "title": "科创芯片设计ETF富国正在发行，2026是AI产业推理落地大年", "category": "半导体", "importance": "medium", "summary": "全球算力资本开支持续攀升，芯片自主可控战略持续加码。科创芯片设计指数成分股2025年净利润同比增速超190%，2026年被视为AI产业推理落地大年。", "keyData": "成分股净利润增速超190%", "impact": "AI推理落地催化芯片设计需求", "source": "https://finance.sina.com.cn/stock/stockzmt/2026-06-24/doc-inieniee6403635.shtml"}, {"id": "news-079", "date": "2026-06-24", "title": "港股半导体板块强势：华虹宏力飙升16%，中芯国际涨逾8%", "category": "半导体", "importance": "high", "summary": "港股半导体板块表现强势，华虹宏力飙升16%，中芯国际涨逾8%。恒生科技指数涨1.34%，与美股芯片股暴跌形成鲜明反差，反映资金在港股寻找半导体结构性机会。", "keyData": "华虹宏力+16%，中芯国际+8%", "impact": "港股半导体与美股形成反差行情", "source": "https://www.chnfund.com/article/81239efc-759a-c0a4-f963-3a2209f67748"}, {"id": "news-080", "date": "2026-06-24", "title": "A股券商板块延续涨势，28只成分股飘红", "category": "股市", "importance": "medium", "summary": "A股市场整体调整后券商板块逆势走强，28只成分股飘红。学者评价'本轮券商上涨的持续性相对更强'，成交额维持在3.46万亿元高位。", "keyData": "28只券商股飘红，成交3.46万亿", "impact": "券商板块成为市场结构性亮点", "source": "https://www.21jingji.com/article/20260624/herald/0428b1d2288ab2943276f43347a4174d.html"}, {"id": "news-069", "date": "2026-06-23", "title": "AI飞轮驱动加速半导体更多领域进入上行周期", "category": "半导体", "importance": "high", "summary": "证券时报报道，AI算力需求持续拉动存储、功率、封装等多环节景气，业内预计2026年全球半导体规模将超1.5万亿美元，内存市场缺口约5%，设备端高景气预见到8个季度后。", "keyData": "2026全球半导体超1.5万亿美元，内存缺口5%", "impact": "AI飞轮驱动多环节进入上行周期", "source": "https://www.stcn.com/article/detail/3973285.html"}, {"id": "news-070", "date": "2026-06-23", "title": "AI算力新变局：谁能动英伟达奶酪", "category": "AI算力", "importance": "high", "summary": "21财经深度分析，华为昇腾、英特尔18A、AMD、台积电等多方挑战英伟达GPU垄断地位，AI算力格局正从'一家独大'走向多元竞争。", "keyData": "英伟达算力垄断面临多方挑战", "impact": "AI算力多元化竞争加速", "source": "https://www.21jingji.com/article/20260623/herald/0aab3df2caeedc633acdef0dc0912cde.html"}, {"id": "news-071", "date": "2026-06-23", "title": "新洁能涨停：功率半导体+产品升级+AI需求增长", "category": "半导体", "importance": "medium", "summary": "A股功率半导体龙头新洁能6月23日涨停，分析师认为AI数据中心功率器件需求+产品升级双轮驱动，功率半导体景气度进入新一轮上行期。", "keyData": "功率半导体涨停，AI数据中心需求驱动", "impact": "功率半导体板块受益AI需求", "source": "https://finance.sina.com.cn/stock/aiassist/ydfx/2026-06-23/doc-iniekeey2076576.shtml"}, {"id": "news-072", "date": "2026-06-23", "title": "标普500历史首次站上7000点，纳指涨1.59%至24016点", "category": "美股", "importance": "high", "summary": "标普500历史首次收盘站上7000点整数关口，纳指涨1.59%至24016.02点，道指微涨220点创历史新高。英伟达日线11连涨，光纤概念股Lumen与AWS合作后暴涨10.13%。", "keyData": "标普首次站上7000点，纳指24016点", "impact": "美股科技+AI板块创新高", "source": "https://www.cls.cn/detail/2345486"}, {"id": "news-073", "date": "2026-06-23", "title": "英伟达日线11连涨，AI算力龙头再创新高", "category": "半导体", "importance": "high", "summary": "英伟达股价实现日线11连涨，创2023年以来最长连涨纪录。市场对其数据中心AI GPU需求持续乐观，Vera Rubin平台预期进一步提振估值。", "keyData": "英伟达日线11连涨", "impact": "AI算力龙头持续创新高", "source": "https://www.cls.cn/detail/2345486"}, {"id": "news-074", "date": "2026-06-23", "title": "港股午盘走低：恒指跌1.13%，科技指数重挫2.21%", "category": "港股", "importance": "medium", "summary": "港股恒生指数午盘跌1.13%，恒生科技指数跌2.21%，京东、小米、腾讯、阿里、美团等科技龙头普跌，大模型概念股走低，智谱盘中一度跌超15%。", "keyData": "恒指跌1.13%，恒科跌2.21%", "impact": "港股科技板块回调", "source": "https://www.cls.cn/detail/2406512"}, {"id": "news-064", "date": "2026-06-22", "title": "科创板第五套标准扩围至AI大模型企业", "category": "政策/AI", "importance": "high", "summary": "上交所发布指引，人工智能大模型企业可适用科创板第五套上市标准，优先支持尚未形成收入规模但具备核心技术的主体，智谱、MiniMax等筹备回A", "keyData": "科创板第五套标准扩容AI大模型", "impact": "国产大模型核心资产A股定价通道打开", "source": "https://www.stcn.com/article/detail/3967608.html"}, {"id": "news-065", "date": "2026-06-22", "title": "智谱股价大涨超40%，市值突破万亿港元", "category": "AI融资", "importance": "high", "summary": "智谱股价大涨逾40%，盘中触及2980港元，总市值突破1万亿港元。GLM-5.2模型表现优异，API调用量增幅达400%，公司推进科创板IPO拟募资150亿元", "keyData": "智谱市值破万亿港元", "impact": "全球首家万亿市值大模型公司诞生", "source": "https://www.stcn.com/article/detail/3971526.html"}, {"id": "news-066", "date": "2026-06-22", "title": "MiniMax涨超20%，港股AI大模型双子星闪耀", "category": "AI融资", "importance": "high", "summary": "MiniMax-W股价攀升20.2%，估值达1876亿港元。作为恒生科技指数新成分股，MiniMax与智谱共同带动港股大模型概念股逆势走强", "keyData": "MiniMax涨20.2%", "impact": "港股成为国产大模型估值发现重要战场", "source": "https://www.forbeschina.com/business/71767"}, {"id": "news-067", "date": "2026-06-22", "title": "AI芯片需求推动韩国6月上旬出口强劲增长", "category": "半导体", "importance": "medium", "summary": "韩国6月前10天出口受AI芯片需求拉动再度强劲增长，半导体出口保持双位数增速，SK海力士市值此前已突破1万亿美元", "keyData": "韩国半导体出口双位数增长", "impact": "AI算力上游存储和先进封装持续景气", "source": "https://finance.sina.com.cn/stock/bxjj/2026-06-22/doc-iniehfpu0324852.shtml"}, {"id": "news-068", "date": "2026-06-22", "title": "AI需求外溢至制造环节，半导体设备ETF涨近3%", "category": "半导体", "importance": "medium", "summary": "AI算力需求向晶圆制造、封装测试等设备环节传导，半导体设备ETF（易方达）涨2.94%，市场关注国产半导体设备厂商替代机会", "keyData": "半导体设备ETF涨2.94%", "impact": "国产半导体设备迎AI需求+自主可控双重催化", "source": "https://www.nbd.com.cn/articles/2026-06-22/4432542.html"}]};
+const DATA = {
+  "consumerAI": [
+    {
+      "id": "brand-004",
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧科技",
+      "category": "AI底层技术",
+      "launchDate": "2024-11",
+      "features": [
+        "新兴能源技术研发",
+        "AI理论与算法软件开发",
+        "AI公共数据平台建设",
+        "供应链智能化",
+        "智慧门店探索"
+      ],
+      "limitations": [
+        "低价模式下AI投入产出的ROI有限",
+        "3万+门店数据质量参差不齐",
+        "加盟商对智慧系统的实际获得感有限"
+      ],
+      "techStack": [
+        "AI算法",
+        "供应链优化ML",
+        "数据平台"
+      ],
+      "deploymentScale": "3万+门店",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 5,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间",
+        "claimedContribution": "供应链成本优化，门店补货效率提升，规模化运营能力",
+        "attackPoints": [
+          "P0: AI系统1-2%成本节约能否覆盖系统建设运维成本",
+          "P1: 下沉市场门店数据录入质量差",
+          "P2: AI只能支撑成本节约，想象空间有限"
+        ],
+        "actionGuide": {
+          "scholar": "研究大规模供应链ML优化的工程实践",
+          "engineer": "学习在极致成本约束下做务实AI",
+          "investor": "关注3万+门店规模下供应链效率的亿级利润增量"
+        }
+      },
+      "sources": [
+        "36氪",
+        "财联社",
+        "21经济网"
+      ]
+    },
+    {
+      "id": "brand-006",
+      "brand": "星巴克",
+      "tool": "Deep Brew AI 平台",
+      "category": "个性化推荐",
+      "launchDate": "2019",
+      "features": [
+        "个性化饮品推荐",
+        "有针对性的促销活动",
+        "客户保留与忠诚度提升",
+        "库存优化",
+        "跨渠道一致性体验"
+      ],
+      "limitations": [
+        "2.5亿美元增量收入的归因方法模糊",
+        "15%保留率提升的基线不明",
+        "数据飞轮冷启动问题",
+        "隐私合规灰色地带"
+      ],
+      "techStack": [
+        "AI推荐引擎",
+        "客户旅程编排",
+        "3.9亿+会员数据"
+      ],
+      "deploymentScale": "全球门店",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 9,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 9
+      },
+      "fourQuestions": {
+        "realProblem": "最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'",
+        "claimedContribution": "会员保留率提升15%，创造约2.5亿美元增量年收入",
+        "attackPoints": [
+          "P0: 2.5亿美元增量的归因方法极其模糊",
+          "P1: 数据飞轮在新市场/新品类上的冷启动问题",
+          "P2: 隐私合规审查日益严格"
+        ],
+        "actionGuide": {
+          "scholar": "精读星巴克Investor Day关于Deep Brew的技术演示",
+          "engineer": "学习AI推荐系统与会员LTV深度绑定的产品思维",
+          "investor": "关注AI驱动的会员运营的ROI衡量方法论"
+        }
+      },
+      "sources": [
+        "Runwise 创新社区",
+        "Ivey 商学院案例"
+      ]
+    },
+    {
+      "id": "brand-014",
+      "brand": "阿里通义千问",
+      "tool": "千问App'一句话点奶茶'",
+      "category": "AI Agent消费入口",
+      "launchDate": "2026-02-06",
+      "features": [
+        "自然语言一句话下单奶茶",
+        "覆盖蜜雪冰城/瑞幸/霸王茶姬/奈雪/喜茶/茶百道等30万+门店",
+        "意图理解+商品筛选+门店匹配+下单全链路"
+      ],
+      "limitations": [
+        "大概率依赖大量补贴驱动",
+        "复购场景可能比App更慢",
+        "推荐排序的公平性问题",
+        "品类扩展难度大"
+      ],
+      "techStack": [
+        "通义千问大模型",
+        "意图理解",
+        "工具调用",
+        "电商集成"
+      ],
+      "deploymentScale": "全国30多万家奶茶店",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 8,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "验证AI Agent作为'超级入口'的商业可行性，抢占AI原生消费定义权",
+        "claimedContribution": "当天不到3小时下单100万单，9小时卖出1000万单",
+        "attackPoints": [
+          "P0: 补贴驱动不可持续，退坡后留存率未知",
+          "P1: 复购已知商品时可能比App更慢",
+          "P2: 推荐排序公平性——与搜索竞价排名有何本质区别？"
+        ],
+        "actionGuide": {
+          "scholar": "精读技术架构公开分享（Prompt工程/工具调用/状态管理）",
+          "engineer": "学习'一句话'极简交互触发复杂后端处理的设计",
+          "investor": "评估AI Agent入口的平台级潜力与补贴依赖风险"
+        }
+      },
+      "sources": [
+        "CBNData",
+        "财联社",
+        "量子位",
+        "证券时报"
+      ]
+    },
+    {
+      "id": "brand-021",
+      "brand": "蜜雪冰城",
+      "tool": "冰淇淋赛道正面竞争霸王茶姬",
+      "category": "品类竞争",
+      "launchDate": "2026-06",
+      "features": [
+        "冰淇淋产品线成熟",
+        "极致性价比策略",
+        "3万+门店渠道优势",
+        "与霸王茶姬正面竞争"
+      ],
+      "limitations": [
+        "低价模式下冰淇淋利润空间有限",
+        "品牌形象固化在低价区间",
+        "加盟商执行一致性挑战"
+      ],
+      "techStack": [
+        "雪王爱智慧科技",
+        "供应链AI优化",
+        "数据平台"
+      ],
+      "deploymentScale": "3万+门店",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 6,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "利用3万+门店渠道优势和极致性价比策略，在冰淇淋赛道建立规模壁垒",
+        "claimedContribution": "冰淇淋产品线覆盖全部门店，以价格杠杆撬动冰淇淋市场",
+        "attackPoints": [
+          "P0: 冰淇淋品类与茶饮的季节性互补vs竞争关系",
+          "P1: 低价冰淇淋利润极薄，规模效应能否覆盖",
+          "P2: 与霸王茶姬的差异化竞争不够明显"
+        ],
+        "actionGuide": {
+          "scholar": "研究极致性价比模式下的品类扩展逻辑",
+          "engineer": "学习3万+门店规模下的冰淇淋供应链AI优化",
+          "investor": "比较蜜雪冰城vs霸王茶姬冰淇淋战略的ROI差异"
+        }
+      },
+      "sources": [
+        "https://m.36kr.com/p/3835505880309767",
+        "https://xinwen.bjd.com.cn/content/s68f0a060e4b02424b0c1a091.html"
+      ]
+    },
+    {
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧科技",
+      "category": "供应链AI/智慧运营",
+      "launchDate": "2024-11",
+      "features": [
+        "成立AI技术公司布局人工智能",
+        "雪王AI大脑支撑极致平价战略",
+        "供应链成本效率优化"
+      ],
+      "limitations": [
+        "AI投入产出比尚未公开验证",
+        "低价模式下的技术预算约束",
+        "数据基础与人才储备相对薄弱"
+      ],
+      "techStack": [
+        "供应链AI优化",
+        "数据平台",
+        "智慧门店系统"
+      ],
+      "deploymentScale": "3万+门店",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 6,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "在极致低价模式下，蜜雪冰城需要通过AI优化供应链和运营效率来维持利润率",
+        "claimedContribution": "雪王AI大脑筑牢平价战略护城河，支撑3万+门店规模化运营",
+        "attackPoints": [
+          "P0: AI投入是否能真正覆盖低价模式下的微薄利润",
+          "P1: 数据基础设施能否支撑全国3万+门店实时优化",
+          "P2: 与霸王茶姬等高端品牌的AI投入差距"
+        ],
+        "actionGuide": {
+          "scholar": "研究低价零售的供应链AI优化案例",
+          "engineer": "学习大规模门店网络的运营数据平台建设",
+          "investor": "关注蜜雪冰城AI投入对同店盈利能力的实际改善"
+        }
+      },
+      "sources": [
+        "https://m.36kr.com/p/3048400607316612"
+      ],
+      "id": "brand-024"
+    },
+    {
+      "brand": "星巴克",
+      "tool": "Deep Brew / Green Dot Assist",
+      "category": "门店运营AI/个性化推荐",
+      "launchDate": "2026",
+      "features": [
+        "需求预测与库存优化",
+        "个性化推荐",
+        "咖啡师实时操作建议"
+      ],
+      "limitations": [
+        "全球门店IT基础设施差异大",
+        "AI推荐可能与咖啡师经验冲突",
+        "个性化与隐私平衡"
+      ],
+      "techStack": [
+        "微软Azure OpenAI",
+        "机器学习推荐系统",
+        "门店IoT"
+      ],
+      "deploymentScale": "全球数万家门店",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 8,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "星巴克需要在全球数万家门店中平衡标准化运营与本地化、个性化体验，同时降低员工培训成本",
+        "claimedContribution": "Deep Brew实现预测、推荐、运营辅助一体化，Green Dot Assist让AI成为咖啡师助手而非替代者",
+        "attackPoints": [
+          "P0: AI推荐是否真的提升了客单价和复购率",
+          "P1: 咖啡师对AI辅助的接受度如何",
+          "P2: 大规模全球部署的ROI能否被量化验证"
+        ],
+        "actionGuide": {
+          "scholar": "研究零售场景中的需求预测与推荐系统",
+          "engineer": "学习门店IoT与实时辅助系统的架构",
+          "investor": "关注星巴克AI对运营效率和同店销售的长期贡献"
+        }
+      },
+      "sources": [
+        "https://about.starbucks.com/press/2026/supporting-the-moments-that-matter-with-artificial-intelligence/"
+      ],
+      "id": "brand-025"
+    },
+    {
+      "brand": "星巴克",
+      "tool": "AI助理、中国创新科技中心、电子菜单板、AI库存系统",
+      "category": "门店体验 / 战略合作 / 供应链运营",
+      "launchDate": "2026",
+      "features": [
+        "与博裕投资合作发布千店千面战略",
+        "AI赋能门店个性化体验",
+        "电子菜单板个性化推荐"
+      ],
+      "limitations": [
+        "北美AI库存系统因错误频发已停用",
+        "全球门店IT基础设施差异大",
+        "AI推荐可能与咖啡师经验冲突"
+      ],
+      "techStack": [
+        "人工智能",
+        "电子菜单板",
+        "个性化推荐",
+        "LiDAR"
+      ],
+      "deploymentScale": "全球数万家门店，中国市场为重点",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 8,
+        "scale": 10,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "在全球数万家门店中平衡标准化运营与本地化、个性化体验",
+        "claimedContribution": "千店千面战略以AI赋能门店个性化体验，提升本地市场相关性",
+        "attackPoints": [
+          "P0: 北美AI库存系统失败案例显示运营AI落地难度",
+          "P1: 个性化推荐对客单价和复购率的实际提升未量化",
+          "P2: 大规模全球部署的ROI验证困难"
+        ]
+      },
+      "sources": [
+        "https://cn.wicinternet.org/2026-06/02/content_38807804.htm",
+        "https://finance.sina.com.cn/stock/t/2026-05-23/doc-inhywcxr7030210.shtml"
+      ],
+      "id": "brand-028"
+    },
+    {
+      "id": "brand-001",
+      "brand": "瑞幸咖啡",
+      "tool": "MCP/CLI/Skill",
+      "category": "AI点单",
+      "launchDate": "2026-06-10",
+      "features": [
+        "自然语言点单",
+        "智能优惠券匹配",
+        "门店商品查询",
+        "外卖/配送服务",
+        "支付后取餐码获取"
+      ],
+      "limitations": [
+        "不支持外卖配送（当前仅到店自提）",
+        "实际调用量未披露",
+        "MCP协议无壁垒，竞品可零成本复制"
+      ],
+      "techStack": [
+        "MCP Protocol",
+        "CLI",
+        ".Skill"
+      ],
+      "deploymentScale": "全国门店",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 7,
+        "scale": 9,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "降低交易摩擦成本，抢占AI Agent时代的渠道入口",
+        "claimedContribution": "自然语言点单覆盖增量用户，智能优惠券提升核销率",
+        "attackPoints": [
+          "P0: 不支持外卖(覆盖仅60-70%订单)",
+          "P1: 语义理解容错性",
+          "P2: MCP协议无壁垒"
+        ],
+        "actionGuide": {
+          "scholar": "精读MCP协议设计",
+          "engineer": "学习MCP server架构",
+          "investor": "关注AI渠道投入意愿"
+        }
+      },
+      "sources": [
+        "https://open.luckincoffee.com/mcp",
+        "https://open.lkcoffee.com/cli"
+      ]
+    }
+  ],
+  "aiModels": [
+    {
+      "id": "model-001",
+      "name": "GPT-5.5",
+      "vendor": "OpenAI",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 9,
+        "coding": 8,
+        "multimodal": 9,
+        "priceCompetitiveness": 3,
+        "contextLength": 7,
+        "ecosystem": 10
+      },
+      "pricing": {
+        "input": 15,
+        "output": 60,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "128K",
+      "openSource": false,
+      "launchDate": "2026-04-29",
+      "highlights": [
+        "多项基准SOTA",
+        "GPT-5.5 Instant更智能",
+        "企业级功能成熟度领先"
+      ],
+      "weaknesses": [
+        "性价比劣势（定价约为DeepSeek V4的7倍）",
+        "创新放缓质疑——代际提升递减",
+        "Scaling Law边际递减信号"
+      ],
+      "sources": [
+        "https://finance.sina.com.cn/wm/2026-04-29/doc-inhwcvff1034726.shtml"
+      ]
+    },
+    {
+      "id": "model-002",
+      "name": "DeepSeek V4",
+      "vendor": "DeepSeek（幻方量化）",
+      "parameters": "未公开（MoE架构）",
+      "scores": {
+        "reasoning": 8,
+        "coding": 8,
+        "multimodal": 6,
+        "priceCompetitiveness": 10,
+        "contextLength": 7,
+        "ecosystem": 7
+      },
+      "pricing": {
+        "input": 2,
+        "output": 8,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "128K",
+      "openSource": true,
+      "launchDate": "2026-04",
+      "highlights": [
+        "世界顶级推理性能",
+        "Agent能力大幅提高",
+        "API定价仅为GPT-5.5的约1/7",
+        "聚焦编程能力与超长代码上下文"
+      ],
+      "weaknesses": [
+        "预览版完成度不足，稳定性存疑",
+        "效率优化边际递减",
+        "开源可持续性依赖母公司输血"
+      ],
+      "sources": [
+        "https://www.deepseek.com/",
+        "https://m.zhiding.cn/article/3180582.htm"
+      ]
+    },
+    {
+      "id": "model-003",
+      "name": "Claude 4 Opus",
+      "vendor": "Anthropic",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 9,
+        "coding": 10,
+        "multimodal": 8,
+        "priceCompetitiveness": 4,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 15,
+        "output": 75,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "200K",
+      "openSource": false,
+      "launchDate": "2026-05-14",
+      "highlights": [
+        "全球最佳编程模型（SWE-bench领先）",
+        "Agentic能力显著增强",
+        "AI安全（Constitutional AI）企业级差异化"
+      ],
+      "weaknesses": [
+        "非编程任务提升有限",
+        "对Amazon/AWS依赖度高",
+        "安全叙事边际效用递减"
+      ],
+      "sources": [
+        "https://www.anthropic.com/news/claude-4",
+        "https://www.cls.cn/detail/2038777"
+      ]
+    },
+    {
+      "id": "model-004",
+      "name": "Claude 4 Sonnet",
+      "vendor": "Anthropic",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 8,
+        "coding": 9,
+        "multimodal": 8,
+        "priceCompetitiveness": 6,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 3,
+        "output": 15,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "200K",
+      "openSource": false,
+      "launchDate": "2026-05-14",
+      "highlights": [
+        "性价比优于Opus",
+        "编程能力接近Opus水平",
+        "适合日常开发使用"
+      ],
+      "weaknesses": [
+        "复杂推理略逊于Opus",
+        "多模态能力有限"
+      ],
+      "sources": [
+        "https://www.anthropic.com/news/claude-4"
+      ]
+    },
+    {
+      "id": "model-005",
+      "name": "Gemini 3.5 Flash",
+      "vendor": "Google",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 8,
+        "coding": 7,
+        "multimodal": 9,
+        "priceCompetitiveness": 7,
+        "contextLength": 9,
+        "ecosystem": 9
+      },
+      "pricing": {
+        "input": 1,
+        "output": 4,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "1M",
+      "openSource": false,
+      "launchDate": "2026-05-20",
+      "highlights": [
+        "端侧部署和低延迟推理",
+        "1M超长上下文窗口",
+        "Google I/O 2026重磅发布",
+        "聚焦Agentic AI"
+      ],
+      "weaknesses": [
+        "隐私与广告的深层冲突",
+        "开发者生态面临OpenAI/Apple竞争",
+        "端侧表现需POC验证"
+      ],
+      "sources": [
+        "https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhynvwq2736993.shtml"
+      ]
+    },
+    {
+      "id": "model-006",
+      "name": "Gemini 3 Deep Think",
+      "vendor": "Google",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 10,
+        "coding": 7,
+        "multimodal": 8,
+        "priceCompetitiveness": 5,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 10,
+        "output": 40,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "512K",
+      "openSource": false,
+      "launchDate": "2026-02-12",
+      "highlights": [
+        "专为科学研究与工程难题设计",
+        "深度推理方向重大升级",
+        "Gemini系列推理能力天花板"
+      ],
+      "weaknesses": [
+        "应用场景较窄（科研/工程）",
+        "日常任务性价比不高",
+        "定价偏高"
+      ],
+      "sources": [
+        "https://zhuanlan.zhihu.com/p/2006304089840058657"
+      ]
+    },
+    {
+      "id": "model-007",
+      "name": "豆包 2.0",
+      "vendor": "字节跳动",
+      "parameters": "1万亿（MoE总参数）",
+      "scores": {
+        "reasoning": 7,
+        "coding": 7,
+        "multimodal": 8,
+        "priceCompetitiveness": 8,
+        "contextLength": 7,
+        "ecosystem": 10
+      },
+      "pricing": {
+        "input": 2,
+        "output": 6,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "128K",
+      "openSource": false,
+      "launchDate": "2026-02-14",
+      "highlights": [
+        "万亿参数基础模型",
+        "企业级Agent能力提升",
+        "亿级用户场景（抖音/飞书/番茄小说）",
+        "中国用户规模最大AI产品之一"
+      ],
+      "weaknesses": [
+        "万亿参数宣传意义大于技术意义",
+        "每次推理实际激活参数可能仅数千亿",
+        "面临监管风险（AI生成内容/数据隐私）"
+      ],
+      "sources": [
+        "https://www.cls.cn/detail/2288038",
+        "https://www.stcn.com/article/detail/3644236.html"
+      ]
+    },
+    {
+      "id": "model-008",
+      "name": "通义千问 (Qwen)",
+      "vendor": "阿里巴巴",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 7,
+        "coding": 7,
+        "multimodal": 7,
+        "priceCompetitiveness": 9,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 1,
+        "output": 3,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "256K",
+      "openSource": true,
+      "launchDate": "2026",
+      "highlights": [
+        "全球API调用量领先",
+        "'一句话点奶茶'验证AI Agent消费入口",
+        "开源生态活跃",
+        "与阿里云深度集成"
+      ],
+      "weaknesses": [
+        "复杂推理与GPT-5.5/Claude 4有差距",
+        "品牌认知度在海外市场较低",
+        "AI Agent品类扩展待验证"
+      ],
+      "sources": [
+        "https://cloud.tencent.com/developer/article/2658611"
+      ]
+    },
+    {
+      "id": "model-009",
+      "name": "MiniMax",
+      "vendor": "MiniMax",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 7,
+        "coding": 6,
+        "multimodal": 8,
+        "priceCompetitiveness": 9,
+        "contextLength": 8,
+        "ecosystem": 6
+      },
+      "pricing": {
+        "input": 1.5,
+        "output": 5,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "256K",
+      "openSource": true,
+      "launchDate": "2026",
+      "highlights": [
+        "推理效率突出",
+        "全球调用量跻身国产旗舰",
+        "长上下文处理能力强",
+        "成本优化表现优异"
+      ],
+      "weaknesses": [
+        "品牌知名度和生态不如Qwen/豆包",
+        "企业级客户占比待提升",
+        "商业化路径尚不清晰"
+      ],
+      "sources": [
+        "https://cloud.tencent.com/developer/article/2658611"
+      ]
+    },
+    {
+      "id": "model-010",
+      "name": "GLM-5.2",
+      "vendor": "智谱",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 8,
+        "coding": 7,
+        "multimodal": 7,
+        "priceCompetitiveness": 7,
+        "contextLength": 8,
+        "ecosystem": 7
+      },
+      "pricing": {
+        "input": 2,
+        "output": 8,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "128K",
+      "openSource": false,
+      "launchDate": "2026",
+      "highlights": [
+        "智谱主力模型",
+        "API调用量增长400%",
+        "支撑智谱万亿市值"
+      ],
+      "weaknesses": [
+        "与DeepSeek V4、豆包2.0竞争激烈",
+        "商业化规模待验证"
+      ],
+      "sources": [
+        "https://www.stcn.com/article/detail/3971526.html"
+      ]
+    },
+    {
+      "id": "model-011",
+      "name": "LongCat-Flash-Thinking-2601",
+      "vendor": "美团",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 9,
+        "coding": 8,
+        "multimodal": 5,
+        "priceCompetitiveness": 10,
+        "contextLength": 7,
+        "ecosystem": 7
+      },
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "unit": "开源免费"
+      },
+      "contextWindow": "未公开",
+      "openSource": true,
+      "launchDate": "2026-06",
+      "highlights": [
+        "Agentic工具调用超越Claude",
+        "首个完整开源重思考模式",
+        "在线免费体验"
+      ],
+      "weaknesses": [
+        "多模态能力未强调",
+        "长上下文窗口未公开",
+        "社区生态尚处早期"
+      ],
+      "sources": [
+        "https://www.meituan.com/news/NN260116211001625"
+      ]
+    }
+  ],
+  "stockSeries": {
+    "dates": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ],
+    "a": [
+      3350,
+      3420,
+      3380,
+      3450,
+      3987,
+      4120.28
+    ],
+    "us": [
+      19800,
+      20100,
+      20500,
+      21200,
+      23500,
+      25297.62
+    ],
+    "hk": [
+      5200,
+      5380,
+      5500,
+      5650,
+      5100,
+      4423.97
+    ]
+  },
+  "semiMetrics": [
+    {
+      "label": "全球半导体市场规模预测",
+      "value": 1.3,
+      "unit": "万亿美元"
+    },
+    {
+      "label": "全球AI市场规模预测",
+      "value": 0.301,
+      "unit": "万亿美元"
+    },
+    {
+      "label": "半导体设备增速预期",
+      "value": 23.5,
+      "unit": "%"
+    },
+    {
+      "label": "中国芯片出口同比增速",
+      "value": 72.6,
+      "unit": "%"
+    },
+    {
+      "label": "中国集成电路出口额",
+      "value": 433,
+      "unit": "亿美元"
+    },
+    {
+      "label": "韩国AI半导体政府投入",
+      "value": 8000,
+      "unit": "亿韩元"
+    },
+    {
+      "label": "中国半导体设备投资",
+      "value": 450,
+      "unit": "亿元"
+    },
+    {
+      "label": "半导体设备交付周期",
+      "value": 10,
+      "unit": "个月"
+    }
+  ],
+  "papers": [
+    {
+      "id": "paper-001",
+      "title": "D4RT: Unified, Fast 4D Scene Reconstruction & Tracking",
+      "conference": "CVPR 2026",
+      "award": "最佳论文",
+      "authors": "Chuhan Zhang, Guillaume Le Moing, Skanda Koppula et al.",
+      "institution": "Google DeepMind, UCL, Oxford",
+      "summary": "统一前馈Transformer联合推断深度/时空/相机参数，速度快18-300倍",
+      "keyMetric": "速度提升18-300x",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2512.08924",
+      "pdfUrl": "https://arxiv.org/pdf/2512.08924"
+    },
+    {
+      "id": "paper-002",
+      "title": "TRELLIS.2: Native and Compact Structured Latents for 3D Generation",
+      "conference": "CVPR 2026",
+      "award": "最佳学生论文",
+      "authors": "Jianfeng Xiang, Xiaoxue Chen, Sicheng Xu et al.",
+      "institution": "清华大学、微软研究院、中国科学技术大学",
+      "summary": "提出O-Voxel结构化潜表示，实现原生3D大模型生成，17秒内生成超高精度PBR资产",
+      "keyMetric": "17秒生成游戏级PBR资产",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2512.14692",
+      "pdfUrl": "https://arxiv.org/pdf/2512.14692"
+    },
+    {
+      "id": "paper-003",
+      "title": "NitroGen: An Open Foundation Model for Generalist Gaming Agents",
+      "conference": "CVPR 2026",
+      "award": "最佳论文荣誉提名",
+      "authors": "Loic Magne et al.",
+      "institution": "NVIDIA",
+      "summary": "基于40,000小时游戏视频训练的通用视觉-动作基础模型，可在1,000多款游戏中执行通用游戏智能体任务",
+      "keyMetric": "40,000小时训练数据，1000+游戏泛化",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2601.02427",
+      "pdfUrl": "https://arxiv.org/pdf/2601.02427"
+    },
+    {
+      "id": "paper-004",
+      "title": "Transformers are Inherently Succinct",
+      "conference": "ICLR 2026",
+      "award": "杰出论文奖",
+      "authors": "Pascal Bergstraesser, Ryan Cotterell, Anthony W. Lin",
+      "institution": "ETH Zurich, MPI-SWS",
+      "summary": "理论证明固定精度的Transformer在表达能力上具有内在简洁性，指数级压缩成为可能",
+      "keyMetric": "指数级简洁性证明 + EXPSPACE验证不可能性",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2510.19315",
+      "pdfUrl": "https://arxiv.org/pdf/2510.19315"
+    },
+    {
+      "id": "paper-005",
+      "title": "LLMs Get Lost In Multi-Turn Conversation",
+      "conference": "ICLR 2026",
+      "award": "杰出论文奖",
+      "authors": "Philippe Laban, Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville",
+      "institution": "Salesforce AI Research",
+      "summary": "系统评估LLM在多轮对话中的退化现象，性能下降达39%，早期假设锚定效应导致纠正失败",
+      "keyMetric": "多轮对话性能下降39%，纠正失败率>95%",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2505.06120",
+      "pdfUrl": "https://arxiv.org/pdf/2505.06120"
+    },
+    {
+      "id": "paper-006",
+      "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
+      "conference": "ICML 2026",
+      "award": "Oral",
+      "authors": "Shaobo Wang, Xuan Ouyang, Tianyi Xu, Yuzheng Hu et al.",
+      "institution": "未公开",
+      "summary": "提出在LLM预训练每次迭代中进行高效数据选择的方法，仅用1/7数据超越全量训练",
+      "keyMetric": "1/7数据超越全量训练",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2602.05400",
+      "pdfUrl": "https://arxiv.org/pdf/2602.05400"
+    },
+    {
+      "id": "paper-007",
+      "title": "Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs",
+      "conference": "ICML 2026",
+      "award": "Oral",
+      "authors": "Sagnik Mukherjee, Lifan Yuan, Pavan Jayasinha, Dilek Hakkani-Tuer, Hao Peng",
+      "institution": "未公开",
+      "summary": "挑战Adam优化器在LLM RL中的主导地位，SGD仅更新0.02%参数即匹配AdamW效果",
+      "keyMetric": "0.02%参数更新匹配AdamW",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2602.07729",
+      "pdfUrl": "https://arxiv.org/pdf/2602.07729"
+    },
+    {
+      "id": "paper-008",
+      "title": "Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs",
+      "conference": "ICML 2026",
+      "award": "Oral",
+      "authors": "Chufan Shi, Cheng Yang, Jiaqi Wang et al.",
+      "institution": "未公开",
+      "summary": "揭示多模态大模型中视觉感知幻觉，thinking模型视觉幻觉频率是普通VLM的3倍",
+      "keyMetric": "thinking模型视觉幻觉3倍于普通VLM",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2605.15864",
+      "pdfUrl": "https://arxiv.org/pdf/2605.15864"
+    },
+    {
+      "id": "paper-009",
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "authors": "百度 PaddlePaddle 团队",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "arxiv": "2606.13108",
+      "url": "https://arxiv.org/abs/2606.13108",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-010",
+      "title": "SENTINEL: Failure-Driven RL for Tool-Using LLM Agents",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "arxiv": "2606.12908",
+      "url": "https://arxiv.org/abs/2606.12908",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-011",
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "arxiv": "2606.12478",
+      "url": "https://arxiv.org/abs/2606.12478",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-012",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "authors": "Zhang, Qiu, Cui 等",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "arxiv": "2606.13289",
+      "url": "https://arxiv.org/abs/2606.13289",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-013",
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "arxiv": "2606.12883",
+      "url": "https://arxiv.org/abs/2606.12883",
+      "conference": "arXiv 2026"
+    },
+    {
+      "id": "paper-014",
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "conference": "arXiv 2026",
+      "authors": "百度 PaddlePaddle 团队",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "arxiv": "2606.13108",
+      "url": "https://arxiv.org/abs/2606.13108"
+    },
+    {
+      "id": "paper-015",
+      "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "arxiv": "2606.12908",
+      "url": "https://arxiv.org/abs/2606.12908"
+    },
+    {
+      "id": "paper-016",
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "conference": "arXiv 2026",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "arxiv": "2606.12478",
+      "url": "https://arxiv.org/abs/2606.12478"
+    },
+    {
+      "id": "paper-017",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "conference": "arXiv 2026",
+      "authors": "Zhang, Qiu, Cui 等",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "arxiv": "2606.13289",
+      "url": "https://arxiv.org/abs/2606.13289"
+    },
+    {
+      "id": "paper-018",
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "conference": "arXiv 2026",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "arxiv": "2606.12883",
+      "url": "https://arxiv.org/abs/2606.12883"
+    },
+    {
+      "id": "paper-019",
+      "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "summary": "通过潜在表示实现Agent经验积累和复用",
+      "arxiv": "2606.01041",
+      "url": "https://arxiv.org/abs/2606.01041"
+    },
+    {
+      "id": "paper-020",
+      "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "summary": "针对Agent静默失败提出干预支持的错误归因框架",
+      "arxiv": "2606.09071",
+      "url": "https://arxiv.org/abs/2606.09071"
+    },
+    {
+      "id": "paper-021",
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "conference": "arXiv 2026",
+      "authors": "百度 PaddlePaddle 团队",
+      "institution": "百度",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM的OCR能力",
+      "keyMetric": "34.5M参数超越Billion-scale VLM",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.13108",
+      "pdfUrl": "https://arxiv.org/pdf/2606.13108"
+    },
+    {
+      "id": "paper-022",
+      "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "institution": "未公开",
+      "summary": "失败驱动强化学习框架，高效训练工具使用Agent，训练效率提升3-5倍",
+      "keyMetric": "训练效率提升3-5x",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.12908",
+      "pdfUrl": "https://arxiv.org/pdf/2606.12908"
+    },
+    {
+      "id": "paper-023",
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "conference": "arXiv 2026",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "institution": "未公开",
+      "summary": "将统计物理Ising模型引入注意力机制，实现注意力头协同工作",
+      "keyMetric": "注意力协同效果提升",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.12478",
+      "pdfUrl": "https://arxiv.org/pdf/2606.12478"
+    },
+    {
+      "id": "paper-024",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "conference": "arXiv 2026",
+      "authors": "Zhang, Qiu, Cui 等",
+      "institution": "未公开",
+      "summary": "原生统一多模态模型架构，整体式视觉tokenizer替代传统patch分割",
+      "keyMetric": "统一多模态架构",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.13289",
+      "pdfUrl": "https://arxiv.org/pdf/2606.13289"
+    },
+    {
+      "id": "paper-025",
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "conference": "arXiv 2026",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "institution": "未公开",
+      "summary": "揭示LoRA缩放因子alpha的独立影响，提出自适应选择策略",
+      "keyMetric": "NLP/CV任务提升1-3pp",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.12883",
+      "pdfUrl": "https://arxiv.org/pdf/2606.12883"
+    },
+    {
+      "id": "paper-026",
+      "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "institution": "未公开",
+      "summary": "通过潜在表示实现Agent经验积累和复用，构建经验检索库",
+      "keyMetric": "Agent经验复用",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.01041",
+      "pdfUrl": "https://arxiv.org/pdf/2606.01041"
+    },
+    {
+      "id": "paper-027",
+      "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents",
+      "conference": "arXiv 2026",
+      "authors": "未公开",
+      "institution": "未公开",
+      "summary": "针对Agent静默失败提出干预支持的错误归因框架，错误检测率提升40%+",
+      "keyMetric": "错误检测率+40%",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.09071",
+      "pdfUrl": "https://arxiv.org/pdf/2606.09071"
+    },
+    {
+      "id": "paper-028",
+      "title": "Gaze Heads: How VLMs Look at What They Describe",
+      "conference": "arXiv 2026",
+      "authors": "Rohit Gandikota, David Bau",
+      "institution": "Northeastern University",
+      "summary": "发现VLM中演化出特殊的gaze heads注意力头，注意力分布追踪模型正在描述的图像区域",
+      "keyMetric": "揭示VLM跨模态对齐新机制",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.14703",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14703"
+    },
+    {
+      "id": "paper-029",
+      "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains",
+      "conference": "arXiv 2026",
+      "authors": "Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang, Ran He, Caifeng Shan",
+      "institution": "南京大学、中国科学院自动化研究所",
+      "summary": "提出OmniVideo-100K数据集，通过实体锚定视频脚本与线索引导问答生成构建结构化证据链",
+      "keyMetric": "10万级结构化音视频推理数据集",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14702",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14702"
+    },
+    {
+      "id": "paper-030",
+      "title": "RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers",
+      "conference": "arXiv 2026",
+      "authors": "Timing Yang, Predrag Neskovic, Jansen Seheult, Wenchao Han, Anand Bhattad, Alan Yuille, Feng Wang",
+      "institution": "Johns Hopkins University, 美国海军研究办公室, Mayo Clinic",
+      "summary": "通过寄存器注意力机制，Transformer patch令牌涌现出对物体部件的显式表达",
+      "keyMetric": "无监督视觉概念学习新路径",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.14701",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14701"
+    },
+    {
+      "id": "paper-031",
+      "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
+      "conference": "arXiv 2026",
+      "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie",
+      "institution": "Meta AI, New York University",
+      "summary": "将MLLM重新用作带噪表示编码器，输出直接作为扩散Transformer条件信号",
+      "keyMetric": "相近推理预算下优于全新去噪网络",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14700",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14700"
+    },
+    {
+      "id": "paper-032",
+      "title": "AdaSR: Adaptive Streaming Reasoning with Hierarchical Relative Policy Optimization",
+      "conference": "arXiv 2026",
+      "authors": "Junlong Tong, Wenqi Xu, Yingqi Fan, Anhao Zhao, Xuan Lu, Yang Tan, Xiaoyu Shen",
+      "institution": "东方理工高等研究院、上海交通大学、香港理工大学、东南大学、西交利物浦大学",
+      "summary": "自适应流式推理框架，输入流式传输过程中即可推理，突破传统读-再想模式延迟瓶颈",
+      "keyMetric": "流式推理延迟突破",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14694",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14694"
+    },
+    {
+      "id": "paper-033",
+      "title": "CORA: Analyzing and Bridging Thinking-Answer Gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment",
+      "conference": "arXiv 2026",
+      "authors": "Jiayue Cao, Zhicong Lu, Xuehan Sun, Wei Jia, Hongling Zheng, Changyuan Tian, Zichuan Lin, Wenqian Lv, Nayu Liu",
+      "institution": "中国科学院大学、武汉大学、清华大学、天津大学",
+      "summary": "CORA通过一致性奖励模型将思维-答案语义一致性引入RLVR，缓解推理与答案脱节",
+      "keyMetric": "多模态推理基准性能显著提升",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14691",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14691"
+    },
+    {
+      "id": "paper-034",
+      "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
+      "conference": "ICML 2026",
+      "authors": "Jinsu Kim, Jihoon Tack, Noah Lee, Jongheon Jeong",
+      "institution": "Korea University — TAIL Lab",
+      "summary": "从单一角色描述中雕刻轻量级角色专属模型，识别并隔离角色对应子网络",
+      "keyMetric": "角色专属子网络压缩",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14695",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14695"
+    },
+    {
+      "id": "paper-035",
+      "title": "Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control",
+      "conference": "arXiv 2026",
+      "authors": "Ruining Li, Yuxin Yao, Matt Zhou, Chuanxia Zheng, Christian Rupprecht, Joan Lasenby, Shangzhe Wu, Andrea Vedaldi",
+      "institution": "牛津大学、剑桥大学、南洋理工大学",
+      "summary": "前馈运动学控制实现3D物体关节结构自动推断与建模，单次前向传播预测可驱动关节对象",
+      "keyMetric": "3D关节物体生成效率大幅提升",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.14699",
+      "pdfUrl": "https://arxiv.org/pdf/2606.14699"
+    },
+    {
+      "id": "paper-036",
+      "title": "Marginal Advantage Accumulation for Memory-Driven Agent Self-Evolution",
+      "conference": "arXiv 2026",
+      "authors": "Mingyu Yang, Keye Zheng, Congchao Cheng 等",
+      "institution": "未公开",
+      "summary": "提出边缘优势累积机制，使Agent能够基于记忆驱动实现自我进化",
+      "keyMetric": "记忆驱动自我进化",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.20475",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20475"
+    },
+    {
+      "id": "paper-037",
+      "title": "Contagion Networks: Evaluator Bias Propagation in Multi-Agent LLM Systems",
+      "conference": "arXiv 2026",
+      "authors": "Zewen Liu 等",
+      "institution": "未公开",
+      "summary": "揭示多智能体LLM系统中评估者偏见的传播网络",
+      "keyMetric": "评估者偏见传播建模",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.20493",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20493"
+    },
+    {
+      "id": "paper-038",
+      "title": "Beyond Global Replanning: Hierarchical Recovery for Cross-Device Agent Systems",
+      "conference": "arXiv 2026",
+      "authors": "Yao 等",
+      "institution": "未公开",
+      "summary": "针对跨设备Agent系统提出层次化恢复机制，提升复杂任务容错性",
+      "keyMetric": "跨设备Agent容错提升",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.20487",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20487"
+    },
+    {
+      "id": "paper-039",
+      "title": "Your Mouse and Eyes Secretly Leak Your Preference: LLM Alignment using Implicit Feedback from Users",
+      "conference": "arXiv 2026",
+      "authors": "Chang 等",
+      "institution": "未公开",
+      "summary": "利用鼠标移动和眼动等隐式反馈进行LLM对齐",
+      "keyMetric": "隐式反馈对齐",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.20482",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20482"
+    },
+    {
+      "id": "paper-040",
+      "title": "StylisticBias: A Few Human Visual Cues Drive Most Social Biases in MLLMs",
+      "conference": "arXiv 2026",
+      "authors": "Kolli 等",
+      "institution": "未公开",
+      "summary": "发现少数人类视觉线索驱动了多模态大模型中的大部分社会偏见",
+      "keyMetric": "社会偏见新靶点",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.20527",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20527"
+    },
+    {
+      "id": "paper-041",
+      "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
+      "conference": "arXiv 2026",
+      "authors": "Gina Wong, Drew Prinster, Suchi Saria, Rama Chellappa, Anqi Liu",
+      "institution": "未公开",
+      "summary": "研究分布偏移下MoE模型的校准问题",
+      "keyMetric": "MoE分布偏移校准",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.20544",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20544"
+    },
+    {
+      "id": "paper-042",
+      "title": "The Token Is a Group Element: On Lie-Algebra Attention over Matrix Lie Groups",
+      "conference": "arXiv 2026",
+      "authors": "Przemyslaw Musialski 等",
+      "institution": "未公开",
+      "summary": "将李群与李代数引入注意力机制",
+      "keyMetric": "几何化注意力",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.20547",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20547"
+    },
+    {
+      "id": "paper-043",
+      "title": "How Transparent is DiffusionGemma?",
+      "conference": "arXiv 2026",
+      "authors": "Joshua Engels",
+      "institution": "未公开",
+      "summary": "评估Google DiffusionGemma文本到图像模型的透明性与可解释性",
+      "keyMetric": "扩散模型可解释性",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.20560",
+      "pdfUrl": "https://arxiv.org/pdf/2606.20560"
+    },
+    {
+      "id": "paper-044",
+      "title": "Open Problem: Is AdamW Effective Under Heavy-Tailed Noise?",
+      "conference": "arXiv 2026",
+      "authors": "Dingzhi Yu, Hongyi Tao, Yuanyu Wan, Luo Luo, Lijun Zhang",
+      "institution": "未公开",
+      "summary": "针对AdamW优化器在重尾噪声下的有效性提出开放问题，建立了加权度量基准，解释了分母存储器如何影响大梯度的表现",
+      "keyMetric": "AdamW重尾噪声收敛性开放问题",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.23676",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23676"
+    },
+    {
+      "id": "paper-045",
+      "title": "Tapered Language Models",
+      "conference": "arXiv 2026",
+      "authors": "Reza Bayat, Ali Behrouz, Aaron Courville",
+      "institution": "未公开",
+      "summary": "提出锥形语言模型架构，探索模型参数分布新范式",
+      "keyMetric": "语言模型参数分布新范式",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.23670",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23670"
+    },
+    {
+      "id": "paper-046",
+      "title": "MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?",
+      "conference": "arXiv 2026",
+      "authors": "Juyang Bai, Laixi Shi",
+      "institution": "未公开",
+      "summary": "系统评估多智能体LLM系统中提示优化的效果，揭示优化在不同工作流和团队规模下的收益与搜索空间挑战",
+      "keyMetric": "多智能体系统提示优化基准",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.23664",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23664"
+    },
+    {
+      "id": "paper-047",
+      "title": "Learning Process Rewards via Success Visitation Matching for Efficient RL",
+      "conference": "arXiv 2026",
+      "authors": "Raymond Tsao, Andrew Wagenmaker, Sergey Levine",
+      "institution": "UC Berkeley",
+      "summary": "通过成功访问匹配学习过程奖励，提升强化学习效率",
+      "keyMetric": "过程奖励学习新范式",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.23640",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23640"
+    },
+    {
+      "id": "paper-048",
+      "title": "DiT-Reward: Generative Representations for Text-to-Image Reward Modeling",
+      "conference": "arXiv 2026",
+      "authors": "Yuanming Yang, Guoqing Ma, Bo Wang 等",
+      "institution": "未公开",
+      "summary": "利用预训练扩散模型进行文本到图像奖励建模，性能超越HPSv3，推理速度提升1.65倍",
+      "keyMetric": "HPDv2 85.6%，HPDv3 77.6%，推理加速1.65x",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.23626",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23626"
+    },
+    {
+      "id": "paper-049",
+      "title": "Scaling Linear Mode Connectivity and Merging to Billion Parameter Pretrained Transformers",
+      "conference": "arXiv 2026",
+      "authors": "Tianyi Li, Zhiqiang Shen",
+      "institution": "未公开",
+      "summary": "将线性模式连接和模型合并扩展至十亿参数级预训练Transformer",
+      "keyMetric": "十亿参数级模型合并",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.23607",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23607"
+    },
+    {
+      "id": "paper-050",
+      "title": "LLM-as-Code: Agentic Programming for Agent Harness",
+      "conference": "arXiv 2026",
+      "authors": "Junjia Qi, Zichuan Fu, Jingtong Gao 等",
+      "institution": "未公开",
+      "summary": "提出Agentic Programming范式，由程序掌控控制流、LLM作为代码组件被调用，DAG结构化上下文，在OSWorld上15步达成86.8%成功率",
+      "keyMetric": "15步86.8%成功率(OSWorld)",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.15874",
+      "pdfUrl": "https://arxiv.org/pdf/2606.15874"
+    },
+    {
+      "id": "paper-051",
+      "title": "On the Limits of Prompt-Conditioned Language Models as General-Purpose Learners",
+      "conference": "arXiv 2026",
+      "authors": "David Mguni, Julian Ma, Jun Wang",
+      "institution": "未公开",
+      "summary": "揭示提示条件化语言模型作为通用学习者的能力极限",
+      "keyMetric": "LLM通用学习能力边界",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.23668",
+      "pdfUrl": "https://arxiv.org/pdf/2606.23668"
+    },
+    {
+      "id": "paper-052",
+      "title": "OpenThoughts-Agent: Data Recipes for Agentic Models",
+      "conference": "arXiv 2026",
+      "authors": "Negin Raoof, Richard Zhuang, Marianna Nezhurina 等",
+      "institution": "未公开",
+      "summary": "构建开放智能体训练数据流水线，通过系统性实验筛选高质量样本，微调后模型在44.8%平均准确率上超越现有开放基线，全部资源公开",
+      "keyMetric": "44.8%平均准确率，100K训练样本",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.24855",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24855"
+    },
+    {
+      "id": "paper-053",
+      "title": "World Models in Pieces: Structural Certification for General Agents",
+      "conference": "arXiv 2026",
+      "authors": "Yikai Lu, Yifei Wu, Xinyu Lu, Tongxin Li",
+      "institution": "未公开",
+      "summary": "针对通用代理能力非普适性提出结构认证框架，通过过滤特定转换并证明误差界，实现长程规划的可靠性验证",
+      "keyMetric": "Agent结构认证框架",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.24842",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24842"
+    },
+    {
+      "id": "paper-054",
+      "title": "Can Scale Save Us From Plasticity Loss in Large Language Models?",
+      "conference": "arXiv 2026",
+      "authors": "J. Fernando Hernandez-Garcia, Tomás Figliolia, Beren Millidge",
+      "institution": "未公开",
+      "summary": "评估大模型可塑性丧失问题，发现扩大规模只能延缓不能根除适应力衰退，在固定训练语料下同样存在",
+      "keyMetric": "规模无法根除可塑性丧失",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.24752",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24752"
+    },
+    {
+      "id": "paper-055",
+      "title": "Grading the Grader: Lessons from Evaluating an Agentic Data Analysis System",
+      "conference": "arXiv 2026",
+      "authors": "Zheng, Hsu",
+      "institution": "未公开",
+      "summary": "评估Agentic数据分析系统的经验教训，揭示自动评估器本身的可靠性问题",
+      "keyMetric": "Agent评估器可靠性分析",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.24839",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24839"
+    },
+    {
+      "id": "paper-056",
+      "title": "Accuracy and Satisfaction in Multi-Turn LLM Dialogues for NFR Assessment",
+      "conference": "arXiv 2026",
+      "authors": "Fatideh, Baldwin, Dhakal, McMillan, Ghanavati",
+      "institution": "未公开",
+      "summary": "评估多轮LLM对话在非功能需求评估中的准确性和用户满意度",
+      "keyMetric": "多轮对话NFR评估基准",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.24834",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24834"
+    },
+    {
+      "id": "paper-057",
+      "title": "BluTrain: A C++/CUDA Framework for AI Systems",
+      "conference": "arXiv 2026",
+      "authors": "Charan, Suresh, Kumar 等",
+      "institution": "未公开",
+      "summary": "C++/CUDA高性能AI训练框架，优化GPU利用率",
+      "keyMetric": "C++/CUDA AI训练框架",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.24780",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24780"
+    },
+    {
+      "id": "paper-058",
+      "title": "Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder PLMs",
+      "conference": "arXiv 2026",
+      "authors": "Pouramini, Faili",
+      "institution": "未公开",
+      "summary": "系统评估编码器-解码器预训练语言模型的微调与提示微调策略匹配",
+      "keyMetric": "微调vs提示微调策略匹配",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.24841",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24841"
+    },
+    {
+      "id": "paper-059",
+      "title": "Solving Inverse Problems of Chaotic Systems with Bidirectional Conditional Flow Matching",
+      "conference": "arXiv 2026",
+      "authors": "Hu, Zhang, Pan, Feng, Zhang, Ma, Ting, Li, Wu",
+      "institution": "未公开",
+      "summary": "双向条件流匹配解决混沌系统逆问题",
+      "keyMetric": "混沌系统逆问题新解法",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.24824",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24824"
+    },
+    {
+      "title": "Grad Detect: Gradient-Based Hallucination Detection in LLMs",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Anand Kamat, Daniel Blake, Brent M. Werness",
+      "institution": "未公开",
+      "summary": "提出基于梯度的方法识别大语言模型中的幻觉内容",
+      "keyMetric": "新的幻觉检测范式",
+      "commercialPotential": 7,
+      "arxivUrl": "https://arxiv.org/abs/2606.24790",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24790",
+      "id": "paper-060"
+    },
+    {
+      "title": "FlowPipe: LLM-Enhanced Conditional Generative Flow Networks for Data Preparation Pipeline Construction",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Kunyu Ni, Lei Cao, Jie He, Xiaotong Zhang, Jianfeng Jin, Junyu Dong, Yanwei Yu",
+      "institution": "未公开",
+      "summary": "利用LLM增强的条件生成流网络自动化构建数据准备流水线",
+      "keyMetric": "自动化数据准备流水线",
+      "commercialPotential": 6,
+      "arxivUrl": "https://arxiv.org/abs/2606.24679",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24679",
+      "id": "paper-061"
+    },
+    {
+      "title": "Reasoning as Attractor Dynamics: Latent Memory Retrieval via Gibbs-Weighted Energy Minimization",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Kanishk Awadhiya",
+      "institution": "未公开",
+      "summary": "将推理过程建模为吸引子动力学，通过Gibbs加权能量最小化实现潜在记忆检索",
+      "keyMetric": "推理与记忆检索新视角",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.24543",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24543",
+      "id": "paper-062"
+    },
+    {
+      "title": "Data Augmentation: A Fourier Analysis Perspective",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Behrooz Tahmasebi, Melanie Weber, Stefanie Jegelka",
+      "institution": "MIT",
+      "summary": "从傅里叶分析视角重新审视数据增强方法的理论机制",
+      "keyMetric": "数据增强理论分析",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.24418",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24418",
+      "id": "paper-063"
+    },
+    {
+      "title": "A Fair Evaluation of Graph Foundation Models for Node Property Prediction",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Oleg Platonov, Gleb Bazhenov, Dmitry Eremeev, Liudmila Prokhorenkova",
+      "institution": "未公开",
+      "summary": "为图基础模型在节点属性预测任务上提供公平评估框架",
+      "keyMetric": "图基础模型公平评测",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.24509",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24509",
+      "id": "paper-064"
+    },
+    {
+      "title": "DiffusionBench: On Holistic Evaluation of Diffusion Transformers",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Xingjian Leng, Jaskirat Singh",
+      "institution": "未公开",
+      "summary": "提出扩散Transformer的综合评估框架",
+      "keyMetric": "DiT全面评测",
+      "commercialPotential": 6,
+      "arxivUrl": "https://arxiv.org/abs/2606.24888",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24888",
+      "id": "paper-065"
+    },
+    {
+      "title": "FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Haorui Ji, Weizhe Liu",
+      "institution": "未公开",
+      "summary": "通过扩散对齐的稀疏表示实现高保真3D高斯生成",
+      "keyMetric": "高保真3D生成",
+      "commercialPotential": 7,
+      "arxivUrl": "https://arxiv.org/abs/2606.24874",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24874",
+      "id": "paper-066"
+    },
+    {
+      "title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Zixuan Li, Haokun Lin",
+      "institution": "未公开",
+      "summary": "将隐式视觉思维链引入结构感知的文本到图像生成",
+      "keyMetric": "结构感知图像生成",
+      "commercialPotential": 6,
+      "arxivUrl": "https://arxiv.org/abs/2606.24849",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24849",
+      "id": "paper-067"
+    },
+    {
+      "title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Hovhannes Tamoyan",
+      "institution": "未公开",
+      "summary": "为代码修复智能体开发结构化诊断定位方法",
+      "keyMetric": "代码修复Agent诊断定位",
+      "commercialPotential": 8,
+      "arxivUrl": "https://arxiv.org/abs/2606.24820",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24820",
+      "id": "paper-068"
+    },
+    {
+      "title": "Are We Ready For An Agent-Native Memory System?",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Wei Zhou",
+      "institution": "未公开",
+      "summary": "评估支撑自主智能体持久化记忆的基础设施就绪度",
+      "keyMetric": "Agent记忆系统 readiness",
+      "commercialPotential": 7,
+      "arxivUrl": "https://arxiv.org/abs/2606.24775",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24775",
+      "id": "paper-069"
+    },
+    {
+      "title": "Scaling LLM Reasoning from Minimal Labels: A Semi-Supervised Framework with a Lightweight Verifier",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Keizo Kato, Chenhui Chu, Yugo Murawaki, Sado Kurohashi",
+      "institution": "Fujitsu Limited; Kyoto University; National Institute of Informatics",
+      "summary": "提出半监督推理训练框架，将验证推理是否正确本身变成数据生成机制，用极少标注数据扩展LLM推理能力",
+      "keyMetric": "数学推理上仅200条标注样本达到10-15倍标注数据的传统方法性能",
+      "commercialPotential": 8,
+      "arxivUrl": "https://arxiv.org/abs/2606.16811",
+      "pdfUrl": "https://arxiv.org/pdf/2606.16811",
+      "id": "paper-070"
+    },
+    {
+      "title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Changdae Oh, Wendi Li, Seongheon Park, Samuel Yeh, Tanwi Mallick, Sharon Li",
+      "institution": "University of Wisconsin–Madison; Argonne National Laboratory",
+      "summary": "发现RL后训练过程中策略与参考策略的对数概率比可直接导出最优优势函数，无需单独训练过程奖励模型即可提升LLM Agent表现",
+      "keyMetric": "在5个基准、4个模型家族上持续优于基于置信度的基线",
+      "commercialPotential": 7,
+      "arxivUrl": "https://arxiv.org/abs/2606.26080",
+      "pdfUrl": "https://arxiv.org/pdf/2606.26080",
+      "id": "paper-071"
+    },
+    {
+      "title": "TryOnCrafter: Unleashing Camera Trajectories for Realistic Video Virtual Try-on via a Renderable 4D Try-on Proxy",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Hao Sun, Hao Yan, Mengting Chen, Quanjian Song, Yu Li, Juan Cao, Jinsong Lan, Xiaoyong Zhu, Bo Zheng, Sheng Tang",
+      "institution": "ICT CAS; UCAS; Xiamen University; Alibaba Group",
+      "summary": "提出首个面向相机可控视频虚拟试衣的统一DiT框架，通过可渲染4D试衣代理实现任意相机轨迹下的真实感试衣视频生成",
+      "keyMetric": "CaM-VVTBench Overall Score 75.47，达到SOTA",
+      "commercialPotential": 9,
+      "arxivUrl": "https://arxiv.org/abs/2606.26092",
+      "pdfUrl": "https://arxiv.org/pdf/2606.26092",
+      "id": "paper-072"
+    },
+    {
+      "title": "Real-Time Voice AI Hears but Does Not Listen",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Martijn Bartelds, Federico Bianchi, James Zou",
+      "institution": "Together AI; Stanford University",
+      "summary": "评测四个主流实时语音AI系统，发现它们普遍依赖文本内容而忽略声音中的情绪、讽刺、恐惧等副语言信号",
+      "keyMetric": "测试GPT Realtime 2、Gemini 3.1 Flash Live、Qwen3.5 Omni Plus/Flash",
+      "commercialPotential": 6,
+      "arxivUrl": "https://arxiv.org/abs/2606.26083",
+      "pdfUrl": "https://arxiv.org/pdf/2606.26083",
+      "id": "paper-073"
+    },
+    {
+      "title": "How Robust is OCR-Reasoning? Evaluating OCR-Reasoning Robustness of Vision-Language Models under Visual Perturbations",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Yuxing Cheng, Yuan Wu, Yi Chang",
+      "institution": "Jilin University",
+      "summary": "构建OCR-Robust基准，系统评估18个视觉语言模型在五种视觉扰动下的OCR推理鲁棒性",
+      "keyMetric": "数据集812条样本，提出RCR/WCR/CRI等鲁棒性指标",
+      "commercialPotential": 7,
+      "arxivUrl": "https://arxiv.org/abs/2606.26041",
+      "pdfUrl": "https://arxiv.org/pdf/2606.26041",
+      "id": "paper-074"
+    },
+    {
+      "title": "Age of LLM: A Strategic 1v1 Benchmark for Reasoning, Diplomacy and Reliability of Large Language Models under Fog of War",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Arnaud Ricci",
+      "institution": "Independent researcher, Switzerland",
+      "summary": "推出融合战争迷雾、外交谈判与严格JSON动作可靠性的1v1策略对战基准，评估LLM长程推理与可信赖性",
+      "keyMetric": "15个模型、54场对局、5258步动作；GPT-5.5保持不败",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.24391",
+      "pdfUrl": "https://arxiv.org/pdf/2606.24391",
+      "id": "paper-075"
+    },
+    {
+      "title": "Representing Time Series as Structured Programs for LLM Reasoning",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Jaeho Kim, Changjun Oh, Seokhyun Lee, Irina Rish, Changhee Lee",
+      "institution": "Korea University; Mila, University of Montreal",
+      "summary": "提出T2SP方法，将时间序列表示为结构化符号程序，使现成LLM无需额外训练即可进行时间序列推理",
+      "keyMetric": "ETI任务上Claude配合T2SP准确率达91.0%，原始表示仅56.5%",
+      "commercialPotential": 8,
+      "arxivUrl": "https://arxiv.org/abs/2606.12481",
+      "pdfUrl": "https://arxiv.org/pdf/2606.12481",
+      "id": "paper-076"
+    },
+    {
+      "title": "The Periodic Table of LLM Reasoning: A Structured Survey of Reasoning Paradigms, Methods, and Failure Modes",
+      "conference": "arXiv 2026",
+      "award": "",
+      "authors": "Avinash Anand, Mahisha Ramesh, Avni Mittal, Ashutosh Kumar, Erik Cambria, Zhengkui Wang, Timothy Liu, Aik Beng Ng, Simon See, Rajiv Ratn Shah",
+      "institution": "SIT × Nvidia AI Center; MIDAS Lab IIIT Delhi; IIT Mandi; NTU Singapore",
+      "summary": "对300余篇近期LLM推理研究进行系统综述，提出结构化分类体系并梳理主要推理范式、方法与失效模式",
+      "keyMetric": "将海量文献组织为推理元素周期表式分类",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.11470",
+      "pdfUrl": "https://arxiv.org/pdf/2606.11470",
+      "id": "paper-077"
+    },
+    {
+      "title": "Reinforcement Learning without Ground-Truth Solutions can Improve LLMs",
+      "conference": "arXiv 2026",
+      "authors": "Yingyu Lin, Qiyue Gao, Nikki Lijing Kuang et al.",
+      "institution": "未公开",
+      "summary": "探索在没有标准答案的情况下，如何利用强化学习进一步提升大语言模型能力，降低对昂贵人工标注的依赖。",
+      "keyMetric": "无Ground-Truth RL提升LLM",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27369",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27369",
+      "id": "paper-078",
+      "award": ""
+    },
+    {
+      "title": "Autoregressive Boltzmann Generators",
+      "conference": "arXiv 2026",
+      "authors": "Danyal Rehman, Charlie B. Tan, Yoshua Bengio et al.",
+      "institution": "Mila / 未公开",
+      "summary": "结合自回归模型与能量建模优势的自回归玻尔兹曼生成器，用于复杂分布建模。",
+      "keyMetric": "Bengio团队新作",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27361",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27361",
+      "id": "paper-079",
+      "award": ""
+    },
+    {
+      "title": "Error-Conditioned Neural Solvers",
+      "conference": "arXiv 2026",
+      "authors": "Haina Jiang, Liam Wang, Peng-Chen Chen et al.",
+      "institution": "未公开",
+      "summary": "基于误差条件的神经求解器，根据当前解的误差动态调整求解策略。",
+      "keyMetric": "误差条件自适应求解",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27354",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27354",
+      "id": "paper-080",
+      "award": ""
+    },
+    {
+      "title": "Hallucination in World Models is Predictable and Preventable",
+      "conference": "arXiv 2026",
+      "authors": "Nicklas Hansen, Xiaolong Wang",
+      "institution": "UC San Diego",
+      "summary": "研究世界模型中的幻觉现象，发现其具有可预测性，并提出针对性的预防方法。",
+      "keyMetric": "世界模型幻觉可预测可预防",
+      "commercialPotential": 5,
+      "arxivUrl": "https://arxiv.org/abs/2606.27326",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27326",
+      "id": "paper-081",
+      "award": ""
+    },
+    {
+      "title": "Beyond the Hard Budget: Sparsity Regularizers for More Interpretable Top-k Sparse Autoencoders",
+      "conference": "arXiv 2026",
+      "authors": "Nathanaël Jacquier, Maria Vakalopoulou, Mahdi S. Hosseini",
+      "institution": "未公开",
+      "summary": "超越硬预算约束，引入稀疏正则化器以提升Top-k稀疏自编码器的可解释性。",
+      "keyMetric": "提升SAE可解释性",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27321",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27321",
+      "id": "paper-082",
+      "award": ""
+    },
+    {
+      "title": "Blackwell Approachability and Gradient Equilibrium are Equivalent",
+      "conference": "arXiv 2026",
+      "authors": "Brian W. Lee, Nika Haghtalab, Michael I. Jordan, Ryan J. Tibshirani",
+      "institution": "UC Berkeley",
+      "summary": "证明Blackwell可接近性与梯度均衡的等价性，为在线学习与博弈论提供新的理论桥梁。",
+      "keyMetric": "Jordan团队理论成果",
+      "commercialPotential": 2,
+      "arxivUrl": "https://arxiv.org/abs/2606.27315",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27315",
+      "id": "paper-083",
+      "award": ""
+    },
+    {
+      "title": "Designing Reward Signals for Portable Query Generation",
+      "conference": "arXiv 2026",
+      "authors": "Ping Liu, Qianqi Shen, Jianqiang Shen et al.",
+      "institution": "Microsoft / 工业语义搜索",
+      "summary": "以工业语义招聘搜索为案例，设计可迁移的查询生成奖励信号。",
+      "keyMetric": "可迁移查询生成奖励",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27291",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27291",
+      "id": "paper-084",
+      "award": ""
+    },
+    {
+      "title": "How Good Can Linear Models Be for Time-Series Forecasting?",
+      "conference": "arXiv 2026",
+      "authors": "Lang Huang, Jinglue Xu, Luke Darlow",
+      "institution": "未公开",
+      "summary": "系统评估线性模型在时间序列预测中的能力边界，为轻量级预测方案选择提供实证依据。",
+      "keyMetric": "线性模型时序预测能力边界",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27282",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27282",
+      "id": "paper-085",
+      "award": ""
+    },
+    {
+      "title": "DanceOPD: On-Policy Generative Field Distillation",
+      "conference": "arXiv 2026",
+      "authors": "Wei Zhou, Xiongwei Zhu, Zelin Xu et al.",
+      "institution": "未公开",
+      "summary": "在线策略生成场蒸馏方法，用于高效迁移生成模型知识。",
+      "keyMetric": "生成场蒸馏",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27377",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27377",
+      "id": "paper-086",
+      "award": ""
+    },
+    {
+      "title": "Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation",
+      "conference": "arXiv 2026",
+      "authors": "Ritesh Thawkar, Shravan Venkatraman, Omkar Thawkar et al.",
+      "institution": "未公开",
+      "summary": "通过自一致性奖励实现自我进化的统一多模态理解与生成框架。",
+      "keyMetric": "自进化多模态框架",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27376",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27376",
+      "id": "paper-087",
+      "award": ""
+    },
+    {
+      "title": "Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models",
+      "conference": "arXiv 2026",
+      "authors": "Shravan Venkatraman, Ritesh Thawkar, Omkar Thawkar et al.",
+      "institution": "未公开",
+      "summary": "研究在自我进化的多模态大模型中如何更有效地关注视觉Token。",
+      "keyMetric": "视觉Token注意力优化",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27373",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27373",
+      "id": "paper-088",
+      "award": ""
+    },
+    {
+      "title": "DnA: Denoising Attention for Visual Tasks",
+      "conference": "arXiv 2026",
+      "authors": "Ron Campos, Subhajit Maity, Xin Li et al.",
+      "institution": "未公开",
+      "summary": "提出去噪注意力机制，针对视觉任务中的注意力噪声进行抑制。",
+      "keyMetric": "去噪注意力机制",
+      "commercialPotential": 3,
+      "arxivUrl": "https://arxiv.org/abs/2606.27372",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27372",
+      "id": "paper-089",
+      "award": ""
+    },
+    {
+      "title": "PhysiFormer: Learning to Simulate Mechanics in World Space",
+      "conference": "arXiv 2026",
+      "authors": "Yiming Chen, Yushi Lan, Andrea Vedaldi",
+      "institution": "Oxford / VGG",
+      "summary": "学习在世界空间中模拟物理力学，推动基于神经网络的物理仿真发展。",
+      "keyMetric": "世界空间物理力学模拟",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27364",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27364",
+      "id": "paper-090",
+      "award": ""
+    },
+    {
+      "title": "RayPE: Ray-Space Positional Encoding for 3D-Aware Video Generation",
+      "conference": "arXiv 2026",
+      "authors": "Minghao Yin, Jiahao Lu, Wenbo Hu et al.",
+      "institution": "未公开",
+      "summary": "提出射线空间位置编码，增强视频生成模型的3D感知能力。",
+      "keyMetric": "3D感知视频生成位置编码",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27345",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27345",
+      "id": "paper-091",
+      "award": ""
+    },
+    {
+      "title": "SAM2Matting: Generalized Image and Video Matting",
+      "conference": "arXiv 2026",
+      "authors": "Ruiqi Shen, Guangquan Jie, Chang Liu, Henghui Ding",
+      "institution": "未公开",
+      "summary": "基于SAM2推广到通用图像与视频抠图任务，提升复杂场景前景提取精度。",
+      "keyMetric": "SAM2通用抠图",
+      "commercialPotential": 4,
+      "arxivUrl": "https://arxiv.org/abs/2606.27339",
+      "pdfUrl": "https://arxiv.org/pdf/2606.27339",
+      "id": "paper-092",
+      "award": ""
+    }
+  ],
+  "analysis": [],
+  "news": [
+    {
+      "date": "2026-06-27",
+      "title": "Anthropic势将与美国政府达成协议，解除对AI模型的限制",
+      "category": "AI监管",
+      "importance": "high",
+      "summary": "Anthropic正接近与美国政府达成协议，有望解除此前对AI模型的部分限制，可能缓解Claude全球部署的合规不确定性。",
+      "keyData": "协议细节未披露",
+      "impact": "AI监管环境潜在松动",
+      "source": "https://www.cls.cn/detail/2410770",
+      "id": "news-092"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "纳指收跌0.2%，芯片股下挫，西部数据大跌13%",
+      "category": "半导体/美股",
+      "importance": "high",
+      "summary": "6月27日美股收盘纳指跌0.2%，费城半导体指数大跌5.29%；西部数据跌超13%，希捷跌超12%，闪迪跌超10%，软银尾盘重挫13%。",
+      "keyData": "费城半导体指数-5.29%，西部数据-13%",
+      "impact": "存储类芯片股遭遇估值下杀",
+      "source": "https://www.nbd.com.cn/articles/2026-06-27/4439275.html",
+      "id": "news-093"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "半导体设备迎来增长大年，2026年设备增速预期上调至23.5%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "上下游扩产忙，半导体设备赛道高景气。相关企业合计投资近450亿元，交付周期从3-6个月拉长至8-12个月。",
+      "keyData": "2026设备增速预期23.5%，投资近450亿元",
+      "impact": "中国半导体设备赛道迎来3年高景气周期",
+      "source": "https://paper.cnstock.com/html/2026-06/27/content_2236404.htm",
+      "id": "news-094"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "A股大涨后风险积聚，市值一天蒸发约2.9万亿元",
+      "category": "A股",
+      "importance": "medium",
+      "summary": "不到两月百股翻倍后风险积聚，6月27日沪指跌幅明显，创业板指跌逾4%，深证成指与科创50同步下行。",
+      "keyData": "A股市值一天蒸发约2.9万亿元",
+      "impact": "高位调整压力显现，市场关注流动性与政策信号",
+      "source": "https://finance.sina.com.cn/wm/2026-06-27/doc-inieuyie1647928.shtml",
+      "id": "news-095"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "AI开启半导体新时代，2026年产业规模接近万亿美元",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "AI热潮持续推动半导体产业扩容，2026年全球半导体产业规模预计接近万亿美元，AI算力需求成为主要增长引擎。",
+      "keyData": "2026产业规模接近万亿美元",
+      "impact": "AI算力需求驱动半导体超级周期",
+      "source": "https://www.cnstock.com/commonDetail/648180",
+      "id": "news-096"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "IBM发布全球首个亚1纳米芯片技术，采用0.7纳米晶体管架构",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "IBM推出全球首个亚1纳米芯片技术，采用0.7纳米（7埃）节点晶体管架构，被视为延续摩尔定律的重大突破。",
+      "keyData": "0.7纳米（7埃）节点、亚1纳米晶体管架构",
+      "impact": "推动半导体工艺进入埃米时代，可能重塑AI芯片性能边界与制造格局",
+      "source": "https://companies.caixin.com/2026-06-26/102457718.html",
+      "id": "news-086"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "美光财报大超预期，AI存储需求带动芯片股大涨",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "美光科技Q3 FY2026营收414.6亿美元，目标营收可达500亿美元，股价大涨15%，闪迪涨近22%。",
+      "keyData": "Q3营收414.6亿美元、目标营收500亿美元、股价+15%",
+      "impact": "AI训练与推理对HBM/高带宽存储需求持续超预期，存储芯片进入超级周期",
+      "source": "https://finance.sina.com.cn/world/2026-06-26/doc-inieskua0668699.shtml",
+      "id": "news-087"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "苹果WWDC 2026发布新一代Apple Intelligence与Siri AI",
+      "category": "AI应用",
+      "importance": "high",
+      "summary": "苹果发布iOS 27，推出全新Siri AI，应用启动速度提升30%，但中国大陆暂不可用。",
+      "keyData": "iOS 27、Siri AI、应用启动速度提升30%",
+      "impact": "苹果将AI深度整合进操作系统，移动端AI Agent入口竞争加剧",
+      "source": "https://www.apple.com.cn/newsroom/2026/06/apple-unveils-next-generation-of-apple-intelligence-siri-ai-and-more/",
+      "id": "news-088"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "中国芯片出口额暴增110%，存储芯片短缺推升价格",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "2026年6月官方数据显示中国集成电路出口额超355.5亿美元，同比暴增约110%，主要由存储芯片短缺导致价格飙升。",
+      "keyData": "出口额超355.5亿美元、增长约110%",
+      "impact": "价格因素主导出口额增长，反映全球存储芯片供需紧张，但高端制造能力差距仍存",
+      "source": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/simp",
+      "id": "news-089"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "苹果M6跳过传闻被证伪，不符合半导体行业基本常识",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "经供应链数据交叉验证，苹果将跳过M6直接发布M7的传闻为不实消息，芯片架构规划通常提前数年制定。",
+      "keyData": "传闻被证伪、芯片架构需提前数年规划",
+      "impact": "提醒投资者基于公开信息决策，避免被未经验证的供应链传闻误导",
+      "source": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-26/doc-iniesene0733273.shtml",
+      "id": "news-090"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "世界经济论坛公布新一批AI应用之星，超半数案例来自中国",
+      "category": "AI产业",
+      "importance": "low",
+      "summary": "世界经济论坛公布新一批AI应用之星名单，超半数入选案例来自中国，涵盖制造、医疗、消费等领域。",
+      "keyData": "超半数案例来自中国",
+      "impact": "中国AI应用落地速度领先全球，为产业数字化转型提供参考样本",
+      "source": "https://cn.weforum.org/press/2026/06/world-economic-forum-announces-new-minds-cohort-amid-ai-adoption-surge-cn/",
+      "id": "news-091"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "OpenAI发布首款自研AI推理芯片Jalapeño，与博通合作9个月流片",
+      "category": "芯片",
+      "importance": "high",
+      "summary": "OpenAI与博通（Broadcom）联合发布首款定制AI推理芯片Jalapeño，专为大语言模型推理设计，9个月完成流片，预计可节省约50%推理成本。",
+      "keyData": "9个月流片、推理成本降约50%",
+      "impact": "AI实验室转向定制硬件，去英伟达化加速，竞争进入模型+芯片+系统+网络时代",
+      "source": "https://www.esmchina.com/news/14297.html",
+      "id": "news-081"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "美股科技股回调，纳指跌0.43%，AI估值与资本开支担忧持续",
+      "category": "美股",
+      "importance": "high",
+      "summary": "6月25日美股收盘纳指跌0.43%收于25476.64点，标普500跌0.10%，道指涨0.35%，大型科技股普跌。",
+      "keyData": "纳指-0.43%（25476.64）、标普-0.10%（7358.22）、道指+0.35%（51848.90）",
+      "impact": "高估值与AI资本开支合理性仍是市场核心矛盾",
+      "source": "https://news.sina.com.cn/zx/2026-06-25/doc-inieqfvk2647425.shtml",
+      "id": "news-082"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "黄仁勋：有用的AI已经到来，并且已经能够赚钱",
+      "category": "AI产业",
+      "importance": "medium",
+      "summary": "英伟达CEO黄仁勋公开回应AI投资回报质疑，称有用的AI已经到来且能够赚钱。",
+      "keyData": "AI回报已有答案",
+      "impact": "为AI芯片需求叙事提供支撑，但市场仍待财务数据验证",
+      "source": "https://news.sina.com.cn/zx/2026-06-25/doc-inieqfvk2647425.shtml",
+      "id": "news-083"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "A股半导体芯片领涨，科创50涨超3%续创新高",
+      "category": "A股",
+      "importance": "high",
+      "summary": "6月25日A股半导体芯片方向涨幅居前，创业板指拉升涨逾2%，科创50指数拉升涨超3%。",
+      "keyData": "科创50涨超3%、创业板指涨逾2%",
+      "impact": "国产半导体自主可控叙事强化，资金持续流入科技成长板块",
+      "source": "https://www.cls.cn/detail/2408694",
+      "id": "news-084"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "AI算力产业链迎超级周期，半导体ETF受关注",
+      "category": "产业",
+      "importance": "medium",
+      "summary": "随着OpenAI自研芯片发布及国产AI芯片需求增长，AI算力产业链被视为进入超级周期，公募基金半导体配置从概念转向业绩驱动。",
+      "keyData": "半导体配置从概念转向业绩驱动",
+      "impact": "产业链景气度向上，但需警惕短期估值过热",
+      "source": "https://finance.sina.com.cn/jjxw/2026-06-25/doc-inieqnce5847431.shtml",
+      "id": "news-085"
+    },
+    {
+      "id": "news-075",
+      "date": "2026-06-24",
+      "title": "美股芯片股重挫：纳指跌超2%，费城半导体指数暴跌近8%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "美股三大指数集体收跌，纳指重挫2.2%，费城半导体指数暴跌近8%。英伟达跌超4%，美光科技暴跌13%。投资者重新审视AI资本支出规模，质疑大规模芯片投资是否合理。",
+      "keyData": "纳指跌2.2%，费城半导体指数跌近8%",
+      "impact": "AI算力投资遭市场重新审视",
+      "source": "https://www.stcn.com/article/detail/3975996.html"
+    },
+    {
+      "id": "news-076",
+      "date": "2026-06-24",
+      "title": "AI投资热潮遭重新审视，资本支出合理性受质疑",
+      "category": "AI",
+      "importance": "high",
+      "summary": "分析师开始质疑科技巨头大规模AI资本支出是否合理，市场从追逐AI动量交易转向理性评估。SpaceX暴跌16%加剧科技股恐慌情绪。",
+      "keyData": "AI资本支出合理性受质疑，SpaceX暴跌16%",
+      "impact": "AI投资从动量交易转向理性评估",
+      "source": "https://news.sina.com.cn/zx/2026-06-24/doc-iniemwqf8441358.shtml"
+    },
+    {
+      "id": "news-077",
+      "date": "2026-06-24",
+      "title": "人工智能让网络安全成为2026年稀缺性投资赛道",
+      "category": "AI安全",
+      "importance": "high",
+      "summary": "AI技术显著降低漏洞挖掘难度，网络安全成为稀缺资产。CrowdStrike八次创盘中新高，帕洛阿尔托网络涨幅228%，ETF收益27%。资金从芯片领域转向安全赛道。",
+      "keyData": "CrowdStrike八次创新高，Palo Alto涨228%",
+      "impact": "AI安全赛道成为资金新宠",
+      "source": "https://finance.sina.com.cn/stock/usstock/summary/2026-06-24/doc-inienicz8321972.shtml"
+    },
+    {
+      "id": "news-078",
+      "date": "2026-06-24",
+      "title": "科创芯片设计ETF富国正在发行，2026是AI产业推理落地大年",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "全球算力资本开支持续攀升，芯片自主可控战略持续加码。科创芯片设计指数成分股2025年净利润同比增速超190%，2026年被视为AI产业推理落地大年。",
+      "keyData": "成分股净利润增速超190%",
+      "impact": "AI推理落地催化芯片设计需求",
+      "source": "https://finance.sina.com.cn/stock/stockzmt/2026-06-24/doc-inieniee6403635.shtml"
+    },
+    {
+      "id": "news-079",
+      "date": "2026-06-24",
+      "title": "港股半导体板块强势：华虹宏力飙升16%，中芯国际涨逾8%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "港股半导体板块表现强势，华虹宏力飙升16%，中芯国际涨逾8%。恒生科技指数涨1.34%，与美股芯片股暴跌形成鲜明反差，反映资金在港股寻找半导体结构性机会。",
+      "keyData": "华虹宏力+16%，中芯国际+8%",
+      "impact": "港股半导体与美股形成反差行情",
+      "source": "https://www.chnfund.com/article/81239efc-759a-c0a4-f963-3a2209f67748"
+    },
+    {
+      "id": "news-080",
+      "date": "2026-06-24",
+      "title": "A股券商板块延续涨势，28只成分股飘红",
+      "category": "股市",
+      "importance": "medium",
+      "summary": "A股市场整体调整后券商板块逆势走强，28只成分股飘红。学者评价'本轮券商上涨的持续性相对更强'，成交额维持在3.46万亿元高位。",
+      "keyData": "28只券商股飘红，成交3.46万亿",
+      "impact": "券商板块成为市场结构性亮点",
+      "source": "https://www.21jingji.com/article/20260624/herald/0428b1d2288ab2943276f43347a4174d.html"
+    },
+    {
+      "id": "news-069",
+      "date": "2026-06-23",
+      "title": "AI飞轮驱动加速半导体更多领域进入上行周期",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "证券时报报道，AI算力需求持续拉动存储、功率、封装等多环节景气，业内预计2026年全球半导体规模将超1.5万亿美元，内存市场缺口约5%，设备端高景气预见到8个季度后。",
+      "keyData": "2026全球半导体超1.5万亿美元，内存缺口5%",
+      "impact": "AI飞轮驱动多环节进入上行周期",
+      "source": "https://www.stcn.com/article/detail/3973285.html"
+    },
+    {
+      "id": "news-070",
+      "date": "2026-06-23",
+      "title": "AI算力新变局：谁能动英伟达奶酪",
+      "category": "AI算力",
+      "importance": "high",
+      "summary": "21财经深度分析，华为昇腾、英特尔18A、AMD、台积电等多方挑战英伟达GPU垄断地位，AI算力格局正从'一家独大'走向多元竞争。",
+      "keyData": "英伟达算力垄断面临多方挑战",
+      "impact": "AI算力多元化竞争加速",
+      "source": "https://www.21jingji.com/article/20260623/herald/0aab3df2caeedc633acdef0dc0912cde.html"
+    },
+    {
+      "id": "news-071",
+      "date": "2026-06-23",
+      "title": "新洁能涨停：功率半导体+产品升级+AI需求增长",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "A股功率半导体龙头新洁能6月23日涨停，分析师认为AI数据中心功率器件需求+产品升级双轮驱动，功率半导体景气度进入新一轮上行期。",
+      "keyData": "功率半导体涨停，AI数据中心需求驱动",
+      "impact": "功率半导体板块受益AI需求",
+      "source": "https://finance.sina.com.cn/stock/aiassist/ydfx/2026-06-23/doc-iniekeey2076576.shtml"
+    },
+    {
+      "id": "news-072",
+      "date": "2026-06-23",
+      "title": "标普500历史首次站上7000点，纳指涨1.59%至24016点",
+      "category": "美股",
+      "importance": "high",
+      "summary": "标普500历史首次收盘站上7000点整数关口，纳指涨1.59%至24016.02点，道指微涨220点创历史新高。英伟达日线11连涨，光纤概念股Lumen与AWS合作后暴涨10.13%。",
+      "keyData": "标普首次站上7000点，纳指24016点",
+      "impact": "美股科技+AI板块创新高",
+      "source": "https://www.cls.cn/detail/2345486"
+    },
+    {
+      "id": "news-073",
+      "date": "2026-06-23",
+      "title": "英伟达日线11连涨，AI算力龙头再创新高",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "英伟达股价实现日线11连涨，创2023年以来最长连涨纪录。市场对其数据中心AI GPU需求持续乐观，Vera Rubin平台预期进一步提振估值。",
+      "keyData": "英伟达日线11连涨",
+      "impact": "AI算力龙头持续创新高",
+      "source": "https://www.cls.cn/detail/2345486"
+    },
+    {
+      "id": "news-074",
+      "date": "2026-06-23",
+      "title": "港股午盘走低：恒指跌1.13%，科技指数重挫2.21%",
+      "category": "港股",
+      "importance": "medium",
+      "summary": "港股恒生指数午盘跌1.13%，恒生科技指数跌2.21%，京东、小米、腾讯、阿里、美团等科技龙头普跌，大模型概念股走低，智谱盘中一度跌超15%。",
+      "keyData": "恒指跌1.13%，恒科跌2.21%",
+      "impact": "港股科技板块回调",
+      "source": "https://www.cls.cn/detail/2406512"
+    },
+    {
+      "id": "news-064",
+      "date": "2026-06-22",
+      "title": "科创板第五套标准扩围至AI大模型企业",
+      "category": "政策/AI",
+      "importance": "high",
+      "summary": "上交所发布指引，人工智能大模型企业可适用科创板第五套上市标准，优先支持尚未形成收入规模但具备核心技术的主体，智谱、MiniMax等筹备回A",
+      "keyData": "科创板第五套标准扩容AI大模型",
+      "impact": "国产大模型核心资产A股定价通道打开",
+      "source": "https://www.stcn.com/article/detail/3967608.html"
+    },
+    {
+      "id": "news-065",
+      "date": "2026-06-22",
+      "title": "智谱股价大涨超40%，市值突破万亿港元",
+      "category": "AI融资",
+      "importance": "high",
+      "summary": "智谱股价大涨逾40%，盘中触及2980港元，总市值突破1万亿港元。GLM-5.2模型表现优异，API调用量增幅达400%，公司推进科创板IPO拟募资150亿元",
+      "keyData": "智谱市值破万亿港元",
+      "impact": "全球首家万亿市值大模型公司诞生",
+      "source": "https://www.stcn.com/article/detail/3971526.html"
+    }
+  ],
+  "meta": {
+    "title": "我的开发收藏夹",
+    "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
+    "lastUpdated": "2026-06-27",
+    "version": "2.0",
+    "repository": "https://github.com/sjkncs/my-dev-favorites",
+    "totalItems": {
+      "tips": 2,
+      "repos": 52,
+      "trivia": 1,
+      "memes": 1,
+      "consumerAI": 32,
+      "aiModels": 11,
+      "techNews": 96,
+      "stockMarket": 90,
+      "papers": 92
+    }
+  }
+};
 
 Chart.defaults.color = '#a0a0a0';
 Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
@@ -108,7 +2588,7 @@ Chart.defaults.borderColor = 'rgba(255,255,255,0.1)';
 // (a) Consumer AI Radar
 const caLabels = ['AI深度','用户体验','部署规模','技术壁垒','商业化'];
 const caColors = ['#e94560','#58d68d','#f4d03f','#3498db','#9b59b6','#e67e22','#1abc9c','#f39c12'];
-const caDatasets = DATA.consumerAI.slice(0,8).map((item, idx) => ({
+const caDatasets = DATA.consumerAI.map((item, idx) => ({
   label: item.brand,
   data: [item.scores.aiDepth, item.scores.ux, item.scores.scale, item.scores.techBarrier, item.scores.commercialization],
   fill: true,
@@ -119,105 +2599,91 @@ const caDatasets = DATA.consumerAI.slice(0,8).map((item, idx) => ({
 new Chart(document.getElementById('consumerRadar'), { type: 'radar', data: { labels: caLabels, datasets: caDatasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { suggestedMin: 0, suggestedMax: 10, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' } } } } });
 
 // (b) AI Model Radar
-const modelLabels = ['推理','编程','多模态','价格竞争力','上下文长度','生态'];
-const modelDatasets = DATA.aiModels.slice(0,6).map((item, idx) => ({
-  label: item.name,
-  data: [item.scores.reasoning, item.scores.coding, item.scores.multimodal, item.scores.priceCompetitiveness, item.scores.contextLength, item.scores.ecosystem],
+const mLabels = ['推理','编程','多模态','价格竞争力','上下文','生态'];
+const mColors = ['#e94560','#58d68d','#f4d03f','#3498db','#9b59b6','#e67e22','#1abc9c','#f39c12','#00cec9','#6c5ce7'];
+const mDatasets = DATA.aiModels.map((m, idx) => ({
+  label: m.name,
+  data: [m.scores.reasoning, m.scores.coding, m.scores.multimodal, m.scores.priceCompetitiveness, m.scores.contextLength, m.scores.ecosystem],
   fill: true,
-  backgroundColor: caColors[idx % caColors.length] + '33',
-  borderColor: caColors[idx % caColors.length]
+  backgroundColor: mColors[idx % mColors.length] + '33',
+  borderColor: mColors[idx % mColors.length],
+  pointBackgroundColor: mColors[idx % mColors.length]
 }));
-new Chart(document.getElementById('modelRadar'), { type: 'radar', data: { labels: modelLabels, datasets: modelDatasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { suggestedMin: 0, suggestedMax: 10, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' } } } } });
+new Chart(document.getElementById('modelRadar'), { type: 'radar', data: { labels: mLabels, datasets: mDatasets }, options: { responsive: true, maintainAspectRatio: false, scales: { r: { suggestedMin: 0, suggestedMax: 10, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' } } } } });
 
 // API Price Bar
-new Chart(document.getElementById('priceBar'), { type: 'bar', data: {
-  labels: DATA.aiModels.map(m => m.name),
-  datasets: [
-    { label: '输入价格', data: DATA.aiModels.map(m => m.pricing.input), backgroundColor: '#3498db' },
-    { label: '输出价格', data: DATA.aiModels.map(m => m.pricing.output), backgroundColor: '#e94560' }
-  ]
-}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#fff' } } }, scales: { y: { title: { display: true, text: '$/1M tokens', color: '#fff' } }, x: { ticks: { color: '#fff' } } } } });
+const priceDatasets = [
+  { label: '输入价格', data: DATA.aiModels.map(m => typeof m.pricing.input === 'number' ? m.pricing.input : 0), backgroundColor: '#3498db' },
+  { label: '输出价格', data: DATA.aiModels.map(m => typeof m.pricing.output === 'number' ? m.pricing.output : 0), backgroundColor: '#e94560' }
+];
+new Chart(document.getElementById('priceBar'), { type: 'bar', data: { labels: DATA.aiModels.map(m => m.name), datasets: priceDatasets }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } }, scales: { y: { title: { display: true, text: '$/1M tokens' }, grid: { color: 'rgba(255,255,255,0.1)' } }, x: { grid: { display: false } } } } });
 
 // (c) Stock Line
-new Chart(document.getElementById('stockLine'), { type: 'line', data: {
-  labels: DATA.stockDates,
-  datasets: [
-    { label: '上证', data: DATA.上证, borderColor: '#e94560', yAxisID: 'y', tension: 0.3 },
-    { label: '纳斯达克', data: DATA.纳斯达克, borderColor: '#58d68d', yAxisID: 'y1', tension: 0.3 },
-    { label: '恒生科技', data: DATA.恒生科技, borderColor: '#f4d03f', yAxisID: 'y1', tension: 0.3 }
-  ]
-}, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, scales: {
-  y: { type: 'linear', display: true, position: 'left', title: { display: true, text: '上证', color: '#fff' } },
-  y1: { type: 'linear', display: true, position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: '纳斯达克/恒生科技', color: '#fff' } },
-  x: { ticks: { color: '#fff' } }
-} } });
+const stockCtx = document.getElementById('stockLine').getContext('2d');
+new Chart(stockCtx, {
+  type: 'line',
+  data: {
+    labels: DATA.stockSeries.dates,
+    datasets: [
+      { label: '上证综指', data: DATA.stockSeries.a, borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.1)', fill: true, tension: 0.3, yAxisID: 'y' },
+      { label: '纳斯达克', data: DATA.stockSeries.us, borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', fill: true, tension: 0.3, yAxisID: 'y1' },
+      { label: '恒生科技', data: DATA.stockSeries.hk, borderColor: '#2ecc71', backgroundColor: 'rgba(46,204,113,0.1)', fill: true, tension: 0.3, yAxisID: 'y1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    scales: {
+      y: { type: 'linear', display: true, position: 'left', title: { display: true, text: '上证综指' }, grid: { color: 'rgba(255,255,255,0.1)' } },
+      y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: '纳斯达克 / 恒生科技' }, grid: { drawOnChartArea: false } },
+      x: { grid: { color: 'rgba(255,255,255,0.05)' } }
+    }
+  }
+});
 
 // (d) Semiconductor Bar
-const semiLabels = ['IBM 0.7nm', '美光AI存储', 'A股科创50', '苹果Siri AI', '美股纳指', 'OpenAI芯片', '中国芯片出口', '估值风险'];
-const semiValues = [9, 9, 8, 8, 3, 9, 7, 4];
-new Chart(document.getElementById('semiBar'), { type: 'bar', data: { labels: semiLabels, datasets: [{ label: '情绪热度', data: semiValues, backgroundColor: ['#e94560','#58d68d','#f4d03f','#3498db','#9b59b6','#e67e22','#1abc9c','#f39c12'] }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { suggestedMax: 10, title: { display: true, text: '热度(0-10)', color: '#fff' } }, y: { ticks: { color: '#fff' } } } } });
+new Chart(document.getElementById('semiBar'), {
+  type: 'bar',
+  data: {
+    labels: DATA.semiMetrics.map(m => m.label + ' (' + m.unit + ')'),
+    datasets: [{ label: '数值', data: DATA.semiMetrics.map(m => m.value), backgroundColor: ['#e94560','#3498db','#2ecc71','#f4d03f','#9b59b6','#e67e22','#1abc9c','#f39c12'] }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', scales: { x: { grid: { color: 'rgba(255,255,255,0.1)' } }, y: { grid: { display: false } } } }
+});
 
 // (e) Papers Table
-const tbody = document.querySelector('#papersTable tbody');
-function renderPapers(list) {
-  tbody.innerHTML = list.map(p => {
-    const arxivUrl = p.arxivUrl || p.url || '#';
-    const award = p.award || '';
-    const institution = p.institution || '';
-    const cp = p.commercialPotential != null ? p.commercialPotential : '-';
-    return `
-    <tr>
-      <td>${p.title}${award ? '<span class="award">'+award+'</span>' : ''}</td>
-      <td>${p.conference}</td>
-      <td>${institution}</td>
-      <td>${cp}</td>
-      <td><a href="${arxivUrl}" target="_blank" style="color:#58d68d;">arXiv</a></td>
-    </tr>
-  `;
-  }).join('');
-}
-renderPapers(DATA.papers);
-let sortDir = {};
+const papersBody = document.querySelector('#papersTable tbody');
+DATA.papers.forEach(p => {
+  const row = document.createElement('tr');
+  const url = p.arxivUrl || p.url || '#';
+  const pdf = p.pdfUrl || url;
+  const awardBadge = p.award ? `<span class="award">${p.award}</span>` : '';
+  row.innerHTML = `<td>${p.title}${awardBadge}</td><td>${p.conference || ''}</td><td>${p.institution || ''}</td><td>${p.commercialPotential || ''}</td><td><a class="paper-link" href="${url}" target="_blank">arXiv</a> <a class="paper-link" href="${pdf}" target="_blank">PDF</a></td>`;
+  papersBody.appendChild(row);
+});
+
 function sortTable(col) {
-  const key = ['title','conference','institution','commercialPotential'][col];
-  sortDir[key] = !sortDir[key];
-  const sorted = [...DATA.papers].sort((a,b) => {
-    let va = a[key] != null ? a[key] : (typeof b[key] === 'number' ? 0 : '');
-    let vb = b[key] != null ? b[key] : (typeof a[key] === 'number' ? 0 : '');
-    if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
-    if (va < vb) return sortDir[key] ? -1 : 1;
-    if (va > vb) return sortDir[key] ? 1 : -1;
-    return 0;
+  const table = document.getElementById('papersTable');
+  const rows = Array.from(table.querySelectorAll('tbody tr'));
+  const asc = !table.dataset.asc || table.dataset.asc === 'desc';
+  table.dataset.asc = asc ? 'asc' : 'desc';
+  rows.sort((a, b) => {
+    const va = a.cells[col].innerText.replace(/[\u4e00-\u9fa5]/g, '').trim();
+    const vb = b.cells[col].innerText.replace(/[\u4e00-\u9fa5]/g, '').trim();
+    const na = parseFloat(va), nb = parseFloat(vb);
+    if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+    return asc ? va.localeCompare(vb, 'zh') : vb.localeCompare(va, 'zh');
   });
-  renderPapers(sorted);
+  rows.forEach(r => table.querySelector('tbody').appendChild(r));
 }
 
-// (f) Analysis Cards
-const analysisContainer = document.getElementById('analysisContainer');
-analysisContainer.innerHTML = DATA.analysis.map((card, idx) => `
-  <div class="analysis-card">
-    <div class="analysis-header" onclick="toggleAnalysis(${idx})">
-      <div><strong>${card.title}</strong><br><span style="color:var(--muted);font-size:0.85rem;">${card.summary || ''}</span></div>
-      <span class="toggle" id="toggle-${idx}">+</span>
-    </div>
-    <div class="analysis-body" id="analysis-${idx}">${card.content}</div>
-  </div>
-`).join('');
+// (f) Analysis toggle
 function toggleAnalysis(idx) {
-  const body = document.getElementById('analysis-'+idx);
+  const body = document.getElementById('analysis-' + idx);
+  const toggle = document.getElementById('toggle-' + idx);
   body.classList.toggle('open');
-  document.getElementById('toggle-'+idx).textContent = body.classList.contains('open') ? '-' : '+';
+  toggle.textContent = body.classList.contains('open') ? '−' : '+';
 }
-
-// (g) News Timeline
-const timeline = document.getElementById('newsTimeline');
-timeline.innerHTML = DATA.news.map(n => `
-  <div class="tl-item ${n.importance}">
-    <div class="tl-meta">${n.date} · <span class="tag">${n.category}</span></div>
-    <div class="tl-title">${n.title}</div>
-    <div style="color:var(--muted);font-size:0.9rem;">${n.summary}</div>
-  </div>
-`).join('');
 </script>
 </body>
 </html>
