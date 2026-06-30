@@ -1,7 +1,7 @@
 # 我的开发收藏夹
 
 > 每日更新的效率小技巧 & 热门开源仓库收藏  
-> 最后更新：2026-06-30
+> 最后更新：2026-06-27
 
 ---
 
@@ -79,4 +79,3 @@
 | 2026-06-25 | 每日更新：OpenAI发布自研AI推理芯片Jalapeño(9个月流片/推理成本降50%)/美股科技股回调纳指跌0.43%、A股半导体领涨科创50涨超3%/创业板指涨逾2%、美团LongCat开源SOTA/瑞幸AI开放平台/蜜雪雪王AI大脑/星巴克Deep Brew/库迪AI全链路、10篇arXiv前沿论文(幻觉检测/Agent记忆/代码修复Agent等)、5个GitHub Trending仓库(OpenMontage/apple容器等)、7项四问深度分析、Excel+仪表盘重建 |
 | 2026-06-26 | 每日更新：IBM发布全球首个亚1纳米芯片技术/美光财报大超预期带动芯片股大涨/苹果WWDC发布新一代Apple Intelligence与Siri AI、A股6月25日收盘科创50涨3.87%/港股恒生科技跌1.63%/美股6月26日纳指跌0.46%、8篇arXiv前沿论文(TryOnCrafter/Scaling LLM Reasoning/Voice AI情感鸿沟等)、5个GitHub Trending仓库(OpenMontage/design.md/apple container/AWS Agent Toolkit/MinerU)、5项消费品牌AI动态(美团/星巴克/阿里通义千问/饿了么/霸王茶姬)、10项四问深度分析、Excel+仪表盘重建 |
 | 2026-06-27 | 每日更新：Anthropic与美国政府达成AI模型限制解除协议、半导体设备增速预期上调至23.5%、美股芯片股重挫西部数据跌13%、A股创业板指跌逾4%、15篇arXiv前沿论文（无Ground-Truth RL/世界模型幻觉/Bengio玻尔兹曼生成器等）、8个GitHub Trending仓库（simplex-chat/design.md/OpenMontage/MinerU/AWS Agent Toolkit等）、10项四问深度分析、Excel+仪表盘重建 |
-| 2026-06-30 | 每日更新：韩国公布1461万亿韩元AI/半导体投资计划/中国芯片出口同比暴增110%/美股三大指数齐创新高/英伟达纳入标普500预期/星巴克上线美团外卖、A股6月29日科创50大涨4.61%/美股6月30日纳指涨2.07%、8篇arXiv前沿论文（多模态评估/3D高斯泼溅/机器人物理仿真/LLM训练稳定性等）、5个GitHub Trending仓库（simplex-chat/agency-agents/FluidVoice/ai-berkshire/video-use）、5项消费品牌AI动态（星巴克/美团/喜茶/蜜雪冰城/霸王茶姬）、10项四问深度分析、Excel+仪表盘重建 |
