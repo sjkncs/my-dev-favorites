@@ -11,7 +11,7 @@
       "trivia": 1,
       "memes": 1,
       "consumerAI": 42,
-      "aiModels": 11,
+      "aiModels": 17,
       "techNews": 107,
       "stockMarket": 108,
       "papers": 110
@@ -3452,6 +3452,226 @@
       ],
       "sources": [
         "https://www.meituan.com/news/NN260116211001625"
+      ]
+    },
+    {
+      "id": "model-012",
+      "name": "GPT-5",
+      "vendor": "OpenAI",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 10,
+        "coding": 9,
+        "multimodal": 9,
+        "priceCompetitiveness": 2,
+        "contextLength": 8,
+        "ecosystem": 10
+      },
+      "pricing": {
+        "input": 25,
+        "output": 100,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "128K",
+      "openSource": false,
+      "launchDate": "2026-01",
+      "highlights": [
+        "系统卡由485位作者联合发布",
+        "幻觉率显著降低",
+        "指令跟随与谄媚问题同步改善",
+        "生化领域高能力安全评级"
+      ],
+      "weaknesses": [
+        "定价高昂，性价比低于开源替代",
+        "闭源模型无法审计训练数据",
+        "部分安全评估细节未完全公开"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2601.03267"
+      ]
+    },
+    {
+      "id": "model-013",
+      "name": "Claude 4 (2025 Release)",
+      "vendor": "Anthropic",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 9,
+        "coding": 10,
+        "multimodal": 8,
+        "priceCompetitiveness": 4,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 15,
+        "output": 75,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "200K",
+      "openSource": false,
+      "launchDate": "2025-05-22",
+      "highlights": [
+        "发布Opus 4与Sonnet 4双版本",
+        "扩展思考最长可达64K tokens",
+        "编程能力行业领先",
+        "支持并行工具调用与本地文件记忆"
+      ],
+      "weaknesses": [
+        "Opus定价为当前最贵梯队",
+        "多模态能力略逊于Gemini",
+        "生态仍主要绑定AWS/Amazon"
+      ],
+      "sources": [
+        "https://www.anthropic.com/news/claude-4"
+      ]
+    },
+    {
+      "id": "model-014",
+      "name": "Gemini 2.5",
+      "vendor": "Google",
+      "parameters": "未公开",
+      "scores": {
+        "reasoning": 9,
+        "coding": 8,
+        "multimodal": 10,
+        "priceCompetitiveness": 5,
+        "contextLength": 9,
+        "ecosystem": 9
+      },
+      "pricing": {
+        "input": 5,
+        "output": 20,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "1M",
+      "openSource": false,
+      "launchDate": "2025-07",
+      "highlights": [
+        "arXiv技术报告2507.06261",
+        "Jeff Dean等Google核心作者署名",
+        "原生多模态推理能力突出",
+        "长上下文理解与视频理解并重"
+      ],
+      "weaknesses": [
+        "具体模型架构与参数量未公开",
+        "中文场景优化仍弱于国产模型",
+        "高算力依赖导致私有化成本不低"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2507.06261"
+      ]
+    },
+    {
+      "id": "model-015",
+      "name": "Llama 4",
+      "vendor": "Meta",
+      "parameters": "17B active (MoE total undisclosed)",
+      "scores": {
+        "reasoning": 8,
+        "coding": 8,
+        "multimodal": 9,
+        "priceCompetitiveness": 10,
+        "contextLength": 10,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "unit": "开源免费"
+      },
+      "contextWindow": "10M (Scout)",
+      "openSource": true,
+      "launchDate": "2025-04-05",
+      "highlights": [
+        "Scout变体支持1000万token上下文",
+        "MoE架构+早期视觉融合",
+        "仅17B激活参数即可对标大模型",
+        "原生图像与视频理解",
+        "权重可直接下载部署"
+      ],
+      "weaknesses": [
+        "总参数量未完全披露",
+        "10M长上下文实际检索精度待验证",
+        "中文训练数据比例与效果不明"
+      ],
+      "sources": [
+        "https://ai.meta.com/blog/llama-4-multimodal-intelligence/"
+      ]
+    },
+    {
+      "id": "model-016",
+      "name": "Qwen3",
+      "vendor": "Alibaba",
+      "parameters": "0.6B-32B dense, 235B MoE",
+      "scores": {
+        "reasoning": 8,
+        "coding": 8,
+        "multimodal": 7,
+        "priceCompetitiveness": 10,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "unit": "开源免费"
+      },
+      "contextWindow": "128K",
+      "openSource": true,
+      "launchDate": "2025-04-29",
+      "highlights": [
+        "稠密模型0.6B-32B + 235B MoE",
+        "36T训练token",
+        "支持119种语言",
+        "动态推理/思考模式（最高38K thinking tokens）",
+        "完全开源可商用"
+      ],
+      "weaknesses": [
+        "中文长文本细节处理能力待测",
+        "小模型能力边界有限",
+        "企业级服务生态仍在建设"
+      ],
+      "sources": [
+        "https://qwenlm.github.io/blog/qwen3/"
+      ]
+    },
+    {
+      "id": "model-017",
+      "name": "DeepSeek V4 (Official)",
+      "vendor": "DeepSeek",
+      "parameters": "V4-Pro 1.6T total / 49B active; V4-Flash 284B total / 13B active",
+      "scores": {
+        "reasoning": 9,
+        "coding": 9,
+        "multimodal": 7,
+        "priceCompetitiveness": 10,
+        "contextLength": 10,
+        "ecosystem": 7
+      },
+      "pricing": {
+        "input": 2,
+        "output": 8,
+        "unit": "$/1M tokens"
+      },
+      "contextWindow": "1M",
+      "openSource": true,
+      "launchDate": "2026-04-24",
+      "highlights": [
+        "1M超长上下文",
+        "KV缓存压缩至10%",
+        "mHC残差增强 + CSA/HCA混合注意力 + Muon优化器",
+        "适配华为昇腾算力",
+        "API价格约为GPT-5.5的1/7"
+      ],
+      "weaknesses": [
+        "多模态能力相对薄弱",
+        "1M上下文实际检索精度待验证",
+        "海外合规部署存在不确定性"
+      ],
+      "sources": [
+        "https://www.deepseek.com/",
+        "https://github.com/deepseek-ai/DeepSeek-V4"
       ]
     }
   ],
