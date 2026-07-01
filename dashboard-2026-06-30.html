@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的开发收藏夹 - 数据仪表盘</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --card: #16213e;
+  --accent: #0f3460;
+  --text: #e0e0e0;
+  --muted: #a0a0a0;
+  --accent-light: #1a5276;
+  --highlight: #e94560;
+  --gold: #f0c040;
+  --green: #2ecc71;
+  --blue: #3498db;
+  --purple: #9b59b6;
+  --orange: #e67e22;
+  --cyan: #1abc9c;
+  --red: #e74c3c;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.6;
+}
+.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+header { text-align: center; margin-bottom: 24px; }
+header h1 { margin: 0; font-size: 2rem; color: #fff; }
+header p { margin: 6px 0 0; color: var(--muted); }
+.stats-bar {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+  margin-bottom: 28px;
+}
+.stat {
+  background: var(--card); padding: 16px 22px; border-radius: var(--radius);
+  box-shadow: var(--shadow); min-width: 120px; text-align: center;
+}
+.stat .num { font-size: 1.6rem; font-weight: bold; color: var(--highlight); }
+.stat .label { font-size: 0.85rem; color: var(--muted); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 20px; }
+.grid-1 { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
+.card {
+  background: var(--card); border-radius: var(--radius); padding: 20px;
+  box-shadow: var(--shadow);
+}
+.card h2 { margin: 0 0 16px; font-size: 1.15rem; color: #fff; border-left: 4px solid var(--highlight); padding-left: 10px; }
+.chart-wrap { position: relative; height: 360px; }
+.chart-wrap.small { height: 300px; }
+.model-charts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; }
+th { cursor: pointer; background: var(--accent); color: #fff; position: sticky; top: 0; }
+tr:hover { background: rgba(255,255,255,0.04); }
+td a { color: var(--blue); text-decoration: none; }
+td a:hover { text-decoration: underline; }
+.award-gold { color: var(--gold); font-weight: bold; }
+.award-silver { color: #c0c0c0; font-weight: bold; }
+
+.analysis-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.expand-card { background: var(--accent); border-radius: var(--radius); overflow: hidden; }
+.expand-header {
+  padding: 14px 16px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  font-weight: bold; color: #fff;
+}
+.expand-header:hover { background: var(--accent-light); }
+.expand-body {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+  background: rgba(0,0,0,0.15);
+}
+.expand-card.open .expand-body { max-height: 1200px; }
+.expand-body-inner { padding: 16px; }
+.expand-body h4 { margin: 12px 0 6px; color: var(--cyan); font-size: 0.95rem; }
+.expand-body p { margin: 0 0 10px; color: var(--text); font-size: 0.9rem; }
+.advice-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.85rem; }
+.advice-table th, .advice-table td { padding: 8px; border: 1px solid rgba(255,255,255,0.08); }
+.advice-table th { background: rgba(255,255,255,0.08); text-align: left; }
+
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px;
+  background: rgba(255,255,255,0.12);
+}
+.tl-item { position: relative; margin-bottom: 18px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--muted);
+}
+.tl-item.high::before { background: var(--red); box-shadow: 0 0 8px var(--red); }
+.tl-item.medium::before { background: var(--gold); }
+.tl-item.low::before { background: #888; }
+.tl-date { font-size: 0.8rem; color: var(--muted); }
+.tl-title { font-weight: bold; color: #fff; }
+.tl-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+.tl-summary { font-size: 0.9rem; color: var(--text); }
+
+footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 32px; }
+
+@media(max-width:900px) {
+  .grid-2, .analysis-grid, .model-charts { grid-template-columns: 1fr; }
+}
+@media(max-width:520px) {
+  .container { padding: 12px; }
+  .card { padding: 14px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>我的开发收藏夹</h1>
+    <p>每日更新的效率工具、开源仓库、消费品牌 AI、科技新闻、股市动态与顶会论文 · 最后更新：2026-06-30</p>
+  </header>
+
+  <div class="stats-bar" id="statsBar"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>消费品牌 AI 能力雷达</h2>
+      <div class="chart-wrap"><canvas id="consumerRadar"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>AI 大模型能力雷达 & API 价格</h2>
+      <div class="model-charts">
+        <div class="chart-wrap small"><canvas id="modelRadar"></canvas></div>
+        <div class="chart-wrap small"><canvas id="priceBar"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>三大股指月度趋势</h2>
+      <div class="chart-wrap"><canvas id="stockLine"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>半导体关键指标</h2>
+      <div class="chart-wrap"><canvas id="semiBar"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>顶会论文清单</h2>
+    <div class="table-wrap">
+      <table id="papersTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0,'str')">论文标题</th>
+            <th onclick="sortTable(1,'str')">作者</th>
+            <th onclick="sortTable(2,'str')">会议</th>
+            <th onclick="sortTable(3,'str')">奖项</th>
+            <th onclick="sortTable(4,'num')">商业潜力</th>
+            <th onclick="sortTable(5,'str')">摘要</th>
+            <th onclick="sortTable(6,'str')">链接</th>
+          </tr>
+        </thead>
+        <tbody id="papersBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>四问深度分析</h2>
+    <div class="analysis-grid" id="analysisGrid"></div>
+  </div>
+
+  <div class="card">
+    <h2>科技新闻时间线</h2>
+    <div class="timeline" id="newsTimeline"></div>
+  </div>
+
+  <footer>
+    <p>数据来源：favorites.json · 仓库：<a href="https://github.com/sjkncs/my-dev-favorites" target="_blank" style="color:var(--blue)">https://github.com/sjkncs/my-dev-favorites</a></p>
+  </footer>
+</div>
+
+<script>
+var DATA = {
+  "consumerAI": [
+    {
+      "brand": "星巴克",
+      "tool": "美团外卖合作 + 1971 客厅",
+      "category": "咖啡 / 外卖",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 8,
+        "scale": 9,
+        "techBarrier": 5,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "解决品牌老化与外卖渠道单一化，应对瑞幸/库迪/霸王茶姬冲击",
+        "claimedContribution": "多平台运营 + 场景化服务吸引年轻消费者，推动外卖平台互联互通",
+        "attackPoints": [
+          "P0: 多平台履约复杂度影响出品一致性",
+          "P1: 美团用户价格敏感与星巴克高端定位张力",
+          "P2: 产品创新不足时渠道扩张难扭转同店增长"
+        ],
+        "actionGuide": {
+          "scholar": "研究平台经济学、独家合约与多归属策略",
+          "engineer": "学习 O2O 多平台订单聚合与履约调度",
+          "investor": "关注中国区同店增速与美团到店/到家协同"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "美团",
+      "tool": "LongCat 大模型 + 战略修复模式",
+      "category": "本地生活 / AI 平台",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "在股价低迷、外卖大战、AI 变局下重建财务纪律与竞争优势",
+        "claimedContribution": "理性投入 + LongCat 大模型提升配送与商家运营效率",
+        "attackPoints": [
+          "P0: 出海与优选战略失误的沉没成本",
+          "P1: AI 入口短期内难以颠覆本地生活格局",
+          "P2: 抖音、京东等跨界竞争加剧"
+        ],
+        "actionGuide": {
+          "scholar": "研究本地生活平台竞争与大模型调度优化",
+          "engineer": "学习大规模即时配送调度与 Agent 应用",
+          "investor": "关注利润修复节奏与 AI 投入 ROI"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "喜茶",
+      "tool": "智能出茶机 / ChatBI",
+      "category": "新茶饮 / 智能设备",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "通过设备自动化降低人工成本、提升出品一致性、加速门店扩张",
+        "claimedContribution": "4 秒配料 + 10 秒出杯，标准化支撑加盟与出海",
+        "attackPoints": [
+          "P0: 设备成本与加盟商投入能力",
+          "P1: 高峰期稳定性与故障率",
+          "P2: 自动化与品牌手工感叙事冲突"
+        ],
+        "actionGuide": {
+          "scholar": "研究餐饮自动化对人效与顾客感知价值的影响",
+          "engineer": "学习食品级 IoT 设备与门店 SaaS 集成",
+          "investor": "将含 AI 量视为加盟护城河，验证单店投资回报周期"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧 AI 公司",
+      "category": "新茶饮 / AI 算法",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 6,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "用算法优化超大规模加盟网络的供应链与门店运营",
+        "claimedContribution": "成立 AI 公司，布局算法软件开发",
+        "attackPoints": [
+          "P0: 低价模型下 AI 投入 ROI 不明确",
+          "P1: 全球门店数字化水平差异大",
+          "P2: 与喜茶/霸王茶姬的技术人才竞争"
+        ],
+        "actionGuide": {
+          "scholar": "研究低成本大规模连锁的数字化路径",
+          "engineer": "学习供应链预测与门店智能补货",
+          "investor": "关注 AI 对毛利率与周转率的实际改善"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "霸王茶姬",
+      "tool": "北美扩张 + 智能调饮",
+      "category": "新茶饮 / 出海",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 8,
+        "scale": 7,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "在出海浪潮中建立全球化高端茶饮品牌",
+        "claimedContribution": "北美扩张 + 智能调饮提升出品效率",
+        "attackPoints": [
+          "P0: 海外市场本地化与合规成本",
+          "P1: 与星巴克、本地品牌的直接竞争",
+          "P2: 快速扩张下的品控一致性"
+        ],
+        "actionGuide": {
+          "scholar": "研究消费品牌全球化与文化适配",
+          "engineer": "学习智能调饮设备与推荐系统",
+          "investor": "关注北美单店模型与品牌势能"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "瑞幸咖啡",
+      "tool": "MCP/CLI/Skill",
+      "category": "AI点单",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 7,
+        "scale": 9,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "降低交易摩擦成本，抢占AI Agent时代的渠道入口",
+        "claimedContribution": "自然语言点单覆盖增量用户，智能优惠券提升核销率",
+        "attackPoints": [
+          "P0: 不支持外卖(覆盖仅60-70%订单)",
+          "P1: 语义理解容错性",
+          "P2: MCP协议无壁垒"
+        ],
+        "actionGuide": {
+          "scholar": "精读MCP协议设计",
+          "engineer": "学习MCP server架构",
+          "investor": "关注AI渠道投入意愿"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "喜茶",
+      "tool": "全套智能茶饮设备",
+      "category": "门店自动化",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 8,
+        "scale": 8,
+        "techBarrier": 9,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "将'手艺'转化为'工艺'，在规模化扩张中保持产品品质一致性",
+        "claimedContribution": "出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖",
+        "attackPoints": [
+          "P0: 硬件迭代是刚性约束，单店设备投入数十万元",
+          "P1: '手工感'品牌风险",
+          "P2: 设备故障可能直接导致门店瘫痪"
+        ],
+        "actionGuide": {
+          "scholar": "研究智能设备的专利文件和工程设计思路",
+          "engineer": "学习'手艺转工艺'的参数化思维",
+          "investor": "关注硬件壁垒的战略价值"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "奈雪的茶",
+      "tool": "AI溯源预警系统 + 智能茶饮机",
+      "category": "食品安全AI",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 7,
+        "techBarrier": 7,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "构建'信任基础设施'，在食品安全焦虑中建立差异化信任壁垒",
+        "claimedContribution": "消费者信任度提升，品牌差异化，供应链管理水平提升",
+        "attackPoints": [
+          "P0: 溯源数据'第一公里'真实性无法保证",
+          "P1: AI包装下的实际技术含量存疑",
+          "P2: 全面覆盖成本和管理复杂度极高"
+        ],
+        "actionGuide": {
+          "scholar": "研究溯源系统的数据架构和异常检测算法",
+          "engineer": "学习将'信任'产品化的设计思路",
+          "investor": "关注信任资产的品牌溢价能力"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧科技",
+      "category": "AI底层技术",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 5,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间",
+        "claimedContribution": "供应链成本优化，门店补货效率提升，规模化运营能力",
+        "attackPoints": [
+          "P0: AI系统1-2%成本节约能否覆盖系统建设运维成本",
+          "P1: 下沉市场门店数据录入质量差",
+          "P2: AI只能支撑成本节约，想象空间有限"
+        ],
+        "actionGuide": {
+          "scholar": "研究大规模供应链ML优化的工程实践",
+          "engineer": "学习在极致成本约束下做务实AI",
+          "investor": "关注3万+门店规模下供应链效率的亿级利润增量"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "Green Dot Assist（绿点助手）",
+      "category": "员工辅助AI",
+      "scores": {
+        "aiDepth": 4,
+        "ux": 7,
+        "scale": 7,
+        "techBarrier": 3,
+        "commercialization": 5
+      },
+      "fourQuestions": {
+        "realProblem": "降低一线员工认知负荷，在人员高流动率下保障服务一致性",
+        "claimedContribution": "新员工培训时间缩短，出品一致性提升，员工满意度改善",
+        "attackPoints": [
+          "P0: 技术壁垒极低，任何品牌几周内可搭建类似系统",
+          "P1: 高并发场景下API成本和延迟问题",
+          "P2: 忙碌时员工是否真的会查询AI"
+        ],
+        "actionGuide": {
+          "scholar": "研究知识库构建和SOP结构化方法",
+          "engineer": "学习将AI嵌入一线员工工作流的产品思路",
+          "investor": "关注技术门槛低的工具类AI的投资价值"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "Deep Brew AI 平台",
+      "category": "个性化推荐",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 9,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 9
+      },
+      "fourQuestions": {
+        "realProblem": "最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'",
+        "claimedContribution": "会员保留率提升15%，创造约2.5亿美元增量年收入",
+        "attackPoints": [
+          "P0: 2.5亿美元增量的归因方法极其模糊",
+          "P1: 数据飞轮在新市场/新品类上的冷启动问题",
+          "P2: 隐私合规审查日益严格"
+        ],
+        "actionGuide": {
+          "scholar": "精读星巴克Investor Day关于Deep Brew的技术演示",
+          "engineer": "学习AI推荐系统与会员LTV深度绑定的产品思维",
+          "investor": "关注AI驱动的会员运营的ROI衡量方法论"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "AI库存管理工具（已停用）",
+      "category": "需求预测AI（失败案例）",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 2,
+        "scale": 1,
+        "techBarrier": 5,
+        "commercialization": 0
+      },
+      "fourQuestions": {
+        "realProblem": "用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失",
+        "claimedContribution": "声称可降低库存浪费20-30%（实际未达成）",
+        "attackPoints": [
+          "P0: 组织适配失败——门店经理抵触AI'夺权'",
+          "P1: 长尾品类需求预测精度崩溃",
+          "P2: 底层库存数据不准确（GIGO问题）",
+          "P3: 缺乏渐进式过渡，试图一步到位替代人工"
+        ],
+        "actionGuide": {
+          "scholar": "精读失败案例的公开报道和员工反馈",
+          "engineer": "学习'先辅助建议后逐步自动化'的正确路径",
+          "investor": "警惕声称'AI可直接替代人工订货'的供应商"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "库迪咖啡",
+      "tool": "智慧运营体系",
+      "category": "智慧运营",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 6,
+        "scale": 9,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "通过'去技能化'实现极速扩张，将门店运营对人的依赖降到最低",
+        "claimedContribution": "支撑从0到数千家门店的超高速扩张，运营标准化",
+        "attackPoints": [
+          "P0: 动态定价合规风险（价格歧视/大数据杀熟）",
+          "P1: '去技能化'反而加剧人员流动",
+          "P2: 加盟商对'系统说了算但亏的是我'不满"
+        ],
+        "actionGuide": {
+          "scholar": "研究'去技能化'运营设计思路",
+          "engineer": "学习动态定价的技术实现框架",
+          "investor": "评估系统控制+加盟扩张模式的可持续性"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "肯德基",
+      "tool": "AI点餐助手'小K'",
+      "category": "AI语音点餐",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "在得来速和店内场景用语音AI替代人工点餐，降低人力成本",
+        "claimedContribution": "点餐效率提升，人力成本节约，智能推荐增加客单价",
+        "attackPoints": [
+          "P0: 嘈杂环境语音识别准确率下降，纠错成本高",
+          "P1: 复杂定制需求（不要酸黄瓜多加酱）处理困难",
+          "P2: 中国方言多样性对ASR要求极高"
+        ],
+        "actionGuide": {
+          "scholar": "精读嘈杂环境语音识别技术方案",
+          "engineer": "学习'引导式对话'降低语音识别难度",
+          "investor": "评估得来速vs店内场景的落地差异"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "麦当劳",
+      "tool": "RGM BOSS + 汉堡大学AI智能陪练",
+      "category": "员工数字化",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 4,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "员工一站式工作辅助与培训数字化化，降低管理成本",
+        "claimedContribution": "5年内计划投入40亿元数字化创新",
+        "attackPoints": [
+          "P0: 技术门槛低，RAG应用同质化",
+          "P1: AI陪练'个性化学习路径'的实际效果存疑",
+          "P2: 员工对数字化培训的接受度"
+        ],
+        "actionGuide": {
+          "scholar": "研究AI虚拟导师与脑神经科学结合的设计",
+          "engineer": "学习员工辅助AI的产品架构",
+          "investor": "关注40亿数字化投入的实际产出"
+        }
+      },
+      "addedAt": ""
+    }
+  ],
+  "analysis": [
+    {
+      "brand": "星巴克",
+      "tool": "美团外卖合作 + 1971 客厅",
+      "category": "咖啡 / 外卖",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 8,
+        "scale": 9,
+        "techBarrier": 5,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "解决品牌老化与外卖渠道单一化，应对瑞幸/库迪/霸王茶姬冲击",
+        "claimedContribution": "多平台运营 + 场景化服务吸引年轻消费者，推动外卖平台互联互通",
+        "attackPoints": [
+          "P0: 多平台履约复杂度影响出品一致性",
+          "P1: 美团用户价格敏感与星巴克高端定位张力",
+          "P2: 产品创新不足时渠道扩张难扭转同店增长"
+        ],
+        "actionGuide": {
+          "scholar": "研究平台经济学、独家合约与多归属策略",
+          "engineer": "学习 O2O 多平台订单聚合与履约调度",
+          "investor": "关注中国区同店增速与美团到店/到家协同"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "美团",
+      "tool": "LongCat 大模型 + 战略修复模式",
+      "category": "本地生活 / AI 平台",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "在股价低迷、外卖大战、AI 变局下重建财务纪律与竞争优势",
+        "claimedContribution": "理性投入 + LongCat 大模型提升配送与商家运营效率",
+        "attackPoints": [
+          "P0: 出海与优选战略失误的沉没成本",
+          "P1: AI 入口短期内难以颠覆本地生活格局",
+          "P2: 抖音、京东等跨界竞争加剧"
+        ],
+        "actionGuide": {
+          "scholar": "研究本地生活平台竞争与大模型调度优化",
+          "engineer": "学习大规模即时配送调度与 Agent 应用",
+          "investor": "关注利润修复节奏与 AI 投入 ROI"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "喜茶",
+      "tool": "智能出茶机 / ChatBI",
+      "category": "新茶饮 / 智能设备",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "通过设备自动化降低人工成本、提升出品一致性、加速门店扩张",
+        "claimedContribution": "4 秒配料 + 10 秒出杯，标准化支撑加盟与出海",
+        "attackPoints": [
+          "P0: 设备成本与加盟商投入能力",
+          "P1: 高峰期稳定性与故障率",
+          "P2: 自动化与品牌手工感叙事冲突"
+        ],
+        "actionGuide": {
+          "scholar": "研究餐饮自动化对人效与顾客感知价值的影响",
+          "engineer": "学习食品级 IoT 设备与门店 SaaS 集成",
+          "investor": "将含 AI 量视为加盟护城河，验证单店投资回报周期"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧 AI 公司",
+      "category": "新茶饮 / AI 算法",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 6,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "用算法优化超大规模加盟网络的供应链与门店运营",
+        "claimedContribution": "成立 AI 公司，布局算法软件开发",
+        "attackPoints": [
+          "P0: 低价模型下 AI 投入 ROI 不明确",
+          "P1: 全球门店数字化水平差异大",
+          "P2: 与喜茶/霸王茶姬的技术人才竞争"
+        ],
+        "actionGuide": {
+          "scholar": "研究低成本大规模连锁的数字化路径",
+          "engineer": "学习供应链预测与门店智能补货",
+          "investor": "关注 AI 对毛利率与周转率的实际改善"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "霸王茶姬",
+      "tool": "北美扩张 + 智能调饮",
+      "category": "新茶饮 / 出海",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 8,
+        "scale": 7,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "在出海浪潮中建立全球化高端茶饮品牌",
+        "claimedContribution": "北美扩张 + 智能调饮提升出品效率",
+        "attackPoints": [
+          "P0: 海外市场本地化与合规成本",
+          "P1: 与星巴克、本地品牌的直接竞争",
+          "P2: 快速扩张下的品控一致性"
+        ],
+        "actionGuide": {
+          "scholar": "研究消费品牌全球化与文化适配",
+          "engineer": "学习智能调饮设备与推荐系统",
+          "investor": "关注北美单店模型与品牌势能"
+        }
+      },
+      "addedAt": "2026-06-30"
+    },
+    {
+      "brand": "瑞幸咖啡",
+      "tool": "MCP/CLI/Skill",
+      "category": "AI点单",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 7,
+        "scale": 9,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "降低交易摩擦成本，抢占AI Agent时代的渠道入口",
+        "claimedContribution": "自然语言点单覆盖增量用户，智能优惠券提升核销率",
+        "attackPoints": [
+          "P0: 不支持外卖(覆盖仅60-70%订单)",
+          "P1: 语义理解容错性",
+          "P2: MCP协议无壁垒"
+        ],
+        "actionGuide": {
+          "scholar": "精读MCP协议设计",
+          "engineer": "学习MCP server架构",
+          "investor": "关注AI渠道投入意愿"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "喜茶",
+      "tool": "全套智能茶饮设备",
+      "category": "门店自动化",
+      "scores": {
+        "aiDepth": 6,
+        "ux": 8,
+        "scale": 8,
+        "techBarrier": 9,
+        "commercialization": 8
+      },
+      "fourQuestions": {
+        "realProblem": "将'手艺'转化为'工艺'，在规模化扩张中保持产品品质一致性",
+        "claimedContribution": "出品一致性提升，出杯速度提升30-50%，降低高技能员工依赖",
+        "attackPoints": [
+          "P0: 硬件迭代是刚性约束，单店设备投入数十万元",
+          "P1: '手工感'品牌风险",
+          "P2: 设备故障可能直接导致门店瘫痪"
+        ],
+        "actionGuide": {
+          "scholar": "研究智能设备的专利文件和工程设计思路",
+          "engineer": "学习'手艺转工艺'的参数化思维",
+          "investor": "关注硬件壁垒的战略价值"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "奈雪的茶",
+      "tool": "AI溯源预警系统 + 智能茶饮机",
+      "category": "食品安全AI",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 7,
+        "techBarrier": 7,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "构建'信任基础设施'，在食品安全焦虑中建立差异化信任壁垒",
+        "claimedContribution": "消费者信任度提升，品牌差异化，供应链管理水平提升",
+        "attackPoints": [
+          "P0: 溯源数据'第一公里'真实性无法保证",
+          "P1: AI包装下的实际技术含量存疑",
+          "P2: 全面覆盖成本和管理复杂度极高"
+        ],
+        "actionGuide": {
+          "scholar": "研究溯源系统的数据架构和异常检测算法",
+          "engineer": "学习将'信任'产品化的设计思路",
+          "investor": "关注信任资产的品牌溢价能力"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "蜜雪冰城",
+      "tool": "雪王爱智慧科技",
+      "category": "AI底层技术",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 5,
+        "scale": 10,
+        "techBarrier": 5,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "在极致低价模型下优化供应链效率，从每一个环节中挤出成本空间",
+        "claimedContribution": "供应链成本优化，门店补货效率提升，规模化运营能力",
+        "attackPoints": [
+          "P0: AI系统1-2%成本节约能否覆盖系统建设运维成本",
+          "P1: 下沉市场门店数据录入质量差",
+          "P2: AI只能支撑成本节约，想象空间有限"
+        ],
+        "actionGuide": {
+          "scholar": "研究大规模供应链ML优化的工程实践",
+          "engineer": "学习在极致成本约束下做务实AI",
+          "investor": "关注3万+门店规模下供应链效率的亿级利润增量"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "Green Dot Assist（绿点助手）",
+      "category": "员工辅助AI",
+      "scores": {
+        "aiDepth": 4,
+        "ux": 7,
+        "scale": 7,
+        "techBarrier": 3,
+        "commercialization": 5
+      },
+      "fourQuestions": {
+        "realProblem": "降低一线员工认知负荷，在人员高流动率下保障服务一致性",
+        "claimedContribution": "新员工培训时间缩短，出品一致性提升，员工满意度改善",
+        "attackPoints": [
+          "P0: 技术壁垒极低，任何品牌几周内可搭建类似系统",
+          "P1: 高并发场景下API成本和延迟问题",
+          "P2: 忙碌时员工是否真的会查询AI"
+        ],
+        "actionGuide": {
+          "scholar": "研究知识库构建和SOP结构化方法",
+          "engineer": "学习将AI嵌入一线员工工作流的产品思路",
+          "investor": "关注技术门槛低的工具类AI的投资价值"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "Deep Brew AI 平台",
+      "category": "个性化推荐",
+      "scores": {
+        "aiDepth": 8,
+        "ux": 9,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 9
+      },
+      "fourQuestions": {
+        "realProblem": "最大化客户生命周期价值（LTV），将'偶尔一杯'转化为'每天一杯'",
+        "claimedContribution": "会员保留率提升15%，创造约2.5亿美元增量年收入",
+        "attackPoints": [
+          "P0: 2.5亿美元增量的归因方法极其模糊",
+          "P1: 数据飞轮在新市场/新品类上的冷启动问题",
+          "P2: 隐私合规审查日益严格"
+        ],
+        "actionGuide": {
+          "scholar": "精读星巴克Investor Day关于Deep Brew的技术演示",
+          "engineer": "学习AI推荐系统与会员LTV深度绑定的产品思维",
+          "investor": "关注AI驱动的会员运营的ROI衡量方法论"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "星巴克",
+      "tool": "AI库存管理工具（已停用）",
+      "category": "需求预测AI（失败案例）",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 2,
+        "scale": 1,
+        "techBarrier": 5,
+        "commercialization": 0
+      },
+      "fourQuestions": {
+        "realProblem": "用AI需求预测替代门店经理手工订货，降低库存浪费和缺货损失",
+        "claimedContribution": "声称可降低库存浪费20-30%（实际未达成）",
+        "attackPoints": [
+          "P0: 组织适配失败——门店经理抵触AI'夺权'",
+          "P1: 长尾品类需求预测精度崩溃",
+          "P2: 底层库存数据不准确（GIGO问题）",
+          "P3: 缺乏渐进式过渡，试图一步到位替代人工"
+        ],
+        "actionGuide": {
+          "scholar": "精读失败案例的公开报道和员工反馈",
+          "engineer": "学习'先辅助建议后逐步自动化'的正确路径",
+          "investor": "警惕声称'AI可直接替代人工订货'的供应商"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "库迪咖啡",
+      "tool": "智慧运营体系",
+      "category": "智慧运营",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 6,
+        "scale": 9,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "通过'去技能化'实现极速扩张，将门店运营对人的依赖降到最低",
+        "claimedContribution": "支撑从0到数千家门店的超高速扩张，运营标准化",
+        "attackPoints": [
+          "P0: 动态定价合规风险（价格歧视/大数据杀熟）",
+          "P1: '去技能化'反而加剧人员流动",
+          "P2: 加盟商对'系统说了算但亏的是我'不满"
+        ],
+        "actionGuide": {
+          "scholar": "研究'去技能化'运营设计思路",
+          "engineer": "学习动态定价的技术实现框架",
+          "investor": "评估系统控制+加盟扩张模式的可持续性"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "肯德基",
+      "tool": "AI点餐助手'小K'",
+      "category": "AI语音点餐",
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 6,
+        "commercialization": 7
+      },
+      "fourQuestions": {
+        "realProblem": "在得来速和店内场景用语音AI替代人工点餐，降低人力成本",
+        "claimedContribution": "点餐效率提升，人力成本节约，智能推荐增加客单价",
+        "attackPoints": [
+          "P0: 嘈杂环境语音识别准确率下降，纠错成本高",
+          "P1: 复杂定制需求（不要酸黄瓜多加酱）处理困难",
+          "P2: 中国方言多样性对ASR要求极高"
+        ],
+        "actionGuide": {
+          "scholar": "精读嘈杂环境语音识别技术方案",
+          "engineer": "学习'引导式对话'降低语音识别难度",
+          "investor": "评估得来速vs店内场景的落地差异"
+        }
+      },
+      "addedAt": ""
+    },
+    {
+      "brand": "麦当劳",
+      "tool": "RGM BOSS + 汉堡大学AI智能陪练",
+      "category": "员工数字化",
+      "scores": {
+        "aiDepth": 5,
+        "ux": 7,
+        "scale": 8,
+        "techBarrier": 4,
+        "commercialization": 6
+      },
+      "fourQuestions": {
+        "realProblem": "员工一站式工作辅助与培训数字化化，降低管理成本",
+        "claimedContribution": "5年内计划投入40亿元数字化创新",
+        "attackPoints": [
+          "P0: 技术门槛低，RAG应用同质化",
+          "P1: AI陪练'个性化学习路径'的实际效果存疑",
+          "P2: 员工对数字化培训的接受度"
+        ],
+        "actionGuide": {
+          "scholar": "研究AI虚拟导师与脑神经科学结合的设计",
+          "engineer": "学习员工辅助AI的产品架构",
+          "investor": "关注40亿数字化投入的实际产出"
+        }
+      },
+      "addedAt": ""
+    }
+  ],
+  "aiModels": [
+    {
+      "name": "GPT-5.5",
+      "vendor": "OpenAI",
+      "scores": {
+        "reasoning": 9,
+        "coding": 8,
+        "multimodal": 9,
+        "priceCompetitiveness": 3,
+        "contextLength": 7,
+        "ecosystem": 10
+      },
+      "pricing": {
+        "input": 15,
+        "output": 60,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "DeepSeek V4",
+      "vendor": "DeepSeek（幻方量化）",
+      "scores": {
+        "reasoning": 8,
+        "coding": 8,
+        "multimodal": 6,
+        "priceCompetitiveness": 10,
+        "contextLength": 7,
+        "ecosystem": 7
+      },
+      "pricing": {
+        "input": 2,
+        "output": 8,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "Claude 4 Opus",
+      "vendor": "Anthropic",
+      "scores": {
+        "reasoning": 9,
+        "coding": 10,
+        "multimodal": 8,
+        "priceCompetitiveness": 4,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 15,
+        "output": 75,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "Claude 4 Sonnet",
+      "vendor": "Anthropic",
+      "scores": {
+        "reasoning": 8,
+        "coding": 9,
+        "multimodal": 8,
+        "priceCompetitiveness": 6,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 3,
+        "output": 15,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "Gemini 3.5 Flash",
+      "vendor": "Google",
+      "scores": {
+        "reasoning": 8,
+        "coding": 7,
+        "multimodal": 9,
+        "priceCompetitiveness": 7,
+        "contextLength": 9,
+        "ecosystem": 9
+      },
+      "pricing": {
+        "input": 1,
+        "output": 4,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "Gemini 3 Deep Think",
+      "vendor": "Google",
+      "scores": {
+        "reasoning": 10,
+        "coding": 7,
+        "multimodal": 8,
+        "priceCompetitiveness": 5,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 10,
+        "output": 40,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "豆包 2.0",
+      "vendor": "字节跳动",
+      "scores": {
+        "reasoning": 7,
+        "coding": 7,
+        "multimodal": 8,
+        "priceCompetitiveness": 8,
+        "contextLength": 7,
+        "ecosystem": 10
+      },
+      "pricing": {
+        "input": 2,
+        "output": 6,
+        "unit": "$/1M tokens"
+      }
+    },
+    {
+      "name": "通义千问 (Qwen)",
+      "vendor": "阿里巴巴",
+      "scores": {
+        "reasoning": 7,
+        "coding": 7,
+        "multimodal": 7,
+        "priceCompetitiveness": 9,
+        "contextLength": 8,
+        "ecosystem": 8
+      },
+      "pricing": {
+        "input": 1,
+        "output": 3,
+        "unit": "$/1M tokens"
+      }
+    }
+  ],
+  "stockMarket": [
+    {
+      "month": "2026-01",
+      "a": 3350,
+      "us": 19800,
+      "hk": 5200
+    },
+    {
+      "month": "2026-02",
+      "a": 3420,
+      "us": 20100,
+      "hk": 5380
+    },
+    {
+      "month": "2026-03",
+      "a": 3380,
+      "us": 20500,
+      "hk": 5500
+    },
+    {
+      "month": "2026-04",
+      "a": 3450,
+      "us": 21200,
+      "hk": 5650
+    },
+    {
+      "month": "2026-05",
+      "a": 3987,
+      "us": 23500,
+      "hk": 5100
+    },
+    {
+      "month": "2026-06",
+      "a": 4073.9,
+      "us": 25820.14,
+      "hk": 4393.01
+    }
+  ],
+  "papers": [
+    {
+      "title": "D4RT: Unified, Fast 4D Scene Reconstruction & Tracking",
+      "authors": "Chuhan Zhang, Guillaume Le Moing, Skanda Koppula et al.",
+      "conference": "CVPR 2026",
+      "summary": "统一前馈Transformer联合推断深度/时空/相机参数，速度快18-300倍",
+      "award": "最佳论文",
+      "url": "https://arxiv.org/abs/2512.08924"
+    },
+    {
+      "title": "TRELLIS.2: Native and Compact Structured Latents for 3D Generation",
+      "authors": "Jianfeng Xiang, Xiaoxue Chen, Sicheng Xu et al.",
+      "conference": "CVPR 2026",
+      "summary": "提出O-Voxel结构化潜表示，实现原生3D大模型生成，17秒内生成超高精度PBR资产",
+      "award": "最佳学生论文",
+      "url": "https://arxiv.org/abs/2512.14692"
+    },
+    {
+      "title": "NitroGen: An Open Foundation Model for Generalist Gaming Agents",
+      "authors": "Loic Magne et al.",
+      "conference": "CVPR 2026",
+      "summary": "基于40,000小时游戏视频训练的通用视觉-动作基础模型，可在1,000多款游戏中执行通用游戏智能体任务",
+      "award": "最佳论文荣誉提名",
+      "url": "https://arxiv.org/abs/2601.02427"
+    },
+    {
+      "title": "Transformers are Inherently Succinct",
+      "authors": "Pascal Bergstraesser, Ryan Cotterell, Anthony W. Lin",
+      "conference": "ICLR 2026",
+      "summary": "理论证明固定精度的Transformer在表达能力上具有内在简洁性，指数级压缩成为可能",
+      "award": "杰出论文奖",
+      "url": "https://arxiv.org/abs/2510.19315"
+    },
+    {
+      "title": "LLMs Get Lost In Multi-Turn Conversation",
+      "authors": "Philippe Laban, Hiroaki Hayashi, Yingbo Zhou, Jennifer Neville",
+      "conference": "ICLR 2026",
+      "summary": "系统评估LLM在多轮对话中的退化现象，性能下降达39%，早期假设锚定效应导致纠正失败",
+      "award": "杰出论文奖",
+      "url": "https://arxiv.org/abs/2505.06120"
+    },
+    {
+      "title": "OPUS: Towards Efficient and Principled Data Selection in Large Language Model Pre-training in Every Iteration",
+      "authors": "Shaobo Wang, Xuan Ouyang, Tianyi Xu, Yuzheng Hu et al.",
+      "conference": "ICML 2026",
+      "summary": "提出在LLM预训练每次迭代中进行高效数据选择的方法，仅用1/7数据超越全量训练",
+      "award": "Oral",
+      "url": "https://arxiv.org/abs/2602.05400"
+    },
+    {
+      "title": "Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs",
+      "authors": "Sagnik Mukherjee, Lifan Yuan, Pavan Jayasinha, Dilek Hakkani-Tuer, Hao Peng",
+      "conference": "ICML 2026",
+      "summary": "挑战Adam优化器在LLM RL中的主导地位，SGD仅更新0.02%参数即匹配AdamW效果",
+      "award": "Oral",
+      "url": "https://arxiv.org/abs/2602.07729"
+    },
+    {
+      "title": "Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Perception in Multimodal LLMs",
+      "authors": "Chufan Shi, Cheng Yang, Jiaqi Wang et al.",
+      "conference": "ICML 2026",
+      "summary": "揭示多模态大模型中视觉感知幻觉，thinking模型视觉幻觉频率是普通VLM的3倍",
+      "award": "Oral",
+      "url": "https://arxiv.org/abs/2605.15864"
+    },
+    {
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "authors": "百度 PaddlePaddle 团队",
+      "conference": "arXiv 2026",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "SENTINEL: Failure-Driven RL for Tool-Using LLM Agents",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "conference": "arXiv 2026",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "conference": "arXiv 2026",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "authors": "Zhang, Qiu, Cui 等",
+      "conference": "arXiv 2026",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "conference": "arXiv 2026",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "authors": "百度 PaddlePaddle 团队",
+      "conference": "arXiv 2026",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "conference": "arXiv 2026",
+      "summary": "失败驱动强化学习框架，高效训练工具使用agent",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "conference": "arXiv 2026",
+      "summary": "统计物理Ising模型引入注意力机制",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "authors": "Zhang, Qiu, Cui 等",
+      "conference": "arXiv 2026",
+      "summary": "统一多模态模型架构，整体式视觉tokenizer",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "conference": "arXiv 2026",
+      "summary": "揭示LoRA缩放因子alpha的独立影响",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG",
+      "authors": "未公开",
+      "conference": "arXiv 2026",
+      "summary": "通过潜在表示实现Agent经验积累和复用",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents",
+      "authors": "未公开",
+      "conference": "arXiv 2026",
+      "summary": "针对Agent静默失败提出干预支持的错误归因框架",
+      "award": "",
+      "url": ""
+    },
+    {
+      "title": "PP-OCRv6: From 1.5M to 34.5M Parameters, Surpassing Billion-Scale VLMs",
+      "authors": "百度 PaddlePaddle 团队",
+      "conference": "arXiv 2026",
+      "summary": "轻量级OCR系统，34.5M参数超越十亿级VLM的OCR能力",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.13108"
+    },
+    {
+      "title": "SENTINEL: Failure-Driven Reinforcement Learning for Tool-Using LLM Agents",
+      "authors": "Ziyi Wang, Yuxuan Lu 等",
+      "conference": "arXiv 2026",
+      "summary": "失败驱动强化学习框架，高效训练工具使用Agent，训练效率提升3-5倍",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.12908"
+    },
+    {
+      "title": "Boltzmann Attention: Learnable Ising Couplings for Cooperative Attention",
+      "authors": "Gilhan Kim, Daniel K. Park",
+      "conference": "arXiv 2026",
+      "summary": "将统计物理Ising模型引入注意力机制，实现注意力头协同工作",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.12478"
+    },
+    {
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "authors": "Zhang, Qiu, Cui 等",
+      "conference": "arXiv 2026",
+      "summary": "原生统一多模态模型架构，整体式视觉tokenizer替代传统patch分割",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.13289"
+    },
+    {
+      "title": "The Hidden Power of Scaling Factor in LoRA Optimization",
+      "authors": "Zicheng Zhang, Haoran Li 等",
+      "conference": "arXiv 2026",
+      "summary": "揭示LoRA缩放因子alpha的独立影响，提出自适应选择策略",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.12883"
+    },
+    {
+      "title": "ExpWeaver: LLM Agents Learn from Experience via Latent RAG",
+      "authors": "未公开",
+      "conference": "arXiv 2026",
+      "summary": "通过潜在表示实现Agent经验积累和复用，构建经验检索库",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.01041"
+    },
+    {
+      "title": "REFLECT: Intervention-Supported Error Attribution for Silent Failures in LLM Agents",
+      "authors": "未公开",
+      "conference": "arXiv 2026",
+      "summary": "针对Agent静默失败提出干预支持的错误归因框架，错误检测率提升40%+",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.09071"
+    },
+    {
+      "title": "Gaze Heads: How VLMs Look at What They Describe",
+      "authors": "Rohit Gandikota, David Bau",
+      "conference": "arXiv 2026",
+      "summary": "发现VLM中演化出特殊的gaze heads注意力头，注意力分布追踪模型正在描述的图像区域",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14703"
+    },
+    {
+      "title": "OmniVideo-100K: A Dataset for Audio-Visual Reasoning through Structured Scripts and Evidence Chains",
+      "authors": "Xinyue Cai, Chaoyou Fu, Yi-Fan Zhang, Ran He, Caifeng Shan",
+      "conference": "arXiv 2026",
+      "summary": "提出OmniVideo-100K数据集，通过实体锚定视频脚本与线索引导问答生成构建结构化证据链",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14702"
+    },
+    {
+      "title": "RATS! Patches Talk Through Registers: Emergent Parts in Register Attention Transformers",
+      "authors": "Timing Yang, Predrag Neskovic, Jansen Seheult, Wenchao Han, Anand Bhattad, Alan Yuille, Feng Wang",
+      "conference": "arXiv 2026",
+      "summary": "通过寄存器注意力机制，Transformer patch令牌涌现出对物体部件的显式表达",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14701"
+    },
+    {
+      "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
+      "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie",
+      "conference": "arXiv 2026",
+      "summary": "将MLLM重新用作带噪表示编码器，输出直接作为扩散Transformer条件信号",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14700"
+    },
+    {
+      "title": "AdaSR: Adaptive Streaming Reasoning with Hierarchical Relative Policy Optimization",
+      "authors": "Junlong Tong, Wenqi Xu, Yingqi Fan, Anhao Zhao, Xuan Lu, Yang Tan, Xiaoyu Shen",
+      "conference": "arXiv 2026",
+      "summary": "自适应流式推理框架，输入流式传输过程中即可推理，突破传统读-再想模式延迟瓶颈",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14694"
+    },
+    {
+      "title": "CORA: Analyzing and Bridging Thinking-Answer Gap in Multimodal RLVR via Consistency-Oriented Reasoning Alignment",
+      "authors": "Jiayue Cao, Zhicong Lu, Xuehan Sun, Wei Jia, Hongling Zheng, Changyuan Tian, Zichuan Lin, Wenqian Lv, Nayu Liu",
+      "conference": "arXiv 2026",
+      "summary": "CORA通过一致性奖励模型将思维-答案语义一致性引入RLVR，缓解推理与答案脱节",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14691"
+    },
+    {
+      "title": "Persona-Pruner: Sculpting Lightweight Models for Role-Playing",
+      "authors": "Jinsu Kim, Jihoon Tack, Noah Lee, Jongheon Jeong",
+      "conference": "ICML 2026",
+      "summary": "从单一角色描述中雕刻轻量级角色专属模型，识别并隔离角色对应子网络",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14695"
+    },
+    {
+      "title": "Instruct-Particulate: Scaling Feed-Forward 3D Object Articulation with Kinematic Control",
+      "authors": "Ruining Li, Yuxin Yao, Matt Zhou, Chuanxia Zheng, Christian Rupprecht, Joan Lasenby, Shangzhe Wu, Andrea Vedaldi",
+      "conference": "arXiv 2026",
+      "summary": "前馈运动学控制实现3D物体关节结构自动推断与建模，单次前向传播预测可驱动关节对象",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.14699"
+    },
+    {
+      "title": "Marginal Advantage Accumulation for Memory-Driven Agent Self-Evolution",
+      "authors": "Mingyu Yang, Keye Zheng, Congchao Cheng 等",
+      "conference": "arXiv 2026",
+      "summary": "提出边缘优势累积机制，使Agent能够基于记忆驱动实现自我进化",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20475"
+    },
+    {
+      "title": "Contagion Networks: Evaluator Bias Propagation in Multi-Agent LLM Systems",
+      "authors": "Zewen Liu 等",
+      "conference": "arXiv 2026",
+      "summary": "揭示多智能体LLM系统中评估者偏见的传播网络",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20493"
+    },
+    {
+      "title": "Beyond Global Replanning: Hierarchical Recovery for Cross-Device Agent Systems",
+      "authors": "Yao 等",
+      "conference": "arXiv 2026",
+      "summary": "针对跨设备Agent系统提出层次化恢复机制，提升复杂任务容错性",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20487"
+    },
+    {
+      "title": "Your Mouse and Eyes Secretly Leak Your Preference: LLM Alignment using Implicit Feedback from Users",
+      "authors": "Chang 等",
+      "conference": "arXiv 2026",
+      "summary": "利用鼠标移动和眼动等隐式反馈进行LLM对齐",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20482"
+    },
+    {
+      "title": "StylisticBias: A Few Human Visual Cues Drive Most Social Biases in MLLMs",
+      "authors": "Kolli 等",
+      "conference": "arXiv 2026",
+      "summary": "发现少数人类视觉线索驱动了多模态大模型中的大部分社会偏见",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20527"
+    },
+    {
+      "title": "Toward Calibrated Mixture-of-Experts Under Distribution Shift",
+      "authors": "Gina Wong, Drew Prinster, Suchi Saria, Rama Chellappa, Anqi Liu",
+      "conference": "arXiv 2026",
+      "summary": "研究分布偏移下MoE模型的校准问题",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20544"
+    },
+    {
+      "title": "The Token Is a Group Element: On Lie-Algebra Attention over Matrix Lie Groups",
+      "authors": "Przemyslaw Musialski 等",
+      "conference": "arXiv 2026",
+      "summary": "将李群与李代数引入注意力机制",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20547"
+    },
+    {
+      "title": "How Transparent is DiffusionGemma?",
+      "authors": "Joshua Engels",
+      "conference": "arXiv 2026",
+      "summary": "评估Google DiffusionGemma文本到图像模型的透明性与可解释性",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.20560"
+    },
+    {
+      "title": "Open Problem: Is AdamW Effective Under Heavy-Tailed Noise?",
+      "authors": "Dingzhi Yu, Hongyi Tao, Yuanyu Wan, Luo Luo, Lijun Zhang",
+      "conference": "arXiv 2026",
+      "summary": "针对AdamW优化器在重尾噪声下的有效性提出开放问题，建立了加权度量基准，解释了分母存储器如何影响大梯度的表现",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23676"
+    },
+    {
+      "title": "Tapered Language Models",
+      "authors": "Reza Bayat, Ali Behrouz, Aaron Courville",
+      "conference": "arXiv 2026",
+      "summary": "提出锥形语言模型架构，探索模型参数分布新范式",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23670"
+    },
+    {
+      "title": "MAS-PromptBench: When Does Prompt Optimization Improve Multi-Agent LLM Systems?",
+      "authors": "Juyang Bai, Laixi Shi",
+      "conference": "arXiv 2026",
+      "summary": "系统评估多智能体LLM系统中提示优化的效果，揭示优化在不同工作流和团队规模下的收益与搜索空间挑战",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23664"
+    },
+    {
+      "title": "Learning Process Rewards via Success Visitation Matching for Efficient RL",
+      "authors": "Raymond Tsao, Andrew Wagenmaker, Sergey Levine",
+      "conference": "arXiv 2026",
+      "summary": "通过成功访问匹配学习过程奖励，提升强化学习效率",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23640"
+    },
+    {
+      "title": "DiT-Reward: Generative Representations for Text-to-Image Reward Modeling",
+      "authors": "Yuanming Yang, Guoqing Ma, Bo Wang 等",
+      "conference": "arXiv 2026",
+      "summary": "利用预训练扩散模型进行文本到图像奖励建模，性能超越HPSv3，推理速度提升1.65倍",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23626"
+    },
+    {
+      "title": "Scaling Linear Mode Connectivity and Merging to Billion Parameter Pretrained Transformers",
+      "authors": "Tianyi Li, Zhiqiang Shen",
+      "conference": "arXiv 2026",
+      "summary": "将线性模式连接和模型合并扩展至十亿参数级预训练Transformer",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23607"
+    },
+    {
+      "title": "LLM-as-Code: Agentic Programming for Agent Harness",
+      "authors": "Junjia Qi, Zichuan Fu, Jingtong Gao 等",
+      "conference": "arXiv 2026",
+      "summary": "提出Agentic Programming范式，由程序掌控控制流、LLM作为代码组件被调用，DAG结构化上下文，在OSWorld上15步达成86.8%成功率",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.15874"
+    },
+    {
+      "title": "On the Limits of Prompt-Conditioned Language Models as General-Purpose Learners",
+      "authors": "David Mguni, Julian Ma, Jun Wang",
+      "conference": "arXiv 2026",
+      "summary": "揭示提示条件化语言模型作为通用学习者的能力极限",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.23668"
+    },
+    {
+      "title": "OpenThoughts-Agent: Data Recipes for Agentic Models",
+      "authors": "Negin Raoof, Richard Zhuang, Marianna Nezhurina 等",
+      "conference": "arXiv 2026",
+      "summary": "构建开放智能体训练数据流水线，通过系统性实验筛选高质量样本，微调后模型在44.8%平均准确率上超越现有开放基线，全部资源公开",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24855"
+    },
+    {
+      "title": "World Models in Pieces: Structural Certification for General Agents",
+      "authors": "Yikai Lu, Yifei Wu, Xinyu Lu, Tongxin Li",
+      "conference": "arXiv 2026",
+      "summary": "针对通用代理能力非普适性提出结构认证框架，通过过滤特定转换并证明误差界，实现长程规划的可靠性验证",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24842"
+    },
+    {
+      "title": "Can Scale Save Us From Plasticity Loss in Large Language Models?",
+      "authors": "J. Fernando Hernandez-Garcia, Tomás Figliolia, Beren Millidge",
+      "conference": "arXiv 2026",
+      "summary": "评估大模型可塑性丧失问题，发现扩大规模只能延缓不能根除适应力衰退，在固定训练语料下同样存在",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24752"
+    },
+    {
+      "title": "Grading the Grader: Lessons from Evaluating an Agentic Data Analysis System",
+      "authors": "Zheng, Hsu",
+      "conference": "arXiv 2026",
+      "summary": "评估Agentic数据分析系统的经验教训，揭示自动评估器本身的可靠性问题",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24839"
+    },
+    {
+      "title": "Accuracy and Satisfaction in Multi-Turn LLM Dialogues for NFR Assessment",
+      "authors": "Fatideh, Baldwin, Dhakal, McMillan, Ghanavati",
+      "conference": "arXiv 2026",
+      "summary": "评估多轮LLM对话在非功能需求评估中的准确性和用户满意度",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24834"
+    },
+    {
+      "title": "BluTrain: A C++/CUDA Framework for AI Systems",
+      "authors": "Charan, Suresh, Kumar 等",
+      "conference": "arXiv 2026",
+      "summary": "C++/CUDA高性能AI训练框架，优化GPU利用率",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24780"
+    },
+    {
+      "title": "Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder PLMs",
+      "authors": "Pouramini, Faili",
+      "conference": "arXiv 2026",
+      "summary": "系统评估编码器-解码器预训练语言模型的微调与提示微调策略匹配",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24841"
+    },
+    {
+      "title": "Solving Inverse Problems of Chaotic Systems with Bidirectional Conditional Flow Matching",
+      "authors": "Hu, Zhang, Pan, Feng, Zhang, Ma, Ting, Li, Wu",
+      "conference": "arXiv 2026",
+      "summary": "双向条件流匹配解决混沌系统逆问题",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24824"
+    },
+    {
+      "title": "Grad Detect: Gradient-Based Hallucination Detection in LLMs",
+      "authors": "Anand Kamat, Daniel Blake, Brent M. Werness",
+      "conference": "arXiv 2026",
+      "summary": "提出基于梯度的方法识别大语言模型中的幻觉内容",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24790"
+    },
+    {
+      "title": "FlowPipe: LLM-Enhanced Conditional Generative Flow Networks for Data Preparation Pipeline Construction",
+      "authors": "Kunyu Ni, Lei Cao, Jie He, Xiaotong Zhang, Jianfeng Jin, Junyu Dong, Yanwei Yu",
+      "conference": "arXiv 2026",
+      "summary": "利用LLM增强的条件生成流网络自动化构建数据准备流水线",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24679"
+    },
+    {
+      "title": "Reasoning as Attractor Dynamics: Latent Memory Retrieval via Gibbs-Weighted Energy Minimization",
+      "authors": "Kanishk Awadhiya",
+      "conference": "arXiv 2026",
+      "summary": "将推理过程建模为吸引子动力学，通过Gibbs加权能量最小化实现潜在记忆检索",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24543"
+    },
+    {
+      "title": "Data Augmentation: A Fourier Analysis Perspective",
+      "authors": "Behrooz Tahmasebi, Melanie Weber, Stefanie Jegelka",
+      "conference": "arXiv 2026",
+      "summary": "从傅里叶分析视角重新审视数据增强方法的理论机制",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24418"
+    },
+    {
+      "title": "A Fair Evaluation of Graph Foundation Models for Node Property Prediction",
+      "authors": "Oleg Platonov, Gleb Bazhenov, Dmitry Eremeev, Liudmila Prokhorenkova",
+      "conference": "arXiv 2026",
+      "summary": "为图基础模型在节点属性预测任务上提供公平评估框架",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24509"
+    },
+    {
+      "title": "DiffusionBench: On Holistic Evaluation of Diffusion Transformers",
+      "authors": "Xingjian Leng, Jaskirat Singh",
+      "conference": "arXiv 2026",
+      "summary": "提出扩散Transformer的综合评估框架",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24888"
+    },
+    {
+      "title": "FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation",
+      "authors": "Haorui Ji, Weizhe Liu",
+      "conference": "arXiv 2026",
+      "summary": "通过扩散对齐的稀疏表示实现高保真3D高斯生成",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24874"
+    },
+    {
+      "title": "IV-CoT: Implicit Visual Chain-of-Thought for Structure-Aware Text-to-Image Generation",
+      "authors": "Zixuan Li, Haokun Lin",
+      "conference": "arXiv 2026",
+      "summary": "将隐式视觉思维链引入结构感知的文本到图像生成",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24849"
+    },
+    {
+      "title": "SHERLOC: Structured Diagnostic Localization for Code Repair Agents",
+      "authors": "Hovhannes Tamoyan",
+      "conference": "arXiv 2026",
+      "summary": "为代码修复智能体开发结构化诊断定位方法",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24820"
+    },
+    {
+      "title": "Are We Ready For An Agent-Native Memory System?",
+      "authors": "Wei Zhou",
+      "conference": "arXiv 2026",
+      "summary": "评估支撑自主智能体持久化记忆的基础设施就绪度",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24775"
+    },
+    {
+      "title": "Scaling LLM Reasoning from Minimal Labels: A Semi-Supervised Framework with a Lightweight Verifier",
+      "authors": "Keizo Kato, Chenhui Chu, Yugo Murawaki, Sado Kurohashi",
+      "conference": "arXiv 2026",
+      "summary": "提出半监督推理训练框架，将验证推理是否正确本身变成数据生成机制，用极少标注数据扩展LLM推理能力",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.16811"
+    },
+    {
+      "title": "Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents",
+      "authors": "Changdae Oh, Wendi Li, Seongheon Park, Samuel Yeh, Tanwi Mallick, Sharon Li",
+      "conference": "arXiv 2026",
+      "summary": "发现RL后训练过程中策略与参考策略的对数概率比可直接导出最优优势函数，无需单独训练过程奖励模型即可提升LLM Agent表现",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.26080"
+    },
+    {
+      "title": "TryOnCrafter: Unleashing Camera Trajectories for Realistic Video Virtual Try-on via a Renderable 4D Try-on Proxy",
+      "authors": "Hao Sun, Hao Yan, Mengting Chen, Quanjian Song, Yu Li, Juan Cao, Jinsong Lan, Xiaoyong Zhu, Bo Zheng, Sheng Tang",
+      "conference": "arXiv 2026",
+      "summary": "提出首个面向相机可控视频虚拟试衣的统一DiT框架，通过可渲染4D试衣代理实现任意相机轨迹下的真实感试衣视频生成",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.26092"
+    },
+    {
+      "title": "Real-Time Voice AI Hears but Does Not Listen",
+      "authors": "Martijn Bartelds, Federico Bianchi, James Zou",
+      "conference": "arXiv 2026",
+      "summary": "评测四个主流实时语音AI系统，发现它们普遍依赖文本内容而忽略声音中的情绪、讽刺、恐惧等副语言信号",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.26083"
+    },
+    {
+      "title": "How Robust is OCR-Reasoning? Evaluating OCR-Reasoning Robustness of Vision-Language Models under Visual Perturbations",
+      "authors": "Yuxing Cheng, Yuan Wu, Yi Chang",
+      "conference": "arXiv 2026",
+      "summary": "构建OCR-Robust基准，系统评估18个视觉语言模型在五种视觉扰动下的OCR推理鲁棒性",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.26041"
+    },
+    {
+      "title": "Age of LLM: A Strategic 1v1 Benchmark for Reasoning, Diplomacy and Reliability of Large Language Models under Fog of War",
+      "authors": "Arnaud Ricci",
+      "conference": "arXiv 2026",
+      "summary": "推出融合战争迷雾、外交谈判与严格JSON动作可靠性的1v1策略对战基准，评估LLM长程推理与可信赖性",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.24391"
+    },
+    {
+      "title": "Representing Time Series as Structured Programs for LLM Reasoning",
+      "authors": "Jaeho Kim, Changjun Oh, Seokhyun Lee, Irina Rish, Changhee Lee",
+      "conference": "arXiv 2026",
+      "summary": "提出T2SP方法，将时间序列表示为结构化符号程序，使现成LLM无需额外训练即可进行时间序列推理",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.12481"
+    },
+    {
+      "title": "The Periodic Table of LLM Reasoning: A Structured Survey of Reasoning Paradigms, Methods, and Failure Modes",
+      "authors": "Avinash Anand, Mahisha Ramesh, Avni Mittal, Ashutosh Kumar, Erik Cambria, Zhengkui Wang, Timothy Liu, Aik Beng Ng, Simon See, Rajiv Ratn Shah",
+      "conference": "arXiv 2026",
+      "summary": "对300余篇近期LLM推理研究进行系统综述，提出结构化分类体系并梳理主要推理范式、方法与失效模式",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.11470"
+    },
+    {
+      "title": "Reinforcement Learning without Ground-Truth Solutions can Improve LLMs",
+      "authors": "Yingyu Lin, Qiyue Gao, Nikki Lijing Kuang et al.",
+      "conference": "arXiv 2026",
+      "summary": "探索在没有标准答案的情况下，如何利用强化学习进一步提升大语言模型能力，降低对昂贵人工标注的依赖。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27369"
+    },
+    {
+      "title": "Autoregressive Boltzmann Generators",
+      "authors": "Danyal Rehman, Charlie B. Tan, Yoshua Bengio et al.",
+      "conference": "arXiv 2026",
+      "summary": "结合自回归模型与能量建模优势的自回归玻尔兹曼生成器，用于复杂分布建模。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27361"
+    },
+    {
+      "title": "Error-Conditioned Neural Solvers",
+      "authors": "Haina Jiang, Liam Wang, Peng-Chen Chen et al.",
+      "conference": "arXiv 2026",
+      "summary": "基于误差条件的神经求解器，根据当前解的误差动态调整求解策略。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27354"
+    },
+    {
+      "title": "Hallucination in World Models is Predictable and Preventable",
+      "authors": "Nicklas Hansen, Xiaolong Wang",
+      "conference": "arXiv 2026",
+      "summary": "研究世界模型中的幻觉现象，发现其具有可预测性，并提出针对性的预防方法。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27326"
+    },
+    {
+      "title": "Beyond the Hard Budget: Sparsity Regularizers for More Interpretable Top-k Sparse Autoencoders",
+      "authors": "Nathanaël Jacquier, Maria Vakalopoulou, Mahdi S. Hosseini",
+      "conference": "arXiv 2026",
+      "summary": "超越硬预算约束，引入稀疏正则化器以提升Top-k稀疏自编码器的可解释性。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27321"
+    },
+    {
+      "title": "Blackwell Approachability and Gradient Equilibrium are Equivalent",
+      "authors": "Brian W. Lee, Nika Haghtalab, Michael I. Jordan, Ryan J. Tibshirani",
+      "conference": "arXiv 2026",
+      "summary": "证明Blackwell可接近性与梯度均衡的等价性，为在线学习与博弈论提供新的理论桥梁。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27315"
+    },
+    {
+      "title": "Designing Reward Signals for Portable Query Generation",
+      "authors": "Ping Liu, Qianqi Shen, Jianqiang Shen et al.",
+      "conference": "arXiv 2026",
+      "summary": "以工业语义招聘搜索为案例，设计可迁移的查询生成奖励信号。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27291"
+    },
+    {
+      "title": "How Good Can Linear Models Be for Time-Series Forecasting?",
+      "authors": "Lang Huang, Jinglue Xu, Luke Darlow",
+      "conference": "arXiv 2026",
+      "summary": "系统评估线性模型在时间序列预测中的能力边界，为轻量级预测方案选择提供实证依据。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27282"
+    },
+    {
+      "title": "DanceOPD: On-Policy Generative Field Distillation",
+      "authors": "Wei Zhou, Xiongwei Zhu, Zelin Xu et al.",
+      "conference": "arXiv 2026",
+      "summary": "在线策略生成场蒸馏方法，用于高效迁移生成模型知识。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27377"
+    },
+    {
+      "title": "Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation",
+      "authors": "Ritesh Thawkar, Shravan Venkatraman, Omkar Thawkar et al.",
+      "conference": "arXiv 2026",
+      "summary": "通过自一致性奖励实现自我进化的统一多模态理解与生成框架。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27376"
+    },
+    {
+      "title": "Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models",
+      "authors": "Shravan Venkatraman, Ritesh Thawkar, Omkar Thawkar et al.",
+      "conference": "arXiv 2026",
+      "summary": "研究在自我进化的多模态大模型中如何更有效地关注视觉Token。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27373"
+    },
+    {
+      "title": "DnA: Denoising Attention for Visual Tasks",
+      "authors": "Ron Campos, Subhajit Maity, Xin Li et al.",
+      "conference": "arXiv 2026",
+      "summary": "提出去噪注意力机制，针对视觉任务中的注意力噪声进行抑制。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27372"
+    },
+    {
+      "title": "PhysiFormer: Learning to Simulate Mechanics in World Space",
+      "authors": "Yiming Chen, Yushi Lan, Andrea Vedaldi",
+      "conference": "arXiv 2026",
+      "summary": "学习在世界空间中模拟物理力学，推动基于神经网络的物理仿真发展。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27364"
+    },
+    {
+      "title": "RayPE: Ray-Space Positional Encoding for 3D-Aware Video Generation",
+      "authors": "Minghao Yin, Jiahao Lu, Wenbo Hu et al.",
+      "conference": "arXiv 2026",
+      "summary": "提出射线空间位置编码，增强视频生成模型的3D感知能力。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27345"
+    },
+    {
+      "title": "SAM2Matting: Generalized Image and Video Matting",
+      "authors": "Ruiqi Shen, Guangquan Jie, Chang Liu, Henghui Ding",
+      "conference": "arXiv 2026",
+      "summary": "基于SAM2推广到通用图像与视频抠图任务，提升复杂场景前景提取精度。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27339"
+    },
+    {
+      "title": "PerceptionRubrics: Calibrating Multimodal Evaluation to Human Perception",
+      "authors": "Yana Wei et al.",
+      "conference": "arXiv 2026 (ICML)",
+      "summary": "调整多模态模型评估体系，使其结果更贴近人类主观感知体验。",
+      "award": "ICML 2026 投稿",
+      "url": "https://arxiv.org/abs/2606.28322"
+    },
+    {
+      "title": "StructSplat: Generalizable 3D Gaussian Splatting from Uncalibrated Sparse Views",
+      "authors": "Jia-Chen Zhao et al.",
+      "conference": "arXiv 2026",
+      "summary": "针对未校准稀疏视图实现通用三维高斯泼溅重建。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.28321"
+    },
+    {
+      "title": "HAT-4D: Lifting Monocular Video for 4D Multi-Object Interactions via Human-Agent Collaboration",
+      "authors": "Jiaxin Li et al.",
+      "conference": "arXiv 2026",
+      "summary": "通过人机协作将单目视频提升至四维场景多物体交互建模。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.28215"
+    },
+    {
+      "title": "PhysisForcing: Physics Reinforced World Simulator for Robotic Manipulation",
+      "authors": "Peiwen Zhang et al.",
+      "conference": "arXiv 2026",
+      "summary": "构建基于物理规则强化的世界模拟器，增强机器人操作控制能力。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.28128"
+    },
+    {
+      "title": "From Tokens to States: LLMs as a Special Case of World Models and the Continuous Path Beyond",
+      "authors": "Paul Dubois",
+      "conference": "arXiv 2026",
+      "summary": "将大模型视作世界模型特例，并提出持续发展的理论路径。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.28127"
+    },
+    {
+      "title": "Mechanism-Driven Monitors for Preemptive Detection of LLM Training Instability",
+      "authors": "Ruixuan Huang, Yipei Wang, Wenyi Fang et al.",
+      "conference": "arXiv 2026",
+      "summary": "开发基于机制的监控工具，提前发现大模型训练过程中的不稳定性。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.28116"
+    },
+    {
+      "title": "EntMTP: Accelerating LLM Inference with Entropy Guided Multi Token Prediction",
+      "authors": "Carrie Chen",
+      "conference": "arXiv 2026",
+      "summary": "利用熵值引导的多 token 预测方法加速大模型推理。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.27550"
+    },
+    {
+      "title": "Agentic Transformers Provably Learn to Search via Reinforcement Learning",
+      "authors": "Tong Yang et al.",
+      "conference": "arXiv 2026",
+      "summary": "通过理论证明展示智能体 Transformer 能利用强化学习掌握搜索策略。",
+      "award": "",
+      "url": "https://arxiv.org/abs/2606.00183"
+    }
+  ],
+  "techNews": [
+    {
+      "date": "2026-06-30",
+      "title": "韩国公布迄今最大规模 AI 与半导体投资计划",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "韩国总统李在明公布政府出资 1461 万亿韩元、企业追加约 4755 万亿韩元的 AI/半导体投资计划，其中 800 万亿韩元投向韩国西南地区半导体生产基地。"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "中国芯片出口额同比暴增 110%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "2026 年 5 月海关数据显示中国集成电路出口额同比大增 110%，主要受存储涨价、外资在华生产占比提升驱动，成熟制程提升显著但高端仍受制。"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "美股三大指数齐创收盘新高，纳指涨 2.07%",
+      "category": "美股",
+      "importance": "high",
+      "summary": "道指首破 52000 点，标普 500 首破 7440 点，纳指逼近 26000 点，半导体板块受 AI 信心提振反弹。"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "英伟达即将被纳入标普 500 指数调整",
+      "category": "美股",
+      "importance": "medium",
+      "summary": "市场关注英伟达将被纳入标普 500 指数的指数调整安排，成为科技股上涨动力之一。"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "星巴克结束饿了么独家合作，上线美团外卖",
+      "category": "消费互联网",
+      "importance": "medium",
+      "summary": "星巴克结束与饿了么三年独家合作，上线美团并推出 1971 客厅，标志外卖平台二选一模式进一步瓦解。"
+    },
+    {
+      "date": "2026-06-30",
+      "title": "A 股存储板块受韩国投资计划刺激大涨",
+      "category": "A股",
+      "importance": "medium",
+      "summary": "受韩国 AI/半导体投资计划提振，深科技涨停，兆易创新大涨约 9%，存储 ETF 首次纳入兆易创新。"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "Anthropic势将与美国政府达成协议，解除对AI模型的限制",
+      "category": "AI监管",
+      "importance": "high",
+      "summary": "Anthropic正接近与美国政府达成协议，有望解除此前对AI模型的部分限制，可能缓解Claude全球部署的合规不确定性。"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "纳指收跌0.2%，芯片股下挫，西部数据大跌13%",
+      "category": "半导体/美股",
+      "importance": "high",
+      "summary": "6月27日美股收盘纳指跌0.2%，费城半导体指数大跌5.29%；西部数据跌超13%，希捷跌超12%，闪迪跌超10%，软银尾盘重挫13%。"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "半导体设备迎来增长大年，2026年设备增速预期上调至23.5%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "上下游扩产忙，半导体设备赛道高景气。相关企业合计投资近450亿元，交付周期从3-6个月拉长至8-12个月。"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "A股大涨后风险积聚，市值一天蒸发约2.9万亿元",
+      "category": "A股",
+      "importance": "medium",
+      "summary": "不到两月百股翻倍后风险积聚，6月27日沪指跌幅明显，创业板指跌逾4%，深证成指与科创50同步下行。"
+    },
+    {
+      "date": "2026-06-27",
+      "title": "AI开启半导体新时代，2026年产业规模接近万亿美元",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "AI热潮持续推动半导体产业扩容，2026年全球半导体产业规模预计接近万亿美元，AI算力需求成为主要增长引擎。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "IBM发布全球首个亚1纳米芯片技术，采用0.7纳米晶体管架构",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "IBM推出全球首个亚1纳米芯片技术，采用0.7纳米（7埃）节点晶体管架构，被视为延续摩尔定律的重大突破。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "美光财报大超预期，AI存储需求带动芯片股大涨",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "美光科技Q3 FY2026营收414.6亿美元，目标营收可达500亿美元，股价大涨15%，闪迪涨近22%。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "苹果WWDC 2026发布新一代Apple Intelligence与Siri AI",
+      "category": "AI应用",
+      "importance": "high",
+      "summary": "苹果发布iOS 27，推出全新Siri AI，应用启动速度提升30%，但中国大陆暂不可用。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "中国芯片出口额暴增110%，存储芯片短缺推升价格",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "2026年6月官方数据显示中国集成电路出口额超355.5亿美元，同比暴增约110%，主要由存储芯片短缺导致价格飙升。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "苹果M6跳过传闻被证伪，不符合半导体行业基本常识",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "经供应链数据交叉验证，苹果将跳过M6直接发布M7的传闻为不实消息，芯片架构规划通常提前数年制定。"
+    },
+    {
+      "date": "2026-06-26",
+      "title": "世界经济论坛公布新一批AI应用之星，超半数案例来自中国",
+      "category": "AI产业",
+      "importance": "low",
+      "summary": "世界经济论坛公布新一批AI应用之星名单，超半数入选案例来自中国，涵盖制造、医疗、消费等领域。"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "OpenAI发布首款自研AI推理芯片Jalapeño，与博通合作9个月流片",
+      "category": "芯片",
+      "importance": "high",
+      "summary": "OpenAI与博通（Broadcom）联合发布首款定制AI推理芯片Jalapeño，专为大语言模型推理设计，9个月完成流片，预计可节省约50%推理成本。"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "美股科技股回调，纳指跌0.43%，AI估值与资本开支担忧持续",
+      "category": "美股",
+      "importance": "high",
+      "summary": "6月25日美股收盘纳指跌0.43%收于25476.64点，标普500跌0.10%，道指涨0.35%，大型科技股普跌。"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "黄仁勋：有用的AI已经到来，并且已经能够赚钱",
+      "category": "AI产业",
+      "importance": "medium",
+      "summary": "英伟达CEO黄仁勋公开回应AI投资回报质疑，称有用的AI已经到来且能够赚钱。"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "A股半导体芯片领涨，科创50涨超3%续创新高",
+      "category": "A股",
+      "importance": "high",
+      "summary": "6月25日A股半导体芯片方向涨幅居前，创业板指拉升涨逾2%，科创50指数拉升涨超3%。"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "AI算力产业链迎超级周期，半导体ETF受关注",
+      "category": "产业",
+      "importance": "medium",
+      "summary": "随着OpenAI自研芯片发布及国产AI芯片需求增长，AI算力产业链被视为进入超级周期，公募基金半导体配置从概念转向业绩驱动。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "美股芯片股重挫：纳指跌超2%，费城半导体指数暴跌近8%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "美股三大指数集体收跌，纳指重挫2.2%，费城半导体指数暴跌近8%。英伟达跌超4%，美光科技暴跌13%。投资者重新审视AI资本支出规模，质疑大规模芯片投资是否合理。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "AI投资热潮遭重新审视，资本支出合理性受质疑",
+      "category": "AI",
+      "importance": "high",
+      "summary": "分析师开始质疑科技巨头大规模AI资本支出是否合理，市场从追逐AI动量交易转向理性评估。SpaceX暴跌16%加剧科技股恐慌情绪。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "人工智能让网络安全成为2026年稀缺性投资赛道",
+      "category": "AI安全",
+      "importance": "high",
+      "summary": "AI技术显著降低漏洞挖掘难度，网络安全成为稀缺资产。CrowdStrike八次创盘中新高，帕洛阿尔托网络涨幅228%，ETF收益27%。资金从芯片领域转向安全赛道。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "科创芯片设计ETF富国正在发行，2026是AI产业推理落地大年",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "全球算力资本开支持续攀升，芯片自主可控战略持续加码。科创芯片设计指数成分股2025年净利润同比增速超190%，2026年被视为AI产业推理落地大年。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "港股半导体板块强势：华虹宏力飙升16%，中芯国际涨逾8%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "港股半导体板块表现强势，华虹宏力飙升16%，中芯国际涨逾8%。恒生科技指数涨1.34%，与美股芯片股暴跌形成鲜明反差，反映资金在港股寻找半导体结构性机会。"
+    },
+    {
+      "date": "2026-06-24",
+      "title": "A股券商板块延续涨势，28只成分股飘红",
+      "category": "股市",
+      "importance": "medium",
+      "summary": "A股市场整体调整后券商板块逆势走强，28只成分股飘红。学者评价'本轮券商上涨的持续性相对更强'，成交额维持在3.46万亿元高位。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "AI飞轮驱动加速半导体更多领域进入上行周期",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "证券时报报道，AI算力需求持续拉动存储、功率、封装等多环节景气，业内预计2026年全球半导体规模将超1.5万亿美元，内存市场缺口约5%，设备端高景气预见到8个季度后。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "AI算力新变局：谁能动英伟达奶酪",
+      "category": "AI算力",
+      "importance": "high",
+      "summary": "21财经深度分析，华为昇腾、英特尔18A、AMD、台积电等多方挑战英伟达GPU垄断地位，AI算力格局正从'一家独大'走向多元竞争。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "新洁能涨停：功率半导体+产品升级+AI需求增长",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "A股功率半导体龙头新洁能6月23日涨停，分析师认为AI数据中心功率器件需求+产品升级双轮驱动，功率半导体景气度进入新一轮上行期。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "标普500历史首次站上7000点，纳指涨1.59%至24016点",
+      "category": "美股",
+      "importance": "high",
+      "summary": "标普500历史首次收盘站上7000点整数关口，纳指涨1.59%至24016.02点，道指微涨220点创历史新高。英伟达日线11连涨，光纤概念股Lumen与AWS合作后暴涨10.13%。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "英伟达日线11连涨，AI算力龙头再创新高",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "英伟达股价实现日线11连涨，创2023年以来最长连涨纪录。市场对其数据中心AI GPU需求持续乐观，Vera Rubin平台预期进一步提振估值。"
+    },
+    {
+      "date": "2026-06-23",
+      "title": "港股午盘走低：恒指跌1.13%，科技指数重挫2.21%",
+      "category": "港股",
+      "importance": "medium",
+      "summary": "港股恒生指数午盘跌1.13%，恒生科技指数跌2.21%，京东、小米、腾讯、阿里、美团等科技龙头普跌，大模型概念股走低，智谱盘中一度跌超15%。"
+    },
+    {
+      "date": "2026-06-22",
+      "title": "科创板第五套标准扩围至AI大模型企业",
+      "category": "政策/AI",
+      "importance": "high",
+      "summary": "上交所发布指引，人工智能大模型企业可适用科创板第五套上市标准，优先支持尚未形成收入规模但具备核心技术的主体，智谱、MiniMax等筹备回A"
+    },
+    {
+      "date": "2026-06-22",
+      "title": "智谱股价大涨超40%，市值突破万亿港元",
+      "category": "AI融资",
+      "importance": "high",
+      "summary": "智谱股价大涨逾40%，盘中触及2980港元，总市值突破1万亿港元。GLM-5.2模型表现优异，API调用量增幅达400%，公司推进科创板IPO拟募资150亿元"
+    },
+    {
+      "date": "2026-06-22",
+      "title": "MiniMax涨超20%，港股AI大模型双子星闪耀",
+      "category": "AI融资",
+      "importance": "high",
+      "summary": "MiniMax-W股价攀升20.2%，估值达1876亿港元。作为恒生科技指数新成分股，MiniMax与智谱共同带动港股大模型概念股逆势走强"
+    },
+    {
+      "date": "2026-06-22",
+      "title": "AI芯片需求推动韩国6月上旬出口强劲增长",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "韩国6月前10天出口受AI芯片需求拉动再度强劲增长，半导体出口保持双位数增速，SK海力士市值此前已突破1万亿美元"
+    },
+    {
+      "date": "2026-06-22",
+      "title": "AI需求外溢至制造环节，半导体设备ETF涨近3%",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "AI算力需求向晶圆制造、封装测试等设备环节传导，半导体设备ETF（易方达）涨2.94%，市场关注国产半导体设备厂商替代机会"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "全球半导体股单日蒸发1.3万亿美元创历史最大跌幅",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "S&P 500芯片股票单日蒸发1.3万亿美元，AI投资过热+贸易不确定性+获利回吐"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "英特尔18A制程至强6+处理器发布，单线程领先AMD 30%",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "Computex 2026发布，288能效核，股价涨超6%"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "台积电全力扩产AI芯片，释放涨价信号",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "AI芯片需求无放缓迹象，英伟达下代芯片台积电独家代工"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Anthropic Claude Opus 4.8基准全面超越GPT-5.5",
+      "category": "AI",
+      "importance": "high",
+      "summary": "SWE-bench Pro 69.2%，幻觉率35.9%远低于GPT-5.5的86%，定价更低"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Anthropic完成9650亿美元估值融资，年收入飙至300亿美元",
+      "category": "AI融资",
+      "importance": "high",
+      "summary": "Series G以9650亿估值完成，年收入从90亿飙至超300亿"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "谷歌Gemini 3.5 Pro即将发布，200万Token上下文+Deep Think",
+      "category": "AI",
+      "importance": "high",
+      "summary": "Flash已发布(速度GPT-5.5的4倍且免费)，Pro支持200万Token和深度推理"
+    },
+    {
+      "date": "2026-06-18",
+      "title": "OpenAI转向企业市场，苹果谷歌争夺消费级AI入口",
+      "category": "AI",
+      "importance": "medium",
+      "summary": "AI行业战略分化，OpenAI走企业路线，苹果谷歌走消费路线"
+    },
+    {
+      "date": "2026-06-15",
+      "title": "韩国投入8000亿韩元加速开发国产在线设备AI半导体",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "韩国政府计划通过建立需求企业、无厂半导体公司、代工厂协作体系，投入8000亿韩元推动本土AI芯片商业化"
+    },
+    {
+      "date": "2026-06-15",
+      "title": "国产AI芯片巨头6月15日上会审核",
+      "category": "半导体/IPO",
+      "importance": "high",
+      "summary": "上海证券交易所上市审核委员会定于6月15日召开审议会议，审核国产AI芯片龙头企业IPO申请"
+    },
+    {
+      "date": "2026-06-15",
+      "title": "WSTS预测2026年全球半导体市场增长90%达1.3万亿美元",
+      "category": "半导体",
+      "importance": "high",
+      "summary": "世界半导体贸易统计组织预测2026年全球半导体市场同比增长约90%，AI算力需求是核心驱动力"
+    },
+    {
+      "date": "2026-06-15",
+      "title": "AI拉动芯片需求，半导体ETF涨3.35%",
+      "category": "半导体",
+      "importance": "medium",
+      "summary": "行业增长预期强劲，芯片ETF（易方达）涨3.35%，产业链各环节景气度提升"
+    }
+  ],
+  "meta": {
+    "tips": 2,
+    "repos": 57,
+    "trivia": 1,
+    "memes": 1,
+    "consumerAI": 37,
+    "aiModels": 11,
+    "techNews": 102,
+    "stockMarket": 99,
+    "papers": 100
+  }
+};
+
+Chart.defaults.color = '#e0e0e0';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+
+const palette = ['#e74c3c','#3498db','#2ecc71','#9b59b6','#e67e22','#1abc9c',
+                 '#f1c40f','#e91e63','#00bcd4','#8bc34a','#ff5722','#795548',
+                 '#607d8b','#3f51b5','#9c27b0'];
+
+function initStats() {
+  const labels = {tips:'效率技巧', repos:'开源仓库', consumerAI:'消费品牌AI', aiModels:'AI大模型', techNews:'科技新闻', stockMarket:'股市动态', papers:'顶会论文'};
+  const bar = document.getElementById('statsBar');
+  let total = 0;
+  for (let k in labels) {
+    const v = DATA.meta[k] || 0;
+    total += v;
+    bar.innerHTML += '<div class="stat"><div class="num">'+v+'</div><div class="label">'+labels[k]+'</div></div>';
+  }
+  bar.innerHTML += '<div class="stat"><div class="num">'+total+'</div><div class="label">总计</div></div>';
+}
+
+function initConsumerRadar() {
+  const labels = ['AI深度','用户体验','部署规模','技术壁垒','商业化'];
+  const keys = ['aiDepth','ux','scale','techBarrier','commercialization'];
+  const datasets = DATA.consumerAI.map((item, idx) => ({
+    label: item.brand,
+    data: keys.map(k => item.scores[k] || 0),
+    backgroundColor: palette[idx % palette.length] + '33',
+    borderColor: palette[idx % palette.length],
+    borderWidth: 2,
+    pointBackgroundColor: palette[idx % palette.length]
+  }));
+  new Chart(document.getElementById('consumerRadar'), {
+    type: 'radar',
+    data: { labels, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { r: { angleLines: { color: 'rgba(255,255,255,0.1)' }, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' }, suggestedMin: 0, suggestedMax: 10 } },
+      plugins: { legend: { position: 'right', labels: { boxWidth: 10, font:{size:11} } } }
+    }
+  });
+}
+
+function initModelCharts() {
+  const labels = ['推理','编程','多模态','价格竞争力','上下文','生态'];
+  const keys = ['reasoning','coding','multimodal','priceCompetitiveness','contextLength','ecosystem'];
+  const radarDatasets = DATA.aiModels.slice(0,6).map((m, idx) => ({
+    label: m.name,
+    data: keys.map(k => m.scores[k] || 0),
+    backgroundColor: palette[idx % palette.length] + '33',
+    borderColor: palette[idx % palette.length],
+    borderWidth: 2,
+    pointBackgroundColor: palette[idx % palette.length]
+  }));
+  new Chart(document.getElementById('modelRadar'), {
+    type: 'radar',
+    data: { labels, datasets: radarDatasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { r: { angleLines: { color: 'rgba(255,255,255,0.1)' }, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff' }, suggestedMin: 0, suggestedMax: 10 } },
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font:{size:10} } } }
+    }
+  });
+
+  const priceLabels = DATA.aiModels.map(m => m.name);
+  const inputData = DATA.aiModels.map(m => m.pricing.input || 0);
+  const outputData = DATA.aiModels.map(m => m.pricing.output || 0);
+  new Chart(document.getElementById('priceBar'), {
+    type: 'bar',
+    data: {
+      labels: priceLabels,
+      datasets: [
+        { label: '输入价格', data: inputData, backgroundColor: '#3498db' },
+        { label: '输出价格', data: outputData, backgroundColor: '#e74c3c' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true, title: { display: true, text: '$/1M tokens' } } },
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+}
+
+function initStockLine() {
+  const labels = DATA.stockMarket.map(d => d.month);
+  new Chart(document.getElementById('stockLine'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: '上证综指', data: DATA.stockMarket.map(d => d.a), borderColor: '#e74c3c', backgroundColor: 'rgba(231,76,60,0.15)', yAxisID: 'y', fill: true, tension: 0.3, pointRadius: 4 },
+        { label: '纳斯达克', data: DATA.stockMarket.map(d => d.us), borderColor: '#3498db', backgroundColor: 'rgba(52,152,219,0.1)', yAxisID: 'y1', fill: true, tension: 0.3, pointRadius: 4 },
+        { label: '恒生科技', data: DATA.stockMarket.map(d => d.hk), borderColor: '#2ecc71', backgroundColor: 'rgba(46,204,113,0.1)', yAxisID: 'y1', fill: true, tension: 0.3, pointRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      scales: {
+        y: { type: 'linear', display: true, position: 'left', title: { display: true, text: '上证综指' } },
+        y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: '纳斯达克 / 恒生科技' }, grid: { drawOnChartArea: false } }
+      }
+    }
+  });
+}
+
+function initSemiBar() {
+  const metrics = [
+    {label:'韩国政府出资(万亿韩元)', value:1461},
+    {label:'韩国企业追加(万亿韩元)', value:4755},
+    {label:'中国芯片出口增速(%)', value:110},
+    {label:'美股纳斯达克涨幅(%)', value:2.07},
+    {label:'A股科创50涨幅(%)', value:4.61},
+    {label:'半导体设备增速预期(%)', value:23.5},
+    {label:'AI服务器出货增速(%)', value:35},
+    {label:'存储景气度(0-10)', value:8}
+  ];
+  new Chart(document.getElementById('semiBar'), {
+    type: 'bar',
+    data: {
+      labels: metrics.map(m => m.label),
+      datasets: [{ label: '数值', data: metrics.map(m => m.value), backgroundColor: metrics.map((_,i) => palette[i % palette.length]) }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+function renderPapers() {
+  const tb = document.getElementById('papersBody');
+  tb.innerHTML = DATA.papers.map(p => {
+    const awardClass = p.award && p.award.includes('最佳') ? 'award-gold' : (p.award && p.award.includes('杰出') ? 'award-silver' : '');
+    return `<tr><td>${p.title}</td><td>${p.authors||''}</td><td>${p.conference||''}</td><td class="${awardClass}">${p.award||''}</td><td>${p.commercialPotential!=null?p.commercialPotential:''}</td><td>${p.summary||''}</td><td>${p.url?`<a href="${p.url}" target="_blank">arXiv</a>`:''}</td></tr>`;
+  }).join('');
+}
+
+let sortDir = {};
+function sortTable(col, type) {
+  const tb = document.getElementById('papersBody');
+  const rows = Array.from(tb.querySelectorAll('tr'));
+  sortDir[col] = !sortDir[col];
+  rows.sort((a,b) => {
+    let av = a.cells[col].innerText.trim();
+    let bv = b.cells[col].innerText.trim();
+    if (type === 'num') { av = parseFloat(av) || 0; bv = parseFloat(bv) || 0; }
+    if (av < bv) return sortDir[col] ? -1 : 1;
+    if (av > bv) return sortDir[col] ? 1 : -1;
+    return 0;
+  });
+  rows.forEach(r => tb.appendChild(r));
+}
+
+function renderAnalysis() {
+  const grid = document.getElementById('analysisGrid');
+  grid.innerHTML = DATA.analysis.map((item, idx) => {
+    const fq = item.fourQuestions || {};
+    const q4 = fq.actionGuide || {};
+    return `
+    <div class="expand-card" id="ac${idx}">
+      <div class="expand-header" onclick="toggleCard('ac${idx}')">
+        <span>${item.brand} · ${item.tool}</span>
+        <span>${item.addedAt}</span>
+      </div>
+      <div class="expand-body">
+        <div class="expand-body-inner">
+          <h4>Q1：它真正想解决的问题是什么？</h4><p>${fq.realProblem||'-'}</p>
+          <h4>Q2：它声称的贡献是什么？</h4><p>${fq.claimedContribution||'-'}</p>
+          <h4>Q3：最可能被攻击的地方在哪里？</h4><p>${Array.isArray(fq.attackPoints)?fq.attackPoints.join('<br>'):fq.attackPoints||'-'}</p>
+          <h4>Q4：从业者指南</h4>
+          <table class="advice-table"><thead><tr><th>角色</th><th>建议</th></tr></thead><tbody>
+            <tr><td>博士生</td><td>${q4.scholar||'-'}</td></tr>
+            <tr><td>工程师</td><td>${q4.engineer||'-'}</td></tr>
+            <tr><td>投资人</td><td>${q4.investor||'-'}</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCard(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+function renderNews() {
+  const tl = document.getElementById('newsTimeline');
+  tl.innerHTML = DATA.techNews.map(n => {
+    const cls = (n.importance === 'high') ? 'high' : ((n.importance === 'medium') ? 'medium' : 'low');
+    return `<div class="tl-item ${cls}">
+      <div class="tl-date">${n.date}</div>
+      <div class="tl-title">${n.title}</div>
+      <div class="tl-meta">分类：${n.category||''} · 重要程度：${n.importance||''}</div>
+      <div class="tl-summary">${n.summary||''}</div>
+    </div>`;
+  }).join('');
+}
+
+initStats();
+initConsumerRadar();
+initModelCharts();
+initStockLine();
+initSemiBar();
+renderPapers();
+renderAnalysis();
+renderNews();
+</script>
+</body>
+</html>
