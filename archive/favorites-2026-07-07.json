@@ -2,17 +2,19 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-07-08",
+    "lastUpdated": "2026-07-07",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 72,
+      "repos": 67,
+      "trivia": 1,
+      "memes": 1,
       "consumerAI": 48,
       "aiModels": 17,
-      "techNews": 118,
-      "stockMarket": 126,
-      "papers": 128
+      "techNews": 112,
+      "stockMarket": 117,
+      "papers": 118
     }
   },
   "tips": [
@@ -1061,81 +1063,6 @@
       ],
       "status": "trending",
       "addedAt": "2026-07-07"
-    },
-    {
-      "name": "MadsLorentzen/ai-job-search",
-      "description": "AI-powered job application framework built on Claude Code.",
-      "whyInteresting": "将Claude Code能力延伸至求职场景，自动化简历、求职信与申请流程，展示AI智能体在个人生产力领域的落地。",
-      "url": "https://github.com/MadsLorentzen/ai-job-search",
-      "tags": [
-        "AI agent",
-        "Claude Code",
-        "productivity",
-        "TypeScript"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-08",
-      "id": "repo-068"
-    },
-    {
-      "name": "Zackriya-Solutions/meetily",
-      "description": "Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription.",
-      "whyInteresting": "Rust实现的高性能、隐私优先会议助手，主打本地实时转录与AI摘要，适合企业对隐私敏感的场景。",
-      "url": "https://github.com/Zackriya-Solutions/meetily",
-      "tags": [
-        "AI meeting",
-        "Rust",
-        "privacy",
-        "speech"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-08",
-      "id": "repo-069"
-    },
-    {
-      "name": "addyosmani/agent-skills",
-      "description": "Production-grade engineering skills for AI coding agents.",
-      "whyInteresting": "Google工程师维护的AI编码智能体技能库，为生产级开发任务提供可复用的技能模式与最佳实践。",
-      "url": "https://github.com/addyosmani/agent-skills",
-      "tags": [
-        "AI coding",
-        "agent",
-        "skills",
-        "JavaScript"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-08",
-      "id": "repo-070"
-    },
-    {
-      "name": "ruvnet/RuView",
-      "description": "Turns commodity WiFi signals into real-time spatial intelligence.",
-      "whyInteresting": "利用普通WiFi信号进行实时空间感知，无需专用传感器即可实现定位与环境理解，应用场景广泛。",
-      "url": "https://github.com/ruvnet/RuView",
-      "tags": [
-        "WiFi sensing",
-        "spatial intelligence",
-        "Rust",
-        "AI"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-08",
-      "id": "repo-071"
-    },
-    {
-      "name": "iOfficeAI/OfficeCLI",
-      "description": "Office suite purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files.",
-      "whyInteresting": "首个专为AI智能体设计的Office套件SDK，让Agent直接读写和自动化Word/Excel/PPT，是企业办公自动化的关键基础设施。",
-      "url": "https://github.com/iOfficeAI/OfficeCLI",
-      "tags": [
-        "Office automation",
-        "AI agent",
-        "C#",
-        "enterprise"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-08",
-      "id": "repo-072"
     }
   ],
   "trivia": [
@@ -5292,72 +5219,6 @@
       "keyData": "纳指 +1.3% / 半导体指数 +4% / AMD +10% / 道指首破 53000",
       "impact": "修复市场对 AI 需求可持续性的信心，云厂商 capex 仍是关键变量",
       "source": "https://www.chnfund.com/article/ARe28939cd-a589-c827-9466-3a224a627ed8"
-    },
-    {
-      "title": "三星Q2利润暴增约18倍，股价因AI芯片周期担忧大跌",
-      "category": "半导体",
-      "importance": "high",
-      "summary": "三星电子Q2营业利润预计约89.4万亿韩元，同比增约1810%，但市场担忧AI超级周期可持续性，股价一度重挫逾8%。",
-      "keyData": "营业利润约89.4万亿韩元 / 同比+1810% / 股价一度跌逾8%",
-      "impact": "AI存储/HBM需求仍是核心驱动力，但市场对周期见顶与扩产过度的敏感度上升。",
-      "source": "https://www.stcn.com/article/detail/4001944.html",
-      "id": "news-113",
-      "date": "2026-07-07"
-    },
-    {
-      "title": "道指史上首次突破53000点，AI硬件链与科技股反弹",
-      "category": "美股",
-      "importance": "high",
-      "summary": "2026年7月7日美股收盘，道指涨0.29%报53055.91点首破53000点，纳指涨1.12%，标普500涨0.72%，AI硬件链大涨。",
-      "keyData": "道指53055.91 / 纳指26121.16 / 标普500 7537.43",
-      "impact": "AI资本开支与硬件需求仍是美股主线，资金重新抱团AI基础设施。",
-      "source": "https://finance.sina.com.cn/stock/usstock/c/2026-07-07/doc-inifxhzh1585788.shtml",
-      "id": "news-114",
-      "date": "2026-07-07"
-    },
-    {
-      "title": "A股失守4000点，成交额单日缩量约5100亿元",
-      "category": "A股",
-      "importance": "medium",
-      "summary": "2026年7月7日A股主要指数收跌，上证跌1.26%报3990.24点，深证跌1.24%，创业板跌0.94%；科创50逆势涨0.28%。",
-      "keyData": "上证3990.24(-1.26%) / 深证15225.11(-1.24%) / 创业板3911.91(-0.94%) / 科创50 2001.59(+0.28%)",
-      "impact": "市场高位回调，硬科技/国产替代主线相对抗跌。",
-      "source": "https://www.cnstock.com/commonDetail/739730",
-      "id": "news-115",
-      "date": "2026-07-07"
-    },
-    {
-      "title": "港股收跌，快手暴跌超12%，半导体跌幅居前",
-      "category": "港股",
-      "importance": "medium",
-      "summary": "2026年7月7日港股收盘，恒生指数跌0.51%报23496.89点，恒生科技跌0.75%报4507.04点；快手-W跌超12%。",
-      "keyData": "恒指23496.89(-0.51%) / 恒生科技4507.04(-0.75%) / 快手-12%+",
-      "impact": "港股科技板块受美股波动与个股利空双重影响，半导体产业链短期承压。",
-      "source": "https://www.nbd.com.cn/articles/2026-07-07/4459342.html",
-      "id": "news-116",
-      "date": "2026-07-07"
-    },
-    {
-      "title": "Anthropic将Claude Sonnet 5设为默认模型，Claude Code额度临时提升50%",
-      "category": "大模型",
-      "importance": "medium",
-      "summary": "Anthropic将Claude Sonnet 5设为默认模型，能力达Opus 4.8九成、定价四折；Claude Code每周限额临时提升50%至7月13日。",
-      "keyData": "Sonnet 5 = Opus 4.8九成能力 / 定价四折 / Claude Code限额+50%",
-      "impact": "大模型API价格战与智能体工具普惠化加速。",
-      "source": "https://caifuhao.eastmoney.com/news/20260702115556044280370",
-      "id": "news-117",
-      "date": "2026-07-07"
-    },
-    {
-      "title": "SK海力士拟于7月10日登陆纳斯达克，或成全球第二大IPO",
-      "category": "半导体",
-      "importance": "medium",
-      "summary": "SK海力士已提交美股IPO申请，拟定于2026年7月10日以ADR形式在纳斯达克挂牌，募资规模预计约280亿美元。",
-      "keyData": "拟上市日期2026-07-10 / 募资约280亿美元 / ADR形式",
-      "impact": "HBM供应链龙头资本化提速，牵动AI半导体供应链与资本市场关注。",
-      "source": "https://finance.sina.com.cn/stock/usstock/c/2026-06-24/doc-inienxzw6291597.shtml",
-      "id": "news-118",
-      "date": "2026-07-07"
     }
   ],
   "stockMarket": [
@@ -6530,96 +6391,6 @@
       "change": "-0.20%",
       "event": "科指小幅收跌",
       "sectorImpact": "快手跌超 4%，腾讯减持引发股东结构关注"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "A股",
-      "index": "上证综指",
-      "value": 3990.24,
-      "change": "-1.26%",
-      "event": "沪指失守4000点",
-      "sectorImpact": "全市场近4800只个股飘绿，成交额缩量",
-      "id": "stock-118"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "A股",
-      "index": "深证成指",
-      "value": 15225.11,
-      "change": "-1.24%",
-      "event": "沪指失守4000点",
-      "sectorImpact": "成长板块承压",
-      "id": "stock-119"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "A股",
-      "index": "创业板指",
-      "value": 3911.91,
-      "change": "-0.94%",
-      "event": "沪指失守4000点",
-      "sectorImpact": "新能源与医药权重回调",
-      "id": "stock-120"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "A股",
-      "index": "科创50",
-      "value": 2001.59,
-      "change": "+0.28%",
-      "event": "科创50逆势翻红",
-      "sectorImpact": "半导体与AI主线相对抗跌",
-      "id": "stock-121"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "美股",
-      "index": "道琼斯工业指数",
-      "value": 53055.91,
-      "change": "+0.29%",
-      "event": "道指首破53000点创历史新高",
-      "sectorImpact": "AI硬件链与大型科技股领涨",
-      "id": "stock-122"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "美股",
-      "index": "标普500指数",
-      "value": 7537.43,
-      "change": "+0.72%",
-      "event": "道指首破53000点创历史新高",
-      "sectorImpact": "科技、半导体、金融普涨",
-      "id": "stock-123"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "美股",
-      "index": "纳斯达克综合指数",
-      "value": 26121.16,
-      "change": "+1.12%",
-      "event": "道指首破53000点创历史新高",
-      "sectorImpact": "AI硬件链反弹，特斯拉、AMD大涨",
-      "id": "stock-124"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "港股",
-      "index": "恒生指数",
-      "value": 23496.89,
-      "change": "-0.51%",
-      "event": "恒指小幅收跌",
-      "sectorImpact": "快手大跌，半导体跌幅居前",
-      "id": "stock-125"
-    },
-    {
-      "date": "2026-07-07",
-      "market": "港股",
-      "index": "恒生科技指数",
-      "value": 4507.04,
-      "change": "-0.75%",
-      "event": "恒指小幅收跌",
-      "sectorImpact": "科网股与芯片股承压",
-      "id": "stock-126"
     }
   ],
   "papers": [
@@ -8069,136 +7840,6 @@
       "commercialPotential": 4,
       "arxivUrl": "https://arxiv.org/abs/2607.05378",
       "pdfUrl": "https://arxiv.org/pdf/2607.05378"
-    },
-    {
-      "title": "From Fixed to Free Cameras: Calibration-Free View-Robust Vision-Language-Action Model",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Wenhao Li, Xueying Jiang, Quanhao Qian, et al.",
-      "institution": "Unknown",
-      "summary": "解耦操控控制与相机几何，实现免校准的视域鲁棒性；仅需单目RGB图像与任务指令即可适应部署中相机的重新定位。",
-      "keyMetric": "免校准视觉-语言-动作模型",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2607.05396",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05396",
-      "id": "paper-119"
-    },
-    {
-      "title": "Search Beyond What Can Be Taught: Evolving the Knowledge Boundary in Agentic Visual Generation",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Haozhe Wang, Weijia Feng, Jinpeng Yu, et al.",
-      "institution": "Unknown",
-      "summary": "指出视觉生成器容易在训练数据之外虚构信息，提出结合搜索工具与协同训练框架以突破知识边界限制。",
-      "keyMetric": "Agent视觉生成知识边界扩展",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2607.05382",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05382",
-      "id": "paper-120"
-    },
-    {
-      "title": "What Does a Discrete Diffusion Model Learn?",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Rodrigo Casado Noguerales, et al.",
-      "institution": "Unknown",
-      "summary": "推导CTMC ELBO并证明其唯一最优解为真实逆向跳跃率的条件期望，统一了MDM等多类损失函数。",
-      "keyMetric": "离散扩散模型理论统一",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2607.05381",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05381",
-      "id": "paper-121"
-    },
-    {
-      "title": "OptiAgent: End-to-End Optimization Modeling via Multi-Agent Iterative Refinement",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Adriana Laurindo Monteiro, et al.",
-      "institution": "Unknown",
-      "summary": "提出多智能体框架，将运筹学问题描述自动转化为数学建模与代码，通过迭代修正在多项优化基准测试中表现优异。",
-      "keyMetric": "多智能体运筹优化建模",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2607.05346",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05346",
-      "id": "paper-122"
-    },
-    {
-      "title": "LLM-as-a-Verifier: A General-Purpose Verification Framework",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Jacky Kwok, et al.",
-      "institution": "Unknown",
-      "summary": "提出通用验证框架，利用概率性评分生成连续分数以验证方案，无需训练即可提升智能体任务表现与强化学习样本效率。",
-      "keyMetric": "通用LLM验证框架",
-      "commercialPotential": 5,
-      "arxivUrl": "https://arxiv.org/abs/2607.05391",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05391",
-      "id": "paper-123"
-    },
-    {
-      "title": "SovereignPA-Bench: Evaluating User-Owned Personal Agents under Evolving Intent, Platform Mediation, and Consent Constraints",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Dylan Zongmin Liu, et al.",
-      "institution": "Unknown",
-      "summary": "提出个人代理基准，评估其在用户主权、隐私与同意约束下的性能；增强型主架构可显著减少隐私泄露及操控风险。",
-      "keyMetric": "个人Agent隐私安全基准",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2607.05363",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05363",
-      "id": "paper-124"
-    },
-    {
-      "title": "Graph Sparse Sampling: Breaking the Curse of the Horizon in Continuous MDP Planning",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Idan Lev-Yehudi, Vadim Indelman, et al.",
-      "institution": "Unknown",
-      "summary": "提出图稀疏采样算法，通过共享样本机制解决连续域不确定性规划难题，实现规划界限的多项式依赖。",
-      "keyMetric": "连续MDP规划样本复杂度",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2607.05359",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05359",
-      "id": "paper-125"
-    },
-    {
-      "title": "SteelBench: Evaluating Vision-Language Models in Real-World Industrial Environments",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Suryanarayana Reddy Yarrabothula, et al.",
-      "institution": "Unknown",
-      "summary": "基于真实工厂监控视频评估视觉语言模型的活动识别与安全推理，结果显示模型表现显著差于人类且存在安全判断错误。",
-      "keyMetric": "工业场景VLM安全基准",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2607.05264",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05264",
-      "id": "paper-126"
-    },
-    {
-      "title": "Erasing Without Collateral Damage: Precise Concept Removal in Diffusion Models",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Parth Upman, et al.",
-      "institution": "Unknown",
-      "summary": "基于子空间感知方向，无需参数调整即可精准删除扩散模型中的指定对象，有效减轻对相关概念的连带损伤。",
-      "keyMetric": "扩散模型概念精确擦除",
-      "commercialPotential": 3,
-      "arxivUrl": "https://arxiv.org/abs/2607.05274",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05274",
-      "id": "paper-127"
-    },
-    {
-      "title": "DSpark: Confidence-Scheduled Speculative Decoding with Semi-Autoregressive Generation",
-      "conference": "arXiv 2026-07",
-      "award": "",
-      "authors": "Xin Cheng, Xingkai Yu, Chenze Shao, et al.",
-      "institution": "Unknown",
-      "summary": "利用半自回归架构与置信调度验证优化大模型推理，减少服务器端验证浪费并提升生成速度。",
-      "keyMetric": "投机解码推理加速",
-      "commercialPotential": 4,
-      "arxivUrl": "https://arxiv.org/abs/2607.05147",
-      "pdfUrl": "https://arxiv.org/pdf/2607.05147",
-      "id": "paper-128"
     }
   ]
 }
