@@ -1,3 +1,5 @@
 *.tmp
 nul
 dashboard_data.json
+arxiv_pdf/
+*arxiv_src/

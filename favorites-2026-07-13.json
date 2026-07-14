@@ -2,17 +2,17 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-07-14",
+    "lastUpdated": "2026-07-08",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 77,
-      "consumerAI": 56,
+      "repos": 72,
+      "consumerAI": 48,
       "aiModels": 17,
-      "techNews": 124,
-      "stockMarket": 135,
-      "papers": 138
+      "techNews": 118,
+      "stockMarket": 126,
+      "papers": 128
     }
   },
   "tips": [
@@ -1136,87 +1136,6 @@
       "status": "trending",
       "addedAt": "2026-07-08",
       "id": "repo-072"
-    },
-    {
-      "id": "repo-073",
-      "name": "github/spec-kit",
-      "url": "https://github.com/github/spec-kit",
-      "description": "将产品需求文档转化为可执行 AI 代理实现计划的 Spec-Driven Development 工具包",
-      "stars": "121k",
-      "why": "GitHub 官方出品，支持 30+ AI 编码助手集成，对抗无序 vibe coding",
-      "tags": [
-        "ai",
-        "spec-driven",
-        "agent",
-        "github"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "repo-073",
-      "name": "Shubhamsaboo/awesome-llm-apps",
-      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
-      "description": "100+ 可直接运行的 AI Agent & RAG 应用模板",
-      "stars": "120k",
-      "why": "Provider 无关的 Agent/RAG 模板集合，覆盖语音 Agent、多 Agent 团队、MCP Agent 等",
-      "tags": [
-        "ai",
-        "agent",
-        "rag",
-        "templates"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "repo-073",
-      "name": "Graphify-Labs/graphify",
-      "url": "https://github.com/Graphify-Labs/graphify",
-      "description": "把代码、文档和媒体转成可查询知识图谱的 AI coding assistant skill",
-      "stars": "84.7k",
-      "why": "YC S26 项目，本地解析代码，支持 20+ 编码助手，输出交互式 HTML 报告",
-      "tags": [
-        "ai",
-        "knowledge-graph",
-        "coding-agent",
-        "yc"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "repo-073",
-      "name": "moeru-ai/airi",
-      "url": "https://github.com/moeru-ai/airi",
-      "description": "Self-hosted AI companion with realtime voice chat，支持 VRM/Live2D 虚拟形象",
-      "stars": "41.9k",
-      "why": "受 Neuro-sama 启发的自托管数字伴侣，集成多种 LLM、实时语音合成与头像动画",
-      "tags": [
-        "ai",
-        "companion",
-        "voice",
-        "vrm",
-        "live2d"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "repo-073",
-      "name": "HKUDS/Vibe-Trading",
-      "url": "https://github.com/HKUDS/Vibe-Trading",
-      "description": "一站式个人量化交易 Agent",
-      "stars": "21.8k",
-      "why": "对接 18+ 市场数据源，支持回测、策略开发、Shadow Account，AI Agent 进入金融交易",
-      "tags": [
-        "ai",
-        "trading",
-        "agent",
-        "finance"
-      ],
-      "status": "trending",
-      "addedAt": "2026-07-14"
     }
   ],
   "trivia": [
@@ -3592,132 +3511,6 @@
         "https://www.heytea.com"
       ],
       "addedAt": "2026-07-07"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "瑞幸咖啡",
-      "title": "瑞幸携“AI Lucky”语音助手首秀 WAIC 2026",
-      "description": "成为 WAIC 2026 独家现制饮品合作伙伴，展台“瑞幸·智萃全链舱”发布面向消费者的语音助手“AI Lucky”，展示全链路数智化方案。",
-      "techStack": [
-        "AI 智能体",
-        "语音助手",
-        "AR 互动",
-        "大数据选址",
-        "智能仓配",
-        "智慧门店"
-      ],
-      "source": "驱动之家",
-      "url": "https://news.mydrivers.com/1/1135/1135543.htm",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "星巴克中国",
-      "title": "星巴克中国发布“数字雇员”AI 助理与千店千面电子菜单",
-      "description": "SITC 发布两年数字化成果，全国门店上线“千店千面”电子菜单板，未来为每位伙伴配备“数字雇员”AI 助理，推进 AI 排班、IoT One-Box、自动补货。",
-      "techStack": [
-        "AI 助理",
-        "IoT",
-        "电子菜单板",
-        "个性化推荐",
-        "数据驱动产品创新"
-      ],
-      "source": "星巴克中国官网",
-      "url": "https://www.starbucks.com.cn/en/about/news/release-digital-achievements/",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "库迪咖啡",
-      "title": "库迪咖啡 AI 贯穿供应链与门店运营",
-      "description": "基于销售预测进行采购/排班/出货，仓库用 AGV 自动搬运，门店端自动生成平面图、辅助订货排班、远程食安监控、扫码自动萃取与人脸识别操作核查。",
-      "techStack": [
-        "大数据",
-        "云计算",
-        "机器学习",
-        "图像识别",
-        "AGV 机器人"
-      ],
-      "source": "21 世纪经济报道",
-      "url": "https://www.21jingji.com/article/20250728/herald/30c49f88c950d736cf9f7d887d07ef73.html",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "茶百道",
-      "title": "茶百道深度融合 DeepSeek R1 与通义千问",
-      "description": "全国 8000 余家门店落地“三位一体”智能管理体系：AI 巡检准确率 90%、食安预警、智能奶茶机配料精度 ±1 克，上线加盟商 AI 服务台“茶茶员工”。",
-      "techStack": [
-        "DeepSeek R1",
-        "通义千问",
-        "图像识别",
-        "智能奶茶机",
-        "AI 服务台"
-      ],
-      "source": "新华网",
-      "url": "http://www.news.cn/tech/20250331/58018a72319d4bb0949ff2f2b7726660/c.html",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "美团",
-      "title": "美团自研 LongCat 大模型与食安治理大模型“星眸”",
-      "description": "自研 + 投资双轮构建 AI“物理底座”：LongCat 大模型、GPU 算力与机器人研究院，无人车/无人机累计配送超 600 万单；上线食安治理大模型“星眸”。",
-      "techStack": [
-        "LongCat 大模型",
-        "具身智能",
-        "无人机/无人车",
-        "GPU 算力",
-        "AI 视觉巡检",
-        "食安大模型"
-      ],
-      "source": "界面新闻 / 美团新闻",
-      "url": "https://www.jiemian.com/article/14191848.html",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "饿了么",
-      "title": "饿了么上线外卖行业首个大模型 AI 助手“小饿”",
-      "description": "覆盖点餐、下单、配送、售后全场景，用户可语音点单、获取取送提醒与售后支持，同时为骑手提供路线预测与送达提示。",
-      "techStack": [
-        "大模型",
-        "NLP",
-        "实时数据",
-        "语音交互"
-      ],
-      "source": "央广网",
-      "url": "https://tech.cnr.cn/techph/20250425/t20250425_527148261.shtml",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "蜜雪冰城",
-      "title": "蜜雪冰城成立 AI 公司“雪王爱智慧科技”",
-      "description": "注册资本 5000 万元，布局 AI 算法软件、智能机器人、智慧供应链；全国门店升级“互联网 + 明厨亮灶”，引入 AI 识别监测出餐合规。",
-      "techStack": [
-        "AI 算法",
-        "智能机器人",
-        "图像识别",
-        "智慧供应链"
-      ],
-      "source": "财联社",
-      "url": "https://www.cls.cn/detail/1863527",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "consumer-ai-049",
-      "brand": "阿里千问 App",
-      "title": "千问 App 接入 Qwen3.7-Max",
-      "description": "定位为“全能智能体基座”，强化编程、办公自动化（MCP 集成 + 多智能体协作）与长周期任务推理能力。",
-      "techStack": [
-        "Qwen3.7-Max",
-        "MCP",
-        "多智能体协作"
-      ],
-      "source": "IT之家",
-      "url": "https://www.ithome.com/0/954/158.htm",
-      "addedAt": "2026-07-14"
     }
   ],
   "aiModels": [
@@ -5565,66 +5358,6 @@
       "source": "https://finance.sina.com.cn/stock/usstock/c/2026-06-24/doc-inienxzw6291597.shtml",
       "id": "news-118",
       "date": "2026-07-07"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "Meta 自研 AI 芯片 Iris 将于 9 月量产",
-      "summary": "Meta MTIA 第四代芯片 Iris 将于 2026 年 9 月台积电量产，2026 年 AI 基础设施开支最高 1450 亿美元，目标 2027 年算力翻倍至 14GW。",
-      "source": "Straits Times / TechCrunch",
-      "url": "https://techcrunch.com/2026/07/09/metas-new-ai-chips-will-begin-production-in-september/",
-      "importance": "高",
-      "category": "半导体/AI芯片",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "SK 海力士创纪录 280 亿美元纳斯达克 ADR 上市",
-      "summary": "SK 海力士 2026 年 7 月 10 日以代码 SKHY 登陆纳斯达克，募资约 280.7 亿美元，史上最大 ADR 发行，巩固 HBM3E/HBM4 垄断地位。",
-      "source": "KuCoin Blog",
-      "url": "https://www.kucoin.com/blog/en-sk-hynix-nasdaq-adr-listing-historical-28b-offering-set-to-reshape-ai-semiconductor-market-on-july-10-2026",
-      "importance": "高",
-      "category": "半导体/存储",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "7 月初半导体板块暴跌，英特尔股价大跌 21%",
-      "summary": "受 AI 资本开支增长质疑及加息担忧影响，2026 年 7 月初半导体板块市值蒸发约 1.3 万亿美元，英特尔股价大跌约 21%。",
-      "source": "Forbes",
-      "url": "https://www.forbes.com/sites/petercohan/2026/07/08/intel-stock-down-21-inside-the-july-2026-semiconductor-selloff/",
-      "importance": "高",
-      "category": "半导体/市场",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "中国 5 月芯片出口额同比暴增 110.9%",
-      "summary": "2026 年 5 月中国集成电路出口额达 355.5 亿美元，同比增 110.9%，主要由存储芯片涨价及外资在华工厂贡献。",
-      "source": "BBC 中文",
-      "url": "https://www.bbc.com/zhongwen/articles/cg4w2n5ql32o/simp",
-      "importance": "高",
-      "category": "半导体/贸易",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "美国担忧 ASML 最先进 EUV 光刻机可能已流入中国",
-      "summary": "美国商务部长对 ASML 表示担忧其最尖端 EUV 设备可能已流入中国，ASML CEO 否认出售，凸显出口管制博弈焦点。",
-      "source": "TechCrunch / Reuters",
-      "url": "https://techcrunch.com/2026/06/19/the-us-says-asmls-top-chip-tool-may-be-in-china-asml-says-it-isnt/",
-      "importance": "中",
-      "category": "半导体/地缘政治",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "tech-news-119",
-      "title": "2026 世界人工智能大会将于 7 月 17–20 日在上海举行",
-      "summary": "WAIC 2026 以“智能伙伴，共创未来”为主题，汇聚 1100 余家全球企业与 3000 余件展品，首次设立 OPC 专区。",
-      "source": "CCTV 产业+",
-      "url": "https://business.cctv.com/2026/06/18/ARTIqtjxJlq4F4cdSJH9RPBa260618.shtml",
-      "importance": "中",
-      "category": "AI/展会",
-      "addedAt": "2026-07-14"
     }
   ],
   "stockMarket": [
@@ -6887,87 +6620,6 @@
       "event": "恒指小幅收跌",
       "sectorImpact": "科网股与芯片股承压",
       "id": "stock-126"
-    },
-    {
-      "id": "stock-market-127",
-      "market": "A股",
-      "index": "上证综指",
-      "close": 3913.79,
-      "change": -2.06,
-      "date": "2026-07-13",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "market": "A股",
-      "index": "深证成指",
-      "close": 14522.85,
-      "change": -3.48,
-      "date": "2026-07-13",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "创业板指",
-      "close": 3723.52,
-      "change": -3.1,
-      "date": "2026-07-13",
-      "market": "A股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "科创50",
-      "close": 1994.32,
-      "change": -3.42,
-      "date": "2026-07-13",
-      "market": "A股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "道琼斯",
-      "close": 52498.64,
-      "change": -0.26,
-      "date": "2026-07-13",
-      "market": "美股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "标普500",
-      "close": 7515.34,
-      "change": -0.79,
-      "date": "2026-07-13",
-      "market": "美股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "纳斯达克",
-      "close": 25873.18,
-      "change": -1.55,
-      "date": "2026-07-13",
-      "market": "美股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "恒生指数",
-      "close": 24434.42,
-      "change": 1.07,
-      "date": "2026-07-13",
-      "market": "港股",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "stock-market-127",
-      "index": "恒生科技指数",
-      "close": 4797.27,
-      "change": 1.6,
-      "date": "2026-07-13",
-      "market": "港股",
-      "addedAt": "2026-07-14"
     }
   ],
   "papers": [
@@ -8547,106 +8199,6 @@
       "arxivUrl": "https://arxiv.org/abs/2607.05147",
       "pdfUrl": "https://arxiv.org/pdf/2607.05147",
       "id": "paper-128"
-    },
-    {
-      "id": "paper-129",
-      "title": "Statistically Undetectable Backdoors in Deep Neural Networks",
-      "institution": "University of Ottawa / Bocconi University / MIT",
-      "summary": "证明恶意训练者可在深度网络中植入统计上不可检测的后门，触发后生成不变性对抗样本。",
-      "url": "https://arxiv.org/abs/2607.09532",
-      "arxivId": "2607.09532",
-      "category": "ML/Security",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Learning More from Less: Reinforcement Learning from Hindsight",
-      "institution": "MIT / Stanford / UC San Diego",
-      "summary": "将 hindsight relabeling 引入 VLA 模型的 RL 后训练，把失败轨迹转化为可用训练信号，样本效率提升约 5 倍。",
-      "url": "https://arxiv.org/abs/2607.09042",
-      "arxivId": "2607.09042",
-      "category": "RL/Robotics",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Forget Narrowly, Retain Broadly: Unlearning as an Asymmetric Generalization Problem",
-      "institution": "Tübingen AI Center, University of Tübingen",
-      "summary": "将机器遗忘重新建模为非对称泛化问题，提出评估协议 SUITE 与 JensUn++ 算法。",
-      "url": "https://arxiv.org/abs/2607.09236",
-      "arxivId": "2607.09236",
-      "category": "ML/Unlearning",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Scalable Visual Pretraining for Language Intelligence",
-      "institution": "Shanghai AI Laboratory / USTC / ZJU / SJTU",
-      "summary": "直接在视觉文档上进行无监督视觉预训练，无需 OCR 或图文配对监督，在多个基准上优于纯文本预训练。",
-      "url": "https://arxiv.org/abs/2607.09657",
-      "arxivId": "2607.09657",
-      "category": "ML/Vision-Language",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "OpenLongTail: Generative Scaling of Long-Tail Driving Data",
-      "institution": "Texas A&M / NVIDIA / UW-Madison / UT Austin / Yale / Adobe / Meta / Delaware / Stanford",
-      "summary": "开源生成式数据引擎，将野外长尾驾驶视频转换为视角对齐、时间一致的多视图训练数据。",
-      "url": "https://arxiv.org/abs/2607.09655",
-      "arxivId": "2607.09655",
-      "category": "CV/Autonomous Driving",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Hydra++: Real-Time Hierarchical 3D Scene Graph Construction With Object-Level Shape Estimation",
-      "institution": "MIT / NUS",
-      "summary": "实时层次化 3D 场景图构建中嵌入类别无关的物体形状估计，提升物体级与场景级重建质量。",
-      "url": "https://arxiv.org/abs/2607.09455",
-      "arxivId": "2607.09455",
-      "category": "CV/3D",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Self-Guided Test-Time Training for Long-Context LLMs",
-      "institution": "Meta AI / University of Virginia",
-      "summary": "模型自行识别相关证据片段并仅在这些片段上进行测试时训练，在长上下文基准上取得最高约 15% 相对提升。",
-      "url": "https://arxiv.org/abs/2607.09415",
-      "arxivId": "2607.09415",
-      "category": "NLP/Long-Context",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "WILDTRACE: Benchmarking Natural Evidence Trails in Long-Context Reasoning",
-      "institution": "HKUST / Qwen Team (Alibaba)",
-      "summary": "构建 481 个任务、214 个真实长文档的基准，评测模型整合远距离自然证据的能力。",
-      "url": "https://arxiv.org/abs/2607.09328",
-      "arxivId": "2607.09328",
-      "category": "NLP/Benchmark",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "Agora: Enhancing LLM Agent Reasoning Via Auction-Based Task Allocation",
-      "institution": "University of Birmingham",
-      "summary": "基于拍卖机制的 LLM Agent 推理步骤分配框架，根据修正后能力动态分配子任务。",
-      "url": "https://arxiv.org/abs/2607.09600",
-      "arxivId": "2607.09600",
-      "category": "AI/Agent",
-      "addedAt": "2026-07-14"
-    },
-    {
-      "id": "paper-129",
-      "title": "KV-PRM: Efficient Process Reward Modeling via KV-Cache Transfer for Multi-Agent Test-Time Scaling",
-      "institution": "UIUC / Imperial College London / CityU HK",
-      "summary": "过程奖励模型复用 LLM 推理时的 KV 缓存，复杂度从 O(L²) 降至 O(L)，评分 FLOPs 最高降低 5000 倍。",
-      "url": "https://arxiv.org/abs/2607.09153",
-      "arxivId": "2607.09153",
-      "category": "ML/Efficiency",
-      "addedAt": "2026-07-14"
     }
   ]
 }
