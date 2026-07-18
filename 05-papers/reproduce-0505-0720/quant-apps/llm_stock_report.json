@@ -1,0 +1,37 @@
+{
+  "paper": "arXiv:2605.05211",
+  "tickers": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "AMZN",
+    "NVDA",
+    "META",
+    "TSLA",
+    "JPM",
+    "V",
+    "JNJ"
+  ],
+  "performance": {
+    "annual_return": -0.3243,
+    "sharpe": -1.723,
+    "max_drawdown": 0.3557
+  },
+  "leakage_test": {
+    "T+1 (leakage!)": {
+      "mean_ic": 0.0156,
+      "std_ic": 0.355,
+      "ir": 0.044
+    },
+    "T (same-day)": {
+      "mean_ic": 0.0048,
+      "std_ic": 0.3408,
+      "ir": 0.014
+    },
+    "T-1 (correct)": {
+      "mean_ic": 0.0154,
+      "std_ic": 0.3378,
+      "ir": 0.045
+    }
+  }
+}

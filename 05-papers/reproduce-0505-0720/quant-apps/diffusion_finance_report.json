@@ -1,0 +1,117 @@
+{
+  "paper": "arXiv:2606.14891",
+  "unconditional_metrics": {
+    "Real": {
+      "mean_daily_return": 0.018,
+      "daily_volatility": 0.6683,
+      "skewness": 0.214,
+      "excess_kurtosis": 19.414,
+      "vol_clustering_autocorr": 0.497,
+      "var_5pct": -0.8355,
+      "max_single_drop": -7.0072
+    },
+    "Generated": {
+      "mean_daily_return": 0.0596,
+      "daily_volatility": 2.4534,
+      "skewness": 0.068,
+      "excess_kurtosis": 0.03,
+      "vol_clustering_autocorr": -0.015,
+      "var_5pct": -3.9569,
+      "max_single_drop": -9.5844
+    },
+    "comparison": {
+      "mean_daily_return": {
+        "real": 0.018,
+        "generated": 0.0596,
+        "diff_pct": 231.1
+      },
+      "daily_volatility": {
+        "real": 0.6683,
+        "generated": 2.4534,
+        "diff_pct": 267.1
+      },
+      "skewness": {
+        "real": 0.214,
+        "generated": 0.068,
+        "diff_pct": 68.2
+      },
+      "excess_kurtosis": {
+        "real": 19.414,
+        "generated": 0.03,
+        "diff_pct": 99.8
+      },
+      "vol_clustering_autocorr": {
+        "real": 0.497,
+        "generated": -0.015,
+        "diff_pct": 103.0
+      },
+      "var_5pct": {
+        "real": -0.8355,
+        "generated": -3.9569,
+        "diff_pct": 373.6
+      },
+      "max_single_drop": {
+        "real": -7.0072,
+        "generated": -9.5844,
+        "diff_pct": 36.8
+      }
+    }
+  },
+  "conditional_metrics": {
+    "Real": {
+      "mean_daily_return": 0.018,
+      "daily_volatility": 0.6683,
+      "skewness": 0.214,
+      "excess_kurtosis": 19.414,
+      "vol_clustering_autocorr": 0.497,
+      "var_5pct": -0.8355,
+      "max_single_drop": -7.0072
+    },
+    "Generated": {
+      "mean_daily_return": 0.0888,
+      "daily_volatility": 3.8113,
+      "skewness": 0.116,
+      "excess_kurtosis": -0.006,
+      "vol_clustering_autocorr": 0.017,
+      "var_5pct": -6.0223,
+      "max_single_drop": -12.4303
+    },
+    "comparison": {
+      "mean_daily_return": {
+        "real": 0.018,
+        "generated": 0.0888,
+        "diff_pct": 393.3
+      },
+      "daily_volatility": {
+        "real": 0.6683,
+        "generated": 3.8113,
+        "diff_pct": 470.3
+      },
+      "skewness": {
+        "real": 0.214,
+        "generated": 0.116,
+        "diff_pct": 45.8
+      },
+      "excess_kurtosis": {
+        "real": 19.414,
+        "generated": -0.006,
+        "diff_pct": 100.0
+      },
+      "vol_clustering_autocorr": {
+        "real": 0.497,
+        "generated": 0.017,
+        "diff_pct": 96.6
+      },
+      "var_5pct": {
+        "real": -0.8355,
+        "generated": -6.0223,
+        "diff_pct": 620.8
+      },
+      "max_single_drop": {
+        "real": -7.0072,
+        "generated": -12.4303,
+        "diff_pct": 77.4
+      }
+    }
+  }
+}
