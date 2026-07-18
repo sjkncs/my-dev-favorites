@@ -1,22 +1,22 @@
 {
   "benchmark": "QuantEval",
   "paper": "arXiv:2601.08689",
-  "timestamp": "2026-06-20T00:13:24.961102",
+  "timestamp": "2026-06-21T04:39:07.650060",
   "results": {
     "knowledge": [
       {
         "id": "K001",
         "category": "knowledge",
         "difficulty": "easy",
-        "score": 0.959,
+        "score": 0.614,
         "key_points_total": 4,
-        "key_points_covered": 3,
+        "key_points_covered": 2,
         "covered": [
           "超额收益/波动率",
-          "无风险利率",
-          "过拟合警告"
+          "无风险利率"
         ],
         "missed": [
+          "过拟合警告",
           "风险调整收益"
         ]
       },
@@ -24,15 +24,15 @@
         "id": "K002",
         "category": "knowledge",
         "difficulty": "medium",
-        "score": 0.624,
+        "score": 0.567,
         "key_points_total": 5,
-        "key_points_covered": 3,
+        "key_points_covered": 2,
         "covered": [
           "Jegadeesh Titman 1993",
-          "3-12月回望期",
-          "相对强弱"
+          "3-12月回望期"
         ],
         "missed": [
+          "相对强弱",
           "行为金融解释",
           "风险解释"
         ]
@@ -41,7 +41,7 @@
         "id": "K003",
         "category": "knowledge",
         "difficulty": "hard",
-        "score": 0.354,
+        "score": 0.391,
         "key_points_total": 4,
         "key_points_covered": 1,
         "covered": [
@@ -57,7 +57,7 @@
         "id": "K004",
         "category": "knowledge",
         "difficulty": "easy",
-        "score": 0.884,
+        "score": 0.947,
         "key_points_total": 4,
         "key_points_covered": 3,
         "covered": [
@@ -73,15 +73,15 @@
         "id": "K005",
         "category": "knowledge",
         "difficulty": "medium",
-        "score": 0.558,
+        "score": 0.725,
         "key_points_total": 5,
-        "key_points_covered": 2,
+        "key_points_covered": 3,
         "covered": [
           "协整关系",
-          "价差均值回归"
+          "价差均值回归",
+          "Engle-Granger"
         ],
         "missed": [
-          "Engle-Granger",
           "半衰期",
           "对冲比率"
         ]
@@ -93,8 +93,8 @@
         "category": "reasoning",
         "difficulty": "easy",
         "reference": 0.6,
-        "predicted": 0.695,
-        "error_pct": 15.83,
+        "predicted": 0.563,
+        "error_pct": 6.17,
         "correct": false
       },
       {
@@ -104,12 +104,12 @@
         "sub_results": {
           "return": {
             "reference": 0.096,
-            "predicted": 0.1006,
+            "predicted": 0.0849,
             "correct": false
           },
           "vol": {
             "reference": 0.1026,
-            "predicted": 0.1094,
+            "predicted": 0.1077,
             "correct": false
           }
         },
@@ -123,17 +123,17 @@
         "sub_results": {
           "expected_per_trade": {
             "reference": 0.01,
-            "predicted": 0.0099,
+            "predicted": 0.0098,
             "correct": true
           },
           "gross_annual": {
             "reference": 0.3,
-            "predicted": 0.2811,
+            "predicted": 0.2701,
             "correct": false
           },
           "net_annual": {
             "reference": 0.27,
-            "predicted": 0.2321,
+            "predicted": 0.2645,
             "correct": false
           }
         },
@@ -147,27 +147,27 @@
         "sub_results": {
           "cumulative_return": {
             "reference": -0.001,
-            "predicted": -0.0008,
-            "correct": false
+            "predicted": -0.001,
+            "correct": true
           },
           "daily_vol": {
             "reference": 0.0131,
-            "predicted": 0.0076,
+            "predicted": 0.014,
             "correct": false
           },
           "annual_vol": {
             "reference": 0.2079,
-            "predicted": 0.1936,
+            "predicted": 0.1547,
             "correct": false
           },
           "var_95": {
             "reference": -0.0215,
-            "predicted": -0.0245,
+            "predicted": -0.0181,
             "correct": false
           }
         },
         "all_correct": false,
-        "score": 0.0
+        "score": 0.25
       },
       {
         "id": "R005",
@@ -176,17 +176,17 @@
         "sub_results": {
           "d1": {
             "reference": -0.0988,
-            "predicted": -0.1273,
+            "predicted": -0.075,
             "correct": true
           },
           "d2": {
             "reference": -0.2755,
-            "predicted": -0.2436,
+            "predicted": -0.282,
             "correct": true
           },
           "call_price": {
             "reference": 6.52,
-            "predicted": 6.0263,
+            "predicted": 7.3625,
             "correct": true
           }
         },
@@ -210,10 +210,10 @@
         ],
         "coverage": 0.8,
         "backtest_metrics": {
-          "annual_return": 9.3,
-          "sharpe": 0.81,
-          "max_drawdown": 15.13,
-          "win_rate": 48.1
+          "annual_return": 18.98,
+          "sharpe": 0.496,
+          "max_drawdown": 19.18,
+          "win_rate": 54.9
         },
         "compilable": true
       },
@@ -232,10 +232,10 @@
         ],
         "coverage": 0.6,
         "backtest_metrics": {
-          "annual_return": 12.94,
-          "sharpe": 1.022,
-          "max_drawdown": 15.05,
-          "win_rate": 50.0
+          "annual_return": 13.7,
+          "sharpe": 0.882,
+          "max_drawdown": 22.13,
+          "win_rate": 63.0
         },
         "compilable": true
       },
@@ -277,19 +277,19 @@
   },
   "summary": {
     "knowledge": {
-      "avg_score": 0.676,
-      "easy_avg": 0.922,
-      "medium_avg": 0.591,
-      "hard_avg": 0.354
+      "avg_score": 0.649,
+      "easy_avg": 0.78,
+      "medium_avg": 0.646,
+      "hard_avg": 0.391
     },
     "reasoning": {
-      "pass_rate": 0.267
+      "pass_rate": 0.317
     },
     "code": {
       "avg_coverage": 0.6,
       "compilation_rate": 1.0
     },
-    "overall": 0.49
+    "overall": 0.502
   },
   "human_comparison": {
     "维度": [
@@ -299,10 +299,10 @@
       "综合"
     ],
     "AI得分": [
-      0.676,
-      0.267,
+      0.649,
+      0.317,
       0.6,
-      0.49
+      0.502
     ],
     "人类专家": [
       0.92,
