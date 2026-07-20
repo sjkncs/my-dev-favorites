@@ -2,17 +2,17 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-07-14",
+    "lastUpdated": "2026-07-20",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 77,
-      "consumerAI": 56,
+      "repos": 80,
+      "consumerAI": 60,
       "aiModels": 17,
-      "techNews": 124,
-      "stockMarket": 135,
-      "papers": 138
+      "techNews": 129,
+      "stockMarket": 144,
+      "papers": 146
     }
   },
   "tips": [
@@ -1217,6 +1217,56 @@
       ],
       "status": "trending",
       "addedAt": "2026-07-14"
+    },
+    {
+      "name": "usestrix/strix",
+      "url": "https://github.com/usestrix/strix",
+      "description": "开源 AI 渗透测试智能体，像真正的安全研究员一样动态测试应用并用 PoC 验证漏洞",
+      "stars": "42k",
+      "why": "含 HTTP 代理、浏览器利用、Python 沙箱与 CI/CD 集成，每周约增 7000 stars，显示安全团队真实采用",
+      "tags": [
+        "ai",
+        "agent",
+        "security",
+        "pentest"
+      ],
+      "status": "trending",
+      "id": "repo-074",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "name": "xai-org/grok-build",
+      "url": "https://github.com/xai-org/grok-build",
+      "description": "xAI 开源的编码智能体 CLI 与终端 UI，Apache 2.0，透明展示上下文/工具/插件/技能与 MCP 集成",
+      "stars": "9.3k",
+      "why": "被评为本月最重磅开源 AI 发布之一，可研究、编译并本地运行",
+      "tags": [
+        "ai",
+        "agent",
+        "coding",
+        "cli",
+        "mcp"
+      ],
+      "status": "trending",
+      "id": "repo-075",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "name": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "description": "微型纯 C 推理引擎，零依赖，可在约 25GB 内存消费级机器上运行 GLM-5.2（744B MoE），按需从磁盘流式加载专家",
+      "stars": "14.7k",
+      "why": "让前沿规模模型无需云基础设施即可本地运行，面向端侧 LLM 爱好者",
+      "tags": [
+        "ai",
+        "inference",
+        "llm",
+        "local",
+        "c"
+      ],
+      "status": "trending",
+      "id": "repo-076",
+      "addedAt": "2026-07-20"
     }
   ],
   "trivia": [
@@ -3718,6 +3768,95 @@
       "source": "IT之家",
       "url": "https://www.ithome.com/0/954/158.htm",
       "addedAt": "2026-07-14"
+    },
+    {
+      "brand": "瑞幸咖啡",
+      "title": "全球门店突破3万家，AI开放平台+智能调度支撑超大规模运营",
+      "description": "瑞幸全球门店数突破3万家，成为中国咖啡出海的规模标杆。其 AI 开放平台、智能补货与门店调度体系支撑起数万家门店的标准化运营，AI 在选品、动态定价与供应链预测上的作用愈发关键。",
+      "techStack": [
+        "AI开放平台",
+        "智能补货",
+        "动态定价",
+        "门店调度"
+      ],
+      "scores": {
+        "aiDepth": 8,
+        "ux": 8,
+        "scale": 10,
+        "techBarrier": 7,
+        "commercialization": 9
+      },
+      "source": "FoodTalks",
+      "url": "https://www.foodtalks.cn/news/61410",
+      "id": "consumer-ai-050",
+      "category": "出海/AI运营",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "brand": "蜜雪冰城",
+      "title": "低价策略闯入纽约，雪王爱智慧AI支撑全球供应链与选址",
+      "description": "继瑞幸之后，蜜雪冰城以极致低价策略进入纽约市场。旗下“雪王爱智慧”AI 公司在全球供应链预测、门店选址与智能履约上持续投入，为其海外扩张提供数据底座。",
+      "techStack": [
+        "雪王爱智慧",
+        "供应链预测",
+        "选址模型"
+      ],
+      "scores": {
+        "aiDepth": 7,
+        "ux": 7,
+        "scale": 10,
+        "techBarrier": 6,
+        "commercialization": 9
+      },
+      "source": "财经客户端",
+      "url": "https://www.mycaijing.com/article/detail/561331",
+      "id": "consumer-ai-051",
+      "category": "出海/AI运营",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "brand": "奈雪的茶",
+      "title": "加州首店三天进账65万，海外门店引入AI溯源与本地化运营",
+      "description": "奈雪的茶加州首店开业三天进账65万元，海外扩张提速。品牌在原料 AI 溯源预警、本地化菜单与智能排班上加大投入，以适配海外高人力成本与合规要求。",
+      "techStack": [
+        "AI溯源预警",
+        "智能排班",
+        "本地化推荐"
+      ],
+      "scores": {
+        "aiDepth": 6,
+        "ux": 7,
+        "scale": 7,
+        "techBarrier": 6,
+        "commercialization": 8
+      },
+      "source": "FoodTalks",
+      "url": "https://www.foodtalks.cn/news/61410",
+      "id": "consumer-ai-052",
+      "category": "出海/AI运营",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "brand": "霸王茶姬",
+      "title": "领跑北美新茶饮“淘金热”，智能调饮设备+茶茶圈私域运营",
+      "description": "霸王茶姬在北美新茶饮“淘金热”中领跑，被称奶茶界“星巴克”。依托智能调饮设备保证出品一致性，并通过“茶茶圈”私域与 AI 会员运营提升复购。",
+      "techStack": [
+        "智能调饮设备",
+        "茶茶圈私域",
+        "AI会员运营"
+      ],
+      "scores": {
+        "aiDepth": 7,
+        "ux": 8,
+        "scale": 8,
+        "techBarrier": 6,
+        "commercialization": 8
+      },
+      "source": "上海市经信委 / PEdaily",
+      "url": "https://news.pedaily.cn/202607/566477.shtml",
+      "id": "consumer-ai-053",
+      "category": "出海/AI运营",
+      "addedAt": "2026-07-20"
     }
   ],
   "aiModels": [
@@ -5625,6 +5764,56 @@
       "importance": "中",
       "category": "AI/展会",
       "addedAt": "2026-07-14"
+    },
+    {
+      "title": "韩国股市AI泡沫恐慌：KOSPI单日暴跌近8%，三星、SK海力士遭抛售，引爆全球半导体回调",
+      "summary": "7月中旬韩国股市因AI/半导体估值泡沫担忧遭遇恐慌性抛售，KOSPI单日跌幅一度逼近8%触发警报，三星电子、SK海力士两大存储龙头领跌。市场担心HBM/DRAM涨价周期见顶，叠加高杠杆资金出清，成为7月17日全球科技股同步回调的导火索。",
+      "source": "RFI / 新浪财经",
+      "url": "https://www.rfi.fr/cn/%E8%B4%A2%E7%BB%8F%E5%BF%AB%E8%AE%AF/20260702-%E9%9F%A9%E8%82%A1%E6%9A%B4%E8%B7%8C%E8%BF%918-%E4%B8%89%E6%98%9F%E4%B8%8Esk%E6%B5%B7%E5%8A%9B%E5%A3%AB%E5%8F%8C%E5%8F%8C%E9%87%8D%E6%8C%AB",
+      "importance": "高",
+      "category": "半导体/股市",
+      "id": "tech-news-120",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "A股遭遇“黑色星期五”：7月17日沪指跌3.05%失守3800点创年内新低，创业板指暴跌7.15%",
+      "summary": "受日韩股市剧烈波动与全球半导体板块暴跌冲击，7月17日A股大幅低开低走，上证综指跌3.05%失守3800点创年内新低，深证成指跌5.4%，创业板指跌7.15%，科创50跌超7%。半导体/存储芯片崩盘（长光华芯、兆易创新等多股跌停），沪深两市成交额放量至2.65万亿元。多家机构判断“本质是杠杆出清而非基本面恶化”，全周融资净卖出逾851亿元。",
+      "source": "新浪财经 / 格隆汇",
+      "url": "https://finance.sina.cn/2026-07-17/detail-iniiatfe4233514.d.html",
+      "importance": "高",
+      "category": "股市/半导体",
+      "id": "tech-news-121",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "港股AI产业链全线回调：恒生科技指数跌4.37%，智谱跌超28%、中芯国际跌近10%",
+      "summary": "7月17日港股受AI产业链集体走弱拖累，恒生指数跌1.78%，恒生科技指数跌4.37%，25000点得而复失。AI大模型股大跌（智谱跌超28%、MiniMax跌超15%），存储芯片板块领跌（兆易创新跌超11%、澜起科技跌超8%），半导体（中芯国际跌近10%、华虹宏力跌超11%）与机器人概念（微创机器人-B跌超17%）同步下挫。",
+      "source": "证券时报",
+      "url": "https://www.stcn.com/article/detail/4025799.html",
+      "importance": "高",
+      "category": "股市/AI",
+      "id": "tech-news-122",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "存储芯片周期争议：HBM/DRAM涨价见顶担忧引发抛售，机构称“成长逻辑未破”",
+      "summary": "在7月全球科技股暴跌之后，市场围绕存储芯片（HBM/DRAM）是周期见顶还是成长中继展开激烈争论。看空方认为韩国半导体估值“靠加杠杆炒出的泡沫”，看多方强调AI算力对高带宽存储的结构性需求仍在扩张、库存健康，属于情绪与杠杆驱动的错杀而非基本面反转。",
+      "source": "雪球 / 财经",
+      "url": "https://xueqiu.com/3732131106/399958378",
+      "importance": "中",
+      "category": "半导体",
+      "id": "tech-news-123",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "xAI 开源编码智能体 grok-build：Apache 2.0 许可、透明化上下文与 MCP 集成",
+      "summary": "xAI 开源了其编码智能体的 CLI 与终端 UI（grok-build），采用 Apache 2.0 许可，完全透明地展示上下文处理、工具执行、插件、技能与 MCP 集成。虽不接受外部贡献，但开发者可研究、编译并本地运行，被业界评为本月最重磅的开源 AI 发布之一，约 9.3K stars。",
+      "source": "AnalyticsVidhya / GitHub",
+      "url": "https://github.com/xai-org/grok-build",
+      "importance": "中",
+      "category": "AI/开源",
+      "id": "tech-news-124",
+      "addedAt": "2026-07-20"
     }
   ],
   "stockMarket": [
@@ -6968,6 +7157,87 @@
       "date": "2026-07-13",
       "market": "港股",
       "addedAt": "2026-07-14"
+    },
+    {
+      "index": "上证综指",
+      "close": 3782.45,
+      "change": -3.05,
+      "market": "A股",
+      "id": "stock-market-128",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "深证成指",
+      "close": 13738.62,
+      "change": -5.4,
+      "market": "A股",
+      "id": "stock-market-129",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "创业板指",
+      "close": 3457.29,
+      "change": -7.15,
+      "market": "A股",
+      "id": "stock-market-130",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "科创50",
+      "close": 1850.73,
+      "change": -7.2,
+      "market": "A股",
+      "id": "stock-market-131",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "道琼斯",
+      "close": 51789.91,
+      "change": -1.35,
+      "market": "美股",
+      "id": "stock-market-132",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "标普500",
+      "close": 7387.58,
+      "change": -1.7,
+      "market": "美股",
+      "id": "stock-market-133",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "纳斯达克",
+      "close": 25278.1,
+      "change": -2.3,
+      "market": "美股",
+      "id": "stock-market-134",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "恒生指数",
+      "close": 23999.47,
+      "change": -1.78,
+      "market": "港股",
+      "id": "stock-market-135",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "index": "恒生科技指数",
+      "close": 4587.6,
+      "change": -4.37,
+      "market": "港股",
+      "id": "stock-market-136",
+      "date": "2026-07-17",
+      "addedAt": "2026-07-20"
     }
   ],
   "papers": [
@@ -8647,6 +8917,86 @@
       "arxivId": "2607.09153",
       "category": "ML/Efficiency",
       "addedAt": "2026-07-14"
+    },
+    {
+      "title": "Self-GC: Self-Governing Context for Long-Horizon LLM Agents",
+      "institution": "arXiv (cs.AI)",
+      "summary": "面向长程任务的 LLM 智能体上下文自治机制，让 Agent 自主管理、压缩与治理上下文，缓解长时序任务中的上下文膨胀与遗忘。",
+      "arxivId": "2607.00692",
+      "category": "Agent",
+      "id": "paper-130",
+      "url": "https://arxiv.org/abs/2607.00692",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "Can Agents Generalize to the Open World? Unveiling the Fragility of Static Training in Tool Use",
+      "institution": "ICML 2026",
+      "summary": "揭示静态训练的工具使用智能体在开放世界中的脆弱性，指出泛化能力不足是当前工具调用 Agent 的核心短板。",
+      "arxivId": "2607.01084",
+      "category": "Agent",
+      "id": "paper-131",
+      "url": "https://arxiv.org/abs/2607.01084",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "Self-Evolving Agents with Anytime-Valid Certificates",
+      "institution": "arXiv (cs.AI)",
+      "summary": "在自我进化的同时提供 anytime-valid 统计有效性证书，让智能体的持续改进带有可验证的置信保证。",
+      "arxivId": "2607.00871",
+      "category": "Agent",
+      "id": "paper-132",
+      "url": "https://arxiv.org/abs/2607.00871",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "AutoMem: Automated Learning of Memory as a Cognitive Skill",
+      "institution": "arXiv (cs.AI)",
+      "summary": "把“记忆”当作一种可学习的认知技能进行自动化学习，而非静态外挂检索，提升智能体的长期记忆与调用效率。",
+      "arxivId": "2607.01224",
+      "category": "Agent",
+      "id": "paper-133",
+      "url": "https://arxiv.org/abs/2607.01224",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "Revisiting Chain-of-Thought Reasoning under Limited Supervision",
+      "institution": "arXiv (cs.LG)",
+      "summary": "在有限监督下重新审视思维链推理，提出半监督方法降低对高质量 CoT 标注的依赖。",
+      "arxivId": "2607.01511",
+      "category": "Reasoning",
+      "id": "paper-134",
+      "url": "https://arxiv.org/abs/2607.01511",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "Beyond Next-Token Prediction: An RLVR Proof of Concept for Tool-Use Agents on Atlassian Workflows",
+      "institution": "arXiv (cs.LG)",
+      "summary": "将可验证奖励强化学习（RLVR）应用于 Atlassian 工作流的工具使用智能体，超越下一 token 预测范式。",
+      "arxivId": "2607.01465",
+      "category": "RL",
+      "id": "paper-135",
+      "url": "https://arxiv.org/abs/2607.01465",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "The Wiola Architecture for Efficient Small Language Models",
+      "institution": "arXiv (cs.LG)",
+      "summary": "提出面向高效小语言模型（SLM）的 Wiola 架构，在端侧/低算力场景下兼顾质量与效率。",
+      "arxivId": "2607.01394",
+      "category": "Efficiency",
+      "id": "paper-136",
+      "url": "https://arxiv.org/abs/2607.01394",
+      "addedAt": "2026-07-20"
+    },
+    {
+      "title": "Hawk: Harnessing Hardware-Aware Knowledge for High-Performance NPU Kernel Generation",
+      "institution": "arXiv (cs.LG)",
+      "summary": "利用硬件感知知识自动生成高性能 NPU kernel，面向端侧推理加速与国产算力适配。",
+      "arxivId": "2607.01590",
+      "category": "Efficiency",
+      "id": "paper-137",
+      "url": "https://arxiv.org/abs/2607.01590",
+      "addedAt": "2026-07-20"
     }
   ]
 }
