@@ -2,17 +2,17 @@
   "meta": {
     "title": "我的开发收藏夹",
     "description": "每日更新的效率工具、开源仓库、消费品牌AI、科技新闻、股市动态、顶会论文收藏",
-    "lastUpdated": "2026-07-23",
+    "lastUpdated": "2026-07-20",
     "version": "2.0",
     "repository": "https://github.com/sjkncs/my-dev-favorites",
     "totalItems": {
       "tips": 2,
-      "repos": 85,
-      "consumerAI": 65,
+      "repos": 80,
+      "consumerAI": 60,
       "aiModels": 17,
-      "techNews": 134,
-      "stockMarket": 153,
-      "papers": 154
+      "techNews": 129,
+      "stockMarket": 144,
+      "papers": 146
     }
   },
   "tips": [
@@ -1267,89 +1267,6 @@
       "status": "trending",
       "id": "repo-076",
       "addedAt": "2026-07-20"
-    },
-    {
-      "name": "HKUDS/Vibe-Trading",
-      "url": "https://github.com/HKUDS/Vibe-Trading",
-      "description": "港大数据智能实验室开源量化研究框架，把自然语言直接转成回测与alpha基准，内置452个预制alpha因子并内建前视偏差防护。",
-      "stars": "24k",
-      "why": "把vibe coding带进量化研究，研究级严谨性+自然语言入口，适合个人量化与策略快速验证。",
-      "tags": [
-        "ai",
-        "quant",
-        "trading",
-        "backtest",
-        "llm"
-      ],
-      "status": "trending",
-      "id": "repo-077",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "name": "MadsLorentzen/ai-job-search",
-      "url": "https://github.com/MadsLorentzen/ai-job-search",
-      "description": "基于Claude Code的求职自动化Agent，自动评估岗位、定制简历、撰写求职信并做面试准备。",
-      "stars": "23k",
-      "why": "单人开发者项目，解决高频且痛的日常刚需，是Agent落地个人生产力场景的典型样本。",
-      "tags": [
-        "ai",
-        "agent",
-        "claude-code",
-        "productivity"
-      ],
-      "status": "trending",
-      "id": "repo-078",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "name": "iOfficeAI/OfficeCLI",
-      "url": "https://github.com/iOfficeAI/OfficeCLI",
-      "description": "免费开源Office套件，让AI Agent无需安装Office即可读写自动化Word/Excel/PPT，单一二进制交付。",
-      "stars": "18k",
-      "why": "作为安静的基础设施可嵌入各类自动化工作流，是文档类Agent的关键底座。",
-      "tags": [
-        "ai",
-        "office",
-        "cli",
-        "automation",
-        "agent"
-      ],
-      "status": "trending",
-      "id": "repo-079",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "name": "diegosouzapw/OmniRoute",
-      "url": "https://github.com/diegosouzapw/OmniRoute",
-      "description": "免费AI网关，一个端点路由到231+模型提供商，内建token压缩与自动降级/回退。",
-      "stars": "17.9k",
-      "why": "省去多供应商接入与容灾的重复搭建，是多模型时代的实用路由层。",
-      "tags": [
-        "ai",
-        "gateway",
-        "llm",
-        "router"
-      ],
-      "status": "trending",
-      "id": "repo-080",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "name": "Nutlope/hallmark",
-      "url": "https://github.com/Nutlope/hallmark",
-      "description": "面向Claude Code/Cursor/Codex的设计技能，用57个slop-test关卡+自我批评步骤对抗千篇一律的AI生成UI。",
-      "stars": "10k",
-      "why": "AI编码工具正在长出品味与工艺层，把设计审美显式化为可执行检查门。",
-      "tags": [
-        "ai",
-        "design",
-        "skill",
-        "frontend",
-        "ui"
-      ],
-      "status": "trending",
-      "id": "repo-081",
-      "addedAt": "2026-07-23"
     }
   ],
   "trivia": [
@@ -3940,116 +3857,6 @@
       "id": "consumer-ai-053",
       "category": "出海/AI运营",
       "addedAt": "2026-07-20"
-    },
-    {
-      "brand": "瑞幸咖啡",
-      "title": "全球扩张+AI开放平台深化，狙击霸王茶姬赴美",
-      "description": "以北美门店密度、供应链与AI驱动的选品/定价能力抢占心智，被视为拦在霸王茶姬赴美路上的最大变量；AI开放平台持续对外输出MCP/CLI/Skill能力，把点单、库存与营销自动化沉淀为可复用组件。",
-      "techStack": [
-        "AI开放平台",
-        "MCP/CLI/Skill",
-        "智能选品与动态定价"
-      ],
-      "scores": {
-        "aiDepth": 9,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 8,
-        "commercialization": 9
-      },
-      "source": "36氪 / 创业邦",
-      "url": "https://m.cyzone.cn/article/793370.html",
-      "id": "consumer-ai-054",
-      "category": "出海/AI平台",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "brand": "霸王茶姬",
-      "title": "轻因系列+赴美IPO路演，茶茶圈AI推荐",
-      "description": "推进赴美IPO路演同时以轻因系列等产品创新拉动增长，借茶茶圈做AI个性化推荐与私域运营；挑战在于海外品牌认知与瑞幸的正面拦截。",
-      "techStack": [
-        "智能调饮",
-        "茶茶圈AI推荐",
-        "私域运营"
-      ],
-      "scores": {
-        "aiDepth": 7,
-        "ux": 8,
-        "scale": 7,
-        "techBarrier": 6,
-        "commercialization": 8
-      },
-      "source": "新华网 / 21世纪经济报道",
-      "url": "http://www.news.cn/food/20250321/cf3b3fd17e254b9f995fac010db1fa2c/c.html",
-      "id": "consumer-ai-055",
-      "category": "出海/智能调饮",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "brand": "星巴克",
-      "title": "Deep Brew与Green Dot Assist持续迭代",
-      "description": "把门店排班、库存与顾客个性化推荐进一步交给AI，千店千面的运营颗粒度继续下探。",
-      "techStack": [
-        "Deep Brew",
-        "Green Dot Assist",
-        "门店智能运营"
-      ],
-      "scores": {
-        "aiDepth": 8,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 7,
-        "commercialization": 8
-      },
-      "source": "品牌公开资料",
-      "url": "https://www.starbucks.com/",
-      "id": "consumer-ai-056",
-      "category": "门店智能运营",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "brand": "美团",
-      "title": "LongCat大模型深化配送调度与经营诊断",
-      "description": "LongCat大模型在配送调度、智能推荐与商家侧经营诊断中的应用深化，AI巡检与履约链路优化进一步压缩配送时长与成本。",
-      "techStack": [
-        "LongCat大模型",
-        "AI配送调度",
-        "智能巡检"
-      ],
-      "scores": {
-        "aiDepth": 9,
-        "ux": 8,
-        "scale": 9,
-        "techBarrier": 8,
-        "commercialization": 9
-      },
-      "source": "美团技术公开资料",
-      "url": "https://tech.meituan.com/",
-      "id": "consumer-ai-057",
-      "category": "大模型/履约",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "brand": "蜜雪冰城",
-      "title": "雪王AI大脑支撑海外扩张",
-      "description": "雪王爱智慧AI公司持续为海外扩张提供数字化底座，把选址、供应链与门店运营的决策链条AI化，支撑纽约等海外市场门店落地。",
-      "techStack": [
-        "雪王AI大脑",
-        "供应链智能",
-        "海外选址模型"
-      ],
-      "scores": {
-        "aiDepth": 7,
-        "ux": 7,
-        "scale": 9,
-        "techBarrier": 6,
-        "commercialization": 9
-      },
-      "source": "品牌公开资料",
-      "url": "https://www.mxbc.com/",
-      "id": "consumer-ai-058",
-      "category": "供应链/出海",
-      "addedAt": "2026-07-23"
     }
   ],
   "aiModels": [
@@ -6007,56 +5814,6 @@
       "category": "AI/开源",
       "id": "tech-news-124",
       "addedAt": "2026-07-20"
-    },
-    {
-      "title": "存储芯片引领半导体创纪录季度，美光成最大赢家",
-      "summary": "存储芯片本季取代GPU成半导体领头羊：费城半导体指数(SOX)二季度涨约81%、年内约94%。美光合约价环比+60%、HBM同比增超300%，与SK海力士/三星毛利率同升至75%-85%，高于英伟达与台积电；美光在手订单约1000亿美元(多为多年期锁价长约)，HBM占营收约40%，股价年内涨约304%。",
-      "source": "matterfact 半导体周报 / The Financial Exchange",
-      "url": "https://www.matterfact.com/zh/newsletter/2026-07-05-semis-ai-infrastructure-weekly-recap",
-      "importance": "高",
-      "category": "半导体/存储",
-      "id": "tech-news-125",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "全球存储芯片单月销售额达746亿美元创历史新高",
-      "summary": "在AI基建对HBM的刚性需求拉动下，全球存储芯片单月销售额攀升至746亿美元，刷新历史纪录。HBM成为AI算力扩张的核心瓶颈，三大原厂产能被数据中心长约提前锁定。",
-      "source": "澎湃新闻 / WSTS",
-      "url": "https://m.thepaper.cn/newsDetail_forward_33559637",
-      "importance": "高",
-      "category": "半导体/存储",
-      "id": "tech-news-126",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "AI数据中心单GW综合成本升至650-750亿美元，台积电史上首次提价",
-      "summary": "AI数据中心全成本从年初300-500亿美元/GW升至650-750亿美元/GW，内存占比升至30%-40%(Telltales援引Gavin Baker)。台积电据报首次上调代工价格。Nomura警示未来12个月超大规模厂商自由现金流或从约7000亿美元逼近零；单日内存股市值增约5000亿、大型科技股蒸发约5000亿。",
-      "source": "Telltales / Nomura",
-      "url": "https://www.matterfact.com/zh/newsletter/2026-07-05-semis-ai-infrastructure-weekly-recap",
-      "importance": "高",
-      "category": "半导体/基建",
-      "id": "tech-news-127",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "英伟达沦为年内表现最差主流芯片股，转向主权AI突围",
-      "summary": "受叙事疲劳及亚马逊(约500亿美元自研芯片业务)、谷歌TPU、Cerebras竞争冲击，英伟达年内涨幅仅约6.5%，为主流芯片股最弱。多头逻辑转向Palantir主权AI合作(NemoTron)与为新兴云厂商GPU采购兜底。",
-      "source": "The KE Report / Sherwood",
-      "url": "https://sherwood.news/markets/nvidia-tsmc-rise-as-the-worlds-most-valuable-company-reportedly-asks-for/",
-      "importance": "中",
-      "category": "AI/芯片",
-      "id": "tech-news-128",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "SK海力士/三星握约80% HBM份额，拟投约5900亿美元扩产；光互连成下一瓶颈",
-      "summary": "SK海力士与三星合计掌握约80%的HBM市场，计划新增约5900亿美元晶圆厂投资，市场争论其为国家级基建红利还是周期性过剩风险。光互连/网络(Lumentum、Coherent、Marvell)被点名为下一个瓶颈，黄仁勋披露相关20亿美元投资。",
-      "source": "matterfact 半导体周报",
-      "url": "https://www.matterfact.com/zh/newsletter/2026-07-05-semis-ai-infrastructure-weekly-recap",
-      "importance": "中",
-      "category": "半导体/HBM",
-      "id": "tech-news-129",
-      "addedAt": "2026-07-23"
     }
   ],
   "stockMarket": [
@@ -7481,87 +7238,6 @@
       "id": "stock-market-136",
       "date": "2026-07-17",
       "addedAt": "2026-07-20"
-    },
-    {
-      "index": "上证综指",
-      "close": 3862.4,
-      "change": 0.86,
-      "market": "A股",
-      "id": "stock-market-137",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "深证成指",
-      "close": 12178.5,
-      "change": 1.12,
-      "market": "A股",
-      "id": "stock-market-138",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "创业板指",
-      "close": 2561.3,
-      "change": 1.48,
-      "market": "A股",
-      "id": "stock-market-139",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "科创50",
-      "close": 1121.7,
-      "change": 2.15,
-      "market": "A股",
-      "id": "stock-market-140",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "纳斯达克综合",
-      "close": 22851.6,
-      "change": 1.24,
-      "market": "美股",
-      "id": "stock-market-141",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "标普500",
-      "close": 7081.2,
-      "change": 0.63,
-      "market": "美股",
-      "id": "stock-market-142",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "道琼斯工业",
-      "close": 52604.8,
-      "change": 0.38,
-      "market": "美股",
-      "id": "stock-market-143",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "恒生指数",
-      "close": 25102.3,
-      "change": 0.91,
-      "market": "港股",
-      "id": "stock-market-144",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "index": "恒生科技指数",
-      "close": 4681.5,
-      "change": 2.04,
-      "market": "港股",
-      "id": "stock-market-145",
-      "date": "2026-07-22",
-      "addedAt": "2026-07-23"
     }
   ],
   "papers": [
@@ -9321,86 +8997,6 @@
       "id": "paper-137",
       "url": "https://arxiv.org/abs/2607.01590",
       "addedAt": "2026-07-20"
-    },
-    {
-      "title": "Off-Context GRPO: Learning to Reason on Hard Problems using Privileged Information",
-      "institution": "arXiv (cs.LG)",
-      "summary": "提出离上下文GRPO，训练时引入特权信息帮助模型攻克难题推理链，推理阶段无需该信息，缓解难样本上RL稀疏奖励问题。",
-      "arxivId": "2607.19313",
-      "category": "RL/Reasoning",
-      "id": "paper-138",
-      "url": "https://arxiv.org/abs/2607.19313",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "ISO: An RLVR-Native Optimization Stack",
-      "institution": "arXiv (cs.LG)",
-      "summary": "面向可验证奖励强化学习(RLVR)从底层重构的优化栈，协同设计奖励验证、采样与梯度更新，提升RLVR训练稳定性与吞吐。",
-      "arxivId": "2607.19331",
-      "category": "RL/Systems",
-      "id": "paper-139",
-      "url": "https://arxiv.org/abs/2607.19331",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "Adopting Reinforcement Learning with Verifiable Rewards for Molecular Generation",
-      "institution": "arXiv (cs.LG)",
-      "summary": "将RLVR迁移到分子生成任务，用可验证的化学性质作奖励，指导生成满足多目标约束的候选分子，拓展RLVR在科学发现的应用。",
-      "arxivId": "2607.19044",
-      "category": "RL/Science",
-      "id": "paper-140",
-      "url": "https://arxiv.org/abs/2607.19044",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "AdaFlash: Adaptive Speculative Decoding via On-Policy Distilled Diffusion Drafters",
-      "institution": "arXiv (cs.LG)",
-      "summary": "用在线策略蒸馏的扩散草稿模型实现自适应推测解码，按难度动态调整草稿长度，在保质量的同时显著加速LLM推理。",
-      "arxivId": "2607.19223",
-      "category": "Efficiency",
-      "id": "paper-141",
-      "url": "https://arxiv.org/abs/2607.19223",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "Where Should Optimizer State Live? Tiered State Allocation for Memory-Efficient MoE Training",
-      "institution": "arXiv (cs.LG)",
-      "summary": "研究MoE训练中优化器状态的分层放置(显存/主存/磁盘分级)，在有限显存下训练更大专家模型，降低训练成本。",
-      "arxivId": "2607.19058",
-      "category": "Efficiency",
-      "id": "paper-142",
-      "url": "https://arxiv.org/abs/2607.19058",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "H²SD: Hybrid Hindsight Self-Distillation",
-      "institution": "arXiv (cs.LG)",
-      "summary": "结合事后经验信号的混合自蒸馏方法，让模型从失败与成功轨迹中同时学习，提升推理与决策能力。",
-      "arxivId": "2607.18955",
-      "category": "Reasoning",
-      "id": "paper-143",
-      "url": "https://arxiv.org/abs/2607.18955",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "Toward Auditable Fraud Detection: Combining Graph Features, Model Explanations, and Agentic Case Investigation",
-      "institution": "arXiv (cs.LG)",
-      "summary": "将图特征、模型可解释性与智能体式案件调查工作流结合，构建可审计的欺诈检测系统，兼顾检出率与合规解释性。",
-      "arxivId": "2607.19266",
-      "category": "Agent/Application",
-      "id": "paper-144",
-      "url": "https://arxiv.org/abs/2607.19266",
-      "addedAt": "2026-07-23"
-    },
-    {
-      "title": "From Trajectories to Instructions: Language-Conditioned Meta-Reinforcement Learning",
-      "institution": "arXiv (cs.LG)",
-      "summary": "提出语言条件化的元强化学习框架，从轨迹反推自然语言指令并快速适应新任务，架起语言与策略学习的桥梁。",
-      "arxivId": "2607.18830",
-      "category": "RL/Agent",
-      "id": "paper-145",
-      "url": "https://arxiv.org/abs/2607.18830",
-      "addedAt": "2026-07-23"
     }
   ]
 }

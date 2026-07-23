@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的开发收藏夹 - 数据仪表盘</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#1a1a2e;--card:#16213e;--accent:#0f3460;--text:#e0e0e0;--muted:#8a95b5;--highlight:#e94560;--gold:#f0c040;--green:#2ecc71;--blue:#3498db;--purple:#9b59b6;--orange:#e67e22;--cyan:#1abc9c;--red:#e74c3c;--radius:12px;--shadow:0 4px 20px rgba(0,0,0,.3)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.6}
+.container{max-width:1280px;margin:0 auto;padding:24px}
+header{text-align:center;padding:24px 0}
+header h1{font-size:28px;color:#fff}
+header .sub{color:var(--muted);margin-top:6px}
+.stats-bar{display:flex;justify-content:center;flex-wrap:wrap;gap:32px;margin:20px 0}
+.stat{text-align:center}
+.stat .n{font-size:26px;font-weight:700;color:var(--highlight)}
+.stat .l{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;margin-bottom:24px}
+.card h2{font-size:18px;color:#fff;margin-bottom:14px;border-left:4px solid var(--highlight);padding-left:10px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.chart-wrap{position:relative;height:380px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}
+th{color:#fff;cursor:pointer;user-select:none;background:var(--accent)}
+th:hover{background:var(--accent-light,#1a5276)}
+td a{color:var(--blue);text-decoration:none}
+.badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;color:#fff}
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.12)}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--muted);box-shadow:0 0 0 3px var(--card)}
+.tl-item.high::before{background:var(--red)}
+.tl-item.mid::before{background:var(--gold)}
+.tl-item.low::before{background:var(--muted)}
+.tl-date{font-size:12px;color:var(--muted)}
+.tl-title{font-weight:600;color:#fff;margin:2px 0}
+.tl-sum{font-size:13px;color:var(--text)}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:8px;background:var(--accent);color:var(--text);margin-right:6px}
+.acard{border:1px solid rgba(255,255,255,.08);border-radius:10px;margin-bottom:12px;overflow:hidden}
+.ahead{padding:14px 16px;cursor:pointer;font-weight:600;color:#fff;background:var(--accent);display:flex;justify-content:space-between}
+.abody{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 16px}
+.acard.open .abody{max-height:1600px;padding:14px 16px}
+.abody p{margin:8px 0;font-size:14px}
+.abody .q{color:var(--gold);font-weight:600}
+.abody table{margin-top:8px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px 0}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}.stats-bar{gap:18px}}
+@media(max-width:520px){.container{padding:10px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>我的开发收藏夹｜数据仪表盘</h1>
+  <div class="sub">最后更新：2026-07-20　·　主题：日韩AI泡沫恐慌引爆全球半导体回调</div>
+  <div class="stats-bar" id="statsBar"></div>
+</header>
+
+<div class="card"><h2>① 消费品牌 AI 能力雷达</h2><div class="chart-wrap"><canvas id="cAI"></canvas></div></div>
+
+<div class="grid-2">
+  <div class="card"><h2>② AI 大模型能力雷达</h2><div class="chart-wrap"><canvas id="cModel"></canvas></div></div>
+  <div class="card"><h2>② API 价格对比（$/1M tokens）</h2><div class="chart-wrap"><canvas id="cPrice"></canvas></div></div>
+</div>
+
+<div class="card"><h2>③ 三大股指月度趋势（双Y轴）</h2><div class="chart-wrap"><canvas id="cStock"></canvas></div></div>
+
+<div class="card"><h2>④ 半导体/股市关键指标（7-17回调）</h2><div class="chart-wrap"><canvas id="cSemi"></canvas></div></div>
+
+<div class="card"><h2>⑤ 近期前沿论文（点击表头排序）</h2><div style="overflow-x:auto"><table id="paperTable"><thead><tr><th data-k="title">论文标题</th><th data-k="authors">机构</th><th data-k="conference">方向</th><th data-k="summary">摘要</th><th>链接</th></tr></thead><tbody></tbody></table></div></div>
+
+<div class="card"><h2>⑥ 四问深度分析</h2><div id="analysis"></div></div>
+
+<div class="card"><h2>⑦ 科技新闻时间线</h2><div class="timeline" id="timeline"></div></div>
+
+<footer>数据来源：favorites.json　·　https://github.com/sjkncs/my-dev-favorites</footer>
+</div>
+
+<script>
+var DATA = {"meta": {"title": "我的开发收藏夹", "lastUpdated": "2026-07-20", "totalItems": {"tips": 2, "repos": 80, "consumerAI": 60, "aiModels": 17, "techNews": 129, "stockMarket": 144, "papers": 146}}, "consumerAI": [{"brand": "霸王茶姬", "tool": "北美扩张 + 智能调饮", "scores": {"aiDepth": 6, "ux": 8, "scale": 7, "techBarrier": 6, "commercialization": 7}}, {"brand": "饿了么", "tool": "AI 配送调度系统", "scores": {"aiDepth": 7, "ux": 6, "scale": 9, "techBarrier": 7, "commercialization": 7}}, {"brand": "库迪咖啡", "tool": "智慧运营体系增资", "scores": {"aiDepth": 5, "ux": 6, "scale": 7, "techBarrier": 5, "commercialization": 6}}, {"brand": "霸王茶姬", "tool": "全自动茶饮机 + 千人千味推荐引擎", "scores": {"aiDepth": 7, "ux": 8, "scale": 8, "techBarrier": 7, "commercialization": 7}}, {"brand": "茶百道", "tool": "“茶茶员工”AI 智能服务台", "scores": {"aiDepth": 8, "ux": 7, "scale": 9, "techBarrier": 7, "commercialization": 7}}, {"brand": "美团", "tool": "LongCat 大模型与 AI Agent 生态", "scores": {"aiDepth": 9, "ux": 8, "scale": 10, "techBarrier": 9, "commercialization": 8}}, {"brand": "饿了么", "tool": "AI 商家经营工具套件", "scores": {"aiDepth": 7, "ux": 7, "scale": 8, "techBarrier": 6, "commercialization": 7}}, {"brand": "喜茶", "tool": "AI 智能巡检 Agent", "scores": {"aiDepth": 7, "ux": 7, "scale": 8, "techBarrier": 6, "commercialization": 6}}, {"brand": "瑞幸咖啡", "tool": "全球门店突破3万家，AI开放平台+智能调度支撑超大规模运营", "scores": {"aiDepth": 8, "ux": 8, "scale": 10, "techBarrier": 7, "commercialization": 9}}, {"brand": "蜜雪冰城", "tool": "低价策略闯入纽约，雪王爱智慧AI支撑全球供应链与选址", "scores": {"aiDepth": 7, "ux": 7, "scale": 10, "techBarrier": 6, "commercialization": 9}}, {"brand": "奈雪的茶", "tool": "加州首店三天进账65万，海外门店引入AI溯源与本地化运营", "scores": {"aiDepth": 6, "ux": 7, "scale": 7, "techBarrier": 6, "commercialization": 8}}, {"brand": "霸王茶姬", "tool": "领跑北美新茶饮“淘金热”，智能调饮设备+茶茶圈私域运营", "scores": {"aiDepth": 7, "ux": 8, "scale": 8, "techBarrier": 6, "commercialization": 8}}], "aiModels": [{"name": "GPT-5.5", "vendor": "OpenAI", "scores": {"reasoning": 9, "coding": 8, "multimodal": 9, "price": 3, "context": 7, "ecosystem": 10}, "pricing": {"input": 15, "output": 60}}, {"name": "DeepSeek V4", "vendor": "DeepSeek（幻方量化）", "scores": {"reasoning": 8, "coding": 8, "multimodal": 6, "price": 10, "context": 7, "ecosystem": 7}, "pricing": {"input": 2, "output": 8}}, {"name": "Claude 4 Opus", "vendor": "Anthropic", "scores": {"reasoning": 9, "coding": 10, "multimodal": 8, "price": 4, "context": 8, "ecosystem": 8}, "pricing": {"input": 15, "output": 75}}, {"name": "Claude 4 Sonnet", "vendor": "Anthropic", "scores": {"reasoning": 8, "coding": 9, "multimodal": 8, "price": 6, "context": 8, "ecosystem": 8}, "pricing": {"input": 3, "output": 15}}, {"name": "Gemini 3.5 Flash", "vendor": "Google", "scores": {"reasoning": 8, "coding": 7, "multimodal": 9, "price": 7, "context": 9, "ecosystem": 9}, "pricing": {"input": 1, "output": 4}}, {"name": "Gemini 3 Deep Think", "vendor": "Google", "scores": {"reasoning": 10, "coding": 7, "multimodal": 8, "price": 5, "context": 8, "ecosystem": 8}, "pricing": {"input": 10, "output": 40}}, {"name": "豆包 2.0", "vendor": "字节跳动", "scores": {"reasoning": 7, "coding": 7, "multimodal": 8, "price": 8, "context": 7, "ecosystem": 10}, "pricing": {"input": 2, "output": 6}}, {"name": "通义千问 (Qwen)", "vendor": "阿里巴巴", "scores": {"reasoning": 7, "coding": 7, "multimodal": 7, "price": 9, "context": 8, "ecosystem": 8}, "pricing": {"input": 1, "output": 3}}, {"name": "MiniMax", "vendor": "MiniMax", "scores": {"reasoning": 7, "coding": 6, "multimodal": 8, "price": 9, "context": 8, "ecosystem": 6}, "pricing": {"input": 1.5, "output": 5}}, {"name": "GLM-5.2", "vendor": "智谱", "scores": {"reasoning": 8, "coding": 7, "multimodal": 7, "price": 7, "context": 8, "ecosystem": 7}, "pricing": {"input": 2, "output": 8}}, {"name": "LongCat-Flash-Thinking-2601", "vendor": "美团", "scores": {"reasoning": 9, "coding": 8, "multimodal": 5, "price": 10, "context": 7, "ecosystem": 7}, "pricing": {"input": 0, "output": 0}}, {"name": "GPT-5", "vendor": "OpenAI", "scores": {"reasoning": 10, "coding": 9, "multimodal": 9, "price": 2, "context": 8, "ecosystem": 10}, "pricing": {"input": 25, "output": 100}}, {"name": "Claude 4 (2025 Release)", "vendor": "Anthropic", "scores": {"reasoning": 9, "coding": 10, "multimodal": 8, "price": 4, "context": 8, "ecosystem": 8}, "pricing": {"input": 15, "output": 75}}, {"name": "Gemini 2.5", "vendor": "Google", "scores": {"reasoning": 9, "coding": 8, "multimodal": 10, "price": 5, "context": 9, "ecosystem": 9}, "pricing": {"input": 5, "output": 20}}, {"name": "Llama 4", "vendor": "Meta", "scores": {"reasoning": 8, "coding": 8, "multimodal": 9, "price": 10, "context": 10, "ecosystem": 8}, "pricing": {"input": 0, "output": 0}}, {"name": "Qwen3", "vendor": "Alibaba", "scores": {"reasoning": 8, "coding": 8, "multimodal": 7, "price": 10, "context": 8, "ecosystem": 8}, "pricing": {"input": 0, "output": 0}}, {"name": "DeepSeek V4 (Official)", "vendor": "DeepSeek", "scores": {"reasoning": 9, "coding": 9, "multimodal": 7, "price": 10, "context": 10, "ecosystem": 7}, "pricing": {"input": 2, "output": 8}}], "stockMarket": [{"date": "2026-07-13", "a": 3913.79, "us": 25873.18, "hk": 4797.27}, {"date": "2026-07-17", "a": 3782.45, "us": 25278.1, "hk": 4587.6}], "papers": [{"title": "Statistically Undetectable Backdoors in Deep Neural Networks", "authors": "University of Ottawa / Bocconi University / MIT", "conference": "ML/Security", "summary": "证明恶意训练者可在深度网络中植入统计上不可检测的后门，触发后生成不变性对抗样本。", "url": "https://arxiv.org/abs/2607.09532"}, {"title": "Learning More from Less: Reinforcement Learning from Hindsight", "authors": "MIT / Stanford / UC San Diego", "conference": "RL/Robotics", "summary": "将 hindsight relabeling 引入 VLA 模型的 RL 后训练，把失败轨迹转化为可用训练信号，样本效率提升约 5 倍。", "url": "https://arxiv.org/abs/2607.09042"}, {"title": "Forget Narrowly, Retain Broadly: Unlearning as an Asymmetric Generalization Problem", "authors": "Tübingen AI Center, University of Tübingen", "conference": "ML/Unlearning", "summary": "将机器遗忘重新建模为非对称泛化问题，提出评估协议 SUITE 与 JensUn++ 算法。", "url": "https://arxiv.org/abs/2607.09236"}, {"title": "Scalable Visual Pretraining for Language Intelligence", "authors": "Shanghai AI Laboratory / USTC / ZJU / SJTU", "conference": "ML/Vision-Language", "summary": "直接在视觉文档上进行无监督视觉预训练，无需 OCR 或图文配对监督，在多个基准上优于纯文本预训练。", "url": "https://arxiv.org/abs/2607.09657"}, {"title": "OpenLongTail: Generative Scaling of Long-Tail Driving Data", "authors": "Texas A&M / NVIDIA / UW-Madison / UT Austin / Yale / Adobe / Meta / Delaware / Stanford", "conference": "CV/Autonomous Driving", "summary": "开源生成式数据引擎，将野外长尾驾驶视频转换为视角对齐、时间一致的多视图训练数据。", "url": "https://arxiv.org/abs/2607.09655"}, {"title": "Hydra++: Real-Time Hierarchical 3D Scene Graph Construction With Object-Level Shape Estimation", "authors": "MIT / NUS", "conference": "CV/3D", "summary": "实时层次化 3D 场景图构建中嵌入类别无关的物体形状估计，提升物体级与场景级重建质量。", "url": "https://arxiv.org/abs/2607.09455"}, {"title": "Self-Guided Test-Time Training for Long-Context LLMs", "authors": "Meta AI / University of Virginia", "conference": "NLP/Long-Context", "summary": "模型自行识别相关证据片段并仅在这些片段上进行测试时训练，在长上下文基准上取得最高约 15% 相对提升。", "url": "https://arxiv.org/abs/2607.09415"}, {"title": "WILDTRACE: Benchmarking Natural Evidence Trails in Long-Context Reasoning", "authors": "HKUST / Qwen Team (Alibaba)", "conference": "NLP/Benchmark", "summary": "构建 481 个任务、214 个真实长文档的基准，评测模型整合远距离自然证据的能力。", "url": "https://arxiv.org/abs/2607.09328"}, {"title": "Agora: Enhancing LLM Agent Reasoning Via Auction-Based Task Allocation", "authors": "University of Birmingham", "conference": "AI/Agent", "summary": "基于拍卖机制的 LLM Agent 推理步骤分配框架，根据修正后能力动态分配子任务。", "url": "https://arxiv.org/abs/2607.09600"}, {"title": "KV-PRM: Efficient Process Reward Modeling via KV-Cache Transfer for Multi-Agent Test-Time Scaling", "authors": "UIUC / Imperial College London / CityU HK", "conference": "ML/Efficiency", "summary": "过程奖励模型复用 LLM 推理时的 KV 缓存，复杂度从 O(L²) 降至 O(L)，评分 FLOPs 最高降低 5000 倍。", "url": "https://arxiv.org/abs/2607.09153"}, {"title": "Self-GC: Self-Governing Context for Long-Horizon LLM Agents", "authors": "arXiv (cs.AI)", "conference": "Agent", "summary": "面向长程任务的 LLM 智能体上下文自治机制，让 Agent 自主管理、压缩与治理上下文，缓解长时序任务中的上下文膨胀与遗忘。", "url": "https://arxiv.org/abs/2607.00692"}, {"title": "Can Agents Generalize to the Open World? Unveiling the Fragility of Static Training in Tool Use", "authors": "ICML 2026", "conference": "Agent", "summary": "揭示静态训练的工具使用智能体在开放世界中的脆弱性，指出泛化能力不足是当前工具调用 Agent 的核心短板。", "url": "https://arxiv.org/abs/2607.01084"}, {"title": "Self-Evolving Agents with Anytime-Valid Certificates", "authors": "arXiv (cs.AI)", "conference": "Agent", "summary": "在自我进化的同时提供 anytime-valid 统计有效性证书，让智能体的持续改进带有可验证的置信保证。", "url": "https://arxiv.org/abs/2607.00871"}, {"title": "AutoMem: Automated Learning of Memory as a Cognitive Skill", "authors": "arXiv (cs.AI)", "conference": "Agent", "summary": "把“记忆”当作一种可学习的认知技能进行自动化学习，而非静态外挂检索，提升智能体的长期记忆与调用效率。", "url": "https://arxiv.org/abs/2607.01224"}, {"title": "Revisiting Chain-of-Thought Reasoning under Limited Supervision", "authors": "arXiv (cs.LG)", "conference": "Reasoning", "summary": "在有限监督下重新审视思维链推理，提出半监督方法降低对高质量 CoT 标注的依赖。", "url": "https://arxiv.org/abs/2607.01511"}, {"title": "Beyond Next-Token Prediction: An RLVR Proof of Concept for Tool-Use Agents on Atlassian Workflows", "authors": "arXiv (cs.LG)", "conference": "RL", "summary": "将可验证奖励强化学习（RLVR）应用于 Atlassian 工作流的工具使用智能体，超越下一 token 预测范式。", "url": "https://arxiv.org/abs/2607.01465"}, {"title": "The Wiola Architecture for Efficient Small Language Models", "authors": "arXiv (cs.LG)", "conference": "Efficiency", "summary": "提出面向高效小语言模型（SLM）的 Wiola 架构，在端侧/低算力场景下兼顾质量与效率。", "url": "https://arxiv.org/abs/2607.01394"}, {"title": "Hawk: Harnessing Hardware-Aware Knowledge for High-Performance NPU Kernel Generation", "authors": "arXiv (cs.LG)", "conference": "Efficiency", "summary": "利用硬件感知知识自动生成高性能 NPU kernel，面向端侧推理加速与国产算力适配。", "url": "https://arxiv.org/abs/2607.01590"}], "techNews": [{"date": "2026-07-20", "title": "韩国股市AI泡沫恐慌：KOSPI单日暴跌近8%，三星、SK海力士遭抛售，引爆全球半导体回调", "category": "半导体/股市", "importance": 3, "summary": "7月中旬韩国股市因AI/半导体估值泡沫担忧遭遇恐慌性抛售，KOSPI单日跌幅一度逼近8%触发警报，三星电子、SK海力士两大存储龙头领跌。市场担心HBM/DRAM涨价周期见顶，叠加高杠杆资金出清，成为7月17日全球科技股同步回调的导火索。"}, {"date": "2026-07-20", "title": "A股遭遇“黑色星期五”：7月17日沪指跌3.05%失守3800点创年内新低，创业板指暴跌7.15%", "category": "股市/半导体", "importance": 3, "summary": "受日韩股市剧烈波动与全球半导体板块暴跌冲击，7月17日A股大幅低开低走，上证综指跌3.05%失守3800点创年内新低，深证成指跌5.4%，创业板指跌7.15%，科创50跌超7%。半导体/存储芯片崩盘（长光华芯、兆易创新等多股跌停），沪深两市成交额放量至2.65万亿元。多家机构判断“本质是杠杆出清而非基本面恶化”，全周融资净卖出逾851亿元。"}, {"date": "2026-07-20", "title": "港股AI产业链全线回调：恒生科技指数跌4.37%，智谱跌超28%、中芯国际跌近10%", "category": "股市/AI", "importance": 3, "summary": "7月17日港股受AI产业链集体走弱拖累，恒生指数跌1.78%，恒生科技指数跌4.37%，25000点得而复失。AI大模型股大跌（智谱跌超28%、MiniMax跌超15%），存储芯片板块领跌（兆易创新跌超11%、澜起科技跌超8%），半导体（中芯国际跌近10%、华虹宏力跌超11%）与机器人概念（微创机器人-B跌超17%）同步下挫。"}, {"date": "2026-07-20", "title": "存储芯片周期争议：HBM/DRAM涨价见顶担忧引发抛售，机构称“成长逻辑未破”", "category": "半导体", "importance": 2, "summary": "在7月全球科技股暴跌之后，市场围绕存储芯片（HBM/DRAM）是周期见顶还是成长中继展开激烈争论。看空方认为韩国半导体估值“靠加杠杆炒出的泡沫”，看多方强调AI算力对高带宽存储的结构性需求仍在扩张、库存健康，属于情绪与杠杆驱动的错杀而非基本面反转。"}, {"date": "2026-07-20", "title": "xAI 开源编码智能体 grok-build：Apache 2.0 许可、透明化上下文与 MCP 集成", "category": "AI/开源", "importance": 2, "summary": "xAI 开源了其编码智能体的 CLI 与终端 UI（grok-build），采用 Apache 2.0 许可，完全透明地展示上下文处理、工具执行、插件、技能与 MCP 集成。虽不接受外部贡献，但开发者可研究、编译并本地运行，被业界评为本月最重磅的开源 AI 发布之一，约 9.3K stars。"}, {"date": "2026-07-14", "title": "Meta 自研 AI 芯片 Iris 将于 9 月量产", "category": "半导体/AI芯片", "importance": 3, "summary": "Meta MTIA 第四代芯片 Iris 将于 2026 年 9 月台积电量产，2026 年 AI 基础设施开支最高 1450 亿美元，目标 2027 年算力翻倍至 14GW。"}, {"date": "2026-07-14", "title": "SK 海力士创纪录 280 亿美元纳斯达克 ADR 上市", "category": "半导体/存储", "importance": 3, "summary": "SK 海力士 2026 年 7 月 10 日以代码 SKHY 登陆纳斯达克，募资约 280.7 亿美元，史上最大 ADR 发行，巩固 HBM3E/HBM4 垄断地位。"}, {"date": "2026-07-14", "title": "7 月初半导体板块暴跌，英特尔股价大跌 21%", "category": "半导体/市场", "importance": 3, "summary": "受 AI 资本开支增长质疑及加息担忧影响，2026 年 7 月初半导体板块市值蒸发约 1.3 万亿美元，英特尔股价大跌约 21%。"}, {"date": "2026-07-14", "title": "中国 5 月芯片出口额同比暴增 110.9%", "category": "半导体/贸易", "importance": 3, "summary": "2026 年 5 月中国集成电路出口额达 355.5 亿美元，同比增 110.9%，主要由存储芯片涨价及外资在华工厂贡献。"}, {"date": "2026-07-14", "title": "美国担忧 ASML 最先进 EUV 光刻机可能已流入中国", "category": "半导体/地缘政治", "importance": 2, "summary": "美国商务部长对 ASML 表示担忧其最尖端 EUV 设备可能已流入中国，ASML CEO 否认出售，凸显出口管制博弈焦点。"}, {"date": "2026-07-14", "title": "2026 世界人工智能大会将于 7 月 17–20 日在上海举行", "category": "AI/展会", "importance": 2, "summary": "WAIC 2026 以“智能伙伴，共创未来”为主题，汇聚 1100 余家全球企业与 3000 余件展品，首次设立 OPC 专区。"}], "semi": [{"label": "KOSPI单日最大跌幅(%)", "value": 8.0}, {"label": "智谱7/17跌幅(%)", "value": 28.0}, {"label": "微创机器人-B跌幅(%)", "value": 17.0}, {"label": "MiniMax跌幅(%)", "value": 15.0}, {"label": "华虹宏力跌幅(%)", "value": 11.0}, {"label": "中芯国际跌幅(%)", "value": 10.0}, {"label": "创业板指7/17跌幅(%)", "value": 7.15}, {"label": "恒生科技7/17跌幅(%)", "value": 4.37}], "analysis": [{"title": "韩国AI泡沫恐慌引爆全球半导体回调", "q1": "市场对“AI算力—存储芯片—股价”正反馈循环可持续性的集中定价：是成长还是杠杆泡沫。", "q2": "KOSPI单日跌近8%、三星/SK海力士被抛售，传递龙头估值见顶信号；但情绪暴跌≠基本面恶化。", "q3": "缺乏第三方基本面数据支撑；若HBM订单与毛利仍强劲则属杠杆错杀，反之云厂商capex下修才是真见顶。", "q4": [["🎓 博士生", "关注HBM/存算一体、KV-Cache压缩等降算力方向"], ["👨‍💻 工程师", "盯真实指标：推理成本、显存占用、端侧可行性"], ["💰 投资人", "区分杠杆出清与需求见顶，跟踪capex指引与HBM订单能见度"]]}, {"title": "A股“黑色星期五”与杠杆出清", "q1": "高位高杠杆资金在外围冲击下的踩踏式出清，而非上市公司盈利突变。", "q2": "机构判断“本质是杠杆出清而非基本面恶化”，佐证是全周融资净卖出逾851亿元、成交放量2.65万亿。", "q3": "负反馈自我实现风险：若强平蔓延至基本面良好标的，短期错杀或演变为中期趋势。", "q4": [["🎓 博士生", "当作系统性风险传导的案例研究"], ["👨‍💻 工程师", "关注国产算力链在回调中的估值重估"], ["💰 投资人", "分批抄底，优先现金流稳健非杠杆龙头"]]}, {"title": "xAI 开源编码智能体 grok-build", "q1": "让编码智能体的黑箱变透明：暴露上下文/工具/插件/技能与MCP集成，解决可审计、可复现、可本地化的信任问题。", "q2": "Apache 2.0 + 源码可读可编译可本地运行，是大厂级编码Agent少见的透明化尝试；但“不接受外部贡献”更像参考实现。", "q3": "开源但不共建的封闭治理；实际编码任务通过率与稳定性相较Claude Code/Codex仍需第三方基准验证。", "q4": [["🎓 博士生", "精读上下文管理与MCP集成设计"], ["👨‍💻 工程师", "模仿工具执行与技能编排架构，生产仍以成熟工具为主"], ["💰 投资人", "关注xAI借开源抢占开发者心智的战略"]]}, {"title": "Self-GC：长程LLM智能体上下文自治（arXiv:2607.00692）", "q1": "长程任务中上下文膨胀、稀释关键信息并抬高成本，让Agent自主治理上下文（保留/压缩/丢弃）。", "q2": "提出自治式上下文管理范式，将治理从外部工程规则变为Agent内生能力，需看相对基线的token成本与成功率提升。", "q3": "自治策略可能误删后续所需信息导致关键步骤失败；评测是否覆盖足够长且多样的任务分布是必攻点。", "q4": [["🎓 博士生", "精读上下文治理决策机制与奖励设计"], ["👨‍💻 工程师", "借鉴压缩/保留策略优化上下文预算，先做A/B"], ["💰 投资人", "视作降低Agent长程运行成本的信号"]]}, {"title": "AutoMem：记忆作为可学习的认知技能（arXiv:2607.01224）", "q1": "当前Agent记忆多为被动外挂检索(RAG)，AutoMem让“记什么/怎么记/何时调用”成为可学习技能。", "q2": "将记忆从静态存储升级为可训练认知能力，价值在于是否比强RAG基线在长期一致性与调用效率上有可量化提升。", "q3": "可学习记忆的可解释性与可控性差，可能记住错误信息且难纠正；训练成本与灾难性遗忘是常见质疑。", "q4": [["🎓 博士生", "精读记忆技能学习目标与评测协议"], ["👨‍💻 工程师", "短期以RAG+结构化记忆为主，试点调用策略学习"], ["💰 投资人", "关注可学习记忆能否成为个性化Agent护城河"]]}, {"title": "瑞幸全球门店突破3万家", "q1": "超大规模连锁的标准化与本地化平衡，用AI开放平台、智能补货与门店调度支撑数万门店一致性。", "q2": "3万门店规模是AI运营体系跑通的背书；但需区分规模增长中AI效率与资本/加盟扩张的贡献。", "q3": "海外扩张面临人力成本、供应链本地化与合规差异，国内AI调度未必可平移；低价出海单店盈利模型存疑。", "q4": [["🎓 博士生", "可跳过，除非研究运筹/供应链落地"], ["👨‍💻 工程师", "学习动态定价与补货预测工程化，模仿高并发履约调度"], ["💰 投资人", "关注海外单店模型与AI边际效率而非门店总数"]]}]};
+Chart.defaults.color = '#e0e0e0';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+var PALETTE=['#e74c3c','#3498db','#2ecc71','#9b59b6','#e67e22','#1abc9c','#f0c040','#e94560','#1abc9c','#3498db','#9b59b6','#e67e22'];
+
+// stats bar
+(function(){
+  var t=DATA.meta.totalItems, names={tips:'技巧',repos:'仓库',consumerAI:'品牌AI',aiModels:'大模型',techNews:'新闻',stockMarket:'股市',papers:'论文'};
+  var total=0,html='';
+  for(var k in t){total+=t[k]; html+='<div class="stat"><div class="n">'+t[k]+'</div><div class="l">'+(names[k]||k)+'</div></div>';}
+  html='<div class="stat"><div class="n">'+total+'</div><div class="l">总条目</div></div>'+html;
+  document.getElementById('statsBar').innerHTML=html;
+})();
+
+// hexToRgba
+function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')';}
+
+// ① consumer radar
+new Chart(document.getElementById('cAI'),{type:'radar',
+  data:{labels:['AI深度','用户体验','部署规模','技术壁垒','商业化'],
+    datasets:DATA.consumerAI.map(function(b,i){var c=PALETTE[i%PALETTE.length];return {label:b.brand,data:[b.scores.aiDepth,b.scores.ux,b.scores.scale,b.scores.techBarrier,b.scores.commercialization],borderColor:c,backgroundColor:rgba(c,.08),pointBackgroundColor:c};})},
+  options:{responsive:true,maintainAspectRatio:false,scales:{r:{suggestedMin:0,suggestedMax:10,grid:{color:'rgba(255,255,255,.1)'},angleLines:{color:'rgba(255,255,255,.1)'}}},plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:10}}}}}});
+
+// ② model radar
+new Chart(document.getElementById('cModel'),{type:'radar',
+  data:{labels:['推理','编程','多模态','价格竞争力','上下文','生态'],
+    datasets:DATA.aiModels.slice(0,8).map(function(m,i){var c=PALETTE[i%PALETTE.length];return {label:m.name,data:[m.scores.reasoning,m.scores.coding,m.scores.multimodal,m.scores.price,m.scores.context,m.scores.ecosystem],borderColor:c,backgroundColor:rgba(c,.08),pointBackgroundColor:c};})},
+  options:{responsive:true,maintainAspectRatio:false,scales:{r:{suggestedMin:0,suggestedMax:10,grid:{color:'rgba(255,255,255,.1)'},angleLines:{color:'rgba(255,255,255,.1)'}}},plugins:{legend:{position:'right',labels:{boxWidth:12,font:{size:9}}}}}});
+
+// ② price bar
+new Chart(document.getElementById('cPrice'),{type:'bar',
+  data:{labels:DATA.aiModels.map(function(m){return m.name;}),
+    datasets:[{label:'输入',data:DATA.aiModels.map(function(m){return m.pricing.input;}),backgroundColor:'#3498db'},
+              {label:'输出',data:DATA.aiModels.map(function(m){return m.pricing.output;}),backgroundColor:'#e94560'}]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{position:'top'}},scales:{x:{grid:{color:'rgba(255,255,255,.06)'}}}}});
+
+// ③ stock dual axis
+new Chart(document.getElementById('cStock'),{type:'line',
+  data:{labels:DATA.stockMarket.map(function(s){return s.date;}),
+    datasets:[
+      {label:'上证综指',yAxisID:'y',data:DATA.stockMarket.map(function(s){return s.a||null;}),borderColor:'#e74c3c',backgroundColor:rgba('#e74c3c',.15),fill:true,tension:.3,spanGaps:true},
+      {label:'纳斯达克',yAxisID:'y1',data:DATA.stockMarket.map(function(s){return s.us||null;}),borderColor:'#3498db',backgroundColor:rgba('#3498db',.12),fill:true,tension:.3,spanGaps:true},
+      {label:'恒生科技',yAxisID:'y1',data:DATA.stockMarket.map(function(s){return s.hk||null;}),borderColor:'#2ecc71',backgroundColor:rgba('#2ecc71',.12),fill:true,tension:.3,spanGaps:true}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{y:{position:'left',title:{display:true,text:'上证综指'},grid:{color:'rgba(255,255,255,.06)'}},y1:{position:'right',title:{display:true,text:'纳斯达克/恒生科技'},grid:{drawOnChartArea:false}}}}});
+
+// ④ semiconductor
+new Chart(document.getElementById('cSemi'),{type:'bar',
+  data:{labels:DATA.semi.map(function(s){return s.label;}),
+    datasets:[{label:'数值',data:DATA.semi.map(function(s){return s.value;}),backgroundColor:DATA.semi.map(function(s,i){return PALETTE[i%PALETTE.length];})}]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(255,255,255,.06)'}}}}});
+
+// ⑤ papers table sortable
+(function(){
+  var tb=document.querySelector('#paperTable tbody'),rows=DATA.papers.slice(),asc={};
+  function render(){tb.innerHTML=rows.map(function(p){return '<tr><td>'+p.title+'</td><td>'+p.authors+'</td><td>'+p.conference+'</td><td>'+p.summary+'</td><td><a href="'+p.url+'" target="_blank">arXiv</a></td></tr>';}).join('');}
+  render();
+  document.querySelectorAll('#paperTable th[data-k]').forEach(function(th){th.onclick=function(){var k=th.dataset.k;asc[k]=!asc[k];rows.sort(function(a,b){return asc[k]?(''+a[k]).localeCompare(''+b[k]):(''+b[k]).localeCompare(''+a[k]);});render();};});
+})();
+
+// ⑥ analysis cards
+(function(){
+  var box=document.getElementById('analysis');
+  box.innerHTML=DATA.analysis.map(function(a){
+    var q4=a.q4.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('');
+    return '<div class="acard"><div class="ahead">'+a.title+'<span>▾</span></div><div class="abody">'+
+      '<p><span class="q">Q1 真正想解决的问题：</span>'+a.q1+'</p>'+
+      '<p><span class="q">Q2 声称的贡献：</span>'+a.q2+'</p>'+
+      '<p><span class="q">Q3 最可能被攻击的地方：</span>'+a.q3+'</p>'+
+      '<table><thead><tr><th>角色</th><th>建议</th></tr></thead><tbody>'+q4+'</tbody></table></div></div>';
+  }).join('');
+  box.querySelectorAll('.ahead').forEach(function(h){h.onclick=function(){h.parentNode.classList.toggle('open');};});
+})();
+
+// ⑦ timeline
+(function(){
+  var tl=document.getElementById('timeline'),cls={3:'high',2:'mid',1:'low'},lab={3:'高',2:'中',1:'低'};
+  tl.innerHTML=DATA.techNews.map(function(n){return '<div class="tl-item '+cls[n.importance]+'"><div class="tl-date">'+n.date+'</div><div class="tl-title">'+n.title+'</div><div class="tl-sum">'+n.summary+'</div><div style="margin-top:4px"><span class="tag">'+n.category+'</span><span class="tag">重要:'+lab[n.importance]+'</span></div></div>';}).join('');
+})();
+</script>
+</body>
+</html>
